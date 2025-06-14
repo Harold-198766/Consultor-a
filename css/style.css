@@ -6,7 +6,7 @@ body {
 }
 header {
   background-color: #003366;
-  color: sky blue;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,11 +15,11 @@ header {
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: sky blue;
+  color: skyblue;
   text-shadow: 1px 1px 2px black;
 }
 nav a {
-  color: sky blue;
+  color: skyblue;
   margin: 0 0.5rem;
   text-decoration: none;
 }
