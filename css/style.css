@@ -101,7 +101,7 @@ footer {
 
 /* Botón WhatsApp */
 .btn-agendar {
-  background-color: #25D366;
+  background-color: #25D366 !important; /* Verde oficial de WhatsApp */
   color: #fff;
   padding: 10px 20px;
   display: inline-block;
@@ -110,6 +110,10 @@ footer {
   border-radius: 4px;
   font-weight: bold;
   transition: background 0.3s;
+  border: none;
+}
+.btn-agendar:hover {
+  background-color: #1ebe57 !important; /* Un verde más oscuro al pasar el mouse */
 }
 
 .btn-agendar:hover {
