@@ -118,4 +118,13 @@ footer {
 
 .btn-agendar:hover {
   background-color: #600;
+.titulo-juridico {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  color: #003366;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 0.5em;
+  text-align: center;
+}  
 
