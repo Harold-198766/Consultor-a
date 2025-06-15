@@ -33,11 +33,12 @@ nav a:hover {
   color: #90caf9;
 }
 
-.section {
-  background: #faebd7;  /* beige */
+section.section {
+  background: #faebd7 !important;
+  /* El !important fuerza el color */
   padding: 1rem;
   border-left: 5px solid #003366;
-  margin-bottom: 1.5rem; /* opcional, para separar secciones */
+  margin-bottom: 1.5rem;
 }
 
 h2 {
