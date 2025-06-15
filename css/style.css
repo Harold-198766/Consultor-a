@@ -1,8 +1,10 @@
 body {
   font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
-  background: #f8f8f8;
-  color: #222; /* Mejor contraste */
+  background: url('fondo-pergamino.png') no-repeat center center fixed;
+  background-size: contain; /* Muestra el pergamino completo centrado */
+  background-color: #f8f8f8;
+  color: #222;
 }
 
 header {
@@ -34,7 +36,7 @@ nav a:hover {
 }
 
 .section {
-  background: #e3f2fd !important;
+  background: rgba(255,255,255,0.7); /* Fondo semitransparente */
   padding: 1rem;
   border-left: 5px solid #003366;
   border-right: 5px solid #003366;
