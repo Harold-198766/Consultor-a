@@ -1,9 +1,8 @@
 body {
-  font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(135deg, #f5ecd9 0%, #e2c799 100%);
+  /* Colores suaves tipo pergamino */
+  font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
-  background: url('../fondo-pergamino.png') no-repeat center center fixed;
-  background-size: contain; /* Muestra el pergamino completo centrado */
-  background-color: #f8f8f8;
   color: #222;
 }
 
@@ -36,11 +35,13 @@ nav a:hover {
 }
 
 .section {
-  background: rgba(255,255,255,0.7); /* Fondo semitransparente */
-  padding: 1rem;
-  border-left: 5px solid #003366;
-  border-right: 5px solid #003366;
-  margin-bottom: 1.5rem;
+  background: rgba(255,255,255,0.85);
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 900px;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px 0 rgba(180, 140, 70, 0.2);
+  border: 2px solid #e2c799;
 }
 
 h2 {
