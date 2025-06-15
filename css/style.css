@@ -79,18 +79,22 @@ input, textarea {
   color: #222;
 }
 
-button {
-  background-color: #003366;
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s;
+.boton-arriba {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #900;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+  z-index: 1000;
 }
-
-button:hover {
-  background-color: #600;
+.boton-arriba:hover {
+  background: #600;
 }
 
 footer {
@@ -114,18 +118,7 @@ footer {
   transition: background 0.3s;
   border: none;
 }
-.btn-agendar {
-  background-color: #25D366 !important; /* Verde oficial de WhatsApp */
-  color: #fff;
-  padding: 10px 20px;
-  display: inline-block;
-  margin-top: 10px;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: background 0.3s;
-  border: none;
-}
+
 .btn-agendar:hover {
   background-color: #1ebe57 !important; /* Un verde más oscuro al pasar el mouse */
 }
