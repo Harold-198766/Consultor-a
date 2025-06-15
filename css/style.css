@@ -1,40 +1,141 @@
 body {
-  background: linear-gradient(135deg, #f5ecd9 0%, #e2c799 100%);
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
+  background: url('../fondo-pergamino.png') no-repeat center center fixed;
+  background-size: contain; /* Muestra el pergamino completo centrado */
+  background-color: #f8f8f8;
   color: #222;
 }
 
-.section {
-  background: rgba(255,255,255,0.85);
-  margin: 2rem auto;
-  padding: 2rem;
-  max-width: 900px;
-  border-radius: 16px;
-  box-shadow: 0 2px 16px 0 rgba(180, 140, 70, 0.2);
-  border: 2px solid #e2c799;
-  position: relative;
-  overflow: hidden;
+header {
+  background-color: #003366;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }
 
-/* Si luego agregas imágenes decorativas para las esquinas, 
-   activa estas líneas y pon tus imágenes en la carpeta /img/ */
-/*
-.section::before, .section::after {
-  content: "";
-  position: absolute;
-  width: 60px; height: 60px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.4;
-  pointer-events: none;
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: skyblue;
+  text-shadow: 1px 1px 2px black;
 }
-.section::before {
-  top: 0; left: 0;
-  background-image: url('../img/esquina-izq.png');
+
+nav a {
+  color: #fff;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
 }
-.section::after {
-  bottom: 0; right: 0;
-  background-image: url('../img/esquina-der.png');
+
+nav a:hover {
+  color: #90caf9;
 }
-*/
+
+.section {
+  background: rgba(255,255,255,0.7); /* Fondo semitransparente */
+  padding: 1rem;
+  border-left: 5px solid #003366;
+  border-right: 5px solid #003366;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  color: #003366;
+}
+
+.grid-areas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+article {
+  background: #faebd7;
+  padding: 1rem;
+  border-left: 5px solid #003366;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input, textarea {
+  padding: 0.5rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #222;
+}
+
+button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #600;
+}
+
+footer {
+  text-align: center;
+  background: #003366;
+  color: white;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Botón WhatsApp */
+.btn-agendar {
+  background-color: #25D366 !important; /* Verde oficial de WhatsApp */
+  color: #fff;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 0.3s;
+  border: none;
+}
+.btn-agendar {
+  background-color: #25D366 !important; /* Verde oficial de WhatsApp */
+  color: #fff;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 0.3s;
+  border: none;
+}
+.btn-agendar:hover {
+  background-color: #1ebe57 !important; /* Un verde más oscuro al pasar el mouse */
+}
+
+.titulo-juridico {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  color: #003366;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 0.5em;
+  text-align: center;
+}  
