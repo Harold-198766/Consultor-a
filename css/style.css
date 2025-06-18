@@ -1,6 +1,7 @@
 body {
-  /* ...otras propiedades... */
-  background: url('fondo-pergamino.png') no-repeat center top fixed;
+  font-family: 'Georgia', serif;
+  margin: 0;
+  background: url('fondo-pergamino.png') no-repeat center 60px fixed;
   background-size: contain;
   background-color: #fdf6e3;
   color: #000;
