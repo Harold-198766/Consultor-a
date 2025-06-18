@@ -6,7 +6,7 @@ body {
   background-attachment: fixed;
   background-size: contain;
   background-color: #fdf6e3;
-  background-position: center 60px; /* Ajusta este valor según tu necesidad */
+  background-position: center 60px; /* Ajusta este valor (px) para subir o bajar el pergamino */
   color: #000;
 }
 main {
