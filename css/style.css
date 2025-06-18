@@ -1,13 +1,8 @@
 body {
-  font-family: 'Georgia', serif;
-  margin: 0;
-  background-image: url('fondo-pergamino.png');
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: contain;
+  background: url('fondo-pergamino.png') no-repeat center top;
+  background-size: cover;
   background-color: #fdf6e3;
-  background-position: center 60px; /* Ajusta este valor (px) para subir o bajar el pergamino */
-  color: #000;
+  background-attachment: scroll;
 }
 main {
   max-width: 900px;
