@@ -1,10 +1,9 @@
 body {
-  background: url('img/pergamino-clasico.png') no-repeat center top fixed;
+  /* ...otras propiedades... */
+  background: url('fondo-pergamino.png') no-repeat center top fixed;
   background-size: contain;
-  background-color: #2c1a0d; /* color café oscuro de fondo */
-  margin: 0;
-  font-family: 'Georgia', serif;
-  color: #222;
+  background-color: #fdf6e3;
+  color: #000;
 }
 main {
   max-width: 900px;
