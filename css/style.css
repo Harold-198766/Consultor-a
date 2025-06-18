@@ -3,7 +3,7 @@ body {
   margin: 0;
   background-image: url('fondo-pergamino.png');
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-size: contain;
   background-color: #fdf6e3;
   background-position: center 60px; /* Ajusta este valor (px) para subir o bajar el pergamino */
