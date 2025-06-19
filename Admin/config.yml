@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main # Cambia a 'master' si tu rama principal es 'master'
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "articulos"
+    label: "Artículos del Blog"
+    folder: "articulos"
+    create: true
+    slug: "{{slug}}"
+    extension: "html"
+    format: "frontmatter"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "Contenido", name: "body", widget: "markdown" }
