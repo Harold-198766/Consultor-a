@@ -18,23 +18,24 @@ main {
 }
 
 header {
-  background-color: #003366;
-  color: white;
+  background: rgba(255,255,255,0.95); /* Blanco casi sólido y elegante */
+  color: #003366;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
 }
 
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: skyblue;
-  text-shadow: 1px 1px 2px black;
+  color: #00bcd4; /* Un aqua más saturado para destacar aún más */
+  text-shadow: 1px 1px 2px #00336633;
 }
 
 nav a {
-  color: #fff;
+  color: #003366;
   margin: 0 0.5rem;
   text-decoration: none;
   font-weight: bold;
@@ -42,7 +43,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #90caf9;
+  color: #0097b2;
 }
 
 .section {
