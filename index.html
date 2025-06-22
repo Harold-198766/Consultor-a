@@ -176,8 +176,9 @@ body {
     </section>
 
     <section class="section" id="blog">
-      <h2>Blog</h2>
-      <div class="blog-post">
+  <h2>Blog</h2>
+  <div id="blog-entradas"></div>
+</section>
         <h3>¿Qué es la pensión alimenticia y cómo se solicita?</h3>
         <p class="date">Publicado el 5 de junio de 2025</p>
         <p>La pensión alimenticia es un derecho fundamental que protege a los menores y dependientes. En este artículo explicamos cómo solicitarla en Guatemala, los requisitos necesarios y los procedimientos a seguir para garantizar este derecho.</p>
@@ -223,7 +224,63 @@ body {
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
+<!-- Cargar librería marked -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
+<!-- Script para cargar entradas del blog -->
+<script>
+  const entradas = [
+    {
+      archivo: "proceso-de-pension-alimenticia.md",
+      url: "articulos/pension-alimenticia.html",
+      titulo: "¿Qué es la pensión alimenticia y cómo se solicita?",
+      fecha: "Publicado el 21 de junio de 2025"
+    },
+    {
+      archivo: "contratos-laborales.md",
+      url: "articulos/contratos-laborales.html",
+      titulo: "Cómo proteger su empresa con contratos laborales adecuados",
+      fecha: "Publicado el 30 de mayo de 2025"
+    },
+    {
+      archivo: "denuncia-penal.md",
+      url: "articulos/denuncia-penal.html",
+      titulo: "¿Qué hacer en caso de una denuncia penal?",
+      fecha: "Publicado el 8 de junio de 2025"
+    },
+    {
+      archivo: "demanda-civil.md",
+      url: "articulos/demanda-civil.html",
+      titulo: "¿Qué hacer en caso de una demanda civil?",
+      fecha: "Publicado el 8 de junio de 2025"
+    }
+  ];
+
+  const contenedor = document.getElementById("blog-entradas");
+
+  entradas.forEach(({ archivo, url, titulo, fecha }) => {
+    fetch(`articulos/${archivo}`)
+      .then(res => res.ok ? res.text() : null)
+      .then(md => {
+        if (!md) return;
+        const resumen = md
+          .split("\n")
+          .find(linea => linea.trim() && !linea.startsWith("#"));
+        const post = document.createElement("div");
+        post.className = "blog-post markdown-content";
+        post.innerHTML = `
+          <h3>${titulo}</h3>
+          <p class="date">${fecha}</p>
+          <p>${resumen || 'Contenido próximamente disponible.'}</p>
+          <a href="${url}">Leer artículo completo</a>
+        `;
+        contenedor.appendChild(post);
+      })
+      .catch(err => {
+        console.error(`Error al cargar ${archivo}:`, err);
+      });
+  });
+</script>
     <footer>
       <p>&copy; 2025 Colindres Barillas & Asociados. Todos los derechos reservados.</p>
     </footer>
