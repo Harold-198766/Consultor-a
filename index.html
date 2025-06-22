@@ -199,8 +199,7 @@ body {
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       </section>
-    <script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
   const entradas = [
     {
@@ -240,7 +239,7 @@ body {
           .split("\n")
           .find(linea => linea.trim() && !linea.startsWith("#"));
         const post = document.createElement("div");
-        post.className = "blog-post";
+        post.className = "blog-post markdown-content";
         post.innerHTML = `
           <h3>${titulo}</h3>
           <p class="date">${fecha}</p>
@@ -253,6 +252,7 @@ body {
         console.error(`Error al cargar ${archivo}:`, err);
       });
   });
+</script>
 </script>
     <footer>
       <p>&copy; 2025 Colindres Barillas & Asociados. Todos los derechos reservados.</p>
