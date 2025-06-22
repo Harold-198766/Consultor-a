@@ -259,6 +259,7 @@ body {
   const contenedor = document.getElementById("blog-entradas");
 
   entradas.forEach(({ archivo, url, titulo, fecha }) => {
+    console.log("Intentando cargar:", archivo);
     fetch(`articulos/${archivo}`)
       .then(res => res.ok ? res.text() : null)
       .then(md => {
