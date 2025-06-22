@@ -143,3 +143,38 @@ footer {
   margin-bottom: 0.5em;
   text-align: center;
 }  
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  color: #003366;
+  font-family: 'Georgia', serif;
+  margin-top: 1.5em;
+}
+
+.markdown-content p {
+  font-size: 1.05em;
+  line-height: 1.7;
+  margin-bottom: 1em;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.markdown-content li {
+  margin-bottom: 0.5em;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #900;
+  padding-left: 1em;
+  color: #555;
+  font-style: italic;
+  background-color: #f9f5f0;
+  margin: 1em 0;
+}
+
+.markdown-content a {
+  color: #005
