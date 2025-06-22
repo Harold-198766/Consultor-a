@@ -226,8 +226,6 @@ body {
     </section>
 <!-- Cargar librería marked -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-<!-- Script para cargar entradas del blog -->
 <script>
   const entradas = [
     {
@@ -255,15 +253,14 @@ body {
       fecha: "Publicado el 8 de junio de 2025"
     }
   ];
-</script>
-
   const contenedor = document.getElementById("blog-entradas");
 
   entradas.forEach(({ archivo, url, titulo, fecha }) => {
     console.log("Intentando cargar:", archivo);
     if (!archivo) {
-  console.warn("Archivo vacío o mal definido en alguna entrada:", archivo);
-}
+      console.warn("Archivo vacío o mal definido en alguna entrada:", archivo);
+    }
+
     fetch(`articulos/${archivo}`)
       .then(res => res.ok ? res.text() : null)
       .then(md => {
