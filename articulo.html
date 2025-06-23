@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artículo</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+  <style>
+    body {
+      background-image: url("img/pergamino.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      font-family: Georgia, serif;
+    }
+    .markdown-content {
+      max-width: 750px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background-color: rgba(255, 255, 240, 0.92);
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      border-radius: 8px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <main class="markdown-content">
+    <article id="contenido-articulo">
+      <p>Cargando artículo...</p>
+    </article>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    function obtenerParametro(nombre) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(nombre);
+    }
+
+    const archivo = obtenerParametro("archivo");
+
+    if (archivo) {
+      fetch("articulos/" + archivo)
+        .then(res => res.ok ? res.text() : null)
+        .then(md => {
+          if (!md) throw new Error("Archivo no encontrado.");
+          const limpio = md.replace(/^---[\\s\\S]*?---/, "").trim();
+          document.getElementById("contenido-articulo").innerHTML = marked.parse(limpio);
+        })
+        .catch(() => {
+          document.getElementById("contenido-articulo").textContent = "No se pudo cargar el artículo.";
+        });
+    } else {
+      document.getElementById("contenido-articulo").textContent = "No se especificó ningún archivo.";
+    }
+  </script>
+</body>
+</html>
