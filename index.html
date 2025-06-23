@@ -227,52 +227,23 @@ body {
 <!-- Cargar librería marked -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
- const entradas = [
-  {
-    archivo: "proceso-de-pension-alimenticia.md",
-    url: "articulos/pension-alimenticia.html",
-    titulo: "¿Qué es la pensión alimenticia y cómo se solicita?",
-    fecha: "Publicado el 21 de junio de 2025"
-  },
-  {
-    archivo: "proceso-de-pension-alimenticia-en-guatemala.md",
-    url: "articulos/proceso-pension-alimenticia.html",
-    titulo: "Proceso de pensión alimenticia en Guatemala",
-    fecha: "Publicado el 27 de junio de 2025"
-  },
+  const entradas = [
     {
-      archivo: "contratos-laborales.md",
-      url: "articulos/contratos-laborales.html",
-      titulo: "Cómo proteger su empresa con contratos laborales adecuados",
-      fecha: "Publicado el 30 de mayo de 2025"
+      archivo: "pension-alimenticia.md",
+      url: "articulo.html?archivo=articulos/pension-alimenticia.md"
+      titulo: "¿Qué es la pensión alimenticia?",
+      fecha: "Publicado el 25 de junio de 2025"
     },
     {
-      archivo: "denuncia-penal.md",
-      url: "articulos/denuncia-penal.html",
-      titulo: "¿Qué hacer en caso de una denuncia penal?",
-      fecha: "Publicado el 8 de junio de 2025"
-    },
-    {
-      archivo: "demanda-civil.md",
-      url: "articulos/demanda-civil.html",
-      titulo: "¿Qué hacer en caso de una demanda civil?",
-      fecha: "Publicado el 8 de junio de 2025"
-    },
-    {
-  archivo: "entrada-prueba.md",
-  url: "articulos/entrada-prueba.html",
-  titulo: "Entrada de prueba",
-  fecha: "Publicado el 22 de junio de 2025"
-}
+      archivo: "proceso-de-pension.md",
+      url: "articulo.html?archivo=articulos/proceso-de-pension.md"
+      titulo: "Proceso de pensión alimenticia en Guatemala",
+      fecha: "Publicado el 27 de junio de 2025"
+    }
+    // puedes seguir agregando más...
   ];
   const contenedor = document.getElementById("blog-entradas");
-
   entradas.forEach(({ archivo, url, titulo, fecha }) => {
-    console.log("Intentando cargar:", archivo);
-    if (!archivo) {
-      console.warn("Archivo vacío o mal definido en alguna entrada:", archivo);
-    }
-
     fetch(`articulos/${archivo}`)
       .then(res => res.ok ? res.text() : null)
       .then(md => {
