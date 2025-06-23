@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entrada de prueba</title>
+  <link rel="stylesheet" href="../css/estilos.css" />
+</head>
+<body>
+  <main class="markdown-content">
+    <article id="contenido-articulo">
+      <p>Cargando artículo...</p>
+    </article>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    fetch("entrada-prueba.md")
+      .then(res => res.ok ? res.text() : "No se encontró el archivo.")
+      .then(md => {
+        document.getElementById("contenido-articulo").innerHTML = marked.parse(md);
+      })
+      .catch(() => {
+        document.getElementById("contenido-articulo").textContent = "No se pudo cargar el artículo.";
+      });
+  </script>
+</body>
+</html>
