@@ -42,7 +42,7 @@
     const archivo = obtenerParametro("archivo");
 
     if (archivo) {
-      fetch("articulos/" + archivo)
+      fetch(archivo)
         .then(res => res.ok ? res.text() : null)
         .then(md => {
           if (!md) throw new Error("Archivo no encontrado.");
