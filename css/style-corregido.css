@@ -115,10 +115,15 @@ input, textarea {
   border-radius: 6px;
   cursor: pointer;
   display: block;
-  margin: 1rem auto; /* centra el botón */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* sombra sutil */
+  margin: 1rem auto;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   transition: background 0.3s ease;
 }
+
+.contact-form button:hover {
+  background-color: #002244;
+}
+
 /* Botón WhatsApp */
 .btn-agendar {
   background-color: #25D366 !important; /* Verde oficial de WhatsApp */
@@ -131,10 +136,6 @@ input, textarea {
   font-weight: bold;
   transition: background 0.3s;
   border: none;
-}
-
-.contact-form button:hover {
-  background-color: #002244;
 }
 /* Botón scroll hacia arriba */
 .boton-arriba {
