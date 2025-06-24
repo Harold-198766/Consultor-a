@@ -100,7 +100,7 @@ form {
 
 .contact-form input,
 .contact-form textarea {
-  max-width: 100%; /* reduce el ancho al 100% */
+  max-width: 95%; /* reduce el ancho al 95% */
   margin: 0 auto 1rem auto; /* centrado horizontal */
   display: block;
 }
