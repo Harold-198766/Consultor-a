@@ -5,34 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Artículo</title>
   <link rel="stylesheet" href="css/estilos.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     body {
       background-image: url("img/pergamino.jpg");
       background-size: cover;
-      background-repeat: no-repeat;
       background-attachment: fixed;
-      background-position: center;
+      background-repeat: no-repeat;
       font-family: Georgia, serif;
+      margin: 0;
+      padding: 0;
+      color: #3b2a1d;
     }
-    .markdown-content {
-      max-width: 750px;
-      margin: 4rem auto;
+
+    .contenedor {
+      max-width: 800px;
+      margin: auto;
       padding: 2rem;
-      background-color: rgba(255, 255, 240, 0.92);
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      background-color: rgba(255, 255, 240, 0.94);
       border-radius: 8px;
-      line-height: 1.8;
+      box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    }
+
+    h1, h2, h3, h4 {
+      color: #4a3425;
+    }
+
+    a {
+      color: #8b4513;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .volver {
+      display: block;
+      margin-top: 2rem;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <main class="markdown-content">
-    <article id="contenido-articulo">
-      <p>Cargando artículo...</p>
-    </article>
-  </main>
+  <div class="contenedor">
+    <div id="contenido-articulo">Cargando artículo...</div>
+    <a href="index.html" class="volver">← Volver al blog</a>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     function obtenerParametro(nombre) {
       const params = new URLSearchParams(window.location.search);
@@ -46,14 +63,14 @@
         .then(res => res.ok ? res.text() : null)
         .then(md => {
           if (!md) throw new Error("Archivo no encontrado.");
-          const limpio = md.replace(/^---[\\s\\S]*?---/, "").trim();
+          const limpio = md.replace(/^---[\s\S]*?---/, "").trim();
           document.getElementById("contenido-articulo").innerHTML = marked.parse(limpio);
         })
         .catch(() => {
-          document.getElementById("contenido-articulo").textContent = "No se pudo cargar el artículo.";
+          document.getElementById("contenido-articulo").innerHTML = "<p>No se pudo cargar el artículo.</p>";
         });
     } else {
-      document.getElementById("contenido-articulo").textContent = "No se especificó ningún archivo.";
+      document.getElementById("contenido-articulo").innerHTML = "<p>No se especificó ningún archivo.</p>";
     }
   </script>
 </body>
