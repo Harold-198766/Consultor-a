@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Panel de administración</title>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
-  <body>
-    <script src="https://cdn.jsdelivr.net/npm/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Administración – Colindres Barillas & Asociados</title>
+  <link rel="stylesheet" href="../css/estilos.css" />
+  <link rel="icon" href="../img/logo-colindres-aqua.png" type="image/png" />
+  <style>
+    body {
+      background-image: url("../img/pergamino.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      font-family: Georgia, serif;
+      color: #3b2a1d;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 2rem 0;
+      font-size: 1.8rem;
+    }
+
+    .encabezado {
+      background-color: rgba(255, 255, 240, 0.92);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 0 12px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="encabezado">
+    <h1>🖋️ Panel de Administración<br>Colindres Barillas & Asociados</h1>
+  </div>
+
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+</body>
 </html>
