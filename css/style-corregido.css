@@ -59,21 +59,14 @@ nav a {
 
 /* Secciones restantes con color suave y títulos centrados */
 .section {
-  background-color: #f3f7f9;
+  background-color: #f0f4f8;
   padding: 2rem;
-  margin-bottom: 2rem;
   border-radius: 10px;
-  border-left: 5px solid #c5d1dc;
-  border-right: 5px solid #c5d1dc;
+  margin-bottom: 2rem;
 }
 
 .section h2 {
   text-align: center;
-  font-size: 1.8rem;
-  color: #003366;
-  border-bottom: 1px solid #c5d1dc;
-  padding-bottom: 0.3rem;
-  margin-bottom: 1.5rem;
 }
 
 .grid-areas {
@@ -114,25 +107,33 @@ input, textarea {
 }
 
 .contact-form button {
-  background-color: #003366 !important;
+  background-color: #003366;
   color: white;
+  padding: 0.75rem 2rem;
   border: none;
-  padding: 10px 20px;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
+  display: block;
+  margin: 1rem auto;
 }
 
 /* Botón WhatsApp */
 .btn-agendar {
-  background-color: #25D366 !important;
-  color: white !important;
-  border: none;
+  background-color: #25D366 !important; /* Verde oficial de WhatsApp */
+  color: #fff;
   padding: 10px 20px;
   display: inline-block;
+  margin-top: 10px;
   text-decoration: none;
+  border-radius: 4px;
   font-weight: bold;
-  border-radius: 5px;
+  transition: background 0.3s;
+  border: none;
+}
+
+.btn-agendar:hover {
+  background-color: #1ebe57 !important; /* Un verde más oscuro al pasar el mouse */
 }
 
 .btn-agendar:hover {
