@@ -8,11 +8,9 @@ body {
 }
 
 main {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.88);
-  border-radius: 12px;
 }
 
 header {
@@ -67,6 +65,8 @@ nav a {
 
 .section h2 {
   text-align: center;
+  margin-bottom: 1rem;
+  color: #003366;
 }
 
 .grid-areas {
@@ -107,21 +107,18 @@ input, textarea {
 }
 
 .contact-form button {
-  background-color: #003366 !important;
-  color: white;
-  border: none;
-  padding: 0.75rem 2rem;
+  background-color: #ffffff;
+  color: #003366;
   font-weight: bold;
+  padding: 10px 25px;
   border-radius: 6px;
+  border: none;
   cursor: pointer;
   display: block;
   margin: 1rem auto;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  transition: background 0.3s ease;
 }
-
 .contact-form button:hover {
-  background-color: #002244;
+  background-color: #dddddd;
 }
 
 /* Botón WhatsApp */
