@@ -130,22 +130,25 @@ form {
 .contact-form button:hover {
   background-color: #dddddd;
 }
-
 /* Botón WhatsApp */
-.btn-agendar {
-  background-color: #25D366 !important;
-  color: white !important;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
+.whatsapp-btn {
   display: block;
+  margin: 20px auto 0 auto; /* 20px arriba, centrado */
+  background-color: #25d366; /* color WhatsApp */
+  color: #fff;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1em;
   text-align: center;
-  margin: 1rem auto 0 auto;
+  text-decoration: none;
   font-weight: bold;
-  max-width: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.3s;
 }
-.btn-agendar:hover {
-  background-color: #1ebe57 !important;
+.whatsapp-btn:hover {
+  background-color: #128c7e;
+  color: #fff;
 }
 /* Botón scroll hacia arriba */
 .boton-arriba {
