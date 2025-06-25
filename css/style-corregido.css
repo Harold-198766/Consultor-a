@@ -98,11 +98,16 @@ form {
   gap: 0.5rem;
 }
 
-.contact-form input,
 .contact-form textarea {
-  max-width: 95%; /* reduce el ancho al 95% */
-  margin: 0 auto 1rem auto; /* centrado horizontal */
+  max-width: 97%;
+  margin: 0 auto 1rem auto;
   display: block;
+  background-color: #e7f8ec;
+  border: 1px solid #b2d8c9;
+  padding: 0.6rem;
+  border-radius: 4px;
+  font-family: inherit;
+  color: #222;
 }
 
 .contact-form button {
@@ -115,6 +120,8 @@ form {
   cursor: pointer;
   display: block;
   margin: 1rem auto;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 .contact-form button:hover {
   background-color: #dddddd;
@@ -122,16 +129,19 @@ form {
 
 /* Botón WhatsApp */
 .btn-agendar {
-  background-color: #25D366 !important; /* Verde oficial de WhatsApp */
-  color: #fff;
+  background-color: #25D366 !important;
+  color: white !important;
   padding: 10px 20px;
-  display: inline-block;
-  margin-top: 10px;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  display: block;
+  text-align: center;
+  margin: 1rem auto 0 auto;
   font-weight: bold;
-  transition: background 0.3s;
-  border: none;
+  max-width: 300px;
+}
+.btn-agendar:hover {
+  background-color: #1ebe57 !important;
 }
 /* Botón scroll hacia arriba */
 .boton-arriba {
