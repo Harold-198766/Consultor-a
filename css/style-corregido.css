@@ -162,10 +162,33 @@ footer {
   transition: background 0.3s;
   border: none;
 }
+
 .btn-agendar:hover {
-  background-color: #1ebe57 !important; /* Un verde más oscuro al pasar el mouse */
+  background-color: #1ebe57 !important; /* Verde más oscuro al pasar el mouse */
 }
+
+/* Agrega la clase base para el botón de WhatsApp */
+.whatsapp-btn {
+  background-color: #25D366 !important; /* Verde oficial de WhatsApp */
+  color: #fff !important;
+  padding: 12px 32px;
+  display: block;
+  margin: 20px auto 0 auto; /* Centrado y separado */
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-align: center;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.3s;
 }
+
+.whatsapp-btn:hover {
+  background-color: #128c7e !important;
+  color: #fff !important;
+}
+
 .section {
   background-color: #e6f4fa !important; 
   border-left: 4px solid #003366;
@@ -174,9 +197,4 @@ footer {
   max-width: 1000px;
   margin: 40px auto;
   border-radius: 10px;
-}
-
-.whatsapp-btn:hover {
-  background-color: #128c7e !important;
-  color: #fff !important;
 }
