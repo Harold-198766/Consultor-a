@@ -54,13 +54,14 @@ nav a {
   margin-bottom: 2rem;
   border-radius: 10px;
 }
-
-/* Secciones restantes con color suave y títulos centrados */
 .section {
-  background-color: #f0f4f8;
-  padding: 2rem;
+  background-color: #e6f9ec;       /* verde muy suave */
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 40px auto;
   border-radius: 10px;
-  margin-bottom: 2rem;
+  border-left: 12px solid #0074d9;  /* franja azul a la izquierda */
+  border-right: 12px solid #0074d9; /* franja azul a la derecha */
 }
 .section h2 {
   text-align: left;
