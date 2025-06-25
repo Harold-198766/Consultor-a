@@ -130,26 +130,6 @@ form {
 .contact-form button:hover {
   background-color: #dddddd;
 }
-/* Botón WhatsApp */
-.whatsapp-btn {
-  display: block;
-  margin: 20px auto 0 auto; /* 20px arriba, centrado */
-  background-color: #25d366; /* color WhatsApp */
-  color: #fff;
-  padding: 12px 32px;
-  border: none;
-  border-radius: 25px;
-  font-size: 1.1em;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.3s;
-}
-.whatsapp-btn:hover {
-  background-color: #128c7e;
-  color: #fff;
-}
 /* Botón scroll hacia arriba */
 .boton-arriba {
   position: fixed;
@@ -178,4 +158,23 @@ footer {
   max-width: 1000px;
   margin: 40px auto;
   border-radius: 10px;
+}
+.whatsapp-btn {
+  display: block;
+  margin: 20px auto 0 auto; /* Centrado horizontalmente y separación arriba */
+  background-color: #25d366 !important; /* Verde WhatsApp, forzado */
+  color: #fff !important;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1em;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.3s;
+}
+.whatsapp-btn:hover {
+  background-color: #128c7e !important;
+  color: #fff !important;
 }
