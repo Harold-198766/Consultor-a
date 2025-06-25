@@ -1,6 +1,6 @@
 body {
   background: url('img/pergamino-clasico.png') no-repeat center top fixed;
-  background-size: cover;
+  background-size: contain;
   background-color: #2c1a0d;
   margin: 0;
   font-family: 'Georgia', serif;
