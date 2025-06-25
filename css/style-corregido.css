@@ -149,6 +149,22 @@ footer {
   color: #fff;
   text-align: center;
   padding: 1rem;
+  /* Botón WhatsApp */
+.btn-agendar {
+  background-color: #25D366 !important; /* Verde oficial de WhatsApp */
+  color: #fff;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 0.3s;
+  border: none;
+}
+.btn-agendar:hover {
+  background-color: #1ebe57 !important; /* Un verde más oscuro al pasar el mouse */
+}
 }
 .section {
   background-color: #e6f4fa !important; 
@@ -159,21 +175,7 @@ footer {
   margin: 40px auto;
   border-radius: 10px;
 }
-.whatsapp-btn {
-  display: block;
-  margin: 20px auto 0 auto; /* Centrado horizontalmente y separación arriba */
-  background-color: #25d366 !important; /* Verde WhatsApp, forzado */
-  color: #fff !important;
-  padding: 12px 32px;
-  border: none;
-  border-radius: 25px;
-  font-size: 1.1em;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.3s;
-}
+
 .whatsapp-btn:hover {
   background-color: #128c7e !important;
   color: #fff !important;
