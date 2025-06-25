@@ -164,3 +164,12 @@ footer {
   text-align: center;
   padding: 1rem;
 }
+.section {
+  background-color: #e6f9ec !important; 
+  border-left: 4px solid #003366;
+  border-right: 4px solid #003366;
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 40px auto;
+  border-radius: 10px;
+}
