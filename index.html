@@ -3,8 +3,8 @@
 <head>
   <meta property="og:title" content="Colindres Barillas & Asociados">
   <meta property="og:description" content="Asistencia legal estratégica en Guatemala. Derecho penal, civil, laboral y más.">
-  <meta property="og:image" content="https://tusitio.com/logo-colindres.png">
-  <meta property="og:url" content="https://tusitio.com">
+  <meta property="og:image" content="https://consultoria-legal-guatemala.netlify.app/logo-colindres-aqua.png">
+  <meta property="og:url" content="https://consultoria-legal-guatemala.netlify.app">
   <meta name="twitter:card" content="summary_large_image">
 
   <meta charset="UTF-8" />
@@ -67,7 +67,7 @@ body {
     }
     .section h2 {
       color: #003366;
-      text-algin: center;
+      text-align: center;
     }
     .areas, .team {
       display: grid;
@@ -93,13 +93,25 @@ body {
       border: none;
       cursor: pointer;
     }
-    .btn-agendar {
-      background-color: #900;
-      color: #fff;
-      padding: 10px 20px;
-      display: inline-block;
-      margin-top: 10px;
+    .whatsapp-btn {
+      background-color: #25D366 !important;
+      color: #fff !important;
+      padding: 12px 32px;
+      display: block;
+      margin: 20px auto 0 auto;
       text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: center;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.3s;
+      max-width: 320px;
+    }
+    .whatsapp-btn:hover {
+      background-color: #128c7e !important;
+      color: #fff !important;
     }
     .blog-post {
       background-color: #fff;
@@ -123,15 +135,34 @@ body {
       text-decoration: underline;
     }
   </style>
-  <!-- Justo antes de cerrar </head> -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ELCF7186PW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ELCF7186PW');
-</script>
+  <!-- Datos estructurados Schema.org -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Colindres Barillas & Asociados",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "13 calle, Manzana V, casa # 56, Residenciales la Joya de Palencia, zona cero",
+    "addressLocality": "Guatemala",
+    "addressRegion": "",
+    "postalCode": "",
+    "addressCountry": "GT"
+  },
+  "telephone": ["5843-0603", "5412-9660", "5597-3975"],
+  "email": "lic.barillas46@gmail.com",
+  "url": "https://consultoria-legal-guatemala.netlify.app/",
+  "image": "https://consultoria-legal-guatemala.netlify.app/logo-colindres-aqua.png"
+}
+  </script>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELCF7186PW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ELCF7186PW');
+  </script>
 </head>
 <body>
  <p style="text-align: center; margin-top: 2rem;">
@@ -141,7 +172,7 @@ body {
 </p>
   <main>
     <header>
-  <img src="logo-colindres-aqua.png?v=2" alt="Logo del bufete Colindres Barillas y Asociados">
+      <img src="logo-colindres-aqua.png?v=2" alt="Logo del bufete Colindres Barillas y Asociados">
       <nav>
         <a href="#inicio" style="position:fixed;bottom:30px;right:30px;background:#900;color:#fff;padding:10px 15px;border-radius:50%;text-decoration:none;font-weight:bold;">↑</a>
         <a href="#nosotros">Nosotros</a>
@@ -176,60 +207,61 @@ body {
       <h2>Nuestro Equipo</h2>
       <div class="team">
         <div><strong>Lic. Amílcar Colindres</strong> – Especialista en Derecho Penal</div>
-        <div><strong>Lic.Erick Barillas</strong> – Especialista en Derecho de Familia</div>
+        <div><strong>Lic. Erick Barillas</strong> – Especialista en Derecho de Familia</div>
         <div><strong>Lic. Alfredo Lemus</strong> – Especialista en Derecho Civil</div>
       </div>
     </section>
 
     <section class="section" id="blog">
-  <h2>Blog</h2>
- <div id="blog-entradas"></div>
-<script>
-  const entradas = [
-    {
-      archivo: "pension-alimenticia.md",
-      url: "articulo.html?archivo=articulos/pension-alimenticia.md",
-      titulo: "¿Qué es la pensión alimenticia?",
-      fecha: "Publicado el 25 de junio de 2025"
-    },
-    {
-      archivo: "proceso-de-pension.md",
-      url: "articulo.html?archivo=articulos/proceso-de-pension.md",
-      titulo: "Proceso de pensión alimenticia en Guatemala",
-      fecha: "Publicado el 27 de junio de 2025"
-    },
-    {
-      archivo: "divorcio-en-guatemala.md",
-      url: "articulo.html?archivo=articulos/divorcio-en-guatemala.md",
-      titulo: "¿Cómo se tramita un divorcio en Guatemala?",
-      fecha: "Publicado el 28 de junio de 2025"
-    }
-  ];
-  const contenedor = document.getElementById("blog-entradas");
-
-  entradas.forEach(({ archivo, url, titulo, fecha }) => {
-    fetch(`articulos/${archivo}`)
-      .then(res => res.ok ? res.text() : null)
-      .then(md => {
-        if (!md) return;
-        const resumen = md
-          .split("\n")
-          .find(linea => linea.trim() && !linea.startsWith("#"));
-        const post = document.createElement("div");
-        post.className = "blog-post";
-        post.innerHTML = `
-          <h3>${titulo}</h3>
-          <p class="date">${fecha}</p>
-          <p>${resumen || 'Contenido próximamente disponible.'}</p>
-          <a href="${url}">Leer artículo completo</a>
-        `;
-        contenedor.appendChild(post);
-      })
-      .catch(err => {
-        console.error(`Error al cargar ${archivo}:`, err);
-      });
-  });
-</script>
+      <h2>Blog</h2>
+      <div id="blog-entradas"></div>
+      <!-- Cargar librería marked -->
+      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+      <script>
+        const entradas = [
+          {
+            archivo: "pension-alimenticia.md",
+            url: "articulo.html?archivo=articulos/pension-alimenticia.md",
+            titulo: "¿Qué es la pensión alimenticia?",
+            fecha: "Publicado el 25 de junio de 2025"
+          },
+          {
+            archivo: "proceso-de-pension.md",
+            url: "articulo.html?archivo=articulos/proceso-de-pension.md",
+            titulo: "Proceso de pensión alimenticia en Guatemala",
+            fecha: "Publicado el 27 de junio de 2025"
+          },
+          {
+            archivo: "divorcio-en-guatemala.md",
+            url: "articulo.html?archivo=articulos/divorcio-en-guatemala.md",
+            titulo: "¿Cómo se tramita un divorcio en Guatemala?",
+            fecha: "Publicado el 28 de junio de 2025"
+          }
+        ];
+        const contenedor = document.getElementById("blog-entradas");
+        entradas.forEach(({ archivo, url, titulo, fecha }) => {
+          fetch(`articulos/${archivo}`)
+            .then(res => res.ok ? res.text() : null)
+            .then(md => {
+              if (!md) return;
+              const resumen = md
+                .split("\n")
+                .find(linea => linea.trim() && !linea.startsWith("#"));
+              const post = document.createElement("div");
+              post.className = "blog-post markdown-content";
+              post.innerHTML = `
+                <h3>${titulo}</h3>
+                <p class="date">${fecha}</p>
+                <p>${resumen || 'Contenido próximamente disponible.'}</p>
+                <a href="${url}">Leer artículo completo</a>
+              `;
+              contenedor.appendChild(post);
+            })
+            .catch(err => {
+              console.error(`Error al cargar ${archivo}:`, err);
+            });
+        });
+      </script>
     </section>
 
     <section class="section" id="contacto">
@@ -242,7 +274,7 @@ body {
         <textarea name="mensaje" placeholder="Escriba su mensaje..." required></textarea>
         <button type="submit">Enviar</button>
       </form>
-      <a href="https://wa.me/50258430603" class="btn-agendar" target="_blank">
+      <a href="https://wa.me/50258430603" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
       </a>
       <div style="margin-top: 30px;">
@@ -252,57 +284,14 @@ body {
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
-<!-- Cargar librería marked -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-  const entradas = [
-    {
-      archivo: "pension-alimenticia.md",
-      url: "articulo.html?archivo=articulos/pension-alimenticia.md",
-      titulo: "¿Qué es la pensión alimenticia?",
-      fecha: "Publicado el 25 de junio de 2025"
-    },
-    {
-      archivo: "proceso-de-pension.md",
-      url: "articulo.html?archivo=articulos/proceso-de-pension.md",
-      titulo: "Proceso de pensión alimenticia en Guatemala",
-      fecha: "Publicado el 27 de junio de 2025"
-    },
-   {
-  archivo: "divorcio-en-guatemala.md",
-  url: "articulo.html?archivo=articulos/divorcio-en-guatemala.md",
-  titulo: "¿Cómo se tramita un divorcio en Guatemala?",
-  fecha: "Publicado el 28 de junio de 2025"
-}
-  ];
-  const contenedor = document.getElementById("blog-entradas");
-  entradas.forEach(({ archivo, url, titulo, fecha }) => {
-    fetch(`articulos/${archivo}`)
-      .then(res => res.ok ? res.text() : null)
-      .then(md => {
-        if (!md) return;
-        const resumen = md
-          .split("\n")
-          .find(linea => linea.trim() && !linea.startsWith("#"));
-        const post = document.createElement("div");
-        post.className = "blog-post markdown-content";
-        post.innerHTML = `
-          <h3>${titulo}</h3>
-          <p class="date">${fecha}</p>
-          <p>${resumen || 'Contenido próximamente disponible.'}</p>
-          <a href="${url}">Leer artículo completo</a>
-        `;
-        contenedor.appendChild(post);
-      })
-      .catch(err => {
-        console.error(`Error al cargar ${archivo}:`, err);
-      });
-  });
-</script>
     <footer>
-      <p>&copy; 2025 Colindres Barillas & Asociados. Todos los derechos reservados.</p>
+      <p>
+        &copy; 2025 Colindres Barillas & Asociados. Todos los derechos reservados.<br>
+        13 calle, Manzana V, casa # 56, Residenciales la Joya de Palencia, zona cero, Guatemala, Guatemala.<br>
+        Teléfonos: 5843-0603, 5412-9660, 5597-3975<br>
+        Email: lic.barillas46@gmail.com
+      </p>
     </footer>
   </main>
 </body>
-</html>
 </html>
