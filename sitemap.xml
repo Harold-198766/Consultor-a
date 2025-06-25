@@ -5,19 +5,22 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://consultoria-legal-guatemala.netlify.app/#servicios</loc>
+    <loc>https://consultoria-legal-guatemala.netlify.app/servicios</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://consultoria-legal-guatemala.netlify.app/#equipo</loc>
+    <loc>https://consultoria-legal-guatemala.netlify.app/equipo</loc>
+    <priority>0.8</priority>
+  </url>
+   <loc>https://consultoria-legal-guatemala.netlify.app/preguntas frecuentes</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://consultoria-legal-guatemala.netlify.app/#blog</loc>
+    <loc>https://consultoria-legal-guatemala.netlify.app/blog</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://consultoria-legal-guatemala.netlify.app/#contacto</loc>
+    <loc>https://consultoria-legal-guatemala.netlify.app/contacto</loc>
     <priority>0.8</priority>
   </url>
 </urlset>
