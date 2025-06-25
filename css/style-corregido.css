@@ -60,8 +60,8 @@ nav a {
   max-width: 1000px;
   margin: 40px auto;
   border-radius: 10px;
-  border-left: 12px solid #0074d9;  /* franja azul a la izquierda */
-  border-right: 12px solid #0074d9; /* franja azul a la derecha */
+  border-left: 4px solid #003366;  /* azul marino, delgado */
+  border-right: 4px solid #003366; /* azul marino, delgado */
 }
 .section h2 {
   text-align: left;
