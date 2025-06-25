@@ -12,7 +12,8 @@
     <loc>https://consultoria-legal-guatemala.netlify.app/equipo</loc>
     <priority>0.8</priority>
   </url>
-   <loc>https://consultoria-legal-guatemala.netlify.app/preguntas frecuentes</loc>
+  <url>
+    <loc>https://consultoria-legal-guatemala.netlify.app/preguntas</loc>
     <priority>0.8</priority>
   </url>
   <url>
