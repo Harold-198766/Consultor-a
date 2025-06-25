@@ -27,12 +27,15 @@ header {
 }
 
 nav a {
-  color: #fff;
-  margin: 0 0.5rem;
+  color: #00e6ef;
+  margin: 0 10px;
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.3s;
 }
-
+nav a:hover {
+  color: #003366;
+}
 .banner {
   text-align: center;
   background: rgba(153, 0, 0, 0.85);
