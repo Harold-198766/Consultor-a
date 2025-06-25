@@ -1,6 +1,6 @@
 body {
   background: url('img/pergamino-clasico.png') no-repeat center top fixed;
-  background-size: contain;
+  background-size: cover;
   background-color: #2c1a0d;
   margin: 0;
   font-family: 'Georgia', serif;
@@ -97,9 +97,9 @@ form {
   flex-direction: column;
   gap: 0.5rem;
 }
-
+.contact-form input,
 .contact-form textarea {
-  max-width: 97%;
+  max-width: 98%;
   margin: 0 auto 1rem auto;
   display: block;
   background-color: #e7f8ec;
