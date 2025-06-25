@@ -5,23 +5,19 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://consultoria-legal-guatemala.netlify.app/servicios</loc>
-    <priority>0.8</priority>
+    <loc>https://consultoria-legal-guatemala.netlify.app/articulos/pension-alimenticia.html</loc>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://consultoria-legal-guatemala.netlify.app/equipo</loc>
-    <priority>0.8</priority>
+    <loc>https://consultoria-legal-guatemala.netlify.app/articulos/contratos-laborales.html</loc>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://consultoria-legal-guatemala.netlify.app/preguntas</loc>
-    <priority>0.8</priority>
+    <loc>https://consultoria-legal-guatemala.netlify.app/articulos/denuncia-penal.html</loc>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://consultoria-legal-guatemala.netlify.app/blog</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://consultoria-legal-guatemala.netlify.app/contacto</loc>
-    <priority>0.8</priority>
+    <loc>https://consultoria-legal-guatemala.netlify.app/articulos/demanda-civil.html</loc>
+    <priority>0.7</priority>
   </url>
 </urlset>
