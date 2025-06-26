@@ -249,42 +249,31 @@ body {
             fecha: "Publicado el 28 de junio de 2025"
           }
         ];
-       <section>
-  <div id="blog-entradas"></div>
-</section>
-<script>
-const entradas = [
-  { archivo: "divorcio-en-guatemala.md", url: "articulo.html?archivo=articulos/divorcio-en-guatemala.md", titulo: "Divorcio en Guatemala", fecha: "2025-06-26" },
-  // ...otros artículos
-];
 const contenedor = document.getElementById("blog-entradas");
-entradas.forEach(({ archivo, url, titulo, fecha }) => {
-  fetch(`articulos/${archivo}`)
-    .then(res => res.ok ? res.text() : null)
-    .then(md => {
-      if (!md) return;
-      const resumen = md
-        .split("\n")
-        .find(linea => linea.trim() && !linea.startsWith("#"));
-      const post = document.createElement("div");
-      post.className = "blog-post markdown-content";
-      post.innerHTML = `
-        <h3>${titulo}</h3>
-        <p class="date">${fecha}</p>
-        <p>${resumen || 'Contenido próximamente disponible.'}</p>
-        <a href="${url}">Leer artículo completo</a>
-      `;
-      contenedor.appendChild(post);
-    })
-    .catch(err => {
-      const post = document.createElement("div");
-      post.className = "blog-post-error";
-      post.textContent = `Error al cargar ${titulo}: ${err.message}`;
-      contenedor.appendChild(post);
-      console.error(`Error al cargar ${archivo}:`, err);
-    });
-});
-</script>
+        entradas.forEach(({ archivo, url, titulo, fecha }) => {
+          fetch(`articulos/${archivo}`)
+            .then(res => res.ok ? res.text() : null)
+            .then(md => {
+              if (!md) return;
+              const resumen = md
+                .split("\n")
+                .find(linea => linea.trim() && !linea.startsWith("#"));
+              const post = document.createElement("div");
+              post.className = "blog-post markdown-content";
+              post.innerHTML = `
+                <h3>${titulo}</h3>
+                <p class="date">${fecha}</p>
+                <p>${resumen || 'Contenido próximamente disponible.'}</p>
+                <a href="${url}">Leer artículo completo</a>
+              `;
+              contenedor.appendChild(post);
+            })
+            .catch(err => {
+              console.error(`Error al cargar ${archivo}:`, err);
+            });
+        });
+      </script>
+    </section>
     <section class="section" id="contacto">
       <h2>Contacto</h2>
       <p>Teléfonos: 5843-0603, 5412-9660, 5597-3975</p>
