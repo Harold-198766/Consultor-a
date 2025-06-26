@@ -189,42 +189,6 @@ footer {
   background-color: #128c7e !important;
   color: #fff !important;
 }
-.blog-post {
-  background: #fff;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  border-left: 5px solid #003366;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  overflow: visible;
-  position: relative;
-}
-
-.blog-post h3 {
-  color: #990000; /* Rojo elegante */
-  font-size: 1.2rem;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  text-align: left;
-  z-index: 2;
-  position: relative;
-  background: transparent;
-}
-
-.blog-post p.date {
-  font-size: 0.85rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-}
-
-.blog-post a {
-  color: #003366;
-  font-weight: bold;
-  text-decoration: underline;
-  display: inline-block;
-  margin-top: 0.5rem;
-}
-
 .section {
   background-color: #e6f4fa !important; 
   border-left: 4px solid #003366;
