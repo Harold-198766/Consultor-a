@@ -13,7 +13,10 @@ collections:
     slug: "{{slug}}"
     extension: "md"
     format: "frontmatter"
+    summary: "{{title}} — {{date}}"
     fields:
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "Imagen destacada", name: "thumbnail", widget: "image", required: false }
       - { label: "Contenido", name: "body", widget: "markdown" }
+
