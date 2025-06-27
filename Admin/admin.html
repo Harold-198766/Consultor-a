@@ -5,8 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administración</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+      /* Estilos muy específicos para el botón de retorno */
+      #volver {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background-color: #8b4513;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        z-index: 9999;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+      #volver:hover {
+        background-color: #a0522d;
+        transform: scale(1.05);
+      }
+    </style>
   </head>
   <body>
+    <a id="volver" href="/">⚖️ Volver al sitio</a>
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   </body>
 </html>
