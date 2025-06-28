@@ -2,10 +2,11 @@
 title: "¿Cómo se tramita un divorcio en Guatemala?"
 date: 2025-06-20
 categories:
-  - LEGAL
+  - "LEGAL"
 tags:
-  - DIVORCIO
-  - GUATEMALA
+  - "DIVORCIO"
+  - "GUATEMALA"
+thumbnail: ""
 ---
 # ¿Cómo se tramita un divorcio en Guatemala?
 
