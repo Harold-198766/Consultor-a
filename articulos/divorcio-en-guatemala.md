@@ -1,3 +1,12 @@
+---
+title: "¿Cómo se tramita un divorcio en Guatemala?"
+date: 2025-06-20
+categories:
+  - LEGAL
+tags:
+  - DIVORCIO
+  - GUATEMALA
+---
 # ¿Cómo se tramita un divorcio en Guatemala?
 
 El divorcio en Guatemala es un proceso legal mediante el cual se disuelve el vínculo matrimonial. Existen diferentes causales y procedimientos, dependiendo del tipo de divorcio que se solicite.
