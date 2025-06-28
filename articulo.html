@@ -50,28 +50,48 @@
     <a href="index.html" class="volver">← Volver al blog</a>
   </div>
 
-  <script>
-    function obtenerParametro(nombre) {
-      const params = new URLSearchParams(window.location.search);
-      return params.get(nombre);
-    }
+ <script>
+function obtenerParametro(nombre) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(nombre);
+}
 
-    const archivo = obtenerParametro("archivo");
+const archivo = obtenerParametro("archivo");
 
-    if (archivo) {
-      fetch(archivo)
-        .then(res => res.ok ? res.text() : null)
-        .then(md => {
-          if (!md) throw new Error("Archivo no encontrado.");
-          const limpio = md.replace(/^---[\s\S]*?---/, "").trim();
-          document.getElementById("contenido-articulo").innerHTML = marked.parse(limpio);
-        })
-        .catch(() => {
-          document.getElementById("contenido-articulo").innerHTML = "<p>No se pudo cargar el artículo.</p>";
+if (archivo) {
+  fetch(archivo)
+    .then(res => res.ok ? res.text() : null)
+    .then(md => {
+      if (!md) throw new Error("Archivo no encontrado.");
+
+      // Extrae el frontmatter
+      const frontmatterMatch = md.match(/^---\s*([\s\S]*?)\s*---/);
+      let frontmatter = {};
+      if (frontmatterMatch) {
+        const yaml = frontmatterMatch[1];
+        yaml.split('\n').forEach(line => {
+          const match = line.match(/^(\w+):\s*(.*)$/);
+          if (match) frontmatter[match[1]] = match[2].replace(/^['"]|['"]$/g, "");
         });
-    } else {
-      document.getElementById("contenido-articulo").innerHTML = "<p>No se especificó ningún archivo.</p>";
-    }
-  </script>
+      }
+
+      // Extrae el contenido limpio del artículo
+      const limpio = md.replace(/^---[\s\S]*?---/, "").trim();
+
+      // Construye el HTML: título, fecha y contenido
+      let html = "";
+      if (frontmatter.title) html += `<h1>${frontmatter.title}</h1>`;
+      if (frontmatter.date) html += `<p><em>${frontmatter.date}</em></p>`;
+      html += marked.parse(limpio);
+
+      document.getElementById("contenido-articulo").innerHTML = html;
+    })
+    .catch(() => {
+      document.getElementById("contenido-articulo").innerHTML = "<p>No se pudo cargar el artículo.</p>";
+    });
+} else {
+  document.getElementById("contenido-articulo").innerHTML = "<p>No se especificó ningún archivo.</p>";
+}
+</script>
 </body>
 </html>
