@@ -1,6 +1,6 @@
 ---
 title: '"CONTROL SOCIAL E INTELIGENCIA ARTIFICIAL"'
-date: 2025-06-28T16:41:23.524Z
+date: 2025-06-27T16:41:23.524Z
 categories:
   - PENAL
 tags:
