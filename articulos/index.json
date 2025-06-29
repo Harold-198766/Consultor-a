@@ -1,0 +1,20 @@
+[
+  {
+    "archivo": "entrada-de-prueba-del-cms.md",
+    "url": "articulo.html?archivo=articulos/entrada-de-prueba-del-cms.md",
+    "title": "Entrada de Prueba del CMS",
+    "date": "2025-06-28"
+  },
+  {
+    "archivo": "control-social-e-inteligencia-artificial.md",
+    "url": "articulo.html?archivo=articulos/control-social-e-inteligencia-artificial.md",
+    "title": "\"CONTROL SOCIAL E INTELIGENCIA ARTIFICIAL\"",
+    "date": "2025-06-27"
+  },
+  {
+    "archivo": "divorcio-en-guatemala.md",
+    "url": "articulo.html?archivo=articulos/divorcio-en-guatemala.md",
+    "title": "¿Cómo se tramita un divorcio en Guatemala?",
+    "date": "2025-06-20"
+  }
+]
