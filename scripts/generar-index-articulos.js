@@ -38,7 +38,10 @@ const index = archivos.map(archivo => {
 // Ordena por fecha descendente
 index.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+// ...existing code...
+
 // Escribe el archivo index.json
 fs.writeFileSync(path.join(articulosDir, 'index.json'), JSON.stringify(index, null, 2), 'utf8');
-
 console.log('✅ index.json generado correctamente con', index.length, 'artículos.');
+
+// ...existing code...
