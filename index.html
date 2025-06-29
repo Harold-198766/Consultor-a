@@ -230,46 +230,36 @@ footer {
       </div>
     </section>
 
-    <section class="section" id="blog">
-      <h2>Blog</h2>
-      <div id="blog-entradas"></div>
-      <!-- Cargar librería marked -->
-      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-      <script>
-        const entradas = [
-          {
-            archivo: "pension-alimenticia.md",
-            url: "articulo.html?archivo=articulos/pension-alimenticia.md",
-            titulo: "¿Qué es la pensión alimenticia?",
-            fecha: "Publicado el 25 de junio de 2025"
-          },
-          {
-            archivo: "proceso-de-pension.md",
-            url: "articulo.html?archivo=articulos/proceso-de-pension.md",
-            titulo: "Proceso de pensión alimenticia en Guatemala",
-            fecha: "Publicado el 27 de junio de 2025"
-          },
-          {
-            archivo: "divorcio-en-guatemala.md",
-            url: "articulo.html?archivo=articulos/divorcio-en-guatemala.md",
-            titulo: "¿Cómo se tramita un divorcio en Guatemala?",
-            fecha: "Publicado el 28 de junio de 2025"
-          }
-        ];
-        const contenedor = document.getElementById("blog-entradas");
-        entradas.forEach(({ archivo, url, titulo, fecha }) => {
+  <section class="section" id="blog">
+  <h2>Blog</h2>
+  <div id="blog-entradas"></div>
+  <!-- Cargar librería marked -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const contenedor = document.getElementById("blog-entradas");
+
+    // Cargar el index.json generado automáticamente
+    fetch("articulos/index.json")
+      .then(res => res.json())
+      .then(entradas => {
+        entradas.forEach(({ archivo, url, title, date }) => {
           fetch(`articulos/${archivo}`)
             .then(res => res.ok ? res.text() : null)
             .then(md => {
               if (!md) return;
+              // Buscar la primera línea significativa como resumen (omite encabezados y delimitadores ---)
               const resumen = md
                 .split("\n")
-                .find(linea => linea.trim() && !linea.startsWith("#"));
+                .find(linea =>
+                  linea.trim() &&
+                  !linea.startsWith("#") &&
+                  !linea.startsWith("---")
+                );
               const post = document.createElement("div");
               post.className = "blog-post markdown-content";
               post.innerHTML = `
-                <h3>${titulo}</h3>
-                <p class="date">${fecha}</p>
+                <h3>${title.replace(/^"|"$/g, "")}</h3>
+                <p class="date">Publicado el ${date}</p>
                 <p>${resumen || 'Contenido próximamente disponible.'}</p>
                 <a href="${url}">Leer artículo completo</a>
               `;
@@ -279,8 +269,13 @@ footer {
               console.error(`Error al cargar ${archivo}:`, err);
             });
         });
-      </script>
-    </section>
+      })
+      .catch(err => {
+        contenedor.innerHTML = "<p>No se pudo cargar el blog.</p>";
+        console.error("Error cargando index.json:", err);
+      });
+  </script>
+</section>
     
    <section class="section" id="contacto">
   <h2>Contacto</h2>
