@@ -96,15 +96,30 @@ nav a:hover {
   box-shadow: 0 4px 24px rgba(0,51,102,0.14);
   background: #f1f7fa;
 }
+/* Íconos clásicos para áreas y equipo */
+
 .areas > div::before {
-  content: "⚖️";
-  font-size: 1.4em;
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
   margin-right: 8px;
+  background-image: url('../img/matrona-justicia.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
 }
+
 .team > div::before {
-  content: "👨‍⚖️";
-  font-size: 1.3em;
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
   margin-right: 8px;
+  background-image: url('../img/abogado-clasico.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
 }
 
 /* 4. COLORES Y TIPOGRAFÍA */
