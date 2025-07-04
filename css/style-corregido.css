@@ -206,33 +206,52 @@ a:hover {
   box-shadow: 0 4px 16px rgba(18, 140, 126, 0.15);
 }
 /* 6. RESPONSIVIDAD */
-@media (max-width: 900px) {
-  .section {
-    max-width: 98vw;
-    padding: 18px;
-  }
-}
-@media (max-width: 700px) {
-  .areas, .team {
+@media (max-width: 768px) {
+  /* Diseño de áreas y equipo en una sola columna */
+  .areas,
+  .team {
     grid-template-columns: 1fr !important;
   }
+
+  /* Adaptar encabezado para dispositivos pequeños */
   header {
     flex-direction: column;
     text-align: center;
     padding: 10px 6px;
   }
-  header img, .logo-img {
+
+  header img,
+  .logo-img {
     height: 64px;
     margin-bottom: 8px;
   }
+
   nav a {
     display: inline-block;
     margin: 8px 4px;
     font-size: 1.05em;
   }
+
   .banner {
     padding: 32px 10px;
     font-size: 1em;
+  }
+
+  /* Mejorar legibilidad en secciones */
+  .section {
+    padding: 1rem;
+  }
+
+  /* Centrar los títulos para dispositivos pequeños */
+  .section h2 {
+    text-align: center;
+  }
+
+  /* Centrar el botón de WhatsApp */
+  .whatsapp-btn {
+    margin: 20px auto 0 auto;
+    display: block;
+    text-align: center;
   }
 }
 
