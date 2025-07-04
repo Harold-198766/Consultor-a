@@ -205,24 +205,6 @@ a:hover {
   transform: scale(1.06);
   box-shadow: 0 4px 16px rgba(18, 140, 126, 0.15);
 }
-/* Botón WhatsApp adicional */
-.btn-agendar {
-  background-color: #25D366 !important;
-  color: #fff;
-  padding: 10px 20px;
-  display: inline-block;
-  margin-top: 10px;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: background 0.3s, transform 0.2s;
-  border: none;
-}
-.btn-agendar:hover {
-  background-color: #1ebe57 !important;
-  transform: scale(1.06);
-}
-
 /* 6. RESPONSIVIDAD */
 @media (max-width: 900px) {
   .section {
