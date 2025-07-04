@@ -1,5 +1,5 @@
 ---
-title: '"CONTROL SOCIAL E INTELIGENCIA ARTIFICIAL"'
+title: Control Social e Inteligencia Artificial
 date: 2025-06-27T16:41:23.524Z
 categories:
   - PENAL
