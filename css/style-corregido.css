@@ -126,7 +126,7 @@ nav a:hover {
 body {
   font-family: 'Georgia', 'Playfair Display', serif;
   background: url('../img/pergamino-clasico.png') no-repeat center top fixed;
-  background-size: cover;
+  background-size: 1000px auto;
   background-color: #fdf6e3;
   color: #232323;
   margin: 0;
