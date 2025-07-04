@@ -291,6 +291,25 @@ footer {
       console.error("Error cargando index.json:", err);
     });
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const elementos = document.querySelectorAll(".fade-in");
+
+    function mostrarElementos() {
+      const alturaPantalla = window.innerHeight;
+
+      elementos.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= alturaPantalla - 100) {
+          el.classList.add("visible");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", mostrarElementos);
+    mostrarElementos(); // por si ya están en vista
+  });
+</script>
 
 </section>
    <section class="section" id="descargas">
