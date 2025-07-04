@@ -238,47 +238,60 @@ footer {
   <h2>Blog</h2>
   <div id="blog-entradas"></div>
   <!-- Cargar librería marked -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-    const contenedor = document.getElementById("blog-entradas");
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  const contenedor = document.getElementById("blog-entradas");
 
-    // Cargar el index.json generado automáticamente
-    fetch("articulos/index.json")
-      .then(res => res.json())
-      .then(entradas => {
-        entradas.forEach(({ archivo, url, title, date }) => {
-          fetch(`articulos/${archivo}`)
-            .then(res => res.ok ? res.text() : null)
-            .then(md => {
-              if (!md) return;
-              // Buscar la primera línea significativa como resumen (omite encabezados y delimitadores ---)
-              const resumen = md
-                .split("\n")
-                .find(linea =>
-                  linea.trim() &&
-                  !linea.startsWith("#") &&
-                  !linea.startsWith("---")
-                );
-              const post = document.createElement("div");
-              post.className = "blog-post markdown-content";
-              post.innerHTML = `
-                <h3>${title.replace(/^"|"$/g, "")}</h3>
-                <p class="date">Publicado el ${date}</p>
-                <p>${resumen || 'Contenido próximamente disponible.'}</p>
-                <a href="${url}">Leer artículo completo</a>
-              `;
-              contenedor.appendChild(post);
-            })
-            .catch(err => {
-              console.error(`Error al cargar ${archivo}:`, err);
-            });
-        });
-      })
-      .catch(err => {
-        contenedor.innerHTML = "<p>No se pudo cargar el blog.</p>";
-        console.error("Error cargando index.json:", err);
+  // ✅ Función para formatear títulos
+  const formatearTitulo = (t) => {
+    t = t.replace(/^"|"$/g, '').trim();
+    return t
+      .toLowerCase()
+      .split(' ')
+      .map(p => p.charAt(0).toUpperCase() + p.slice(1))
+      .join(' ');
+  };
+
+  fetch("articulos/index.json")
+    .then(res => res.json())
+    .then(entradas => {
+      entradas.forEach(({ archivo, url, title, date }) => {
+        fetch(`articulos/${archivo}`)
+          .then(res => res.ok ? res.text() : null)
+          .then(md => {
+            if (!md) return;
+
+            // Primer párrafo útil como resumen
+            const resumen = md
+              .split("\n")
+              .find(linea =>
+                linea.trim() &&
+                !linea.startsWith("#") &&
+                !linea.startsWith("---")
+              );
+
+            const post = document.createElement("div");
+            post.className = "blog-post markdown-content";
+
+            post.innerHTML = `
+              <h3>${formatearTitulo(title)}</h3>
+              <p class="date">📅 Publicado el ${date}</p>
+              <p>${resumen || 'Contenido próximamente disponible.'}</p>
+              <a href="${url}">Leer artículo completo</a>
+            `;
+            contenedor.appendChild(post);
+          })
+          .catch(err => {
+            console.error(`Error al cargar ${archivo}:`, err);
+          });
       });
-  </script>
+    })
+    .catch(err => {
+      contenedor.innerHTML = "<p>No se pudo cargar el blog.</p>";
+      console.error("Error cargando index.json:", err);
+    });
+</script>
+
 </section>
     <section class="section" id="descargas">
   <h2>Documentos Descargables</h2>
