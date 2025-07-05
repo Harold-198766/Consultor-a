@@ -400,39 +400,3 @@ a.descarga:hover i {
   transform: scale(1.2);
   color: #900;
 }
-.branding-columnas {
-  text-algin: center;
-  padding: 3rem 1rem;
-  background:-color: #f9f9f9;
-}
-.branding-columnas h2 {
-  color: #007f8c;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-.branding-columnas p {
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  font-size; 1rem;
-  color: #333;
-}
-.branding-columnas img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px rgba(0, 0, 0, 01);
-  transition: transform 0. 6s ease;
-}
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1.2s ease-out forward;
-}
-@keyframes fadeInUp {
-  to {
-    opacity; 1;
-    transform: translateY(0);
-  }
-}
-
-
