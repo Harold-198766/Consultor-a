@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Sitio estático con Netlify CMS optimizado con PurgeCSS y esbuild",
   "scripts": {
-  "build:css": "postcss src/css/styles.css -o dist/styles.css",
-  "build:js": "node build.js",
-  "build": "npm run build:css && npm run build:js"
-}
+    "build:css": "postcss src/css/styles.css -o dist/styles.css",
+    "build:js": "node build.js",
+    "build": "npm run build:css && npm run build:js"
+  },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.1.3",
     "autoprefixer": "^10.4.15",
