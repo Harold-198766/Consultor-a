@@ -1,7 +1,7 @@
 {
-  "name": "sitio-legal-optimizado",
+  "name": "abogados-consultores",
   "version": "1.0.0",
-  "description": "Sitio estático con Netlify CMS optimizado con PurgeCSS y esbuild",
+  "description": "Sitio estático con Netlify CMS optimizado",
   "scripts": {
     "build:css": "postcss src/css/styles.css -o dist/styles.css",
     "build:js": "node build.js",
