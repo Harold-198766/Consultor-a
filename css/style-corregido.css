@@ -124,7 +124,7 @@ nav a:hover {
 
 /* 4. COLORES Y TIPOGRAFÍA */
 body {
-  background: url('img/fondo-pergamino.webp') no-repeat center top fixed;
+  background: url('img/pergamino.webp') no-repeat center top fixed;
   background-size: contain;
   background-color: #FCF5E5;
 }
