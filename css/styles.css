@@ -47,6 +47,39 @@ h1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   margin-bottom: 2rem;
 }
+.grid-areas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 10px 0;
+}
+
+.grid-areas div {
+  background-color: #fff;
+  border-left: 4px solid #003366;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid-areas div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.grid-areas img {
+  max-width: 60px;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.grid-areas p {
+  font-weight: bold;
+  color: #003366;
+  margin: 0;
+}
 
 /* Navegación */
 .navbar {
