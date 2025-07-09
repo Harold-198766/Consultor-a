@@ -1,4 +1,23 @@
-/* 1. CABECERA (HEADER) */
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === TIPOGRAFÍA Y BODY === */
+body {
+  font-family: 'Georgia', serif;
+  background: url('../img/pergamino-clasico.png') no-repeat center top fixed;
+  background-size: 1000px auto;
+  background-color: #fdf6e3;
+  color: #232323;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* === ENCABEZADO === */
 header {
   background-color: rgba(0, 0, 0, 0.88);
   color: #fffbe8;
@@ -9,15 +28,18 @@ header {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   border-bottom: 2px solid #900;
 }
+
 header img, .logo-img {
   height: 90px;
   width: auto;
   max-width: 220px;
   transition: filter 0.2s;
 }
-header img:hover, .logo-img:hover {
+
+header img:hover {
   filter: brightness(1.1) drop-shadow(0 0 8px #9008);
 }
+
 nav a {
   color: #fff;
   margin: 0 10px;
@@ -27,12 +49,13 @@ nav a {
   padding: 6px 12px;
   transition: background 0.2s, color 0.2s;
 }
+
 nav a:hover {
   background: #900;
   color: #fffbe8;
 }
 
-/* 2. BANNER PRINCIPAL */
+/* === BANNER PRINCIPAL === */
 .banner {
   background: linear-gradient(135deg, #900 65%, #003366 100%);
   color: #fffbe8;
@@ -41,20 +64,21 @@ nav a:hover {
   border-bottom: 3px solid #003366;
   box-shadow: 0 4px 16px rgba(0,0,0,0.06);
 }
+
 .banner h1, .titulo-juridico {
-  margin: 0;
   font-size: 2.7em;
   color: #fff;
-  letter-spacing: 1px;
   font-family: 'Playfair Display', serif;
   text-shadow: 1px 2px 8px #9004;
+  margin: 0;
 }
+
 .banner p {
   font-size: 1.3em;
   margin-top: 12px;
 }
 
-/* 3. SECCIONES Y CARDS */
+/* === SECCIONES === */
 .section {
   background-color: rgba(255, 255, 255, 0.96);
   padding: 40px 20px;
@@ -65,6 +89,7 @@ nav a:hover {
   border-left: 4px solid #003366;
   border-right: 4px solid #003366;
 }
+
 .section h2 {
   font-family: 'Playfair Display', serif;
   color: #003366;
@@ -73,11 +98,14 @@ nav a:hover {
   padding-bottom: 0.3rem;
   margin-bottom: 2.2rem;
 }
+
+/* === ÁREAS Y EQUIPO === */
 .areas, .team {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
+
 .areas > div, .team > div {
   background: #fff;
   border-radius: 10px;
@@ -85,29 +113,26 @@ nav a:hover {
   padding: 25px 18px;
   font-size: 1.07em;
   color: #003366;
-  margin-bottom: 14px;
   display: flex;
   align-items: center;
   gap: 0.8em;
   border-left: 3px solid #9007;
   transition: box-shadow 0.2s, background 0.2s;
 }
+
 .areas > div:hover, .team > div:hover {
   box-shadow: 0 4px 24px rgba(0,51,102,0.14);
   background: #f1f7fa;
 }
-/* Íconos clásicos para áreas y equipo */
 
 .areas > div::before {
   content: "";
   display: inline-block;
   width: 48px;
   height: 48px;
-  margin-right: 12px;
-  background-image: url('../images/matrona-justicia-min.png');
+  background-image: url('../imagenes/matrona-justicia.png');
   background-size: contain;
   background-repeat: no-repeat;
-  vertical-align: middle;
 }
 
 .team > div::before {
@@ -115,27 +140,39 @@ nav a:hover {
   display: inline-block;
   width: 48px;
   height: 48px;
-  margin-right: 12px;
-  background-image: url('../images/abogado-clasico-min.png');
+  background-image: url('../imagenes/abogado-clasico.png');
   background-size: contain;
   background-repeat: no-repeat;
-  vertical-align: middle;
 }
 
-/* 4. COLORES Y TIPOGRAFÍA */
-body {
-  background: url('img/cortina-dorada-divid.webp') no-repeat center top fixed;
-  background-size: contain;
-  background-color:#5C4033;
+/* === FORMULARIO === */
+form, .contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-h2, h3 {
-  font-family: 'Playfair Display', serif;
-  color: #003366;
+.contact-form input,
+.contact-form textarea {
+  max-width: 98%;
+  margin: 0 auto 1rem auto;
+  display: block;
+  background-color: #e7f8ec;
+  border: 1px solid #b2d8c9;
+  padding: 0.6rem;
+  border-radius: 4px;
+  font-family: inherit;
+  color: #222;
+  font-size: 1em;
 }
 
-/* 5. BOTONES Y ENLACES */
-button, .contact-form button {
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #25D366;
+  background: #fff;
+}
+
+.contact-form button {
   background-color: #003366;
   color: #fff;
   padding: 12px 28px;
@@ -149,38 +186,13 @@ button, .contact-form button {
   display: block;
   margin: 1rem auto;
 }
-button:hover, .contact-form button:hover {
+
+.contact-form button:hover {
   background-color: #900;
   transform: translateY(-2px) scale(1.04);
 }
-a {
-  color: #003366;
-  text-decoration: underline;
-  transition: color 0.2s;
-}
-a:hover {
-  color: #900;
-  text-decoration: none;
-}
-/* Botón scroll hacia arriba */
-.boton-arriba {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #003366;
-  color: #fff;
-  padding: 10px;
-  border-radius: 50%;
-  text-decoration: none;
-  font-size: 1.5rem;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.2s;
-}
-.boton-arriba:hover {
-  background: #900;
-}
-/* WhatsApp Button */
+
+/* === BOTÓN WHATSAPP Y FLECHA === */
 .whatsapp-btn {
   background-color: #25D366 !important;
   color: #fff !important;
@@ -197,63 +209,33 @@ a:hover {
   transition: background 0.3s, transform 0.2s;
   max-width: 320px;
 }
+
 .whatsapp-btn:hover {
   background-color: #128c7e !important;
-  color: #fff !important;
   transform: scale(1.06);
-  box-shadow: 0 4px 16px rgba(18, 140, 126, 0.15);
-}
-/* 6. RESPONSIVIDAD */
-@media (max-width: 768px) {
-  /* Diseño de áreas y equipo en una sola columna */
-  .areas,
-  .team {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Adaptar encabezado para dispositivos pequeños */
-  header {
-    flex-direction: column;
-    text-align: center;
-    padding: 10px 6px;
-  }
-
-  header img,
-  .logo-img {
-    height: 64px;
-    margin-bottom: 8px;
-  }
-
-  nav a {
-    display: inline-block;
-    margin: 8px 4px;
-    font-size: 1.05em;
-  }
-
-  .banner {
-    padding: 32px 10px;
-    font-size: 1em;
-  }
-
-  /* Mejorar legibilidad en secciones */
-  .section {
-    padding: 1rem;
-  }
-
-  /* Centrar los títulos para dispositivos pequeños */
-  .section h2 {
-    text-align: center;
-  }
-
-  /* Centrar el botón de WhatsApp */
-  .whatsapp-btn {
-    margin: 20px auto 0 auto;
-    display: block;
-    text-align: center;
-  }
 }
 
-/* 7. BLOG Y FAQ */
+/* Botón scroll hacia arriba */
+.boton-arriba {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #003366;
+  color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.5rem;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+}
+
+.boton-arriba:hover {
+  background: #900;
+}
+
+/* === BLOG === */
 .blog-post {
   background-color: #fff;
   padding: 24px 18px;
@@ -263,19 +245,23 @@ a:hover {
   box-shadow: 0 2px 12px #00336615;
   transition: box-shadow 0.2s;
 }
+
 .blog-post:hover {
   box-shadow: 0 6px 24px #0033662a;
 }
+
 .blog-post h3 {
   margin-top: 0;
   color: #900;
   border-bottom: 1px solid #9003;
   padding-bottom: 4px;
 }
+
 .blog-post p.date {
   font-size: 0.9em;
   color: #555;
 }
+
 .blog-post a {
   display: inline-block;
   margin-top: 10px;
@@ -284,20 +270,13 @@ a:hover {
   text-decoration: underline;
   transition: color 0.2s;
 }
+
 .blog-post a:hover {
   color: #900;
   text-decoration: none;
 }
-#faq h3 {
-  color: #003366;
-  margin-bottom: 8px;
-  font-size: 1.1em;
-}
-#faq p {
-  margin-bottom: 18px;
-}
 
-/* 8. FOOTER */
+/* === FOOTER === */
 footer {
   background-color: rgba(0, 0, 0, 0.88);
   color: #fffbe8;
@@ -307,72 +286,8 @@ footer {
   border-top: 2px solid #900;
   box-shadow: 0 -2px 6px #9002;
 }
-footer a, footer p {
-  color: #fffbe8;
-  text-decoration: none;
-  font-size: 1em;
-}
-footer a:hover {
-  color: #25D366;
-  text-decoration: underline;
-}
-/* Redes sociales (opcional) */
-.social-icons {
-  margin-top: 10px;
-}
-.social-icons a {
-  margin: 0 6px;
-  color: #fffbe8;
-  font-size: 1.3em;
-  transition: color 0.2s;
-}
-.social-icons a:hover {
-  color: #25D366;
-}
 
-/* FORMULARIO DE CONTACTO */
-form,
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.contact-form input,
-.contact-form textarea {
-  max-width: 98%;
-  margin: 0 auto 1rem auto;
-  display: block;
-  background-color: #e7f8ec;
-  border: 1px solid #b2d8c9;
-  padding: 0.6rem;
-  border-radius: 4px;
-  font-family: inherit;
-  color: #222;
-  font-size: 1em;
-}
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: 2px solid #25D366;
-  background: #fff;
-}
-
-/* OTROS AJUSTES GENERALES */
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-.date {
-  font-size: 0.8rem;
-  color: #666;
-}
-article {
-  background: #ffffff;
-  padding: 1rem;
-  border-left: 4px solid #900;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
+/* === DESCARGAS === */
 a.descarga {
   display: inline-flex;
   align-items: center;
@@ -384,12 +299,6 @@ a.descarga {
   margin: 8px 0;
 }
 
-a.descarga i {
-  color: #003366;
-  font-size: 1.1em;
-  transition: transform 0.2s ease;
-}
-
 a.descarga:hover {
   color: #900;
 }
@@ -397,4 +306,35 @@ a.descarga:hover {
 a.descarga:hover i {
   transform: scale(1.2);
   color: #900;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .areas, .team {
+    grid-template-columns: 1fr !important;
+  }
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px 6px;
+  }
+  header img {
+    height: 64px;
+    margin-bottom: 8px;
+  }
+  nav a {
+    display: inline-block;
+    margin: 8px 4px;
+    font-size: 1.05em;
+  }
+  .banner {
+    padding: 32px 10px;
+    font-size: 1em;
+  }
+  .section {
+    padding: 1rem;
+  }
+  .section h2 {
+    text-align: center;
+  }
 }
