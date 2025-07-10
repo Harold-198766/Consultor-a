@@ -6,15 +6,17 @@
 }
 
 /* === TIPOGRAFÍA Y BODY === */
-body {
-  font-family: 'Georgia', serif;
-  background: url('../img/Imagen-de-madera.webp') no-repeat center top fixed;
-  background-size: 1000px auto;
-  background-color: #fdf6e3;
-  color: #232323;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(255,255,255,0.6); /* Ajusta el color y la opacidad según necesidad */
+  pointer-events: none;
+  z-index: 0;
+}
+body, body * {
+  position: relative;
+  z-index: 1;
 }
 
 /* === ENCABEZADO === */
