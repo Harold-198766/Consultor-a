@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Sitio estático con Netlify CMS optimizado",
   "scripts": {
-    "build:css": "postcss css/styles.css -o dist/styles.css",
+    "build:css": "postcss css/style.css -o dist/style.css",
     "build:js": "node build.js",
     "build": "npm run build:css && npm run build:js"
   },
