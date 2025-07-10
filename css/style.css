@@ -130,7 +130,7 @@ nav a:hover {
   display: inline-block;
   width: 48px;
   height: 48px;
-  background-images: url('../img/matrona-justicia.png');
+  background-image: url('../img/matrona-justicia.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -140,11 +140,10 @@ nav a:hover {
   display: inline-block;
   width: 48px;
   height: 48px;
-  background-images: url('../img/abogado-clasico.png');
+  background-image: url('../img/abogado-clasico.png');
   background-size: contain;
-  background-repeat: no-repeat;
-}
-
+  background-repeat
+  
 /* === FORMULARIO === */
 form, .contact-form {
   display: flex;
