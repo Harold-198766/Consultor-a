@@ -140,11 +140,12 @@ nav a:hover {
 }
 
 .areas {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 400px;
-  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* Dos columnas, puedes ajustar */
+  gap: 24px;                      /* Espacio entre recuadros */
+  justify-content: center;        /* Centra el grid horizontalmente */
+  max-width: 900px;               /* Ancho máximo del grid */
+  margin: 0 auto;                 /* Centra el grid en la página */
 }
 .area {
   display: flex;
