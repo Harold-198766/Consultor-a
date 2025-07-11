@@ -138,24 +138,31 @@ nav a:hover {
   background: #f1f7fa;
 }
 
-.areas > div::before {
-  content: "";
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-  background-images: url('../img/matrona-justicia.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+.areas {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+  margin: auto;
 }
-
-.team > div::before {
-  content: "";
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-  background-images: url('../img/abogado-clasico.png');
-  background-size: contain;
-  background-repeat
+.area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 8px;
+  padding: 8px 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+.area img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.area p {
+  margin: 0;
+  font-weight: bold;
+}
   
 /* === FORMULARIO === */
 form, .contact-form {
