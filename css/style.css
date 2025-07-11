@@ -123,16 +123,17 @@ nav a:hover {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  padding: 25px 18px;
-  font-size: 1.07em;
+  padding: 38px 28px;
+  font-size: 1.18em;
   color: #003366;
   display: flex;
   align-items: center;
-  gap: 0.8em;
+  gap: 1.4em;
   border-left: 3px solid #9007;
   transition: box-shadow 0.2s, background 0.2s;
+  min-width: 340px;
+  min-height: 105px;
 }
-
 .areas > div:hover, .team > div:hover {
   box-shadow: 0 4px 24px rgba(0,51,102,0.14);
   background: #f1f7fa;
@@ -154,10 +155,12 @@ nav a:hover {
   padding: 8px 16px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.07);
 }
-.area img {
-  width: 40px;
-  height: 40px;
+.areas img {
+  width: 92px;
+  height: 92px;
   object-fit: contain;
+  margin-right: 0.8em;
+}
 }
 .area p {
   margin: 0;
