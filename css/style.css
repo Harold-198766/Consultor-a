@@ -52,6 +52,20 @@ header img, .logo-img {
 header img:hover {
   filter: brightness(1.1) drop-shadow(0 0 8px #9008);
 }
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  vertical-align: middle;
+  border: 2px solid #003366;
+}
+.team > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
 nav a {
   color: #fff;
