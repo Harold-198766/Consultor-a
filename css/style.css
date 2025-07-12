@@ -231,7 +231,7 @@ form, .contact-form {
 
 /* === BOTÓN WHATSAPP Y FLECHA === */
 .whatsapp-btn {
-  background-color: #25D366 !important;
+  background-color: #128C7E !important;
   color: #fff !important;
   padding: 12px 32px;
   display: block;
@@ -243,13 +243,12 @@ form, .contact-form {
   text-align: center;
   border: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.3s, transform 0.2s;
+  transition: background 0.3s;
   max-width: 320px;
 }
-
 .whatsapp-btn:hover {
-  background-color: #128c7e !important;
-  transform: scale(1.06);
+  background-color: #075e54 !important;
+  color: #fff !important;
 }
 
 /* Botón scroll hacia arriba */
