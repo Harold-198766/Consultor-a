@@ -145,7 +145,6 @@ nav a:hover {
   gap: 1.4em;
   border-left: 3px solid #9007;
   transition: box-shadow 0.2s, background 0.2s;
-  min-width: 340px;
   min-height: 105px;
 }
 .areas > div:hover, .team > div:hover {
