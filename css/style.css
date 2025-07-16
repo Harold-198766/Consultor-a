@@ -383,3 +383,25 @@ a.descarga:hover i {
     text-align: center;
   }
 }
+/* Responsive para la sección equipo */
+@media (max-width: 900px) {
+  .team {
+    grid-template-columns: 1fr !important; /* Solo una columna */
+    justify-items: center;                 /* Centra las tarjetas */
+    gap: 22px;                             /* Espacio entre tarjetas */
+  }
+  .team > div {
+    width: 90%;
+    max-width: 340px;
+    margin: 0 auto;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    display: flex; /* Asegura que sea flex en móvil */
+  }
+  .avatar {
+    margin: 0 auto 10px auto;
+    display: block;
+  }
+}
