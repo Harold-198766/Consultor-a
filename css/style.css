@@ -4,6 +4,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/playfairdisplay/v30/nuFvD-vYSZviVYUb_rj3ij__anPXDTzYhCw.woff2') format('woff2');
+}
+h1, h2, .titulo-juridico {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
 
 /* Fondo madera y tipografía */
 body {
@@ -154,11 +165,11 @@ nav a:hover {
 
 .areas {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* Dos columnas, puedes ajustar */
-  gap: 24px;                      /* Espacio entre recuadros */
-  justify-content: center;        /* Centra el grid horizontalmente */
-  max-width: 900px;               /* Ancho máximo del grid */
-  margin: 0 auto;                 /* Centra el grid en la página */
+  grid-template-columns: 1fr 1fr;  
+  gap: 24px;                      
+  justify-content: center;        
+  max-width: 900px;              
+  margin: 0 auto;                 
 }
 .area {
   display: flex;
@@ -410,17 +421,14 @@ a.descarga:hover i {
 .mapa-responsive {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* Relación 16:9 */
+  padding-bottom: 56.25%; /* 16:9 ratio */
   height: 0;
   overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 3px 18px rgba(0,0,0,0.08);
-  margin-bottom: 1.5em;
+  margin-top: 1em;
 }
 .mapa-responsive iframe {
   position: absolute;
   top: 0; left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   border: 0;
 }
