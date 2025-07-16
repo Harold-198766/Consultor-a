@@ -407,3 +407,20 @@ a.descarga:hover i {
     height: auto;
   }
 }
+.mapa-responsive {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Relación 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.08);
+  margin-bottom: 1.5em;
+}
+.mapa-responsive iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
