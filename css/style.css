@@ -246,11 +246,20 @@ form, .contact-form {
   transition: background 0.3s;
   max-width: 320px;
 }
+
 .whatsapp-btn:hover {
   background-color: #075e54 !important;
   color: #fff !important;
 }
 
+/* Efecto de transición y escala para botones y enlaces */
+button, .whatsapp-btn, nav a {
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+button:hover, .whatsapp-btn:hover, nav a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px #00336644;
+}
 /* Botón scroll hacia arriba */
 .boton-arriba {
   position: fixed;
