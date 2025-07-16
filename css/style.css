@@ -386,22 +386,25 @@ a.descarga:hover i {
 /* Responsive para la sección equipo */
 @media (max-width: 900px) {
   .team {
-    grid-template-columns: 1fr !important; /* Solo una columna */
-    justify-items: center;                 /* Centra las tarjetas */
-    gap: 22px;                             /* Espacio entre tarjetas */
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+    gap: 22px;
   }
   .team > div {
-    width: 90%;
+    width: 100%;
     max-width: 340px;
-    margin: 0 auto;
+    margin: 0 auto 16px auto; /* solo margen abajo, nada a los lados */
+    box-sizing: border-box;
     text-align: center;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    display: flex; /* Asegura que sea flex en móvil */
+    display: flex;
   }
   .avatar {
     margin: 0 auto 10px auto;
     display: block;
+    max-width: 100px;
+    height: auto;
   }
 }
