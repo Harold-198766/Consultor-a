@@ -4,17 +4,41 @@
   padding: 0;
   box-sizing: border-box;
 }
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/playfairdisplay/v30/nuFvD-vYSZviVYUb_rj3ij__anPXDTzYhCw.woff2') format('woff2');
+}
+h1, h2, .titulo-juridico {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
 
-/* === TIPOGRAFÍA Y BODY === */
+/* Fondo madera y tipografía */
 body {
   font-family: 'Georgia', serif;
-  background: url('../img/pergamino-clasico.png') no-repeat center top fixed;
-  background-size: 1000px auto;
-  background-color: #fdf6e3;
-  color: #232323;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
+  background-image: url('../images/Imagen-de-madera.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-color: #5C4033;
+  color: #000;
+}
+/* Overlay blanco, opcional y ajustable */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(255,255,255,0.6); /* Ajusta opacidad */
+  pointer-events: none;
+  z-index: 0;
+}
+body, body * {
+  position: relative;
+  z-index: 1;
 }
 
 /* === ENCABEZADO === */
@@ -38,6 +62,20 @@ header img, .logo-img {
 
 header img:hover {
   filter: brightness(1.1) drop-shadow(0 0 8px #9008);
+}
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  vertical-align: middle;
+  border: 2px solid #003366;
+}
+.team > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 nav a {
@@ -110,16 +148,16 @@ nav a:hover {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  padding: 25px 18px;
-  font-size: 1.07em;
+  padding: 38px 28px;
+  font-size: 1.18em;
   color: #003366;
   display: flex;
   align-items: center;
-  gap: 0.8em;
+  gap: 1.4em;
   border-left: 3px solid #9007;
   transition: box-shadow 0.2s, background 0.2s;
+  min-height: 105px;
 }
-
 .areas > div:hover, .team > div:hover {
   box-shadow: 0 4px 24px rgba(0,51,102,0.14);
   background: #f1f7fa;
@@ -128,10 +166,9 @@ nav a:hover {
 .areas > div::before {
   content: "";
   display: inline-block;
-
   width: 48px;
   height: 48px;
-  background-image: url('../img/matrona-justicia.png');
+  background-image: url('../imagenes/matrona-justicia.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -141,11 +178,11 @@ nav a:hover {
   display: inline-block;
   width: 48px;
   height: 48px;
-  background-image: url('../img/abogado-clasico.png');
+  background-image: url('../imagenes/abogado-clasico.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
-
+  
 /* === FORMULARIO === */
 form, .contact-form {
   display: flex;
@@ -195,7 +232,7 @@ form, .contact-form {
 
 /* === BOTÓN WHATSAPP Y FLECHA === */
 .whatsapp-btn {
-  background-color: #25D366 !important;
+  background-color: #128C7E !important;
   color: #fff !important;
   padding: 12px 32px;
   display: block;
@@ -207,15 +244,23 @@ form, .contact-form {
   text-align: center;
   border: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.3s, transform 0.2s;
+  transition: background 0.3s;
   max-width: 320px;
 }
 
 .whatsapp-btn:hover {
-  background-color: #128c7e !important;
-  transform: scale(1.06);
+  background-color: #111 !important;
+  color: #fff !important;
 }
 
+/* Efecto de transición y escala para botones y enlaces */
+button, .whatsapp-btn, nav a {
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+button:hover, .whatsapp-btn:hover, nav a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px #00336644;
+}
 /* Botón scroll hacia arriba */
 .boton-arriba {
   position: fixed;
@@ -338,4 +383,43 @@ a.descarga:hover i {
   .section h2 {
     text-align: center;
   }
+}
+/* Responsive para la sección equipo */
+@media (max-width: 900px) {
+  .team {
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+    gap: 22px;
+  }
+  .team > div {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto 16px auto; /* solo margen abajo, nada a los lados */
+    box-sizing: border-box;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+  }
+  .avatar {
+    margin: 0 auto 10px auto;
+    display: block;
+    max-width: 100px;
+    height: auto;
+  }
+}
+.mapa-responsive {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+  overflow: hidden;
+  margin-top: 1em;
+}
+.mapa-responsive iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
 }
