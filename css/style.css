@@ -128,9 +128,10 @@ nav a:hover {
 .areas > div::before {
   content: "";
   display: inline-block;
+
   width: 48px;
   height: 48px;
-  background-image: url('../imagenes/matrona-justicia.png');
+  background-image: url('../img/matrona-justicia.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -140,7 +141,7 @@ nav a:hover {
   display: inline-block;
   width: 48px;
   height: 48px;
-  background-image: url('../imagenes/abogado-clasico.png');
+  background-image: url('../img/abogado-clasico.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
