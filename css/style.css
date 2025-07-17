@@ -120,7 +120,7 @@ nav a:hover {
 .section {
   background-color: rgba(255, 255, 255, 0.96);
   padding: 40px 20px;
-  max-width: 1000px;
+  max-width: 700px;
   margin: 40px auto;
   border-radius: 14px;
   box-shadow: 0 3px 18px rgba(0,0,0,0.06);
@@ -429,5 +429,11 @@ a.descarga:hover i {
   height: auto;
   display: block;
   margin: 0 auto;
+}
+@media (max-width: 700px) {
+  .section {
+    max-width: 98vw;
+    padding: 16px 4vw;
+  }
 }
 
