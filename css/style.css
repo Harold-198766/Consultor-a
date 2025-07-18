@@ -436,4 +436,84 @@ a.descarga:hover i {
     padding: 16px 4vw;
   }
 }
+/* === SECCIONES === */
+.section {
+  background-color: rgba(255, 255, 255, 0.96);
+  padding: 40px 20px;
+  max-width: 700px; /* Ajuste para mejor responsividad */
+  margin: 40px auto;
+  border-radius: 14px;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.06);
+  border-left: 4px solid #003366;
+  border-right: 4px solid #003366;
+  box-sizing: border-box;
+}
+
+/* === ÁREAS Y EQUIPO - IMÁGENES AJUSTADAS === */
+.area img,
+.team img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* === RESPONSIVIDAD PARA GRID DE ÁREAS Y EQUIPO === */
+@media (max-width: 700px) {
+  .section {
+    max-width: 98vw;
+    padding: 16px 4vw;
+  }
+  .areas,
+  .team {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+  .area,
+  .team-member {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  /* Forzamos salto de línea para textos largos */
+  .area,
+  .team-member {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+/* === OTROS ESTILOS (puedes mantener los tuyos existentes aquí) === */
+/* Ejemplo de otros bloques que podrías tener: */
+
+.areas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.area {
+  background: #f4f4f8;
+  border-radius: 10px;
+  padding: 24px 16px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  text-align: center;
+}
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.team-member {
+  background: #eef2fb;
+  border-radius: 10px;
+  padding: 24px 16px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  text-align: center;
+}
+/* Puedes añadir aquí tus propios estilos adicionales */
 
