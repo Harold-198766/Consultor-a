@@ -461,5 +461,32 @@ a.descarga:hover i {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
+.cta-banner {
+  display: inline-block;
+  margin-top: 28px;
+  background: linear-gradient(90deg, #900 70%, #003366 100%);
+  color: #fffbe8;
+  padding: 16px 38px;
+  font-size: 1.18em;
+  font-weight: bold;
+  border-radius: 32px;
+  box-shadow: 0 4px 18px #9002;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.02em;
+}
+.cta-banner:hover {
+  background: linear-gradient(90deg, #003366 70%, #900 100%);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 6px 26px #00336644;
+}
+@media (max-width: 600px) {
+  .cta-banner {
+    font-size: 1em;
+    padding: 12px 18px;
+    margin-top: 18px;
+  }
+}
 
 
