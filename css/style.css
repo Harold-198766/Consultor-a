@@ -168,7 +168,6 @@ nav a:hover {
   display: inline-block;
   width: 48px;
   height: 48px;
-  background-image: url('../imagenes/matrona-justicia.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -178,7 +177,6 @@ nav a:hover {
   display: inline-block;
   width: 48px;
   height: 48px;
-  background-image: url('../imagenes/abogado-clasico.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -436,18 +434,6 @@ a.descarga:hover i {
     padding: 16px 4vw;
   }
 }
-/* === SECCIONES === */
-.section {
-  background-color: rgba(255, 255, 255, 0.96);
-  padding: 40px 20px;
-  max-width: 700px; /* Ajuste para mejor responsividad */
-  margin: 40px auto;
-  border-radius: 14px;
-  box-shadow: 0 3px 18px rgba(0,0,0,0.06);
-  border-left: 4px solid #003366;
-  border-right: 4px solid #003366;
-  box-sizing: border-box;
-}
 
 /* === ÁREAS Y EQUIPO - IMÁGENES AJUSTADAS === */
 .area img,
@@ -516,4 +502,22 @@ a.descarga:hover i {
   text-align: center;
 }
 /* Puedes añadir aquí tus propios estilos adicionales */
+.area,
+.team-member {
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: auto;
+}
+.area h3,
+.team-member h3 {
+  word-break: keep-all;
+  white-space: normal;
+}
+@media (max-width: 700px) {
+  .area h3,
+  .team-member h3 {
+    font-size: 1rem;
+  }
+}
+
 
