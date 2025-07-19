@@ -8,26 +8,13 @@
 /* Fondo madera y tipografía */
 body {
   font-family: 'Georgia', serif;
-  background-image: url('../images/Imagen-de-madera.webp');
+  background-image: url('../images/corte-judicial.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
   background-attachment: fixed;
   background-color: #5C4033;
   color: #000;
-}
-/* Overlay blanco, opcional y ajustable */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(255,255,255,0.6); /* Ajusta opacidad */
-  pointer-events: none;
-  z-index: 0;
-}
-body, body * {
-  position: relative;
-  z-index: 1;
 }
 
 /* === ENCABEZADO === */
