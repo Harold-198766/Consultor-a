@@ -434,10 +434,8 @@ a.descarga:hover i {
   box-shadow: 0 6px 26px #00336644;
 }
 @media (max-width: 600px) {
-  .cta-banner {
-    font-size: 1em;
-    padding: 12px 18px;
-    margin-top: 18px;
+  .cta-banner-header {
+    display: none;
   }
 }
 .area {
@@ -602,5 +600,46 @@ header::after,
   background: none !important;
   background-image: none !important;
   box-shadow: none;
+.modern-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px;
+  background: none;
+  border: none;
+}
 
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cta-banner-header {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
+  color: #222;
+  font-weight: bold;
+  padding: 10px 22px;
+  border-radius: 28px;
+  text-decoration: none;
+  font-size: 1em;
+  margin-left: 24px;
+  box-shadow: 0 3px 12px #00000008;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  border: none;
+  letter-spacing: 0.5px;
+}
+
+.cta-banner-header:hover {
+  background: linear-gradient(90deg, #39a9e0 65%, #ffd700 100%);
+  color: #003366;
+  transform: scale(1.045);
+}
 
