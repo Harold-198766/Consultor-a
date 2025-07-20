@@ -586,4 +586,13 @@ a.descarga:hover i {
   box-shadow: 0 2px 12px rgba(57,169,224,0.09);
   padding: 18px 22px;
 }
+.decorative-line {
+  width: 110px;
+  height: 4px;
+  margin: 22px auto 24px auto;
+  background: linear-gradient(90deg, #ffd700 0%, #39a9e0 100%);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px #00000022;
+  opacity: 0.85;
+}
 
