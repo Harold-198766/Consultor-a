@@ -199,15 +199,21 @@ nav a {
   font-weight: bold;
 }
 .banner {
-  background-color: rgba(153, 0, 0, 0.85);
-  color: #000;
+  background: none; /* Sin color de fondo */
   text-align: center;
-  padding: 60px 20px;
+  padding: 60px 20px 28px 20px;
 }
-.banner h1 {
-  margin: 0;
+.titulo-juridico {
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
   font-size: 2.5em;
-  color: #000;
+  color: #ffd700;
+  margin: 0 auto 18px auto;
+  padding: 0 18px;
+  animation: move-title 3s infinite alternate ease-in-out;
+  text-shadow: 0 2px 8px #000, 0 0 24px #ffd70099;
+  background: none;
+  border: none;
 }
 .section {
   background-color: rgba(255, 255, 255, 0.9);
@@ -415,12 +421,13 @@ footer {
   </ul>
 </nav>
     </header>
-   <section class="banner" id="inicio">
-    <h1 class="titulo-juridico">Bufete de Abogados en Guatemala: Colindres Barillas &amp; Asociados</h1>
-    <a href="#contacto" class="cta-banner">
-     <i class="fas fa-phone"></i> Solicita tu consulta
-      </a>
-   </section>
+  <section class="banner" id="inicio">
+  <h1 class="titulo-juridico">Bufete de Abogados en Guatemala: Colindres Barillas &amp; Asociados</h1>
+  <div class="decorative-line"></div>
+  <a href="#contacto" class="cta-banner">
+    <i class="fas fa-comments"></i> Solicita tu consulta
+  </a>
+</section>
 
   <section class="section" id="nosotros">
       <h2>Nosotros</h2>
