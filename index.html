@@ -51,6 +51,135 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: #000;
+  /* Barra de navegación moderna */
+.modern-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  background: linear-gradient(90deg, #000 0%, #39a9e0 100%);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.09);
+  height: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+}
+
+.logo-header {
+  margin-right: 16px;
+}
+
+.brand-title {
+  font-size: 1.7rem;
+  color: #ffd700;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.11);
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.dropbtn {
+  background: rgba(255,255,255,0.09);
+  color: #fff;
+  padding: 14px 36px 14px 22px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 22px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 12px rgba(57,169,224,0.11);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: background 0.18s, color 0.18s;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background: #ffd700;
+  color: #222;
+  outline: none;
+}
+
+.menu-icon {
+  font-size: 1.3em;
+  margin-left: 6px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 54px;
+  background: #fff;
+  min-width: 200px;
+  box-shadow: 0 8px 32px rgba(57,169,224,0.20);
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 10;
+  animation: dropdownAppear 0.23s ease;
+}
+
+@keyframes dropdownAppear {
+  0% { opacity: 0; transform: translateY(-18px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 16px 30px;
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.07rem;
+  transition: background 0.17s, color 0.17s;
+}
+
+.dropdown-content a:hover {
+  background: #39a9e0;
+  color: #fff;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+
+/* Responsive: menú centrado en móviles */
+@media (max-width: 600px) {
+  .modern-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px 12px;
+  }
+  .logo-area {
+    margin-bottom: 12px;
+  }
+  .nav-list {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .dropdown-content {
+    left: 0;
+    right: auto;
+    min-width: 170px;
+  }
+}
 header {
   background: linear-gradient(90deg, #000 0%, #39a9e0 100%);
   color: #fff;
