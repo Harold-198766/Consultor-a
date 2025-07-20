@@ -414,40 +414,6 @@ a.descarga:hover i {
 
   }
 }
-.texto-movimiento {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  box-sizing: border-box;
-  background: #fffbe8;
-  border-bottom: 2px solid #003366;
-  color: #900;
-  font-weight: bold;
-  font-size: 1.15em;
-  padding: 8px 0;
-  position: relative;
-  z-index: 10;
-}
-
-.texto-movimiento span {
-  display: inline-block;
-  padding-left: 100%;
-  animation: mover-texto 12s linear infinite;
-  /* Permite pausar la animación al hacer hover */
-  will-change: transform;
-}
-
-.texto-movimiento:hover span {
-  animation-play-state: paused;
-}
-.texto-movimiento {
-  text-shadow: 1px 1px 6px #fff, 0 1px 8px #00336666;
-}
-
-@keyframes mover-texto {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
 .cta-banner {
   display: inline-block;
   margin-top: 28px;
