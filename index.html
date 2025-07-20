@@ -306,6 +306,27 @@ footer {
   transform: scale(1.14) rotate(-3deg);
   box-shadow: 0 6px 18px rgba(57,169,224,0.22);
 }
+.cta-banner {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffd700 0%, #39a9e0 100%);
+  color: #222;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 16px 38px;
+  border-radius: 28px;
+  box-shadow: 0 2px 18px rgba(57,169,224,0.13);
+  text-decoration: none;
+  margin-top: 30px;
+  margin-bottom: 8px;
+  transition: background 0.25s, color 0.18s, transform 0.22s;
+  letter-spacing: 1px;
+}
+.cta-banner:hover, .cta-banner:focus {
+  background: linear-gradient(90deg, #39a9e0 0%, #ffd700 100%);
+  color: #000;
+  transform: scale(1.06);
+  box-shadow: 0 6px 22px rgba(57,169,224,0.18);
+}
 
   </style>
   <!-- Datos estructurados Schema.org -->
@@ -375,7 +396,9 @@ footer {
     </header>
    <section class="banner" id="inicio">
     <h1 class="titulo-juridico">Bufete de Abogados en Guatemala: Colindres Barillas &amp; Asociados</h1>
-    <a href="#contacto" class="cta-banner">Solicita tu consulta</a>
+    <a href="#contacto" class="cta-banner">
+     <i class="fas fa-phone"></i> Solicita tu consulta
+      </a>
    </section>
 
   <section class="section" id="nosotros">
