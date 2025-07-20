@@ -74,7 +74,7 @@ nav a:hover {
   color: #fffbe8;
   text-align: center;
   padding: 60px 20px;
-  border-bottom: 3px solid #003366;
+  border-bottom: /eliminada/
   box-shadow: 0 4px 16px rgba(0,0,0,0.06);
 }
 
@@ -602,14 +602,5 @@ header::after,
   background: none !important;
   background-image: none !important;
   box-shadow: none;
-}
-header,
-nav,
-.navbar,
-.main-nav,
-.header-bg {
-  border-bottom: none !important;
-  border-top: none !important;
-}
 
 
