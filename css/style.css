@@ -552,4 +552,26 @@ a.descarga:hover i {
   transform: translateY(-6px) scale(1.04);
   box-shadow: 0 12px 32px rgba(57,169,224,0.18);
 }
+.area img {
+  transition: transform 0.3s;
+}
+.area:hover img {
+  transform: scale(1.12) rotate(-6deg);
+}
+.section {
+  position: relative;
+  margin-bottom: 60px;
+  /* ...los estilos que ya tienes */
+}
+
+.section::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg,#ffd700,#39a9e0);
+  margin: 32px auto 0 auto;
+  border-radius: 2px;
+  opacity: 0.6;
+}
 
