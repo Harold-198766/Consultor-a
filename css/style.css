@@ -602,12 +602,6 @@ header::after,
   background: none !important;
   background-image: none !important;
   box-shadow: none;
-  .titulo-principal {
-  color: yellow;
-  font-size: 50px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
+ 
 
 
