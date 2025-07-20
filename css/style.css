@@ -469,6 +469,31 @@ a.descarga:hover i {
   text-align: left;
   transition: opacity 0.22s;
 }
+.texto-movimiento {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background: #fffbe8;
+  border-bottom: 2px solid #003366;
+  color: #900;
+  font-weight: bold;
+  font-size: 1.15em;
+  padding: 8px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.texto-movimiento span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: mover-texto 12s linear infinite;
+}
+
+@keyframes mover-texto {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
 
 .area:hover .area-info {
   display: block;
