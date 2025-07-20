@@ -594,5 +594,14 @@ header::after,
   background-image: none !important;
   box-shadow: none;
 }
+header,
+header::before,
+header::after,
+.navbar,
+.header-bg {
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none;
+}
 
 
