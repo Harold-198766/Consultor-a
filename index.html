@@ -306,6 +306,26 @@ footer {
   transform: scale(1.14) rotate(-3deg);
   box-shadow: 0 6px 18px rgba(57,169,224,0.22);
 }
+  .titulo-juridico {
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5em;
+  color: #ffd700;
+  background: none;
+  margin: 0 auto 16px auto;
+  padding: 0 18px;
+  animation: move-title 3s infinite alternate ease-in-out;
+  text-shadow: 0 2px 8px #000, 0 0 24px #ffd70099;
+}
+
+@keyframes move-title {
+  0% {
+    transform: translateX(-16px) scale(1.01) rotate(-1deg);
+  }
+  100% {
+    transform: translateX(16px) scale(1.04) rotate(1deg);
+  }
+}
   </style>
   <!-- Datos estructurados Schema.org -->
 <script type="application/ld+json">
