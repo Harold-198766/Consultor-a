@@ -715,3 +715,26 @@ header::after,
   box-shadow: none;
   padding: 0.5em 0.3em;
 }
+  #scrollToTopBtn {
+  position: fixed;
+  right: 24px;
+  bottom: 32px;
+  z-index: 1000;
+  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
+  color: #222;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 2em;
+  box-shadow: 0 3px 12px #00000020;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  display: none; /* Se muestra solo con JS */
+}
+
+#scrollToTopBtn:hover {
+  background: linear-gradient(90deg, #39a9e0 65%, #ffd700 100%);
+  color: #003366;
+  transform: scale(1.1);
+}
