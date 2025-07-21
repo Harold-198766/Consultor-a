@@ -650,3 +650,59 @@ header::after,
   flex: 1;
   justify-content: center;
 }
+  /* Compartido para botón y menú */
+.menu-link,
+.cta-banner-header {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
+  color: #222;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 28px;
+  text-decoration: none;
+  font-size: 0.95em;
+  box-shadow: 0 3px 12px #00000008;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  border: none;
+  letter-spacing: 0.5px;
+  margin: 0 4px;
+}
+
+/* Efecto hover uniforme */
+.menu-link:hover,
+.cta-banner-header:hover {
+  background: linear-gradient(90deg, #39a9e0 65%, #ffd700 100%);
+  color: #003366;
+  transform: scale(1.045);
+}
+
+/* Opcional: Ajusta el dropdown para que muestre los enlaces correctamente */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: transparent; /* Quita color de fondo, si lo quieres igual al botón */
+  min-width: 220px;
+  z-index: 1;
+  box-shadow: none;
+  padding: 0.5em 0;
+  border-radius: 10px;
+}
+
+/* Muestra el menú al hacer hover */
+.nav-item:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+/* Aplica la clase a los enlaces del menú */
+.dropdown-content a {
+  /* Elimina estilos antiguos y aplica la clase de botón */
+  all: unset;
+  cursor: pointer;
+  /* Si no puedes usar all: unset por compatibilidad, omítelo */
+}
+.dropdown-content a.menu-link {
+  /* Aplica los estilos de arriba */
+}
