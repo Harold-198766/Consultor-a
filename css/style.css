@@ -606,7 +606,7 @@ header::after,
   background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
   color: #222;
   font-weight: bold;
-  padding: 8px 14px;     /* Antes era 10px 22px. Ahora es más reducido */
+  padding: 6px 10px;     /* Antes era 10px 22px. Ahora es más reducido */
   border-radius: 28px;
   text-decoration: none;
   font-size: 0.95em;     /* Puedes ajustarlo aún más si lo deseas */
