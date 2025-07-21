@@ -715,5 +715,25 @@ header::after,
   box-shadow: none;
   padding: 0.5em 0.3em;
 }
+  .area-tooltip {
+  position: absolute;
+  background: #39a9e0;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 1em;
+  box-shadow: 0 6px 18px #00336630;
+  white-space: normal;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.85);
+  transition: opacity 0.22s cubic-bezier(.5,.8,.5,1), transform 0.3s cubic-bezier(.5,.8,.5,1);
+}
+.area-tooltip.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
   
 
