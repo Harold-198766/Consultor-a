@@ -715,7 +715,7 @@ header::after,
   box-shadow: none;
   padding: 0.5em 0.3em;
 }
-  #scrollToTopBtn {
+#scrollToTopBtn {
   position: fixed;
   right: 24px;
   bottom: 32px;
