@@ -627,28 +627,109 @@ header::after,
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   padding: 8px 24px;
-  width: 100%;
-  background: none;
-  border: none;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .logo-area {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex: 1;
 }
 
+/* Centrar el menú horizontalmente usando position absolute */
 .nav-list {
-  list-style: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
   padding: 0;
+  list-style: none;
   display: flex;
   align-items: center;
-  flex: 1;
-  justify-content: center;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.dropbtn {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
+  color: #222;
+  font-weight: bold;
+  padding: 6px 18px;
+  border-radius: 28px;
+  text-decoration: none;
+  font-size: 1em;
+  box-shadow: 0 3px 12px #00000008;
+  border: none;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  cursor: pointer;
+  margin: 0 8px;
+}
+
+.dropbtn:hover {
+  background: linear-gradient(90deg, #39a9e0 65%, #ffd700 100%);
+  color: #003366;
+  transform: scale(1.045);
+}
+
+.cta-banner-header {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
+  color: #222;
+  font-weight: bold;
+  padding: 6px 18px;
+  border-radius: 28px;
+  text-decoration: none;
+  font-size: 1em;
+  box-shadow: 0 3px 12px #00000008;
+  border: none;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.cta-banner-header:hover {
+  background: linear-gradient(90deg, #39a9e0 65%, #ffd700 100%);
+  color: #003366;
+  transform: scale(1.045);
+}
+
+/* Opcionales: menú desplegable */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 180px;
+  z-index: 100;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+  border-radius: 10px;
+}
+
+.nav-item:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #003366;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-content a:hover {
+  background: #39a9e0;
+  color: #fff;
 }
  .menu-link {
   display: inline-block;
