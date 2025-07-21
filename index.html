@@ -564,6 +564,56 @@ footer {
       contenedor.innerHTML = "<p>No se pudo cargar el blog.</p>";
       console.error("Error cargando index.json:", err);
     });
+   document.querySelectorAll('.area').forEach(area => {
+  area.addEventListener('mouseenter', function() {
+    const info = area.querySelector('.area-info');
+    if (!info) return;
+
+    // Crea el tooltip
+    const tooltip = document.createElement('div');
+    tooltip.className = 'area-tooltip';
+    tooltip.textContent = info.textContent.trim();
+    document.body.appendChild(tooltip);
+
+    // Calcula la posición
+    const rect = area.getBoundingClientRect();
+    const side = area.getAttribute('data-side') || 'right';
+    const spacing = 16;
+
+    // Espera a que el tooltip esté en el DOM para obtener su tamaño
+    requestAnimationFrame(() => {
+      const tipRect = tooltip.getBoundingClientRect();
+      let top, left;
+
+      if (side === 'left') {
+        top = rect.top + window.scrollY + rect.height/2 - tipRect.height/2;
+        left = rect.left + window.scrollX - tipRect.width - spacing;
+      } else {
+        top = rect.top + window.scrollY + rect.height/2 - tipRect.height/2;
+        left = rect.right + window.scrollX + spacing;
+      }
+
+      tooltip.style.top = `${top}px`;
+      tooltip.style.left = `${left}px`;
+
+      // Animación de aparición
+      setTimeout(() => tooltip.classList.add('visible'), 10);
+    });
+
+    area._tooltip = tooltip;
+  });
+
+  area.addEventListener('mouseleave', function() {
+    const tooltip = area._tooltip;
+    if (tooltip) {
+      tooltip.classList.remove('visible');
+      setTimeout(() => {
+        if (tooltip.parentNode) tooltip.parentNode.removeChild(tooltip);
+      }, 250);
+      area._tooltip = null;
+    }
+  });
+});
 </script>
 
 </section>
@@ -632,55 +682,5 @@ footer {
   </a>
 </p>
   </main>
-  document.querySelectorAll('.area').forEach(area => {
-  area.addEventListener('mouseenter', function() {
-    const info = area.querySelector('.area-info');
-    if (!info) return;
-
-    // Crea el tooltip
-    const tooltip = document.createElement('div');
-    tooltip.className = 'area-tooltip';
-    tooltip.textContent = info.textContent.trim();
-    document.body.appendChild(tooltip);
-
-    // Calcula la posición
-    const rect = area.getBoundingClientRect();
-    const side = area.getAttribute('data-side') || 'right';
-    const spacing = 16;
-
-    // Espera a que el tooltip esté en el DOM para obtener su tamaño
-    requestAnimationFrame(() => {
-      const tipRect = tooltip.getBoundingClientRect();
-      let top, left;
-
-      if (side === 'left') {
-        top = rect.top + window.scrollY + rect.height/2 - tipRect.height/2;
-        left = rect.left + window.scrollX - tipRect.width - spacing;
-      } else {
-        top = rect.top + window.scrollY + rect.height/2 - tipRect.height/2;
-        left = rect.right + window.scrollX + spacing;
-      }
-
-      tooltip.style.top = `${top}px`;
-      tooltip.style.left = `${left}px`;
-
-      // Animación de aparición
-      setTimeout(() => tooltip.classList.add('visible'), 10);
-    });
-
-    area._tooltip = tooltip;
-  });
-
-  area.addEventListener('mouseleave', function() {
-    const tooltip = area._tooltip;
-    if (tooltip) {
-      tooltip.classList.remove('visible');
-      setTimeout(() => {
-        if (tooltip.parentNode) tooltip.parentNode.removeChild(tooltip);
-      }, 250);
-      area._tooltip = null;
-    }
-  });
-});
 </body>
 </html>
