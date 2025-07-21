@@ -652,8 +652,8 @@ header::after,
 }
  .menu-link {
   display: inline-block;
-  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%); !important;
-  color: #222; !important;
+  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%) !important;
+  color: #222 !important;
   font-weight: bold;
   padding: 6px 14px;
   border-radius: 28px;
@@ -667,11 +667,13 @@ header::after,
 }
 
 .menu-link:hover {
-  background: linear-gradient(90deg, #39a9e0 65%, #ffd700 100%);
-  color: #003366;
+  background: linear-gradient(90deg, #39a9e0 65%, #ffd700 100%) !important;
+  color: #003366 !important;
   transform: scale(1.045);
 }
 
+/* Si quieres que el fondo del dropdown sea transparente: */
+.dropdown-content {
   background: transparent;
   box-shadow: none;
   padding: 0.5em 0.3em;
