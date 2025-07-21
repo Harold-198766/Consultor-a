@@ -652,8 +652,8 @@ header::after,
 }
  .menu-link {
   display: inline-block;
-  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
-  color: #222;
+  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%); !important;
+  color: #222; !important;
   font-weight: bold;
   padding: 6px 14px;
   border-radius: 28px;
@@ -672,8 +672,6 @@ header::after,
   transform: scale(1.045);
 }
 
-/* Deja el fondo del dropdown transparente o blanco para que se vea bien el enlace tipo botón */
-.dropdown-content {
   background: transparent;
   box-shadow: none;
   padding: 0.5em 0.3em;
