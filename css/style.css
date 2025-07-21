@@ -606,16 +606,15 @@ header::after,
   background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
   color: #222;
   font-weight: bold;
-  padding: 6px 10px;     /* Antes era 10px 22px. Ahora es más reducido */
+  padding: 6px 10px;      /* Botón más corto */
   border-radius: 28px;
   text-decoration: none;
-  font-size: 0.95em;     /* Puedes ajustarlo aún más si lo deseas */
+  font-size: 0.95em;      /* Tamaño ajustable */
   margin-left: 24px;
   box-shadow: 0 3px 12px #00000008;
   transition: background 0.2s, color 0.2s, transform 0.15s;
   border: none;
   letter-spacing: 0.5px;
-  min-width: unset;      /* Asegúrate de que no haya un ancho mínimo fijo */
 }
 
 .cta-banner-header:hover {
@@ -623,13 +622,14 @@ header::after,
   color: #003366;
   transform: scale(1.045);
 }
- .modern-navbar {
+
+.modern-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 24px;
   width: 100%;
-  background: none; /* Quita el fondo */
+  background: none;
   border: none;
   box-sizing: border-box;
 }
@@ -649,23 +649,4 @@ header::after,
   align-items: center;
   flex: 1;
   justify-content: center;
-}
-
-.cta-banner-header {
-  display: inline-block;
-  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
-  color: #222;
-  font-weight: bold;
-  padding: 6px 10px;
-  border-radius: 28px;
-  text-decoration: none;
-  font-size: 1em;
-  margin-left: 24px;
-  box-shadow: 0 3px 12px #00000008;
-  transition: background 0.2s, color 0.2s, transform 0.15s;
-  border: none;
-  letter-spacing: 0.5px;
-  flex: 1;
-  justify-content: flex-end;
-  text-align: right;
 }
