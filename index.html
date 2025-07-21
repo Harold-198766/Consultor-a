@@ -633,5 +633,19 @@ footer {
 </p>
   </main>
   <button id="scrollToTopBtn" title="Ir arriba">&#8679;</button>
+ <script>
+window.addEventListener('scroll', function() {
+  const btn = document.getElementById('scrollToTopBtn');
+  if (window.pageYOffset > 300) {
+    btn.style.display = 'block';
+  } else {
+    btn.style.display = 'none';
+  }
+});
+
+document.getElementById('scrollToTopBtn').addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script> 
 </body>
 </html>
