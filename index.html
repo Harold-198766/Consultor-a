@@ -1,386 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Colindres, Barillas & Asociados",
-  "url": "https://consultoria-legal-guatemala.netlify.app",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://consultoria-legal-guatemala.netlify.app/buscar?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
+  <meta charset="UTF-8">
+  <title>Consultoría Legal Guatemala | Abogados expertos en Guatemala</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Open Graph/Facebook -->
+  <!-- SEO & Open Graph -->
+  <meta name="description" content="Asesoría y consultoría legal en Guatemala. Abogados expertos en Derecho Penal, Civil, Familia, Derecho Notarial. Atención personalizada.">
+  <meta name="author" content="Colindres, Barillas &amp; Asociados">
   <meta property="og:title" content="Colindres, Barillas &amp; Asociados">
   <meta property="og:description" content="Asistencia legal estratégica en Guatemala. Derecho penal, civil, laboral y más.">
   <meta property="og:image" content="https://consultoria-legal-guatemala.netlify.app/logo-colindres-aqua.png">
   <meta property="og:url" content="https://consultoria-legal-guatemala.netlify.app">
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <!-- SEO y general -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="zEyCLug-drFNTWQYJha6i4atXf6c5CkhlcQNe3dPGQ8">
-  <meta name="description" content="Asesoría y consultoría legal en Guatemala. Abogados expertos en Derecho Penal, Civil, Familia, Derecho Notarial. Atención personalizada.">
-  <meta name="author" content="Colindres, Barillas &amp; Asociados">
-  <title>Consultoría Legal Guatemala | Abogados expertos en Guatemala</title>
+
   <!-- Recursos -->
-  <!-- En <head> -->
-<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="stylesheet" href="css/style.css">
-<script src="dist/main.min.js" defer></script>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-<link rel="canonical" href="https://consultoria-legal-guatemala.netlify.app/pagina-principal">
-<style> 
-  /* Barra de navegación moderna */
-.modern-navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 32px;
-  background: linear-gradient(90deg, #000 0%, #39a9e0 100%);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.09);
-  height: 80px;
-  position: relative;
-  z-index: 2;
-}
+  <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="dist/main.min.js" defer></script>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <link rel="canonical" href="https://consultoria-legal-guatemala.netlify.app/pagina-principal">
 
-.logo-area {
-  display: flex;
-  align-items: center;
-}
-
-.logo-header {
-  margin-right: 16px;
-}
-
-.brand-title {
-  font-size: 1.7rem;
-  color: #ffd700;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.11);
-}
-
-.nav-list {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-item {
-  position: relative;
-}
-
-.dropbtn {
-  background: rgba(255,255,255,0.09);
-  color: #fff;
-  padding: 14px 36px 14px 22px;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 22px;
-  cursor: pointer;
-  font-weight: 600;
-  box-shadow: 0 2px 12px rgba(57,169,224,0.11);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  transition: background 0.18s, color 0.18s;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-  background: #ffd700;
-  color: #222;
-  outline: none;
-}
-
-.menu-icon {
-  font-size: 1.3em;
-  margin-left: 6px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 54px;
-  background: #fff;
-  min-width: 200px;
-  box-shadow: 0 8px 32px rgba(57,169,224,0.20);
-  border-radius: 12px;
-  overflow: hidden;
-  z-index: 10;
-  animation: dropdownAppear 0.23s ease;
-}
-
-@keyframes dropdownAppear {
-  0% { opacity: 0; transform: translateY(-18px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 16px 30px;
-  color: #222;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1.07rem;
-  transition: background 0.17s, color 0.17s;
-}
-
-.dropdown-content a:hover {
-  background: #39a9e0;
-  color: #fff;
-}
-
-.dropdown:hover .dropdown-content,
-.dropdown:focus-within .dropdown-content {
-  display: block;
-}
-
-/* Responsive: menú centrado en móviles */
-@media (max-width: 600px) {
-  .modern-navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    padding: 10px 12px;
-  }
-  .logo-area {
-    margin-bottom: 12px;
-  }
-  .nav-list {
-    width: 100%;
-    justify-content: flex-start;
-  }
-  .dropdown-content {
-    left: 0;
-    right: auto;
-    min-width: 170px;
-  }
-}
-  
-body {
-  font-family: 'Georgia', serif;
-  margin: 0;
-  background: url('images/corte-judicial.webp') no-repeat center center fixed;
-  background-size: cover;
-  background-color: #5C4033;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: #000;
-header {
-  background: linear-gradient(90deg, #000 0%, #39a9e0 100%);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  justify-content: space-between;
-}
-header img {
-  height: 120px;
-}
-nav a {
-  color: #fff;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
-.banner {
-  background: none; /* Sin color de fondo */
-  text-align: center;
-  padding: 60px 20px 28px 20px;
-}
-.titulo-juridico {
-  display: inline-block;
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5em;
-  color: #ffd700;
-  margin: 0 auto 18px auto;
-  padding: 0 18px;
-  animation: move-title 3s infinite alternate ease-in-out;
-  text-shadow: 0 2px 8px #000, 0 0 24px #ffd70099;
-  background: none;
-  border: none;
-}
-.section {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: 40px auto;
-  border-radius: 10px;
-}
-.section h2 {
-  color: #003366;
-  text-align: center;
-}
-.areas, .team {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-footer {
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-}
-.contact-form button {
-  display: block;
-  width: 100%;
-  background-color: #003366;
-  color: #fff;
-  font-size: 1.1em;
-  padding: 14px 0;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.25s, color 0.18s, transform 0.18s;
-  margin-top: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-  .contact-form input,
-.contact-form textarea {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 14px 12px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 18px;
-  font-size: 1.05em;
-  font-family: inherit;
-  display: block;
-}
-.contact-form button:hover,
-.contact-form button:focus {
-  background-color: #e53935; /* rojo */
-  color: #fff;
-  transform: scale(1.04);
-}
-}
-.whatsapp-btn {
-  background-color: #25D366 !important;
-  color: #fff !important;
-  padding: 12px 32px;
-  display: block;
-  margin: 20px auto 0 auto;
-  text-decoration: none;
-  border-radius: 25px;
-  font-weight: bold;
-  font-size: 1.1em;
-  text-align: center;
-  border: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.3s;
-  max-width: 320px;
-}
-.whatsapp-btn:hover {
-  background-color: #128c7e !important;
-  color: #fff !important;
-}
-.blog-post {
-  background-color: #fff;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-left: 4px solid #003366;
-}
-.blog-post h3 {
-  margin-top: 0;
-  color: #900;
-}
-.blog-post p.date {
-  font-size: 0.9em;
-  color: #555;
-}
-.blog-post a {
-  display: inline-block;
-  margin-top: 10px;
-  color: #003366;
-  font-weight: bold;
-  text-decoration: underline;
-}
-  @keyframes golden-glow {
-  0%, 100% {
-    filter: drop-shadow(0 0 4px #ffd700) brightness(1);
-  }
-  50% {
-    filter: drop-shadow(0 0 22px #ffd700) brightness(1.18);
-  }
-}
-
-.logo-header {
-  animation: golden-glow 1.8s infinite ease-in-out;
-  transition:
-    transform 0.4s cubic-bezier(0.4,0,0.2,1),
-    filter 0.4s cubic-bezier(0.4,0,0.2,1),
-    box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
-}
-
-.logo-header:hover {
-  transform: scale(1.14) rotate(-3deg);
-  box-shadow: 0 6px 18px rgba(57,169,224,0.22);
-}
-.cta-banner {
-  display: inline-block;
-  background: linear-gradient(90deg, #ffd700 0%, #39a9e0 100%);
-  color: #222;
-  font-weight: bold;
-  font-size: 1.2em;
-  padding: 16px 38px;
-  border-radius: 28px;
-  box-shadow: 0 2px 18px rgba(57,169,224,0.13);
-  text-decoration: none;
-  margin-top: 30px;
-  margin-bottom: 8px;
-  transition: background 0.25s, color 0.18s, transform 0.22s;
-  letter-spacing: 1px;
-}
-.cta-banner:hover, .cta-banner:focus {
-  background: linear-gradient(90deg, #39a9e0 0%, #ffd700 100%);
-  color: #000;
-  transform: scale(1.06);
-  box-shadow: 0 6px 22px rgba(57,169,224,0.18);
-}
-
-  </style>
   <!-- Datos estructurados Schema.org -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "Colindres, Barillas & Asociados",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "13 calle, Manzana V, casa 56, Residenciales la Joya de Palencia",
-    "addressLocality": "Guatemala",
-    "addressCountry": "GT"
-  },
-  "telephone": [
-    "+50258430603",
-    "+50254129660",
-    "+50255973975"
-  ],
-  "email": [
-    "lic.barillas46@gmail.com",
-    "amilcarcolindres652@gmail.com",
-    "licjalemus63@gmail.com"
-  ],
-  "url": "https://consultoria-legal-guatemala.netlify.app/"
-}
-</script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Colindres, Barillas & Asociados",
+      "url": "https://consultoria-legal-guatemala.netlify.app",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://consultoria-legal-guatemala.netlify.app/buscar?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "Colindres, Barillas & Asociados",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "13 calle, Manzana V, casa 56, Residenciales la Joya de Palencia",
+        "addressLocality": "Guatemala",
+        "addressCountry": "GT"
+      },
+      "telephone": [
+        "+50258430603",
+        "+50254129660",
+        "+50255973975"
+      ],
+      "email": [
+        "lic.barillas46@gmail.com",
+        "amilcarcolindres652@gmail.com",
+        "licjalemus63@gmail.com"
+      ],
+      "url": "https://consultoria-legal-guatemala.netlify.app/"
+    }
+  </script>
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELCF7186PW"></script>
   <script>
@@ -392,112 +75,111 @@ footer {
 </head>
 <body>
   <main>
-   <header> 
-  <nav class="modern-navbar">
-    <div class="logo-area">
-      <img src="images/logo-dorado.webp" alt="Logo Colindres" class="logo-header" width="60" height="60">
-      <span class="brand-title"></span>
-    </div>
-    <ul class="nav-list">
-      <li class="nav-item dropdown">
-        <button class="dropbtn">
-          Menú
-          <span class="menu-icon">&#9776;</span>
-        </button>
-       <div class="dropdown-content">
-  <a href="#nosotros" class="menu-link">Nosotros</a>
-  <a href="#servicios" class="menu-link">Servicios</a>
-  <a href="#equipo" class="menu-link">Equipo</a>
-  <a href="#blog" class="menu-link">Blog</a>
-  <a href="#contacto" class="menu-link">Contacto</a>
-</div>
-      </li>
-    </ul>
-    <a href="#contacto" class="cta-banner-header">
-      <i class="fas fa-comments"></i> Solicita tu consulta
-    </a>
-  </nav>
-</header>
-  <section class="banner" id="inicio">
-  <h1 class="titulo-juridico">Bufete de Abogados en Guatemala: Colindres, Barillas &amp; Asociados</h1>
-  <div class="decorative-line"></div> 
-</section>
-
-  <section class="section" id="nosotros">
-      <h2>Nosotros</h2>
-      <p>Somos un equipo de abogados y notarios, egresados de la Facultad de Derecho de la Tricentenaria Universidad de San Carlos de Guatemala, comprometidos ante todo con el aspecto humano de nuestra vocación. Nuestra labor se fundamenta en valores sociales, éticos y profesionales, ofreciendo una atención personalizada que responde a las necesidades reales de cada persona.
-         Contamos con profesionales de amplia trayectoria en diversas ramas del derecho, incluyendo exjueces de paz y de primera instancia con sólida experiencia en derecho penal, así como expertos con décadas de práctica en áreas como el derecho civil, laboral, corporativo, notarial y de familia. Esta diversidad y profundidad de conocimiento nos permite brindar no solo asesoría jurídica experta, sino también un acompañamiento humano, honesto y con plena conciencia de lo que hacemos.
-
+    <header>
+      <nav class="modern-navbar">
+        <div class="logo-area">
+          <img src="images/logo-dorado.webp" alt="Logo Colindres" class="logo-header" width="60" height="60">
+          <span class="brand-title"></span>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-item dropdown">
+            <button class="dropbtn">
+              Menú
+              <span class="menu-icon">&#9776;</span>
+            </button>
+            <div class="dropdown-content">
+              <a href="#nosotros" class="menu-link">Nosotros</a>
+              <a href="#servicios" class="menu-link">Servicios</a>
+              <a href="#equipo" class="menu-link">Equipo</a>
+              <a href="#blog" class="menu-link">Blog</a>
+              <a href="#contacto" class="menu-link">Contacto</a>
+            </div>
+          </li>
+        </ul>
+        <a href="#contacto" class="cta-banner-header">
+          <i class="fas fa-comments"></i> Solicita tu consulta
+        </a>
+      </nav>
+    </header>
+    <section class="banner" id="inicio">
+      <h1 class="titulo-juridico">Bufete de Abogados en Guatemala: Colindres, Barillas &amp; Asociados</h1>
+      <div class="decorative-line"></div>
     </section>
-<section class="section" id="servicios">
-  <h2>Áreas de Práctica</h2>
-  <div class="areas">
-    <div class="area area-civil" data-side="left">
-      <img src="images/imagen-derecho-civil.svg" alt="Derecho Civil" width="120" height="120" />
-      <p>Derecho Civil</p>
-      <div class="area-info">
-        Solución de conflictos entre particulares, propiedad, contratos, herencias, legados, donaciones, obligaciones y más.
+    <section class="section" id="nosotros">
+      <h2>Nosotros</h2>
+      <p>
+        Somos un equipo de abogados y notarios, egresados de la Facultad de Derecho de la Tricentenaria Universidad de San Carlos de Guatemala, comprometidos ante todo con el aspecto humano de nuestra vocación. Nuestra labor se fundamenta en valores sociales, éticos y profesionales, ofreciendo una atención personalizada que responde a las necesidades reales de cada persona.
+        Contamos con profesionales de amplia trayectoria en diversas ramas del derecho, incluyendo exjueces de paz y de primera instancia con sólida experiencia en derecho penal, así como expertos con décadas de práctica en áreas como el derecho civil, laboral, corporativo, notarial y de familia. Esta diversidad y profundidad de conocimiento nos permite brindar no solo asesoría jurídica experta, sino también un acompañamiento humano, honesto y con plena conciencia de lo que hacemos.
+      </p>
+    </section>
+    <section class="section" id="servicios">
+      <h2>Áreas de Práctica</h2>
+      <div class="areas">
+        <div class="area area-civil" data-side="left">
+          <img src="images/imagen-derecho-civil.svg" alt="Derecho Civil" width="120" height="120" />
+          <p>Derecho Civil</p>
+          <div class="area-info">
+            Solución de conflictos entre particulares, propiedad, contratos, herencias, legados, donaciones, obligaciones y más.
+          </div>
+        </div>
+        <div class="area area-penal" data-side="right">
+          <img src="images/imagen-derecho-penal.svg" alt="Derecho Penal" width="120" height="120" />
+          <p>Derecho Penal</p>
+          <div class="area-info">
+            Defensa en procesos penales, asesoría y representación ante juzgados y Ministerio Público.
+          </div>
+        </div>
+        <div class="area area-familia" data-side="left">
+          <img src="images/imagen-derecho-de-familia.svg" alt="Derecho de Familia" width="120" height="120" />
+          <p>Derecho de Familia</p>
+          <div class="area-info">
+            Divorcios: ordinarios y voluntarios, alimentos, guarda y custodia, patria potestad, filiación, etc.
+          </div>
+        </div>
+        <div class="area area-corporativo" data-side="right">
+          <img src="images/imagen-derecho-corporativo.svg" alt="Derecho Corporativo" width="120" height="120" />
+          <p>Derecho Corporativo</p>
+          <div class="area-info">
+            Constitución de Sociedades, empresas mercantiles, contratos mercantiles, típicos y atípicos, etc.
+          </div>
+        </div>
+        <div class="area area-laboral" data-side="left">
+          <img src="images/imagen-derecho-laboral.svg" alt="Derecho Laboral" width="120" height="120" />
+          <p>Derecho Laboral</p>
+          <div class="area-info">
+            Juicio Ordinario por despido injustificado, indirecto, incidentes post mortem y previsión social.
+          </div>
+        </div>
+        <div class="area area-jurisdiccion" data-side="right">
+          <img src="images/imagen-jurisdicción-voluntaria.svg" alt="Jurisdicción Voluntaria" width="120" height="120" />
+          <p>Jurisdicción Voluntaria</p>
+          <div class="area-info">
+            Rectificación y reposición de partidas del RENAP, cambio de nombre, identificación de persona y de tercero, procesos sucesorios testamentarios e intestados, etc.
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="area area-penal" data-side="right">
-      <img src="images/imagen-derecho-penal.svg" alt="Derecho Penal" width="120" height="120" />
-      <p>Derecho Penal</p>
-      <div class="area-info">
-        Defensa en procesos penales, asesoría y representación ante juzgados y Ministerio Público.
+    </section>
+    <section class="section" id="equipo">
+      <h2>Nuestro Equipo</h2>
+      <div class="team">
+        <div class="equipo area-penal">
+          <img class="avatar" src="images/abogado.svg" alt="Avatar de Amílcar Colindres" width="100" height="100" />
+          <strong>Lic. Amílcar Colindres</strong> – Especialista en Derecho Penal
+        </div>
+        <div class="equipo area-familia">
+          <img class="avatar" src="images/abogado.svg" alt="Avatar de Erick Barillas" width="100" height="100" />
+          <strong>Lic. Erick Barillas</strong> – Especialista en Derecho de Familia
+        </div>
+        <div class="equipo area-civil">
+          <img class="avatar" src="images/abogado.svg" alt="Avatar de Alfredo Lemus" width="100" height="100" />
+          <strong>Lic. Alfredo Lemus</strong> – Especialista en Derecho Civil
+        </div>
+        <div class="equipo area-laboral">
+          <img class="avatar" src="images/abogado.svg" alt="Avatar de Arnulfo Dieguez" width="100" height="100" />
+          <strong>Lic. Arnulfo Dieguez</strong> – Especialista en Derecho Laboral
+        </div>
       </div>
-    </div>
-    <div class="area area-familia" data-side="left">
-      <img src="images/imagen-derecho-de-familia.svg" alt="Derecho de Familia" width="120" height="120" />
-      <p>Derecho de Familia</p>
-      <div class="area-info">
-        Divorcios: ordinarios y voluntarios, alimentos, guarda y custodia, patria potestad, filiación, etc.
-      </div>
-    </div>
-    <div class="area area-corporativo" data-side="right">
-      <img src="images/imagen-derecho-corporativo.svg" alt="Derecho Corporativo" width="120" height="120" />
-      <p>Derecho Corporativo</p>
-      <div class="area-info">
-        Constitución de Sociedades, empresas mercantiles, contratos mercantiles, típicos y atípicos, etc.
-      </div>
-    </div>
-    <div class="area area-laboral" data-side="left">
-      <img src="images/imagen-derecho-laboral.svg" alt="Derecho Laboral" width="120" height="120" />
-      <p>Derecho Laboral</p>
-      <div class="area-info">
-        Juicio Ordinario por despido injustificado, indirecto, incidentes post mortem y previsión social.
-      </div>
-    </div>
-    <div class="area area-jurisdiccion" data-side="right">
-      <img src="images/imagen-jurisdicción-voluntaria.svg" alt="Jurisdicción Voluntaria" width="120" height="120" />
-      <p>Jurisdicción Voluntaria</p>
-      <div class="area-info">
-        Rectificación y reposición de partidas del RENAP, cambio de nombre, identificación de persona y de tercero, procesos sucesorios testamentarios e intestados, etc.
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section" id="equipo">
-  <h2>Nuestro Equipo</h2>
-  <div class="team">
-    <div class="equipo area-penal">
-      <img class="avatar" src="images/abogado.svg" alt="Avatar de Amílcar Colindres" width="100" height="100" />
-      <strong>Lic. Amílcar Colindres</strong> – Especialista en Derecho Penal
-    </div>
-    <div class="equipo area-familia">
-      <img class="avatar" src="images/abogado.svg" alt="Avatar de Erick Barillas" width="100" height="100" />
-      <strong>Lic. Erick Barillas</strong> – Especialista en Derecho de Familia
-    </div>
-    <div class="equipo area-civil">
-      <img class="avatar" src="images/abogado.svg" alt="Avatar de Alfredo Lemus" width="100" height="100" />
-      <strong>Lic. Alfredo Lemus</strong> – Especialista en Derecho Civil
-    </div>
-    <div class="equipo area-laboral">
-      <img class="avatar" src="images/abogado.svg" alt="Avatar de Arnulfo Dieguez" width="100" height="100" />
-      <strong>Lic. Arnulfo Dieguez</strong> – Especialista en Derecho Laboral
-    </div>
-  </div>
-</section>
-    
+    </section>
     <section class="section" id="faq">
       <h2>Preguntas Frecuentes</h2>
       <div>
@@ -507,117 +189,103 @@ footer {
         <p>Derecho penal, civil, laboral, corporativo y de familia, notarial, impugnaciones entre otros.</p>
       </div>
     </section>
-
-  <section class="section" id="blog">
-  <h2>Blog</h2>
-  <div id="blog-entradas"></div>
-  <!-- Cargar librería marked -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-  const contenedor = document.getElementById("blog-entradas");
-
-  // ✅ Función para formatear títulos
-  const formatearTitulo = (t) => {
-    t = t.replace(/^"|"$/g, '').trim();
-    return t
-      .toLowerCase()
-      .split(' ')
-      .map(p => p.charAt(0).toUpperCase() + p.slice(1))
-      .join(' ');
-  };
-
-  fetch("articulos/index.json")
-    .then(res => res.json())
-    .then(entradas => {
-      entradas.forEach(({ archivo, url, title, date }) => {
-        fetch(`articulos/${archivo}`)
-          .then(res => res.ok ? res.text() : null)
-          .then(md => {
-            if (!md) return;
-
-            // Primer párrafo útil como resumen
-            const resumen = md
-              .split("\n")
-              .find(linea =>
-                linea.trim() &&
-                !linea.startsWith("#") &&
-                !linea.startsWith("---")
-              );
-
-            const post = document.createElement("div");
-            post.className = "blog-post markdown-content";
-
-            post.innerHTML = `
-              <h3>${formatearTitulo(title)}</h3>
-              <p class="date">📅 Publicado el ${date}</p>
-              <p>${resumen || 'Contenido próximamente disponible.'}</p>
-              <a href="${url}">Leer artículo completo</a>
-            `;
-            contenedor.appendChild(post);
+    <section class="section" id="blog">
+      <h2>Blog</h2>
+      <div id="blog-entradas"></div>
+      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+      <script>
+        const contenedor = document.getElementById("blog-entradas");
+        const formatearTitulo = (t) => {
+          t = t.replace(/^"|"$/g, '').trim();
+          return t
+            .toLowerCase()
+            .split(' ')
+            .map(p => p.charAt(0).toUpperCase() + p.slice(1))
+            .join(' ');
+        };
+        fetch("articulos/index.json")
+          .then(res => res.json())
+          .then(entradas => {
+            entradas.forEach(({ archivo, url, title, date }) => {
+              fetch(`articulos/${archivo}`)
+                .then(res => res.ok ? res.text() : null)
+                .then(md => {
+                  if (!md) return;
+                  const resumen = md
+                    .split("\n")
+                    .find(linea =>
+                      linea.trim() &&
+                      !linea.startsWith("#") &&
+                      !linea.startsWith("---")
+                    );
+                  const post = document.createElement("div");
+                  post.className = "blog-post markdown-content";
+                  post.innerHTML = `
+                    <h3>${formatearTitulo(title)}</h3>
+                    <p class="date">📅 Publicado el ${date}</p>
+                    <p>${resumen || 'Contenido próximamente disponible.'}</p>
+                    <a href="${url}">Leer artículo completo</a>
+                  `;
+                  contenedor.appendChild(post);
+                })
+                .catch(err => {
+                  console.error(`Error al cargar ${archivo}:`, err);
+                });
+            });
           })
           .catch(err => {
-            console.error(`Error al cargar ${archivo}:`, err);
+            contenedor.innerHTML = "<p>No se pudo cargar el blog.</p>";
+            console.error("Error cargando index.json:", err);
           });
-      });
-    })
-    .catch(err => {
-      contenedor.innerHTML = "<p>No se pudo cargar el blog.</p>";
-      console.error("Error cargando index.json:", err);
-    });
-</script>
-
-</section>
-   <section class="section" id="descargas">
-  <h2>📄 Documentos Descargables</h2>
-  
-  <a class="descarga" href="documentos/Información legal.pdf" download>
-    <i class="fas fa-download"></i> Descarga documentos (PDF)
-  </a><br>
-
-  <a class="descarga" href="documentos/guia-contratar-abogado.docx" download>
-    <i class="fas fa-download"></i> Guía rápida cómo contratar un abogado en Guatemala (Word)
-  </a>
-
-  <p style="font-size:0.92em; color:#555; margin-top:10px;">
-    Haz clic en el documento que desees para descargarlo directamente.
-  </p>
-</section>
-   <section class="section" id="contacto">
-  <h2>Contacto</h2>
-  <p>Teléfonos: 5843-0603, 5412-9660, 5597-3975</p>
-  <p>
-    Emails:<br>
-    <a href="mailto:lic.barillas46@gmail.com">lic.barillas46@gmail.com</a><br>
-    <a href="mailto:amilcarcolindres652@gmail.com">amilcarcolindres652@gmail.com</a><br>
-    <a href="mailto:licjalemus63@gmail.com">licjalemus63@gmail.com</a>
-  </p>
-  <form class="contact-form" action="https://formspree.io/f/mgvyvgpk" method="POST">
-    <input type="text" name="nombre" placeholder="Nombre" required>
-    <input type="email" name="email" placeholder="Correo electrónico" required>
-    <textarea name="mensaje" placeholder="Escriba su mensaje..." required></textarea>
-    <!-- Honeypot: protección básica contra spam -->
-    <input type="text" name="_gotcha" style="display:none">
-    <button type="submit">Enviar</button>
-  </form>
-  <p style="font-size:0.92em; color:#555; margin-top:10px;">
-    Al enviar este formulario, usted acepta que la información proporcionada será utilizada únicamente para brindarle una respuesta y no se compartirá con terceros.<br>
-    Este formulario está protegido contra spam mediante mecanismos automáticos.<br>
-    Para más información, consulte nuestra <a href="/aviso-privacidad.html" target="_blank" rel="noopener noreferrer">Política de Privacidad</a>.
-  </p>
-  <a href="https://maps.google.com/?q=13+calle,+Manzana+V,+casa+56,+Residenciales+la+Joya+de+Palencia,+Guatemala" target="_blank">Cómo llegar</a>
-  <a href="https://wa.me/50258430603" class="whatsapp-btn" target="_blank">
-    <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
-  </a>
- <div class="mapa-responsive">
-<iframe 
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.569658774289!2d-90.36857738913952!3d14.680346675059738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858995cebea57673%3A0xb99a988c5c0a35a3!2sResidenciales%20La%20Joya%20De%20Palencia!5e0!3m2!1ses!2sgt!4v1752358946357!5m2!1ses!2sgt"
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"
-  title="Mapa de ubicación de Colindres, Barillas & Asociados">
-</iframe>
-  </div>
-</section>
+      </script>
+    </section>
+    <section class="section" id="descargas">
+      <h2>📄 Documentos Descargables</h2>
+      <a class="descarga" href="documentos/Información legal.pdf" download>
+        <i class="fas fa-download"></i> Descarga documentos (PDF)
+      </a><br>
+      <a class="descarga" href="documentos/guia-contratar-abogado.docx" download>
+        <i class="fas fa-download"></i> Guía rápida cómo contratar un abogado en Guatemala (Word)
+      </a>
+      <p style="font-size:0.92em; color:#555; margin-top:10px;">
+        Haz clic en el documento que desees para descargarlo directamente.
+      </p>
+    </section>
+    <section class="section" id="contacto">
+      <h2>Contacto</h2>
+      <p>Teléfonos: 5843-0603, 5412-9660, 5597-3975</p>
+      <p>
+        Emails:<br>
+        <a href="mailto:lic.barillas46@gmail.com">lic.barillas46@gmail.com</a><br>
+        <a href="mailto:amilcarcolindres652@gmail.com">amilcarcolindres652@gmail.com</a><br>
+        <a href="mailto:licjalemus63@gmail.com">licjalemus63@gmail.com</a>
+      </p>
+      <form class="contact-form" action="https://formspree.io/f/mgvyvgpk" method="POST">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <textarea name="mensaje" placeholder="Escriba su mensaje..." required></textarea>
+        <input type="text" name="_gotcha" style="display:none">
+        <button type="submit">Enviar</button>
+      </form>
+      <p style="font-size:0.92em; color:#555; margin-top:10px;">
+        Al enviar este formulario, usted acepta que la información proporcionada será utilizada únicamente para brindarle una respuesta y no se compartirá con terceros.<br>
+        Este formulario está protegido contra spam mediante mecanismos automáticos.<br>
+        Para más información, consulte nuestra <a href="/aviso-privacidad.html" target="_blank" rel="noopener noreferrer">Política de Privacidad</a>.
+      </p>
+      <a href="https://maps.google.com/?q=13+calle,+Manzana+V,+casa+56,+Residenciales+la+Joya+de+Palencia,+Guatemala" target="_blank">Cómo llegar</a>
+      <a href="https://wa.me/50258430603" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+      </a>
+      <div class="mapa-responsive">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.569658774289!2d-90.36857738913952!3d14.680346675059738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858995cebea57673%3A0xb99a988c5c0a35a3!2sResidenciales%20La%20Joya%20De%20Palencia!5e0!3m2!1ses!2sgt!4v1752358946357!5m2!1ses!2sgt"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa de ubicación de Colindres, Barillas & Asociados">
+        </iframe>
+      </div>
+    </section>
     <footer>
       <p>
         &copy; 2025 Colindres, Barillas &amp; Asociados. Todos los derechos reservados.<br>
@@ -626,12 +294,13 @@ footer {
         Email: lic.barillas46@gmail.com
       </p>
     </footer>
-     <p style="text-align: center; margin-top: 2rem;">
-  <a href="/Admin/admin.html" style="text-decoration: none; color:#FFFFFF; font-weight: bold;">
-  🛠️ Acceder al Panel de Administración
-  </a>
-</p>
+    <p style="text-align: center; margin-top: 2rem;">
+      <a href="/Admin/admin.html" style="text-decoration: none; color:#FFFFFF; font-weight: bold;">
+        🛠️ Acceder al Panel de Administración
+      </a>
+    </p>
   </main>
+  <!-- Tooltip JS -->
   <script>
     document.querySelectorAll('.area').forEach(area => {
       area.addEventListener('mouseenter', function() {
@@ -674,6 +343,8 @@ footer {
       });
     });
   </script>
+</body>
+</html>
 </body>
 </html>
 
