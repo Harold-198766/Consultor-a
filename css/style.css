@@ -36,8 +36,8 @@ body {
 
 .logo-area {
   display: flex;
-  align-items: flex-start; /* Cambiado a flex-start */
-  justify-content: flex-start; /* Cambiado a flex-start */
+  align-items: flot left;
+  justify-content: center;
   flex: 1;
   background: none;
 }
