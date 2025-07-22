@@ -36,8 +36,8 @@ body {
 
 .logo-area {
   display: flex;
-  align-items: flot left;
-  justify-content: center;
+  justify-content: flex-start; /* Alinea el contenido al inicio del eje horizontal */
+  align-items: center; /* Centra verticalmente si estás en dirección de fila */
   flex: 1;
   background: none;
 }
