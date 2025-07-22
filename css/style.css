@@ -16,40 +16,44 @@ body {
   color: #000;
 }
 
-/* === LOGO CON DESTELLO DORADO === */
+/* === LOGO MÁS GRANDE Y SIN FONDO === */
 .logo-header {
-  height: 90px;
+  height: 140px;
   width: auto;
-  max-width: 220px;
+  max-width: 340px;
+  background: none;
+  box-shadow: none;
   transition: filter 0.2s, transform 0.3s, box-shadow 0.3s;
   animation: golden-glow 1.8s infinite ease-in-out;
-  box-shadow: 0 0 14px 2px #ffd70066;
 }
 @keyframes golden-glow {
   0%, 100% { filter: drop-shadow(0 0 4px #ffd700) brightness(1); }
   50% { filter: drop-shadow(0 0 22px #ffd700) brightness(1.18); }
 }
 .logo-header:hover {
-  transform: scale(1.14) rotate(-3deg);
-  box-shadow: 0 6px 18px #ffd70088;
-}
-
-/* === BARRA DE NAVEGACIÓN MODERNA === */
-.modern-navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 32px;
-  background: linear-gradient(90deg, #000 0%, #39a9e0 100%);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.09);
-  height: 80px;
-  position: relative;
-  z-index: 2;
+  transform: scale(1.09) rotate(-3deg);
 }
 
 .logo-area {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex: 1;
+  background: none;
+}
+
+/* === BARRA DE NAVEGACIÓN CENTRADA Y ESTILO SOLICITA TU CONSULTA === */
+.modern-navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  background: none;
+  box-shadow: none;
+  height: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .brand-title {
@@ -64,33 +68,42 @@ body {
   list-style: none;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: 0;
   padding: 0;
+  gap: 0.8em;
+  width: 100%;
 }
 
 .nav-item {
   position: relative;
 }
 
-.dropbtn {
-  background: rgba(255,255,255,0.09);
-  color: #fff;
-  padding: 14px 36px 14px 22px;
-  font-size: 1.1rem;
+.dropbtn,
+.nav-list > .nav-item > a.menu-link {
+  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
+  color: #222;
+  font-weight: bold;
+  padding: 10px 28px;
+  border-radius: 28px;
+  text-decoration: none;
+  font-size: 1.08em;
+  box-shadow: 0 3px 12px #00000008;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
   border: none;
-  border-radius: 22px;
+  margin: 0 8px;
   cursor: pointer;
-  font-weight: 600;
-  box-shadow: 0 2px 12px rgba(57,169,224,0.11);
+  outline: none;
   display: flex;
   align-items: center;
-  gap: 14px;
-  transition: background 0.18s, color 0.18s;
+  gap: 12px;
 }
-.dropbtn:hover, .dropbtn:focus {
-  background: #ffd700;
-  color: #222;
-  outline: none;
+.dropbtn:hover,
+.nav-list > .nav-item > a.menu-link:hover {
+  background: linear-gradient(90deg, #39a9e0 65%, #ffd700 100%);
+  color: #003366;
+  transform: scale(1.045);
 }
 
 .menu-icon {
@@ -104,7 +117,7 @@ body {
   right: 0;
   top: 54px;
   background: #fff;
-  min-width: 200px;
+  min-width: 220px;
   box-shadow: 0 8px 32px rgba(57,169,224,0.20);
   border-radius: 12px;
   overflow: hidden;
@@ -139,13 +152,13 @@ body {
   background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
   color: #222;
   font-weight: bold;
-  padding: 6px 18px;
+  padding: 10px 28px;
   border-radius: 28px;
   text-decoration: none;
-  font-size: 1em;
+  font-size: 1.08em;
   box-shadow: 0 3px 12px #00000008;
   letter-spacing: 0.5px;
-  margin-left: auto;
+  margin: 16px 0 0 0;
   transition: background 0.2s, color 0.2s, transform 0.15s;
 }
 .cta-banner-header:hover {
@@ -470,6 +483,20 @@ footer {
 
 /* === RESPONSIVE === */
 @media (max-width: 900px) {
+  .logo-header {
+    height: 90px;
+    max-width: 200px;
+  }
+  .modern-navbar {
+    padding: 10px 12px;
+  }
+  .nav-list {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cta-banner-header {
+    margin-top: 18px;
+  }
   .areas, .team {
     grid-template-columns: 1fr !important;
     gap: 24px;
@@ -493,32 +520,17 @@ footer {
 }
 
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-    padding: 10px 6px;
-  }
   .logo-header {
     height: 64px;
+    max-width: 120px;
     margin-bottom: 8px;
   }
   .modern-navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    padding: 10px 12px;
-  }
-  .logo-area {
-    margin-bottom: 12px;
+    padding: 7px 6px;
   }
   .nav-list {
-    width: 100%;
-    justify-content: flex-start;
-  }
-  .dropdown-content {
-    left: 0;
-    right: auto;
-    min-width: 170px;
+    flex-direction: column;
+    gap: 10px;
   }
   .banner {
     padding: 32px 10px;
