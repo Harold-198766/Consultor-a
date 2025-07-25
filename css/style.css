@@ -479,6 +479,42 @@ a.descarga:hover i {
   transform: scale(1.2);
   color: #900;
 }
+.descarga-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 20px;
+}
+
+.descarga-item {
+  background: #f7f7f7;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.3s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.descarga-item:hover {
+  background: #39a9e0;
+  color: #fff;
+}
+
+.descarga-item i {
+  font-size: 1.5rem;
+}
+
+.descarga-nota {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 16px;
+}
+
 
 /* === FOOTER === */
 footer {
