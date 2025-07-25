@@ -498,7 +498,16 @@ body {
   color: #555;
   margin-top: 16px;
 }
+@media (max-width: 480px) {
+  .descarga-item {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
 
+  .descarga-item i {
+    font-size: 1.25rem;
+  }
+}
 
 /* === FOOTER === */
 footer {
