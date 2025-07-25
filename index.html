@@ -71,34 +71,32 @@
 </head>
 <body>
   <main>
-   <header>
-  <nav class="modern-navbar" aria-label="Navegación principal">
-    <div class="logo-area">
-      <a href="index.html">
-        <img src="images/logo-dorado.webp" alt="Logo Colindres" class="logo-header" width="60" height="60">
-      </a>
-      <span class="brand-title" aria-hidden="true"></span>
-    </div>
-
-    <button class="dropbtn" aria-label="Menú principal" aria-expanded="false" aria-controls="main-menu">
-      Menú <span class="menu-icon">&#9776;</span>
-    </button>
-
-    <ul id="main-menu" class="dropdown-content nav-list" hidden>
-      <li><a href="#nosotros" class="menu-link">Nosotros</a></li>
-      <li><a href="#servicios" class="menu-link">Servicios</a></li>
-      <li><a href="#equipo" class="menu-link">Equipo</a></li>
-      <li><a href="#blog" class="menu-link">Blog</a></li>
-      <li><a href="#contacto" class="menu-link">Contacto</a></li>
-    </ul>
-
-    <a href="#contacto" class="cta-banner-header">
-      <i class="fas fa-comments" aria-hidden="true"></i> 
-      <span class="sr-only">Ir a contacto</span> Solicita tu consulta
-    </a>
-  </nav>
-</header>
-
+  <header>
+      <nav class="modern-navbar">
+        <div class="logo-area">
+          <img src="images/logo-dorado.webp" alt="Logo Colindres" class="logo-header" width="60" height="60">
+          <span class="brand-title"></span>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-item dropdown">
+            <button class="dropbtn">
+              Menú
+              <span class="menu-icon">&#9776;</span>
+            </button>
+            <div class="dropdown-content">
+              <a href="#nosotros" class="menu-link">Nosotros</a>
+              <a href="#servicios" class="menu-link">Servicios</a>
+              <a href="#equipo" class="menu-link">Equipo</a>
+              <a href="#blog" class="menu-link">Blog</a>
+              <a href="#contacto" class="menu-link">Contacto</a>
+            </div>
+          </li>
+        </ul>
+        <a href="#contacto" class="cta-banner-header">
+          <i class="fas fa-comments"></i> Solicita tu consulta
+        </a>
+      </nav>
+    </header>
     <section class="banner" id="inicio">
       <h1 class="titulo-juridico">Bufete de Abogados en Guatemala: Barillas, Colindres &amp; Asociados</h1>
       <div class="decorative-line"></div>
@@ -339,33 +337,7 @@
         }
       });
     });
-    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const menuButton = document.querySelector(".dropbtn");
-    const menuList = document.getElementById("main-menu");
-
-    menuButton.addEventListener("click", function () {
-      const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
-      menuButton.setAttribute("aria-expanded", !isExpanded);
-      menuList.hidden = isExpanded;
-    });
-
-    // Cerrar menú si se hace clic fuera
-    document.addEventListener("click", function (e) {
-      if (!menuButton.contains(e.target) && !menuList.contains(e.target)) {
-        menuButton.setAttribute("aria-expanded", "false");
-        menuList.hidden = true;
-      }
-    });
-
-    // Accesibilidad: permitir uso de tecla ESC
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") {
-        menuButton.setAttribute("aria-expanded", "false");
-        menuList.hidden = true;
-      }
-    });
-  });
+   
 </script>
 
   </script>
