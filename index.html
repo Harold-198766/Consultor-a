@@ -303,6 +303,7 @@
     if (!info) return;
     const tooltip = document.createElement('div');
     tooltip.className = 'area-tooltip';
+    tooltip.setAttribute('data-side', side);
     tooltip.textContent = info.textContent.trim();
     document.body.appendChild(tooltip);
 
