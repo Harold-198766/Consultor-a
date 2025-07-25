@@ -339,6 +339,35 @@
         }
       });
     });
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".dropbtn");
+    const menuList = document.getElementById("main-menu");
+
+    menuButton.addEventListener("click", function () {
+      const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", !isExpanded);
+      menuList.hidden = isExpanded;
+    });
+
+    // Cerrar menú si se hace clic fuera
+    document.addEventListener("click", function (e) {
+      if (!menuButton.contains(e.target) && !menuList.contains(e.target)) {
+        menuButton.setAttribute("aria-expanded", "false");
+        menuList.hidden = true;
+      }
+    });
+
+    // Accesibilidad: permitir uso de tecla ESC
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        menuButton.setAttribute("aria-expanded", "false");
+        menuList.hidden = true;
+      }
+    });
+  });
+</script>
+
   </script>
 </body>
 </html>
