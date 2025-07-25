@@ -297,50 +297,60 @@
   </main>
   <!-- Tooltip JS -->
   <script>
-    document.querySelectorAll('.area').forEach(area => {
-      area.addEventListener('mouseenter', function() {
-        const info = area.querySelector('.area-info');
-        if (!info) return;
-        const tooltip = document.createElement('div');
-        tooltip.className = 'area-tooltip';
-        tooltip.textContent = info.textContent.trim();
-        document.body.appendChild(tooltip);
+  document.querySelectorAll('.area').forEach(area => {
+  area.addEventListener('mouseenter', function() {
+    const info = area.querySelector('.area-info');
+    if (!info) return;
+    const tooltip = document.createElement('div');
+    tooltip.className = 'area-tooltip';
+    tooltip.textContent = info.textContent.trim();
+    document.body.appendChild(tooltip);
 
-        const rect = area.getBoundingClientRect();
-        const side = area.getAttribute('data-side') || 'right';
-        const spacing = 16;
-        requestAnimationFrame(() => {
-          const tipRect = tooltip.getBoundingClientRect();
-          let top, left;
-          if (side === 'left') {
-            top = rect.top + window.scrollY + rect.height/2 - tipRect.height/2;
-            left = rect.left + window.scrollX - tipRect.width - spacing;
-          } else {
-            top = rect.top + window.scrollY + rect.height/2 - tipRect.height/2;
-            left = rect.right + window.scrollX + spacing;
-          }
-          tooltip.style.top = `${top}px`;
-          tooltip.style.left = `${left}px`;
-          setTimeout(() => tooltip.classList.add('visible'), 10);
-        });
-        area._tooltip = tooltip;
-      });
-
-      area.addEventListener('mouseleave', function() {
-        const tooltip = area._tooltip;
-        if (tooltip) {
-          tooltip.classList.remove('visible');
-          setTimeout(() => {
-            if (tooltip.parentNode) tooltip.parentNode.removeChild(tooltip);
-          }, 250);
-          area._tooltip = null;
+    const rect = area.getBoundingClientRect();
+    const side = area.getAttribute('data-side') || 'right';
+    const spacing = 16;
+    requestAnimationFrame(() => {
+      const tipRect = tooltip.getBoundingClientRect();
+      let top = rect.top + window.scrollY + rect.height/2 - tipRect.height/2;
+      let left;
+      if (side === 'left') {
+        left = rect.left + window.scrollX - tipRect.width - spacing;
+        // Si el tooltip se sale del borde izquierdo, muévelo a la derecha
+        if (left < 0) {
+          left = rect.right + window.scrollX + spacing;
         }
-      });
+      } else {
+        left = rect.right + window.scrollX + spacing;
+        // Si el tooltip se sale del borde derecho, muévelo a la izquierda
+        if (left + tipRect.width > window.innerWidth) {
+          left = rect.left + window.scrollX - tipRect.width - spacing;
+        }
+      }
+      // Evitar que el tooltip se salga por arriba o abajo
+      if (top < 0) top = 4;
+      if (top + tipRect.height > window.innerHeight + window.scrollY) {
+        top = window.innerHeight + window.scrollY - tipRect.height - 4;
+      }
+      tooltip.style.top = `${top}px`;
+      tooltip.style.left = `${left}px`;
+      setTimeout(() => tooltip.classList.add('visible'), 10);
     });
+    area._tooltip = tooltip;
+  });
+
+  area.addEventListener('mouseleave', function() {
+    const tooltip = area._tooltip;
+    if (tooltip) {
+      tooltip.classList.remove('visible');
+      setTimeout(() => {
+        if (tooltip.parentNode) tooltip.parentNode.removeChild(tooltip);
+      }, 250);
+      area._tooltip = null;
+    }
+  });
+});
    
 </script>
-
-  </script>
 </body>
 </html>
 </body>
