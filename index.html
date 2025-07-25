@@ -296,46 +296,60 @@
     </p>
   </main>
   <!-- Tooltip JS -->
-  <script>
+<script>
   document.querySelectorAll('.area').forEach(area => {
-area.addEventListener('mouseenter', function() {
-  const info = area.querySelector('.area-info');
-  if (!info) return;
-  const side = area.getAttribute('data-side') || 'right'; // <--- primero define side
-  const tooltip = document.createElement('div');
-  tooltip.className = 'area-tooltip';
-  tooltip.setAttribute('data-side', side); // <--- ahora sí, ya existe side
-  tooltip.textContent = info.textContent.trim();
-  document.body.appendChild(tooltip);
+    area.addEventListener('mouseenter', function () {
+      const info = area.querySelector('.area-info');
+      if (!info) return;
 
-  const rect = area.getBoundingClientRect();
-  const spacing = 16;
-  requestAnimationFrame(() => {
-    const tipRect = tooltip.getBoundingClientRect();
-    let top = rect.top + window.scrollY + rect.height/2 - tipRect.height/2;
-    let left;
-    if (side === 'left') {
-      left = rect.left + window.scrollX - tipRect.width - spacing;
-      if (left < 0) {
-        left = rect.right + window.scrollX + spacing;
+      const side = area.getAttribute('data-side') || 'right';
+      const tooltip = document.createElement('div');
+      tooltip.className = 'area-tooltip';
+      tooltip.setAttribute('data-side', side);
+      tooltip.textContent = info.textContent.trim();
+      document.body.appendChild(tooltip);
+
+      const rect = area.getBoundingClientRect();
+      const spacing = 16;
+
+      requestAnimationFrame(() => {
+        const tipRect = tooltip.getBoundingClientRect();
+        let top = rect.top + window.scrollY + rect.height / 2 - tipRect.height / 2;
+        let left;
+
+        if (side === 'left') {
+          left = rect.left + window.scrollX - tipRect.width - spacing;
+          if (left < 0) {
+            left = rect.right + window.scrollX + spacing;
+          }
+        } else {
+          left = rect.right + window.scrollX + spacing;
+          if (left + tipRect.width > window.innerWidth) {
+            left = rect.left + window.scrollX - tipRect.width - spacing;
+          }
+        }
+
+        if (top < 0) top = 4;
+        if (top + tipRect.height > window.innerHeight + window.scrollY) {
+          top = window.innerHeight + window.scrollY - tipRect.height - 4;
+        }
+
+        tooltip.style.top = `${top}px`;
+        tooltip.style.left = `${left}px`;
+
+        setTimeout(() => tooltip.classList.add('visible'), 10);
+      });
+
+      area._tooltip = tooltip;
+    });
+
+    area.addEventListener('mouseleave', function () {
+      if (area._tooltip) {
+        area._tooltip.remove();
+        area._tooltip = null;
       }
-    } else {
-      left = rect.right + window.scrollX + spacing;
-      if (left + tipRect.width > window.innerWidth) {
-        left = rect.left + window.scrollX - tipRect.width - spacing;
-      }
-    }
-    if (top < 0) top = 4;
-    if (top + tipRect.height > window.innerHeight + window.scrollY) {
-      top = window.innerHeight + window.scrollY - tipRect.height - 4;
-    }
-    tooltip.style.top = `${top}px`;
-    tooltip.style.left = `${left}px`;
-    setTimeout(() => tooltip.classList.add('visible'), 10);
+    });
   });
-  area._tooltip = tooltip;
-});
-   
 </script>
 </body>
 </html>
