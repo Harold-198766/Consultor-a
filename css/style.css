@@ -601,4 +601,23 @@ footer {
     text-align: center;
   }
 }
+a.descarga {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #003366;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.05em;
+  margin: 8px 0;
+}
+
+a.descarga:hover {
+  color: #900;
+}
+
+a.descarga:hover i {
+  transform: scale(1.2);
+  color: #900;
+}
 
