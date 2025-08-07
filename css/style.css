@@ -465,39 +465,38 @@ body {
 
 .descarga-grid {
   display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .descarga-item {
-  background: #f7f7f7;
-  padding: 12px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #222;
-  font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 12px;
-  transition: background 0.3s;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  justify-content: space-between;
+  background-color: #f5f5f5;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
 }
 
 .descarga-item:hover {
-  background: #39a9e0;
-  color: #fff;
+  background-color: #e0e0e0;
 }
 
 .descarga-item i {
-  font-size: 1.5rem;
+  margin-right: 10px;
+  font-size: 1.2rem;
 }
 
-.descarga-nota {
-  font-size: 0.95rem;
-  color: #555;
-  margin-top: 16px;
+.descarga-icono {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: #007bff;
 }
+
 @media (max-width: 480px) {
   .descarga-item {
     font-size: 0.95rem;
