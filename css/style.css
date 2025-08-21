@@ -699,5 +699,30 @@ a.descarga:hover i {
   color: #0099cc;
   text-decoration: underline;
 }
+body.privacidad {
+  background: #222;
+  color: #fff;
+}
+
+body.privacidad a {
+  color: #74b9ff;
+  text-decoration: underline;
+}
+
+body.privacidad header h1,
+body.privacidad h2 {
+  color: #74b9ff;
+}
+
+body.privacidad main, body.privacidad section {
+  background: transparent;
+  color: #fff;
+}
+
+body.privacidad footer {
+  background: #222;
+  color: #aaa;
+  border-radius: 0 0 14px 14px;
+}
 
 
