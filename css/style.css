@@ -699,12 +699,5 @@ a.descarga:hover i {
   color: #0099cc;
   text-decoration: underline;
 }
-body.privacidad {
-  background: #222;         /* Fondo oscuro */
-  color: #fff;              /* Texto claro */
-}
-body.privacidad a {
-  color: #74b9ff;           /* Enlaces azul claro */
-}
 
 
