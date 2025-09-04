@@ -18,9 +18,9 @@ body {
 
 /* === LOGO MÁS GRANDE Y SIN FONDO === */
 .logo-header {
-  height: 140px;
+  height: auto;
   width: auto;
-  max-width: 340px;
+  max-width: 120px;
   background: none;
   box-shadow: none;
   transition: filter 0.2s, transform 0.3s, box-shadow 0.3s;
