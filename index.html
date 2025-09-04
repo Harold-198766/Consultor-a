@@ -7,64 +7,623 @@
 
   <!-- SEO & Open Graph -->
   <meta name="description" content="Asesoría y consultoría legal en Guatemala. Abogados expertos en Derecho Penal, Civil, Familia, Derecho Notarial. Atención personalizada.">
-  <meta name="author" content="Barillas, Colindrs &amp; Asociados">
+  <meta name="author" content="Barillas, Colindres &amp; Asociados">
   <meta property="og:title" content="Barillas, Colindres &amp; Asociados">
   <meta property="og:description" content="Asistencia legal estratégica en Guatemala. Derecho penal, civil, laboral y más.">
   <meta property="og:image" content="https://consultoria-legal-guatemala.netlify.app/logo-colindres-aqua.png">
   <meta property="og:url" content="https://consultoria-legal-guatemala.netlify.app">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="google-site-verification" content="zEyCLug-drFNTWQYJha6i4atXf6c5CkhlcQNe3dPGQ8">
 
-  <!-- Recursos -->
-  <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/testimonios.css">
-  <script src="dist/main.min.js" defer></script>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Fuentes modernas -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="canonical" href="https://consultoria-legal-guatemala.netlify.app/pagina-principal">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Barillas, Colindres & Asociados",
-  "url": "https://consultoria-legal-guatemala.netlify.app",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://consultoria-legal-guatemala.netlify.app/buscar?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
+  <style>
+    :root {
+      --primary-color: #1a365d;
+      --secondary-color: #d4af37;
+      --accent-color: #059669;
+      --text-dark: #2d3748;
+      --text-light: #718096;
+      --bg-light: #f7fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --gradient-primary: linear-gradient(135deg, #1a365d 0%, #2d5aa0 100%);
+      --gradient-secondary: linear-gradient(135deg, #d4af37 0%, #f6e05e 100%);
+    }
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "Barillas, Colindres & Asociados",
-  "telephone": ["+50234950705"],
-  "email": ["lic.barillas46@gmail.com"],
-  "url": "https://consultoria-legal-guatemala.netlify.app/",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "13 calle, Manzana V, casa 56, Residenciales la Joya de Palencia",
-    "addressLocality": "Guatemala",
-    "addressCountry": "GT"
-  }
-}
-  </script>
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELCF7186PW"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ELCF7186PW');
-  </script>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      overflow-x: hidden;
+    }
+
+    /* Header moderno con efecto glassmorphism */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(26, 54, 93, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .modern-navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-header {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-header:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .brand-title {
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background: transparent;
+      border: 2px solid var(--secondary-color);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dropbtn:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 120%;
+      right: 0;
+      background: white;
+      min-width: 250px;
+      box-shadow: var(--shadow-lg);
+      border-radius: 16px;
+      padding: 1rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu-link {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .menu-link:hover {
+      background: var(--bg-light);
+      color: var(--primary-color);
+      padding-left: 2rem;
+    }
+
+    .cta-banner-header {
+      background: var(--gradient-secondary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cta-banner-header:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Hero Section moderna */
+    .banner {
+      background: var(--gradient-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .titulo-juridico {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .decorative-line {
+      width: 100px;
+      height: 4px;
+      background: var(--secondary-color);
+      margin: 0 auto;
+      border-radius: 2px;
+      animation: slideIn 1s ease-out 0.5s both;
+    }
+
+    @keyframes slideIn {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100px;
+      }
+    }
+
+    /* Secciones modernas */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      scroll-margin-top: 80px;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+
+    /* Cards de servicios modernas */
+    .areas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .area {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.4s ease;
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .area::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .area:hover::before {
+      left: 100%;
+    }
+
+    .area:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--secondary-color);
+    }
+
+    .area img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .area:hover img {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .area p {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .area-info {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Equipo moderno */
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .equipo {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+
+    .equipo:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 3px solid var(--secondary-color);
+      transition: transform 0.3s ease;
+    }
+
+    .equipo:hover .avatar {
+      transform: scale(1.1);
+    }
+
+    /* Testimonios modernos */
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonio-item {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--secondary-color);
+    }
+
+    .testimonio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonio-quote {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .testimonio-quote i {
+      color: var(--secondary-color);
+      font-size: 1.2rem;
+    }
+
+    .testimonio-cliente {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonio-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--secondary-color);
+    }
+
+    .testimonio-area {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Formularios modernos */
+    .contact-form, .newsletter-form {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      margin-top: 2rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .newsletter-form input {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: var(--bg-light);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    .contact-form button,
+    .newsletter-form button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .contact-form button:hover,
+    .newsletter-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Documentos descargables */
+    .descarga-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .descarga-item {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+
+    .descarga-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      color: var(--primary-color);
+    }
+
+    .descarga-item i:first-child {
+      font-size: 2rem;
+      color: var(--secondary-color);
+    }
+
+    /* Botón WhatsApp flotante */
+    .whatsapp-btn {
+      background: #25d366;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Mapa responsive */
+    .mapa-responsive {
+      width: 100%;
+      height: 400px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .mapa-responsive iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Footer moderno */
+    footer {
+      background: var(--gradient-primary);
+      color: white;
+      text-align: center;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    /* Newsletter especial */
+    .newsletter-section {
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: 24px;
+      margin: 4rem auto;
+      text-align: center;
+    }
+
+    .newsletter-section h2 {
+      color: white;
+    }
+
+    .newsletter-section h2::after {
+      background: var(--secondary-color);
+    }
+
+    .newsletter-form {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .newsletter-form input {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .newsletter-form button {
+      background: var(--gradient-secondary);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .modern-navbar {
+        padding: 1rem;
+      }
+      
+      .section {
+        padding: 3rem 1rem;
+      }
+      
+      .areas {
+        grid-template-columns: 1fr;
+      }
+      
+      .titulo-juridico {
+        font-size: 2rem;
+      }
+    }
+
+    /* Efectos de scroll suaves */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Animaciones de entrada */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .section {
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    /* Estados hover mejorados */
+    .area:hover .area-info {
+      color: var(--text-dark);
+    }
+  </style>
 </head>
 <body>
   <main>
@@ -72,7 +631,7 @@
       <nav class="modern-navbar">
         <div class="logo-area">
           <img src="images/logo.webp" alt="Logo Colindres" class="logo-header" width="60" height="60">
-          <span class="brand-title"></span>
+          <span class="brand-title">Barillas, Colindres & Asociados</span>
         </div>
        <ul class="nav-list">
   <li class="nav-item dropdown">
@@ -84,11 +643,12 @@
       <a href="#nosotros" class="menu-link">Nosotros</a>
       <a href="#servicios" class="menu-link">Servicios</a>
       <a href="#equipo" class="menu-link">Equipo</a>
+      <a href="#testimonios" class="menu-link">Testimonios</a>
       <a href="#blog" class="menu-link">Blog</a>
       <a href="#contacto" class="menu-link">Contacto</a>
       <a href="#newsletter" class="menu-link">Newsletter</a>
 
-      <hr style="margin: 8px 0;"> <!-- Separador visual -->
+      <hr style="margin: 8px 0;">
 
       <div class="documentos-menu">
   <strong>Documentos</strong>
@@ -101,9 +661,10 @@
 </ul>
 <a href="#contacto" class="cta-banner-header">
   <i class="fas fa-comments"></i> Solicita tu consulta
+</a>
 <a href="panel.html" 
    class="cta-banner-header" 
-   style="margin-left: 12px; display: inline-flex; align-items: center; gap: 8px;">
+   style="margin-left: 12px;">
   <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20" fill="white">
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M10 17l5-5-5-5v10z"/>
@@ -117,12 +678,14 @@
       <h1 class="titulo-juridico">Bufete de Abogados en Guatemala: Barillas, Colindres &amp; Asociados</h1>
       <div class="decorative-line"></div>
     </section>
+    
     <section class="section" id="nosotros">
       <h2>Nosotros</h2>
-      <p>
+      <p style="font-size: 1.1rem; line-height: 1.8; text-align: center; max-width: 900px; margin: 0 auto;">
        Somos un equipo de Profesionales de las Ciencias Jurídicas y Sociales Abogados y Notarios, egresados de la Facultad de Derecho de la Tricentenaria Universidad de San Carlos de Guatemala, Licenciados de amplia trayectoria en diversas ramas del derecho, incluyendo exjueces de Paz y de Primera Instancia con sólida experiencia y en derecho penal, así como expertos con décadas de ejercicio profesional en áreas del derecho civil, laboral, corporativo, notarial y de familia enfocados principalmente en asesorar a la persona y su propiedad. Esta diversidad y profundidad de conocimiento nos permite brindar no solo asesoría jurídica experta, sino también un acompañamiento humano, honesto y personalizado con plena conciencia de lo que hacemos, nuestra labor se fundamenta en valores sociales, éticos y profesionales.
       </p>
     </section>
+    
     <section class="section" id="servicios">
       <h2>Áreas de Práctica</h2>
       <div class="areas">
@@ -170,30 +733,36 @@
         </div>
       </div>
     </section>
+    
     <section class="section" id="equipo">
       <h2>Nuestro Equipo</h2>
       <div class="team">
         <div class="equipo area-penal">
           <img class="avatar" src="images/abogado.svg" alt="Avatar de Amílcar Colindres" width="100" height="100" />
-          <strong>Lic. Amílcar Colindres</strong> – Área de especialización: Derecho Penal
+          <strong>Lic. Amílcar Colindres</strong><br>
+          <span style="color: var(--text-light);">Especialización: Derecho Penal</span>
         </div>
         <div class="equipo area-familia">
           <img class="avatar" src="images/abogado.svg" alt="Avatar de Erick Barillas" width="100" height="100" />
-          <strong>Lic. Salvador Barillas</strong> – Área de especialización: Derecho de Familia
+          <strong>Lic. Salvador Barillas</strong><br>
+          <span style="color: var(--text-light);">Especialización: Derecho de Familia</span>
         </div>
         <div class="equipo area-civil">
           <img class="avatar" src="images/abogado.svg" alt="Avatar de Alfredo Lemus" width="100" height="100" />
-          <strong>Lic. Alfredo Lemus</strong> – Área de especialización: Derecho Notarial y Jurisdicción Voluntaria.
+          <strong>Lic. Alfredo Lemus</strong><br>
+          <span style="color: var(--text-light);">Especialización: Derecho Notarial y Jurisdicción Voluntaria</span>
         </div>
         <div class="equipo area-laboral">
           <img class="avatar" src="images/abogado.svg" alt="Avatar de Arnulfo Dieguez" width="100" height="100" />
-          <strong>Lic. Arnulfo Dieguez</strong> – Área de especialización: Derecho Civil y Procesal Civil y Mercantil.
+          <strong>Lic. Arnulfo Dieguez</strong><br>
+          <span style="color: var(--text-light);">Especialización: Derecho Civil y Procesal Civil y Mercantil</span>
         </div>
       </div>
     </section>
+    
     <section class="section" id="testimonios">
   <h2>
-    <i class="fas fa-comments" style="color:#0099cc; margin-right:8px;"></i>
+    <i class="fas fa-comments" style="color:var(--secondary-color); margin-right:8px;"></i>
     Testimonios de Nuestros Clientes
   </h2>
   <div class="testimonios-grid">
@@ -237,19 +806,25 @@
       </div>
     </div>
   </div>
-  <p class="testimonios-nota" style="margin-top: 1rem; color: #666;">
+  <p class="testimonios-nota" style="margin-top: 1rem; color: var(--text-light); text-align: center;">
     Los testimonios son reales y reflejan nuestro compromiso con cada cliente.
   </p>
 </section>
+    
     <section class="section" id="faq">
       <h2>Preguntas Frecuentes</h2>
-      <div>
-        <h3>¿Cuánto cuesta una consulta legal?</h3>
-        <p>Ofrecemos consultas accesibles. Contáctanos para cotizar según tu caso específico.</p>
-        <h3>¿En qué áreas del derecho se especializan?</h3>
-        <p>Derecho penal, civil, laboral, corporativo y de familia, notarial, impugnaciones entre otros.</p>
+      <div class="faq-container">
+        <div class="faq-item">
+          <h3 style="color: var(--primary-color); margin-bottom: 1rem;">¿Cuánto cuesta una consulta legal?</h3>
+          <p style="color: var(--text-light); line-height: 1.6;">Ofrecemos consultas accesibles. Contáctanos para cotizar según tu caso específico.</p>
+        </div>
+        <div class="faq-item">
+          <h3 style="color: var(--primary-color); margin-bottom: 1rem;">¿En qué áreas del derecho se especializan?</h3>
+          <p style="color: var(--text-light); line-height: 1.6;">Derecho penal, civil, laboral, corporativo y de familia, notarial, impugnaciones entre otros.</p>
+        </div>
       </div>
     </section>
+    
     <section class="section" id="blog">
       <h2>Blog</h2>
       <div id="blog-entradas"></div>
@@ -280,13 +855,32 @@
                       !linea.startsWith("---")
                     );
                   const post = document.createElement("div");
-                  post.className = "blog-post markdown-content";
-                  post.innerHTML = `
-                    <h3>${formatearTitulo(title)}</h3>
-                    <p class="date">📅 Publicado el ${date}</p>
-                    <p>${resumen || 'Contenido próximamente disponible.'}</p>
-                    <a href="${url}">Leer artículo completo</a>
+                  post.className = "blog-post";
+                  post.style.cssText = `
+                    background: var(--bg-card);
+                    padding: 2rem;
+                    border-radius: 16px;
+                    box-shadow: var(--shadow-sm);
+                    margin-bottom: 2rem;
+                    transition: all 0.3s ease;
+                    border-left: 4px solid var(--secondary-color);
                   `;
+                  post.innerHTML = `
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">${formatearTitulo(title)}</h3>
+                    <p class="date" style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">📅 Publicado el ${date}</p>
+                    <p style="color: var(--text-dark); line-height: 1.6; margin-bottom: 1rem;">${resumen || 'Contenido próximamente disponible.'}</p>
+                    <a href="${url}" style="color: var(--secondary-color); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+                      Leer artículo completo <i class="fas fa-arrow-right"></i>
+                    </a>
+                  `;
+                  post.addEventListener('mouseenter', () => {
+                    post.style.transform = 'translateY(-5px)';
+                    post.style.boxShadow = 'var(--shadow-md)';
+                  });
+                  post.addEventListener('mouseleave', () => {
+                    post.style.transform = 'translateY(0)';
+                    post.style.boxShadow = 'var(--shadow-sm)';
+                  });
                   contenedor.appendChild(post);
                 })
                 .catch(err => {
@@ -295,175 +889,280 @@
             });
           })
           .catch(err => {
-            contenedor.innerHTML = "<p>No se pudo cargar el blog.</p>";
+            contenedor.innerHTML = "<p style='text-align: center; color: var(--text-light);'>No se pudo cargar el blog.</p>";
             console.error("Error cargando index.json:", err);
           });
       </script>
     </section>
- <section class="section" id="descargas">
-  <h2>📄 Documentos Descargables</h2>
-  <div class="descarga-grid">
-    <a class="descarga-item" href="documentos/guia-del-notario-2025.pdf" download>
-      <i class="fas fa-file-pdf"></i>
-      <span>Guía del Notario 2025 (PDF)</span>
-      <i class="fas fa-download descarga-icono"></i>
-    </a>
-    <a class="descarga-item" href="documentos/guia-contratar-abogado.docx" download>
-      <i class="fas fa-file-word"></i>
-      <span>Guía: Cómo contratar un abogado (Word)</span>
-      <i class="fas fa-download descarga-icono"></i>
-    </a>
-    <a class="descarga-item" href="documentos/ley-de-avisos-electronicos.pdf" download>
-      <i class="fas fa-file-pdf"></i>
-      <span>Ley de avisos electrónicos (PDF)</span>
-      <i class="fas fa-download descarga-icono"></i>
-    </a>
-    <a class="descarga-item" href="docs/formulario-demanda.docx" download>
-      <i class="fas fa-file-word"></i>
-      <span>Formulario de Demanda (Word)</span>
-      <i class="fas fa-download descarga-icono"></i>
-    </a>
-    <a class="descarga-item" href="documentos/honorarios-registro.xlsx" download>
-      <i class="fas fa-file-excel"></i>
-      <span>Tabla de Cálculos (Excel)</span>
-      <i class="fas fa-download descarga-icono"></i>
-    </a>
-  </div>
-  <p class="descarga-nota">
-    Haz clic en el documento que desees para descargarlo directamente.
-  </p>
-</section>
+ 
+    <section class="section" id="descargas">
+      <h2>📄 Documentos Descargables</h2>
+      <div class="descarga-grid">
+        <a class="descarga-item" href="documentos/guia-del-notario-2025.pdf" download>
+          <i class="fas fa-file-pdf"></i>
+          <span>Guía del Notario 2025 (PDF)</span>
+          <i class="fas fa-download descarga-icono"></i>
+        </a>
+        <a class="descarga-item" href="documentos/guia-contratar-abogado.docx" download>
+          <i class="fas fa-file-word"></i>
+          <span>Guía: Cómo contratar un abogado (Word)</span>
+          <i class="fas fa-download descarga-icono"></i>
+        </a>
+        <a class="descarga-item" href="documentos/ley-de-avisos-electronicos.pdf" download>
+          <i class="fas fa-file-pdf"></i>
+          <span>Ley de avisos electrónicos (PDF)</span>
+          <i class="fas fa-download descarga-icono"></i>
+        </a>
+        <a class="descarga-item" href="docs/formulario-demanda.docx" download>
+          <i class="fas fa-file-word"></i>
+          <span>Formulario de Demanda (Word)</span>
+          <i class="fas fa-download descarga-icono"></i>
+        </a>
+        <a class="descarga-item" href="documentos/honorarios-registro.xlsx" download>
+          <i class="fas fa-file-excel"></i>
+          <span>Tabla de Cálculos (Excel)</span>
+          <i class="fas fa-download descarga-icono"></i>
+        </a>
+      </div>
+      <p class="descarga-nota" style="text-align: center; color: var(--text-light); margin-top: 2rem;">
+        Haz clic en el documento que desees para descargarlo directamente.
+      </p>
+    </section>
 
     <section class="section" id="contacto">
       <h2>Contacto</h2>
-      <p>Teléfonos: 3495-0705</p>
-      <p>
-        Emails:<br>
-        <a href="mailto:lic.barillas46@gmail.com">lic.barillas46@gmail.com</a><br>
-      </p>
+      <div class="contact-info" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+        <div style="text-align: center;">
+          <div style="background: var(--bg-card); padding: 2rem; border-radius: 16px; box-shadow: var(--shadow-sm);">
+            <i class="fas fa-phone" style="font-size: 2rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Teléfono</h3>
+            <p style="color: var(--text-light); font-size: 1.1rem;">3495-0705</p>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div style="background: var(--bg-card); padding: 2rem; border-radius: 16px; box-shadow: var(--shadow-sm);">
+            <i class="fas fa-envelope" style="font-size: 2rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Email</h3>
+            <p><a href="mailto:lic.barillas46@gmail.com" style="color: var(--text-light); text-decoration: none; font-size: 1.1rem;">lic.barillas46@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+      
       <form class="contact-form" action="https://formspree.io/f/mgvyvgpk" method="POST">
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <textarea name="mensaje" placeholder="Escriba su mensaje..." required></textarea>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+          <input type="text" name="nombre" placeholder="Nombre" required>
+          <input type="email" name="email" placeholder="Correo electrónico" required>
+        </div>
+        <textarea name="mensaje" placeholder="Escriba su mensaje..." required rows="6"></textarea>
         <input type="text" name="_gotcha" style="display:none">
-        <button type="submit">Enviar</button>
+        <button type="submit">
+          <i class="fas fa-paper-plane"></i> Enviar Mensaje
+        </button>
       </form>
-      <p style="font-size:0.92em; color:#555; margin-top:10px;">
+      
+      <p style="font-size:0.9rem; color: var(--text-light); margin-top: 1.5rem; text-align: center; line-height: 1.6;">
         Al enviar este formulario, usted acepta que la información proporcionada será utilizada únicamente para brindarle una respuesta y no se compartirá con terceros.<br>
         Este formulario está protegido contra spam mediante mecanismos automáticos.<br>
-        Para más información, consulte nuestra <a href="/aviso-privacidad.html" target="_blank" rel="noopener noreferrer">Política de Privacidad</a>.
+        Para más información, consulte nuestra <a href="/aviso-privacidad.html" target="_blank" rel="noopener noreferrer" style="color: var(--secondary-color);">Política de Privacidad</a>.
       </p>
-   <a href="https://maps.google.com/?q=12+calle,+1-25,+zona+10,+Edificio+Géminis+10,+oficina+1306,+Guatemala,+Guatemala" target="_blank">
-  Cómo llegar
-</a>
-<a href="https://wa.me/50234950705" class="whatsapp-btn" target="_blank">
-  <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
-</a>
-<div class="mapa-responsive">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.132701154913!2d-90.5112939!3d14.6046064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a1b7a2f6b6b7%3A0x5c7b5f4a2e2b5a8e!2sEdificio%20G%C3%A9minis%2010%2C%20Guatemala!5e0!3m2!1ses!2sgt!4v1752358946357!5m2!1ses!2sgt"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    title="Mapa de ubicación de Barillas, Colindres & Asociados">
-  </iframe>
-</div>
+   
+      <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+        <a href="https://maps.google.com/?q=12+calle,+1-25,+zona+10,+Edificio+Géminis+10,+oficina+1306,+Guatemala,+Guatemala" target="_blank" style="background: var(--primary-color); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease;">
+          <i class="fas fa-map-marker-alt"></i> Cómo llegar
+        </a>
+        <a href="https://wa.me/50234950705" class="whatsapp-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+        </a>
+      </div>
+
+      <div class="mapa-responsive">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.132701154913!2d-90.5112939!3d14.6046064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a1b7a2f6b6b7%3A0x5c7b5f4a2e2b5a8e!2sEdificio%20G%C3%A9minis%2010%2C%20Guatemala!5e0!3m2!1ses!2sgt!4v1752358946357!5m2!1ses!2sgt"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa de ubicación de Barillas, Colindres & Asociados">
+        </iframe>
+      </div>
     </section>
-       <!-- Sección Newsletter personalizada -->
+       
     <section class="section newsletter-section" id="newsletter">
       <h2>
-        <i class="fas fa-envelope-open-text" style="color:#0099cc; margin-right:8px;"></i>
+        <i class="fas fa-envelope-open-text" style="color: white; margin-right:8px;"></i>
         Suscríbete a nuestro Newsletter
       </h2>
-      <p class="newsletter-desc">
+      <p class="newsletter-desc" style="color: rgba(255,255,255,0.9); margin-bottom: 2rem; line-height: 1.6;">
         Recibe novedades legales, artículos, consejos y noticias relevantes para tu tranquilidad y protección.<br>
         Es gratis y puedes darte de baja cuando quieras.
       </p>
       <form class="newsletter-form" action="https://formspree.io/f/mgvyvgpk" method="POST" autocomplete="off">
-        <input type="text" name="nombre" placeholder="Tu nombre" required>
-        <input type="email" name="email" placeholder="Tu correo electrónico" required>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+          <input type="text" name="nombre" placeholder="Tu nombre" required>
+          <input type="email" name="email" placeholder="Tu correo electrónico" required>
+        </div>
         <button type="submit">
           <i class="fas fa-paper-plane"></i> Suscribirme
         </button>
       </form>
-      <p class="newsletter-privacidad">
-        Al suscribirte aceptas nuestra <a href="/aviso-privacidad.html" target="_blank">Política de Privacidad</a>.
+      <p class="newsletter-privacidad" style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 1rem; text-align: center;">
+        Al suscribirte aceptas nuestra <a href="/aviso-privacidad.html" target="_blank" style="color: var(--secondary-color);">Política de Privacidad</a>.
       </p>
     </section>
 
     <footer>
-      <p>
-        &copy; 2025 Salvador Barillas. Todos los derechos reservados.<br>
+      <p style="line-height: 1.6; margin-bottom: 1rem;">
+        &copy; 2025 Salvador Barillas. Todos los derechos reservados.
+      </p>
+      <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">
         12 calle, 1-25, zona 10. Edificio Géminis 10, oficina 1306 zona 10, Guatemala, Guatemala.<br>
-        Teléfonos: 34950705<br>
-        Email: lic.barillas46@gmail.com
+        Teléfonos: 34950705 | Email: lic.barillas46@gmail.com
+      </p>
+      <p style="margin-top: 2rem;">
+        <a href="/Admin/admin.html" style="color: var(--secondary-color); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem;">
+          🛠️ Acceder al Panel de Administración
+        </a>
       </p>
     </footer>
-    <p style="text-align: center; margin-top: 2rem;">
-      <a href="/Admin/admin.html" style="text-decoration: none; color:#FFFFFF; font-weight: bold;">
-        🛠️ Acceder al Panel de Administración
-      </a>
-    </p>
   </main>
-  <!-- Tooltip JS -->
-<script>
-  document.querySelectorAll('.area').forEach(area => {
-    area.addEventListener('mouseenter', function () {
-      const info = area.querySelector('.area-info');
-      if (!info) return;
 
-      const side = area.getAttribute('data-side') || 'right';
-      const tooltip = document.createElement('div');
-      tooltip.className = 'area-tooltip';
-      tooltip.setAttribute('data-side', side);
-      tooltip.textContent = info.textContent.trim();
-      document.body.appendChild(tooltip);
-
-      const rect = area.getBoundingClientRect();
-      const spacing = 16;
-
-      requestAnimationFrame(() => {
-        const tipRect = tooltip.getBoundingClientRect();
-        let top = rect.top + window.scrollY + rect.height / 2 - tipRect.height / 2;
-        let left;
-
-        if (side === 'left') {
-          left = rect.left + window.scrollX - tipRect.width - spacing;
-          if (left < 0) {
-            left = rect.right + window.scrollX + spacing;
-          }
-        } else {
-          left = rect.right + window.scrollX + spacing;
-          if (left + tipRect.width > window.innerWidth) {
-            left = rect.left + window.scrollX - tipRect.width - spacing;
-          }
-        }
-
-        if (top < 0) top = 4;
-        if (top + tipRect.height > window.innerHeight + window.scrollY) {
-          top = window.innerHeight + window.scrollY - tipRect.height - 4;
-        }
-
-        tooltip.style.top = `${top}px`;
-        tooltip.style.left = `${left}px`;
-
-        setTimeout(() => tooltip.classList.add('visible'), 10);
-      });
-
-      area._tooltip = tooltip;
-    });
-
-    area.addEventListener('mouseleave', function () {
-      if (area._tooltip) {
-        area._tooltip.remove();
-        area._tooltip = null;
+  <script>
+    // Efecto parallax sutil en el hero
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const banner = document.querySelector('.banner');
+      if (banner) {
+        banner.style.transform = `translateY(${scrolled * 0.5}px)`;
       }
     });
-  });
-</script>
-</body>
-</html>
 
-</script>
+    // Navbar con fondo dinámico
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(26, 54, 93, 0.98)';
+        header.style.boxShadow = 'var(--shadow-lg)';
+      } else {
+        header.style.background = 'rgba(26, 54, 93, 0.95)';
+        header.style.boxShadow = 'var(--shadow-sm)';
+      }
+    });
+
+    // Animación de aparición al scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section, .area, .equipo, .testimonio-item').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Mejora del menú dropdown
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownContent = document.querySelector('.dropdown-content');
+    
+    dropdown.addEventListener('mouseenter', () => {
+      dropdownContent.style.opacity = '1';
+      dropdownContent.style.visibility = 'visible';
+      dropdownContent.style.transform = 'translateY(0)';
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+      dropdownContent.style.opacity = '0';
+      dropdownContent.style.visibility = 'hidden';
+      dropdownContent.style.transform = 'translateY(-10px)';
+    });
+
+    // Smooth scroll mejorado
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Tooltip para áreas de práctica
+    document.querySelectorAll('.area').forEach(area => {
+      area.addEventListener('mouseenter', function () {
+        const info = area.querySelector('.area-info');
+        if (!info) return;
+
+        const side = area.getAttribute('data-side') || 'right';
+        const tooltip = document.createElement('div');
+        tooltip.className = 'area-tooltip';
+        tooltip.style.cssText = `
+          position: fixed;
+          background: var(--primary-color);
+          color: white;
+          padding: 1rem 1.5rem;
+          border-radius: 12px;
+          font-size: 0.9rem;
+          max-width: 300px;
+          z-index: 1000;
+          box-shadow: var(--shadow-lg);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+          line-height: 1.4;
+        `;
+        tooltip.textContent = info.textContent.trim();
+        document.body.appendChild(tooltip);
+
+        const rect = area.getBoundingClientRect();
+        const spacing = 16;
+
+        requestAnimationFrame(() => {
+          const tipRect = tooltip.getBoundingClientRect();
+          let top = rect.top + rect.height / 2 - tipRect.height / 2;
+          let left;
+
+          if (side === 'left') {
+            left = rect.left - tipRect.width - spacing;
+            if (left < 0) {
+              left = rect.right + spacing;
+            }
+          } else {
+            left = rect.right + spacing;
+            if (left + tipRect.width > window.innerWidth) {
+              left = rect.left - tipRect.width - spacing;
+            }
+          }
+
+          if (top < 0) top = 4;
+          if (top + tipRect.height > window.innerHeight) {
+            top = window.innerHeight - tipRect.height - 4;
+          }
+
+          tooltip.style.top = `${top}px`;
+          tooltip.style.left = `${left}px`;
+          tooltip.style.opacity = '1';
+        });
+
+        area._tooltip = tooltip;
+      });
+
+      area.addEventListener('mouseleave', function () {
+        if (area._tooltip) {
+          area._tooltip.remove();
+          area._tooltip = null;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
