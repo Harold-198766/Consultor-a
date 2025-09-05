@@ -16,22 +16,28 @@ body {
   color: #000;
 }
 
-/* === LOGO MÁS GRANDE Y SIN FONDO === */
 .logo-header {
-  height: auto;
-  width: auto;
-  max-width: 200px;
-  background: none;
-  box-shadow: none;
-  transition: filter 0.2s, transform 0.3s, box-shadow 0.3s;
-  animation: golden-glow 1.8s infinite ease-in-out;
+  width: 70px;    /* Tamaño legible pero no excesivo */
+  height: 70px;   /* Mantiene forma circular */
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  object-fit: cover; /* Asegura que la imagen se ajuste bien */
 }
-@keyframes golden-glow {
-  0%, 100% { filter: drop-shadow(0 0 4px #ffd700) brightness(1); }
-  50% { filter: drop-shadow(0 0 22px #ffd700) brightness(1.18); }
-}
+
 .logo-header:hover {
-  transform: scale(1.09) rotate(-3deg);
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Ajuste responsive para móviles */
+@media (max-width: 768px) {
+  .logo-header {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .brand-title {
+    font-size: 1rem; /* Texto más pequeño en móviles */
+  }
 }
 
 .logo-area {
