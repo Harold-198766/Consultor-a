@@ -20,7 +20,7 @@ body {
 .logo-header {
   height: auto;
   width: auto;
-  max-width: 120px;
+  max-width: 200px;
   background: none;
   box-shadow: none;
   transition: filter 0.2s, transform 0.3s, box-shadow 0.3s;
