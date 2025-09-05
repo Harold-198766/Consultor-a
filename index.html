@@ -21,21 +21,45 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
-    :root {
-      --primary-color: #1a365d;
-      --secondary-color: #d4af37;
-      --accent-color: #059669;
-      --text-dark: #2d3748;
-      --text-light: #718096;
-      --bg-light: #f7fafc;
-      --bg-card: #ffffff;
-      --border-color: #e2e8f0;
-      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      --gradient-primary: linear-gradient(135deg, #1a365d 0%, #2d5aa0 100%);
-      --gradient-secondary: linear-gradient(135deg, #d4af37 0%, #f6e05e 100%);
-    }
+   :root {
+  /* Colores principales originales */
+  --primary-color: #1a365d;
+  --secondary-color: #d4af37;
+  --accent-color: #059669;
+  --text-dark: #2d3748;
+  --text-light: #718096;
+  --bg-light: #f7fafc;
+  --bg-card: #ffffff;
+  --border-color: #e2e8f0;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  /* Gradientes principales */
+  --gradient-primary: linear-gradient(135deg, #1a365d 0%, #2d5aa0 100%);
+  --gradient-secondary: linear-gradient(135deg, #d4af37 0%, #f6e05e 100%);
+  
+  /* Colores para cada área legal */
+  --civil-color: #0f4c75;        /* Azul océano profundo */
+  --civil-light: #e8f4f8;        /* Azul muy claro */
+  
+  --penal-color: #8b0000;        /* Rojo oscuro (justicia) */
+  --penal-light: #fff0f0;        /* Rosa muy claro */
+  
+  --familia-color: #2d5aa0;      /* Azul real (confianza) */
+  --familia-light: #f0f4ff;      /* Azul muy claro */
+  
+  --corporativo-color: #1f2937;  /* Gris carbón (negocios) */
+  --corporativo-light: #f9fafb;  /* Gris muy claro */
+  
+  --laboral-color: #059669;      /* Verde esmeralda (crecimiento) */
+  --laboral-light: #ecfdf5;      /* Verde muy claro */
+  
+  --jurisdiccion-color: #7c3aed; /* Púrpura (autoridad) */
+  --jurisdiccion-light: #f5f3ff; /* Púrpura muy claro */
+}
 
     * {
       margin: 0;
