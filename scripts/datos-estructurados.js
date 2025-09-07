@@ -13,7 +13,7 @@ if (archivo) {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "headline": entrada.title.replace(/(^"|"$)/g, ""),
-        "description": "Artículo del blog de Colindres Barillas & Asociados sobre derecho y sociedad en Guatemala.",
+        "description": "Artículo del blog de Barillas, Colindres & Asociados sobre derecho y sociedad en Guatemala.",
         "datePublished": entrada.date,
         "url": location.href,
         "author": {
@@ -22,7 +22,7 @@ if (archivo) {
         },
         "publisher": {
           "@type": "Organization",
-          "name": "Colindres Barillas & Asociados",
+          "name": "Barillas, Colindres & Asociados",
           "logo": {
             "@type": "ImageObject",
             "url": "https://consultoria-legal-guatemala.netlify.app/img/logo-colindres-aqua.png"
@@ -36,3 +36,4 @@ if (archivo) {
       document.head.appendChild(script);
     });
 }
+
