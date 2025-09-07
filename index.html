@@ -970,60 +970,211 @@
             .split(' ')
             .map(p => p.charAt(0).toUpperCase() + p.slice(1))
             .join(' ');
-        };
-        fetch("articulos/index.json")
-          .then(res => res.json())
-          .then(entradas => {
-            entradas.forEach(({ archivo, url, title, date }) => {
-              fetch(`articulos/${archivo}`)
-                .then(res => res.ok ? res.text() : null)
-                .then(md => {
-                  if (!md) return;
-                  const resumen = md
-                    .split("\n")
-                    .find(linea =>
-                      linea.trim() &&
-                      !linea.startsWith("#") &&
-                      !linea.startsWith("---")
-                    );
-                  const post = document.createElement("div");
-                  post.className = "blog-post";
-                  post.style.cssText = `
-                    background: var(--bg-card);
-                    padding: 2rem;
-                    border-radius: 16px;
-                    box-shadow: var(--shadow-sm);
-                    margin-bottom: 2rem;
-                    transition: all 0.3s ease;
-                    border-left: 4px solid var(--secondary-color);
-                  `;
-                  post.innerHTML = `
-                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">${formatearTitulo(title)}</h3>
-                    <p class="date" style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">📅 Publicado el ${date}</p>
-                    <p style="color: var(--text-dark); line-height: 1.6; margin-bottom: 1rem;">${resumen || 'Contenido próximamente disponible.'}</p>
-                    <a href="${url}" style="color: var(--secondary-color); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
-                      Leer artículo completo <i class="fas fa-arrow-right"></i>
-                    </a>
-                  `;
-                  post.addEventListener('mouseenter', () => {
-                    post.style.transform = 'translateY(-5px)';
-                    post.style.boxShadow = 'var(--shadow-md)';
-                  });
-                  post.addEventListener('mouseleave', () => {
-                    post.style.transform = 'translateY(0)';
-                    post.style.boxShadow = 'var(--shadow-sm)';
-                  });
-                  contenedor.appendChild(post);
-                })
-                .catch(err => {
-                  console.error(`Error al cargar ${archivo}:`, err);
-                });
-            });
-          })
-          .catch(err => {
-            contenedor.innerHTML = "<p style='text-align: center; color: var(--text-light);'>No se pudo cargar el blog.</p>";
-            console.error("Error cargando index.json:", err);
-          });
+        };// JavaScript mejorado para la sección del blog
+const contenedor = document.getElementById("blog-entradas");
+
+const formatearTitulo = (t) => {
+  if (!t) return "Sin título";
+  t = t.replace(/^"|"$/g, '').trim();
+  return t
+    .toLowerCase()
+    .split(' ')
+    .map(p => p.charAt(0).toUpperCase() + p.slice(1))
+    .join(' ');
+};
+
+const formatearFecha = (fecha) => {
+  if (!fecha) return "Fecha no disponible";
+  try {
+    const date = new Date(fecha);
+    return date.toLocaleDateString('es-GT', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  } catch (e) {
+    return fecha; // Si no se puede formatear, devolver original
+  }
+};
+
+const crearPostElement = (entrada) => {
+  const { archivo, url, title, date, description, category } = entrada;
+  
+  const post = document.createElement("div");
+  post.className = "blog-post";
+  post.style.cssText = `
+    background: var(--bg-card, white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid #ffd700;
+    position: relative;
+    overflow: hidden;
+  `;
+  
+  // Efecto de hover
+  post.addEventListener('mouseenter', () => {
+    post.style.transform = 'translateY(-5px)';
+    post.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
+  });
+  
+  post.addEventListener('mouseleave', () => {
+    post.style.transform = 'translateY(0)';
+    post.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
+  });
+
+  post.innerHTML = `
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap;">
+      <h3 style="color: #003366; margin: 0; font-family: 'Playfair Display', serif; font-size: 1.5rem; line-height: 1.3;">
+        ${formatearTitulo(title)}
+      </h3>
+      ${category ? `<span style="background: linear-gradient(135deg, #39a9e0, #ffd700); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; white-space: nowrap;">${category}</span>` : ''}
+    </div>
+    <p class="date" style="color: #718096; font-size: 0.9rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+      <i class="fas fa-calendar" style="color: #ffd700;"></i>
+      Publicado el ${formatearFecha(date)}
+    </p>
+    <p style="color: #2d3748; line-height: 1.6; margin-bottom: 1.5rem;">
+      ${description || 'Contenido próximamente disponible.'}
+    </p>
+    <a href="${url}" style="
+      color: white; 
+      text-decoration: none; 
+      font-weight: 600; 
+      background: linear-gradient(135deg, #003366, #39a9e0);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 51, 102, 0.2);
+    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 51, 102, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 51, 102, 0.2)'">
+      Leer artículo completo 
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  `;
+  
+  return post;
+};
+
+// Función principal para cargar el blog
+const cargarBlog = () => {
+  // Mostrar indicador de carga
+  contenedor.innerHTML = `
+    <div style="text-align: center; padding: 3rem; color: #718096;">
+      <div style="display: inline-block; width: 40px; height: 40px; border: 3px solid rgba(57, 169, 224, 0.3); border-top: 3px solid #39a9e0; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 1rem;"></div>
+      <p>Cargando artículos del blog...</p>
+      <style>
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      </style>
+    </div>
+  `;
+
+  fetch("articulos/index.json")
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`Error HTTP: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then(entradas => {
+      if (!Array.isArray(entradas) || entradas.length === 0) {
+        throw new Error("No hay artículos disponibles");
+      }
+      
+      // Limpiar contenedor
+      contenedor.innerHTML = "";
+      
+      // Ordenar por fecha (más reciente primero)
+      entradas.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+      
+      // Crear elementos para cada entrada
+      entradas.forEach((entrada, index) => {
+        try {
+          const postElement = crearPostElement(entrada);
+          
+          // Añadir animación de aparición escalonada
+          postElement.style.opacity = '0';
+          postElement.style.transform = 'translateY(20px)';
+          
+          setTimeout(() => {
+            postElement.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            postElement.style.opacity = '1';
+            postElement.style.transform = 'translateY(0)';
+          }, index * 150); // Delay escalonado
+          
+          contenedor.appendChild(postElement);
+        } catch (error) {
+          console.error(`Error al crear elemento para entrada ${index}:`, error);
+        }
+      });
+      
+      // Agregar mensaje informativo
+      const infoElement = document.createElement("div");
+      infoElement.style.cssText = `
+        text-align: center;
+        padding: 2rem;
+        color: #718096;
+        font-style: italic;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        margin-top: 2rem;
+      `;
+      infoElement.innerHTML = `
+        <p><i class="fas fa-info-circle" style="margin-right: 0.5rem; color: #39a9e0;"></i>
+        Mostrando ${entradas.length} artículo${entradas.length !== 1 ? 's' : ''}</p>
+      `;
+      contenedor.appendChild(infoElement);
+    })
+    .catch(error => {
+      console.error("Error cargando el blog:", error);
+      contenedor.innerHTML = `
+        <div style="
+          background: #fff5f5;
+          border: 1px solid #fed7d7;
+          color: #c53030;
+          padding: 2rem;
+          border-radius: 12px;
+          text-align: center;
+        ">
+          <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem; color: #e53e3e;"></i>
+          <h3 style="color: #c53030; margin-bottom: 1rem;">Error al cargar el blog</h3>
+          <p style="margin-bottom: 1rem;">No se pudieron cargar los artículos del blog.</p>
+          <details style="margin-top: 1rem;">
+            <summary style="cursor: pointer; font-weight: 600;">Ver detalles técnicos</summary>
+            <p style="margin-top: 0.5rem; font-family: monospace; font-size: 0.9rem; color: #744210;">
+              ${error.message}
+            </p>
+          </details>
+          <button onclick="cargarBlog()" style="
+            background: #c53030;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: 600;
+          ">
+            <i class="fas fa-redo" style="margin-right: 0.5rem;"></i>
+            Intentar de nuevo
+          </button>
+        </div>
+      `;
+    });
+};
+
+// Ejecutar cuando el DOM esté listo
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', cargarBlog);
+} else {
+  cargarBlog();
+}
       </script>
     </section>
  
