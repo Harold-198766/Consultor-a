@@ -1,20 +1,29 @@
 [
   {
-    "archivo": "control-social-e-inteligencia-artificial.md",
-    "url": "articulo.html?archivo=articulos/control-social-e-inteligencia-artificial.md",
-    "title": "Control Social e Inteligencia Artificial",
-    "date": "2025-06-27"
-  },
-  {
     "archivo": "divorcio-en-guatemala.md",
     "url": "articulo.html?archivo=articulos/divorcio-en-guatemala.md",
     "title": "¿Cómo se tramita un divorcio en Guatemala?",
-    "date": "2025-06-20"
+    "date": "2025-06-20",
+    "description": "Este artículo explica el proceso legal para divorciarse en Guatemala, las causales reconocidas y los pasos que debe seguir una persona.",
+    "category": "Derecho familiar",
+    "keywords": ["divorcio en Guatemala", "proceso legal", "derecho familiar"]
   },
   {
-    "archivo": "dinámica-económica-y-política-de-los-estados-unidos.md",
+    "archivo": "control-social-e-inteligencia-artificial.md",
+    "url": "articulo.html?archivo=articulos/control-social-e-inteligencia-artificial.md",
+    "title": "Control social e inteligencia artificial",
+    "date": "2025-06-27",
+    "description": "Exploramos cómo la inteligencia artificial puede ser usada como herramienta de control social y las implicaciones legales de estas tecnologías emergentes.",
+    "category": "Derecho y tecnología",
+    "keywords": ["inteligencia artificial", "control social", "vigilancia", "derechos humanos"]
+  },
+  {
+    "archivo": "dinamica-economica-y-politica-de-los-estados-unidos.md",
     "url": "articulo.html?archivo=articulos/dinamica-economica-y-politica-de-los-estados-unidos.md",
     "title": "Dinámica Económica y Política de los Estados Unidos",
-    "date": "2025-09-05"
+    "date": "2025-09-05",
+    "description": "Guerra económica y geopolítica en el marco de un nuevo orden mundial.",
+    "category": "Economía y Política",
+    "keywords": ["Economía y Política", "Estados Unidos", "nuevo orden mundial", "geopolítica"]
   }
 ]
