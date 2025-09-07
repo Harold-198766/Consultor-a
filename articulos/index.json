@@ -8,7 +8,15 @@
     "category": "Derecho familiar",
     "keywords": ["divorcio en Guatemala", "proceso legal", "derecho familiar"]
   },
- 
+ {
+    "archivo": "control-social-e-inteligencia-artificial.md",
+    "url": "articulo.html?archivo=articulos/control-social-e-inteligencia-artificial.md",
+    "title": "Control social e inteligencia artificial",
+    "date": "2025-06-27",
+    "description": "Exploramos cómo la inteligencia artificial puede ser usada como herramienta de control social y las implicaciones legales de estas tecnologías emergentes.",
+    "category": "Derecho y tecnología",
+    "keywords": ["inteligencia artificial", "control social", "vigilancia", "derechos humanos"]
+  },
   {
     "archivo": "dinamica-economica-y-politica-de-los-estados-unidos.md",
     "url": "articulo.html?archivo=articulos/dinamica-economica-y-politica-de-los-estados-unidos.md",
