@@ -218,12 +218,140 @@
     script.textContent = JSON.stringify(jsonld, null, 2);
     document.head.appendChild(script);
   }
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  // ----------------------------
+  // Funciones auxiliares
+  // ----------------------------
+  function obtenerParametro(nombre) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(nombre);
+  }
+
+  function estimarTiempoLectura(texto) {
+    const palabrasPorMinuto = 200;
+    const palabras = texto.trim().split(/\s+/).length;
+    const minutos = Math.ceil(palabras / palabrasPorMinuto);
+    return `${minutos} min lectura`;
+  }
+
+  function actualizarMetaTags(title, description) {
+    document.title = `${title} - Barillas, Colindres & Asociados`;
+    const metaDesc = document.getElementById('dynamic-description');
+    if (metaDesc) metaDesc.content = description || `${title} - Artículo legal especializado`;
+    const breadcrumb = document.getElementById('breadcrumb-title');
+    if (breadcrumb) breadcrumb.textContent = title.length > 30 ? title.substring(0,30)+'...' : title;
+  }
+
+  function generarJSONLD(info) {
+    const jsonld = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": info.title,
+      "alternativeHeadline": info.title,
+      "image": info.image || "https://consultoria-legal-guatemala.netlify.app/img/logo-colindres-aqua.png",
+      "editor": "Barillas, Colindres & Asociados",
+      "genre": info.category,
+      "keywords": info.keywords,
+      "wordcount": info.wordcount || "",
+      "url": info.url,
+      "datePublished": info.date,
+      "dateModified": info.date,
+      "description": info.description,
+      "author": {
+        "@type": "Organization",
+        "name": "Barillas, Colindres & Asociados"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Barillas, Colindres & Asociados",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://consultoria-legal-guatemala.netlify.app/img/logo-colindres-aqua.png"
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(jsonld, null, 2);
+    document.head.appendChild(script);
+  }
+
+  // ----------------------------
+  // Función principal
+  // ----------------------------
+  function cargarArticulo() {
+    const archivo = obtenerParametro("archivo");
+    const contenedor = document.getElementById("contenido-articulo");
+
+    if (!archivo) {
+      contenedor.innerHTML = `
+        <div class="error">
+          <i class="fas fa-file-alt"></i>
+          <h3>No se especificó ningún artículo</h3>
+          <p>No se ha proporcionado un archivo de artículo para mostrar.</p>
+        </div>`;
+      return;
+    }
+
+    // Cargar índice de artículos
+    fetch('script/index.json')
+      .then(res => res.json())
+      .then(indexData => {
+        const info = indexData.find(a => a.archivo === archivo);
+        if (!info) throw new Error("Artículo no encontrado en index.json");
+
+        // Actualizar meta y encabezados
+        document.getElementById('article-title').textContent = info.title;
+        document.getElementById('article-date').textContent = info.date;
+        document.getElementById('reading-time').textContent = estimarTiempoLectura(info.description);
+        actualizarMetaTags(info.title, info.description);
+
+        // Cargar contenido Markdown
+        fetch('articulos/' + info.archivo)
+          .then(res => {
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return res.text();
+          })
+          .then(md => {
+            const limpio = md.replace(/^---[\s\S]*?---/, "").trim(); // eliminar frontmatter
+            contenedor.innerHTML = marked.parse(limpio);
+            contenedor.className = "";
+
+            // Enlaces internos con scroll suave
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+              anchor.addEventListener('click', function(e){
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+              });
+            });
+
+            // Generar JSON-LD
+            generarJSONLD(info);
+          });
+      })
+      .catch(error => {
+        console.error(error);
+        contenedor.innerHTML = `
+          <div class="error">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>No se pudo cargar el artículo</h3>
+            <p>${error.message}</p>
+          </div>`;
+      });
+  }
+
+  // Ejecutar carga
+  cargarArticulo();
+</script>
 
   // Ejecutar
   cargarArticulo();
   </script>
 </body>
 </html>
+
 
 
 
