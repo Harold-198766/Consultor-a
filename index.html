@@ -956,56 +956,67 @@
         </div>
       </div>
     </section>
-  <section class="section" id="blog">
-      <h2>Blog</h2>
-      <div id="blog-entradas"></div>
-      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-      <script>
-        const contenedor = document.getElementById("blog-entradas");
-        const formatearTitulo = (t) => {
-          t = t.replace(/^"|"$/g, '').trim();
-          return t
-            .toLowerCase()
-            .split(' ')
-            .map(p => p.charAt(0).toUpperCase() + p.slice(1))
-            .join(' ');
-        };
-        fetch("articulos/index.json")
-          .then(res => res.json())
-          .then(entradas => {
-            entradas.forEach(({ archivo, url, title, date }) => {
-              fetch(`articulos/${archivo}`)
-                .then(res => res.ok ? res.text() : null)
-                .then(md => {
-                  if (!md) return;
-                  const resumen = md
-                    .split("\n")
-                    .find(linea =>
-                      linea.trim() &&
-                      !linea.startsWith("#") &&
-                      !linea.startsWith("---")
-                    );
-                  const post = document.createElement("div");
-                  post.className = "blog-post markdown-content";
-                  post.innerHTML = `
-                    <h3>${formatearTitulo(title)}</h3>
-                    <p class="date">📅 Publicado el ${date}</p>
-                    <p>${resumen || 'Contenido próximamente disponible.'}</p>
-                    <a href="${url}">Leer artículo completo</a>
-                  `;
-                  contenedor.appendChild(post);
-                })
-                .catch(err => {
-                  console.error(`Error al cargar ${archivo}:`, err);
-                });
+<section class="section" id="blog">
+  <h2>Blog</h2>
+  <div id="blog-entradas"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const contenedor = document.getElementById("blog-entradas");
+
+    const formatearTitulo = (t) => {
+      t = t.replace(/^"|"$/g, '').trim();
+      return t
+        .toLowerCase()
+        .split(' ')
+        .map(p => p.charAt(0).toUpperCase() + p.slice(1))
+        .join(' ');
+    };
+
+    fetch("articulos/index.json")
+      .then(res => res.json())
+      .then(entradas => {
+        entradas.forEach(({ archivo, url, title, date, description }) => {
+          fetch(`articulos/${archivo}`)
+            .then(res => res.ok ? res.text() : null)
+            .then(md => {
+              if (!md) return;
+
+              // Buscar primera línea del markdown como resumen
+              let resumen = md
+                .split("\n")
+                .find(linea =>
+                  linea.trim() &&
+                  !linea.startsWith("#") &&
+                  !linea.startsWith("---")
+                );
+
+              // Si no hay resumen, usar la description del JSON
+              if (!resumen) {
+                resumen = description || 'Contenido próximamente disponible.';
+              }
+
+              const post = document.createElement("div");
+              post.className = "blog-post markdown-content";
+              post.innerHTML = `
+                <h3>${formatearTitulo(title)}</h3>
+                <p class="date">📅 Publicado el ${date}</p>
+                <p>${resumen}</p>
+                <a href="${url}">Leer artículo completo</a>
+              `;
+              contenedor.appendChild(post);
+            })
+            .catch(err => {
+              console.error(`Error al cargar ${archivo}:`, err);
             });
-          })
-          .catch(err => {
-            contenedor.innerHTML = "<p>No se pudo cargar el blog.</p>";
-            console.error("Error cargando index.json:", err);
-          });
-      </script>
-    </section>
+        });
+      })
+      .catch(err => {
+        contenedor.innerHTML = "<p>No se pudo cargar el blog.</p>";
+        console.error("Error cargando index.json:", err);
+      });
+  </script>
+</section>
+
  
     <section class="section" id="descargas">
       <h2>📄 Documentos Descargables</h2>
