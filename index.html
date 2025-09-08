@@ -957,188 +957,185 @@
       </div>
     </section>
     
-   <section class="section" id="blog">
+ <section class="section" id="blog">
   <h2>Blog</h2>
   <div id="blog-entradas"></div>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-    // JavaScript limpio para la sección del blog
-const contenedor = document.getElementById("blog-entradas");
-const formatearTitulo = (t) => {
-  if (!t) return "Sin título";
-  t = t.replace(/^"|"$/g, '').trim();
-  return t
-    .toLowerCase()
-    .split(' ')
-    .map(p => p.charAt(0).toUpperCase() + p.slice(1))
-    .join(' ');
-};
-const formatearFecha = (fecha) => {
-  if (!fecha) return "Fecha no disponible";
-  try {
-    const date = new Date(fecha);
-    return date.toLocaleDateString('es-GT', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  } catch (e) {
-    return fecha;
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const contenedor = document.getElementById("blog-entradas");
+  
+  if (!contenedor) {
+    console.error('No se encontró el contenedor blog-entradas');
+    return;
   }
-};
-const crearPostElement = (entrada) => {
-  const { archivo, url, title, date, description, category } = entrada;
-  
-  const post = document.createElement("div");
-  post.className = "blog-post";
-  post.style.cssText = `
-    background: var(--bg-card, white);
-    padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    margin-bottom: 2rem;
-    transition: all 0.3s ease;
-    border-left: 4px solid var(--secondary-color);
-    position: relative;
-    overflow: hidden;
-  `;
-  
-  post.addEventListener('mouseenter', () => {
-    post.style.transform = 'translateY(-5px)';
-    post.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
-  });
-  
-  post.addEventListener('mouseleave', () => {
-    post.style.transform = 'translateY(0)';
-    post.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
-  });
-  post.innerHTML = `
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap;">
-      <h3 style="color: var(--primary-color); margin: 0; font-family: 'Playfair Display', serif; font-size: 1.5rem; line-height: 1.3;">
-        ${formatearTitulo(title)}
-      </h3>
-      ${category ? `<span style="background: var(--gradient-secondary); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; white-space: nowrap;">${category}</span>` : ''}
-    </div>
-    <p class="date" style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-      <i class="fas fa-calendar" style="color: var(--secondary-color);"></i>
-      Publicado el ${formatearFecha(date)}
-    </p>
-    <p style="color: var(--text-dark); line-height: 1.6; margin-bottom: 1.5rem;">
-      ${description || 'Contenido próximamente disponible.'}
-    </p>
-    <a href="${url}" style="
-      color: white; 
-      text-decoration: none; 
-      font-weight: 600; 
-      background: var(--gradient-primary);
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow-sm);
-    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-sm)'">
-      Leer artículo completo 
-      <i class="fas fa-arrow-right"></i>
-    </a>
-  `;
-  
-  return post;
-};
 
-// AQUÍ NECESITAS AÑADIR LA PARTE QUE TE FALTA:
-
-function cargarBlog() {
+  console.log('Iniciando carga del blog...');
+  
+  // Mostrar loading
   contenedor.innerHTML = `
-    <div style="text-align: center; padding: 3rem; color: var(--text-light);">
-      <div style="display: inline-block; width: 40px; height: 40px; border: 3px solid rgba(212, 175, 55, 0.3); border-top: 3px solid var(--secondary-color); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 1rem;"></div>
+    <div style="text-align: center; padding: 3rem; color: #718096;">
+      <div style="display: inline-block; width: 40px; height: 40px; border: 3px solid rgba(212, 175, 55, 0.3); border-top: 3px solid #d4af37; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 1rem;"></div>
       <p>Cargando artículos del blog...</p>
-      <style>
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      </style>
     </div>
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
   `;
 
-  fetch("articulos/index.json")
-    .then(res => {
-      console.log('Respuesta del fetch:', res.status, res.statusText);
-      if (!res.ok) {
-        throw new Error(`Error HTTP: ${res.status} - ${res.statusText}`);
+  // Cargar artículos
+  fetch('articulos/index.json')
+    .then(response => {
+      console.log('Respuesta fetch:', response.status);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-      return res.json();
+      return response.json();
     })
-    .then(entradas => {
-      console.log('Datos cargados:', entradas);
+    .then(articulos => {
+      console.log('Artículos cargados:', articulos);
       
-      if (!Array.isArray(entradas) || entradas.length === 0) {
-        throw new Error("No hay artículos disponibles");
+      if (!Array.isArray(articulos) || articulos.length === 0) {
+        throw new Error('No hay artículos disponibles');
       }
       
-      contenedor.innerHTML = "";
-      entradas.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+      // Limpiar contenedor
+      contenedor.innerHTML = '';
       
-      entradas.forEach((entrada, index) => {
-        try {
-          const postElement = crearPostElement(entrada);
-          postElement.style.opacity = '0';
-          postElement.style.transform = 'translateY(20px)';
+      // Ordenar por fecha
+      articulos.sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      // Crear elementos
+      articulos.forEach((articulo, index) => {
+        const post = document.createElement('div');
+        post.className = 'blog-post';
+        post.style.cssText = `
+          background: white;
+          padding: 2rem;
+          border-radius: 16px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+          margin-bottom: 2rem;
+          border-left: 4px solid #d4af37;
+          transition: all 0.3s ease;
+          opacity: 0;
+          transform: translateY(20px);
+        `;
+        
+        // Formatear fecha
+        const fecha = new Date(articulo.date).toLocaleDateString('es-GT', {
+          year: 'numeric',
+          month: 'long', 
+          day: 'numeric'
+        });
+        
+        post.innerHTML = `
+          <div style="margin-bottom: 1rem;">
+            <h3 style="color: #1a365d; margin: 0 0 0.5rem 0; font-family: 'Playfair Display', serif; font-size: 1.5rem;">
+              ${articulo.title}
+            </h3>
+            ${articulo.category ? `<span style="background: linear-gradient(135deg, #d4af37, #f6e05e); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">${articulo.category}</span>` : ''}
+          </div>
           
-          setTimeout(() => {
-            postElement.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            postElement.style.opacity = '1';
-            postElement.style.transform = 'translateY(0)';
-          }, index * 150);
+          <p style="color: #718096; font-size: 0.9rem; margin-bottom: 1rem;">
+            <i class="fas fa-calendar" style="color: #d4af37; margin-right: 0.5rem;"></i>
+            ${fecha}
+          </p>
           
-          contenedor.appendChild(postElement);
-        } catch (error) {
-          console.error(`Error al crear elemento para entrada ${index}:`, error);
-        }
+          <p style="color: #2d3748; line-height: 1.6; margin-bottom: 1.5rem;">
+            ${articulo.description || 'Contenido próximamente disponible.'}
+          </p>
+          
+          <a href="${articulo.url}" style="
+            background: linear-gradient(135deg, #1a365d, #2d5aa0);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(26, 54, 93, 0.2);
+          ">
+            Leer artículo completo
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        `;
+        
+        // Hover effects
+        post.addEventListener('mouseenter', () => {
+          post.style.transform = 'translateY(-5px)';
+          post.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+        });
+        
+        post.addEventListener('mouseleave', () => {
+          post.style.transform = 'translateY(0)';
+          post.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+        });
+        
+        contenedor.appendChild(post);
+        
+        // Animación de aparición
+        setTimeout(() => {
+          post.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          post.style.opacity = '1';
+          post.style.transform = 'translateY(0)';
+        }, index * 150);
       });
       
-      const infoElement = document.createElement("div");
-      infoElement.style.cssText = `
-        text-align: center; padding: 2rem; color: var(--text-light);
-        font-style: italic; border-top: 1px solid var(--border-color); margin-top: 2rem;
+      // Mensaje informativo
+      const info = document.createElement('div');
+      info.style.cssText = `
+        text-align: center;
+        padding: 2rem;
+        color: #718096;
+        font-style: italic;
+        border-top: 1px solid #e2e8f0;
+        margin-top: 2rem;
       `;
-      infoElement.innerHTML = `
-        <p><i class="fas fa-info-circle" style="margin-right: 0.5rem; color: var(--secondary-color);"></i>
-        Mostrando ${entradas.length} artículo${entradas.length !== 1 ? 's' : ''}</p>
+      info.innerHTML = `
+        <p><i class="fas fa-info-circle" style="margin-right: 0.5rem; color: #d4af37;"></i>
+        Mostrando ${articulos.length} artículo${articulos.length !== 1 ? 's' : ''}</p>
       `;
-      contenedor.appendChild(infoElement);
+      contenedor.appendChild(info);
     })
     .catch(error => {
-      console.error("Error cargando el blog:", error);
+      console.error('Error cargando blog:', error);
       contenedor.innerHTML = `
-        <div style="background: #fff5f5; border: 1px solid #fed7d7; color: #c53030; padding: 2rem; border-radius: 12px; text-align: center;">
+        <div style="
+          background: #fff5f5;
+          border: 1px solid #fed7d7;
+          color: #c53030;
+          padding: 2rem;
+          border-radius: 12px;
+          text-align: center;
+        ">
           <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem; color: #e53e3e;"></i>
           <h3 style="color: #c53030; margin-bottom: 1rem;">Error al cargar el blog</h3>
-          <p style="margin-bottom: 1rem;">No se pudieron cargar los artículos del blog.</p>
-          <details style="margin-top: 1rem;">
-            <summary style="cursor: pointer; font-weight: 600;">Ver detalles técnicos</summary>
-            <p style="margin-top: 0.5rem; font-family: monospace; font-size: 0.9rem; color: #744210;">
-              ${error.message}
-            </p>
-          </details>
-          <button onclick="cargarBlog()" style="background: #c53030; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; margin-top: 1rem; font-weight: 600;">
-            <i class="fas fa-redo" style="margin-right: 0.5rem;"></i>
-            Intentar de nuevo
+          <p>No se pudieron cargar los artículos: ${error.message}</p>
+          <button onclick="location.reload()" style="
+            background: #c53030;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: 600;
+          ">
+            Reintentar
           </button>
         </div>
       `;
     });
-}
-
-// Ejecutar cuando el DOM esté listo
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', cargarBlog);
-} else {
-  cargarBlog();
-}
-  </script>
+});
+</script>
 </section>
   fetch("articulos/index.json")
     .then(res => {
