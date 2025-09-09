@@ -6,3 +6,4 @@ require('esbuild').build({
   outfile: 'dist/main.min.js',
   target: ['es2020'],
 }).catch(() => process.exit(1));
+
