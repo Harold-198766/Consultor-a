@@ -21,9 +21,9 @@
   },
   "dependencies": {
     "postcss-cli": "^10.1.0",
-a47feb8af80db0d3b0dd29b2fe7ff5c82fb1bc72
     "gray-matter": "^4.0.3"
   }
-}
+
+
 
 
