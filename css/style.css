@@ -1,25 +1,13 @@
-/* Reset básico */
+/* === RESET Y TIPOGRAFÍA === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/playfairdisplay/v30/nuFvD-vYSZviVYUb_rj3ij__anPXDTzYhCw.woff2') format('woff2');
-}
-h1, h2, .titulo-juridico {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-}
 
-/* Fondo madera y tipografía */
 body {
   font-family: 'Georgia', serif;
-  background-image: url('../images/Imagen-de-madera.jpg') no-repeat center center fixed;
+  background-image: url('../images/fondo-oficina-juridica.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
@@ -27,93 +15,191 @@ body {
   background-color: #5C4033;
   color: #000;
 }
-/* Overlay blanco, opcional y ajustable */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(255,255,255,0.6); /* Ajusta opacidad */
-  pointer-events: none;
-  z-index: 0;
-}
-body, body * {
-  position: relative;
-  z-index: 1;
-}
 
-/* === ENCABEZADO === */
-header {
-  background-color: rgba(0, 0, 0, 0.88);
-  color: #fffbe8;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  border-bottom: 2px solid #900;
-}
-
-header img, .logo-img {
-  height: 90px;
-  width: auto;
-  max-width: 220px;
-  transition: filter 0.2s;
-}
-
-header img:hover {
-  filter: brightness(1.1) drop-shadow(0 0 8px #9008);
-}
-.avatar {
-  width: 70px;
-  height: 70px;
+.logo-header {
+  width: 70px;    /* Tamaño legible pero no excesivo */
+  height: 70px;   /* Mantiene forma circular */
   border-radius: 50%;
-  object-fit: cover;
-  margin-right: 15px;
-  vertical-align: middle;
-  border: 2px solid #003366;
+  transition: transform 0.3s ease;
+  object-fit: cover; /* Asegura que la imagen se ajuste bien */
 }
-.team > div {
+
+.logo-header:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Ajuste responsive para móviles */
+@media (max-width: 768px) {
+  .logo-header {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .brand-title {
+    font-size: 1rem; /* Texto más pequeño en móviles */
+  }
+}
+
+.logo-area {
+  display: flex;
+  justify-content: flex-start; /* Alinea el contenido al inicio del eje horizontal */
+  align-items: center; /* Centra verticalmente si estás en dirección de fila */
+  flex: 1;
+  background: none;
+}
+
+/* === BARRA DE NAVEGACIÓN CENTRADA Y ESTILO SOLICITA TU CONSULTA === */
+.modern-navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  background: none;
+  box-shadow: none;
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-title {
+  font-size: 1.7rem;
+  color: #ffd700;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.11);
+}
+
+.nav-list {
+  list-style: none;
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  gap: 0.8em;
+  width: 100%;
 }
 
-nav a {
-  color: #fff;
-  margin: 0 10px;
-  text-decoration: none;
+.nav-item {
+  position: relative;
+}
+
+.dropbtn,
+.nav-list > .nav-item > a.menu-link {
+  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
+  color: #222;
   font-weight: bold;
-  border-radius: 5px;
-  padding: 6px 12px;
-  transition: background 0.2s, color 0.2s;
+  padding: 10px 28px;
+  border-radius: 28px;
+  text-decoration: none;
+  font-size: 1.08em;
+  box-shadow: 0 3px 12px #00000008;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  border: none;
+  margin: 0 8px;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.dropbtn:hover,
+.nav-list > .nav-item > a.menu-link:hover {
+  background: linear-gradient(90deg, #39a9e0 65%, #ffd700 100%);
+  color: #003366;
+  transform: scale(1.045);
 }
 
-nav a:hover {
-  background: #900;
-  color: #fffbe8;
+.menu-icon {
+  font-size: 1.3em;
+  margin-left: 6px;
 }
 
-/* === BANNER PRINCIPAL === */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 54px;
+  background: #fff;
+  min-width: 220px;
+  box-shadow: 0 8px 32px rgba(57,169,224,0.20);
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 10;
+  animation: dropdownAppear 0.23s ease;
+}
+@keyframes dropdownAppear {
+  0% { opacity: 0; transform: translateY(-18px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+.dropdown-content a {
+  display: block;
+  padding: 16px 30px;
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.07rem;
+  transition: background 0.17s, color 0.17s;
+}
+.dropdown-content a:hover {
+  background: #39a9e0;
+  color: #fff;
+}
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+
+/* 🎯 Subtítulo "Documentos" */
+.documentos-menu strong {
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #444;
+  border-top: 1px solid #ccc;
+  margin-top: 8px;
+  padding: 8px 12px 4px;
+  display: block;
+}
+
+/* Botón "Solicita tu consulta" */
+.cta-banner-header {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffd700 65%, #39a9e0 100%);
+  color: #222;
+  font-weight: bold;
+  padding: 10px 28px;
+  border-radius: 28px;
+  text-decoration: none;
+  font-size: 1.08em;
+  box-shadow: 0 3px 12px #00000008;
+  letter-spacing: 0.5px;
+  margin: 16px 0 0 0;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+.cta-banner-header:hover {
+  background: linear-gradient(90deg, #39a9e0 65%, #ffd700 100%);
+  color: #003366;
+  transform: scale(1.045);
+}
+
+/* === BANNER PRINCIPAL SIN FONDO, TÍTULO DORADO === */
 .banner {
-  background: linear-gradient(135deg, #900 65%, #003366 100%);
-  color: #fffbe8;
+  background: none;
+  color: #ffd700;
   text-align: center;
   padding: 60px 20px;
-  border-bottom: 3px solid #003366;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  box-shadow: none;
 }
-
-.banner h1, .titulo-juridico {
+.banner h1,
+.titulo-juridico {
   font-size: 2.7em;
-  color: #fff;
+  color: #ffd700;
   font-family: 'Playfair Display', serif;
-  text-shadow: 1px 2px 8px #9004;
-  margin: 0;
-}
-
-.banner p {
-  font-size: 1.3em;
-  margin-top: 12px;
+  text-shadow: 0 2px 8px #000, 0 0 24px #ffd70099;
+  background: none;
+  border: none;
 }
 
 /* === SECCIONES === */
@@ -121,13 +207,13 @@ nav a:hover {
   background-color: rgba(255, 255, 255, 0.96);
   padding: 40px 20px;
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 40px auto 60px auto;
   border-radius: 14px;
   box-shadow: 0 3px 18px rgba(0,0,0,0.06);
   border-left: 4px solid #003366;
   border-right: 4px solid #003366;
+  position: relative;
 }
-
 .section h2 {
   font-family: 'Playfair Display', serif;
   color: #003366;
@@ -136,14 +222,26 @@ nav a:hover {
   padding-bottom: 0.3rem;
   margin-bottom: 2.2rem;
 }
+.section::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg,#ffd700,#39a9e0);
+  margin: 32px auto 0 auto;
+  border-radius: 2px;
+  opacity: 0.6;
+}
 
 /* === ÁREAS Y EQUIPO === */
 .areas, .team {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  justify-content: center;
 }
-
 .areas > div, .team > div {
   background: #fff;
   border-radius: 10px;
@@ -162,39 +260,316 @@ nav a:hover {
   box-shadow: 0 4px 24px rgba(0,51,102,0.14);
   background: #f1f7fa;
 }
-
-.areas > div::before {
-  content: "";
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-  background-image: url('../imagenes/matrona-justicia.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+.area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 8px;
+  padding: 8px 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  position: relative;
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.area:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 24px #00336633;
+}
+.area img {
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+  margin-right: 0.8em;
+  transition: transform 0.3s;
+}
+.area:hover img {
+  transform: scale(1.12) rotate(-6deg);
+}
+.area p {
+  margin: 0;
+  font-weight: bold;
 }
 
-.team > div::before {
+/* === EQUIPO === */
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  vertical-align: middle;
+  border: 2px solid #003366;
+}
+.team > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* === ÁREA COLOR POR RAMA === */
+/* ESTILOS PARA APLICAR LOS COLORES A CADA ÁREA */
+
+/* Derecho Civil */
+.area-civil {
+  border-left: 4px solid var(--civil-color);
+}
+.area-civil:hover {
+  background: var(--civil-light);
+  border-color: var(--civil-color);
+}
+.area-civil p {
+  color: var(--civil-color) !important;
+}
+
+/* Derecho Penal */
+.area-penal {
+  border-left: 4px solid var(--penal-color);
+}
+.area-penal:hover {
+  background: var(--penal-light);
+  border-color: var(--penal-color);
+}
+.area-penal p {
+  color: var(--penal-color) !important;
+}
+
+/* Derecho de Familia */
+.area-familia {
+  border-left: 4px solid var(--familia-color);
+}
+.area-familia:hover {
+  background: var(--familia-light);
+  border-color: var(--familia-color);
+}
+.area-familia p {
+  color: var(--familia-color) !important;
+}
+
+/* Derecho Corporativo */
+.area-corporativo {
+  border-left: 4px solid var(--corporativo-color);
+}
+.area-corporativo:hover {
+  background: var(--corporativo-light);
+  border-color: var(--corporativo-color);
+}
+.area-corporativo p {
+  color: var(--corporativo-color) !important;
+}
+
+/* Derecho Laboral */
+.area-laboral {
+  border-left: 4px solid var(--laboral-color);
+}
+.area-laboral:hover {
+  background: var(--laboral-light);
+  border-color: var(--laboral-color);
+}
+.area-laboral p {
+  color: var(--laboral-color) !important;
+}
+
+/* Jurisdicción Voluntaria */
+.area-jurisdiccion {
+  border-left: 4px solid var(--jurisdiccion-color);
+}
+.area-jurisdiccion:hover {
+  background: var(--jurisdiccion-light);
+  border-color: var(--jurisdiccion-color);
+}
+.area-jurisdiccion p {
+  color: var(--jurisdiccion-color) !important;
+}
+
+/* Efectos de sombra coloreada al hover */
+.area-civil:hover { 
+  box-shadow: 0 10px 25px rgba(15, 76, 117, 0.15); 
+}
+.area-penal:hover { 
+  box-shadow: 0 10px 25px rgba(139, 0, 0, 0.15); 
+}
+.area-familia:hover { 
+  box-shadow: 0 10px 25px rgba(45, 90, 160, 0.15); 
+}
+.area-corporativo:hover { 
+  box-shadow: 0 10px 25px rgba(31, 41, 55, 0.15); 
+}
+.area-laboral:hover { 
+  box-shadow: 0 10px 25px rgba(5, 150, 105, 0.15); 
+}
+.area-jurisdiccion:hover { 
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.15); 
+}
+
+/* Colores para el equipo también */
+.equipo.area-civil:hover { border-color: var(--civil-color); }
+.equipo.area-penal:hover { border-color: var(--penal-color); }
+.equipo.area-familia:hover { border-color: var(--familia-color); }
+.equipo.area-corporativo:hover { border-color: var(--corporativo-color); }
+.equipo.area-laboral:hover { border-color: var(--laboral-color); }
+
+/* === TOOLTIP ANIMADO JS === */
+.area-tooltip {
+  position: absolute;
+  z-index: 9999;
+  background: #222;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.25);
+  font-size: 1em;
+  max-width: 240px;
+  white-space: pre-line;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+
+.area-tooltip.visible {
+  opacity: 1;
+}
+
+/* Flecha para tooltips a la derecha */
+.area-tooltip::after {
   content: "";
-  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  transform: translateY(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent #222 transparent transparent;
+}
+
+/* Flecha para tooltips a la izquierda */
+.area-tooltip[data-side="left"]::after {
+  left: auto;
+  right: -8px;
+  border-color: transparent transparent transparent #222;
+}
+
+/* Oculta el área-info clásica (solo para tooltip JS) */
+.area-info {
+  display: none;
+}
+/* Estilos para la sección de Testimonios de Clientes */
+
+#testimonios {
+  padding: 2rem 1rem;
+  background: #f7fafc;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.05);
+}
+
+#testimonios h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #222c35;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.testimonios-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.testimonio-item {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,0.07);
+  padding: 1.5rem 1rem;
+  max-width: 320px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+
+.testimonio-item:hover {
+  box-shadow: 0 2px 16px 0 rgba(0,153,204,0.14);
+}
+
+.testimonio-quote {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 1rem;
+  position: relative;
+  text-align: center;
+}
+
+.testimonio-quote .fa-quote-left,
+.testimonio-quote .fa-quote-right {
+  color: #0099cc;
+  font-size: 1.1em;
+  opacity: 0.7;
+  margin: 0 4px;
+}
+
+.testimonio-cliente {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 0.5rem;
+}
+
+.testimonio-avatar {
+  border-radius: 50%;
+  border: 2px solid #0099cc;
   width: 48px;
   height: 48px;
-  background-image: url('../imagenes/abogado-clasico.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+  object-fit: cover;
+  background: #e9f5fa;
 }
-  
+
+.testimonio-area {
+  display: block;
+  font-size: 0.93em;
+  color: #0099cc;
+  margin-top: 2px;
+}
+
+.testimonios-nota {
+  text-align: center;
+  font-size: 0.98em;
+  color: #666;
+  margin-top: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .testimonios-grid {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .testimonio-item {
+    max-width: 95vw;
+  }
+}
+
 /* === FORMULARIO === */
-form, .contact-form {
+.contact-form {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(57,169,224,0.09);
+  padding: 18px 22px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-
 .contact-form input,
 .contact-form textarea {
   max-width: 98%;
   margin: 0 auto 1rem auto;
-  display: block;
   background-color: #e7f8ec;
   border: 1px solid #b2d8c9;
   padding: 0.6rem;
@@ -203,13 +578,11 @@ form, .contact-form {
   color: #222;
   font-size: 1em;
 }
-
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: 2px solid #25D366;
   background: #fff;
 }
-
 .contact-form button {
   background-color: #003366;
   color: #fff;
@@ -221,21 +594,18 @@ form, .contact-form {
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
   box-shadow: 0 2px 10px #00336618;
-  display: block;
   margin: 1rem auto;
 }
-
 .contact-form button:hover {
   background-color: #900;
   transform: translateY(-2px) scale(1.04);
 }
 
-/* === BOTÓN WHATSAPP Y FLECHA === */
+/* === BOTÓN WHATSAPP === */
 .whatsapp-btn {
   background-color: #128C7E !important;
   color: #fff !important;
   padding: 12px 32px;
-  display: block;
   margin: 20px auto 0 auto;
   text-decoration: none;
   border-radius: 25px;
@@ -246,39 +616,10 @@ form, .contact-form {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   transition: background 0.3s;
   max-width: 320px;
+  display: block;
 }
-
 .whatsapp-btn:hover {
-  background-color: #111 !important;
-  color: #fff !important;
-}
-
-/* Efecto de transición y escala para botones y enlaces */
-button, .whatsapp-btn, nav a {
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-button:hover, .whatsapp-btn:hover, nav a:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 16px #00336644;
-}
-/* Botón scroll hacia arriba */
-.boton-arriba {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #003366;
-  color: #fff;
-  padding: 10px;
-  border-radius: 50%;
-  text-decoration: none;
-  font-size: 1.5rem;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.2s;
-}
-
-.boton-arriba:hover {
-  background: #900;
+  background-color: #075e54 !important;
 }
 
 /* === BLOG === */
@@ -291,23 +632,19 @@ button:hover, .whatsapp-btn:hover, nav a:hover {
   box-shadow: 0 2px 12px #00336615;
   transition: box-shadow 0.2s;
 }
-
 .blog-post:hover {
   box-shadow: 0 6px 24px #0033662a;
 }
-
 .blog-post h3 {
   margin-top: 0;
   color: #900;
   border-bottom: 1px solid #9003;
   padding-bottom: 4px;
 }
-
 .blog-post p.date {
   font-size: 0.9em;
   color: #555;
 }
-
 .blog-post a {
   display: inline-block;
   margin-top: 10px;
@@ -316,10 +653,56 @@ button:hover, .whatsapp-btn:hover, nav a:hover {
   text-decoration: underline;
   transition: color 0.2s;
 }
-
 .blog-post a:hover {
   color: #900;
   text-decoration: none;
+}
+
+/* === DESCARGAS === */
+
+.descarga-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.descarga-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f5f5f5;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.descarga-item:hover {
+  background-color: #e0e0e0;
+}
+
+.descarga-item i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.descarga-icono {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: #007bff;
+}
+
+@media (max-width: 480px) {
+  .descarga-item {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+
+  .descarga-item i {
+    font-size: 1.25rem;
+  }
 }
 
 /* === FOOTER === */
@@ -333,7 +716,87 @@ footer {
   box-shadow: 0 -2px 6px #9002;
 }
 
-/* === DESCARGAS === */
+/* === MAPA === */
+.mapa-responsive {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.08);
+  margin-bottom: 1.5em;
+}
+.mapa-responsive iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .logo-header {
+    height: 90px;
+    max-width: 200px;
+  }
+  .modern-navbar {
+    padding: 10px 12px;
+  }
+  .nav-list {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cta-banner-header {
+    margin-top: 18px;
+  }
+  .areas, .team {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+  }
+  .team > div {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto 16px auto;
+    box-sizing: border-box;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+  }
+  .avatar {
+    margin: 0 auto 10px auto;
+    max-width: 100px;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-header {
+    height: 64px;
+    max-width: 120px;
+    margin-bottom: 8px;
+  }
+  .modern-navbar {
+    padding: 7px 6px;
+  }
+  .nav-list {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .banner {
+    padding: 32px 10px;
+    font-size: 1em;
+  }
+  .section {
+    padding: 1rem;
+  }
+  .section h2 {
+    text-align: center;
+  }
+}
 a.descarga {
   display: inline-flex;
   align-items: center;
@@ -353,73 +816,83 @@ a.descarga:hover i {
   transform: scale(1.2);
   color: #900;
 }
+/* Estilos para la sección Newsletter */
+.newsletter-section {
+  background: #eaf6fb;
+  padding: 40px 24px 32px 24px;
+  margin: 40px 0 0 0;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-/* === RESPONSIVE === */
-@media (max-width: 768px) {
-  .areas, .team {
-    grid-template-columns: 1fr !important;
-  }
-  header {
-    flex-direction: column;
-    text-align: center;
-    padding: 10px 6px;
-  }
-  header img {
-    height: 64px;
-    margin-bottom: 8px;
-  }
-  nav a {
-    display: inline-block;
-    margin: 8px 4px;
-    font-size: 1.05em;
-  }
-  .banner {
-    padding: 32px 10px;
-    font-size: 1em;
-  }
-  .section {
-    padding: 1rem;
-  }
-  .section h2 {
-    text-align: center;
-  }
+.newsletter-section h2 {
+  font-size: 1.6em;
+  font-weight: 700;
+  color: #0099cc;
+  margin-bottom: 8px;
+  text-align: center;
 }
-/* Responsive para la sección equipo */
-@media (max-width: 900px) {
-  .team {
-    grid-template-columns: 1fr !important;
-    justify-items: center;
-    gap: 22px;
-  }
-  .team > div {
-    width: 100%;
-    max-width: 340px;
-    margin: 0 auto 16px auto; /* solo margen abajo, nada a los lados */
-    box-sizing: border-box;
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    display: flex;
-  }
-  .avatar {
-    margin: 0 auto 10px auto;
-    display: block;
-    max-width: 100px;
-    height: auto;
-  }
+
+.newsletter-desc {
+  font-size: 1.05em;
+  color: #444;
+  text-align: center;
+  margin-bottom: 18px;
 }
-.mapa-responsive {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* 16:9 ratio */
-  height: 0;
-  overflow: hidden;
-  margin-top: 1em;
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
 }
-.mapa-responsive iframe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  border: 0;
+
+.newsletter-form input[type="text"],
+.newsletter-form input[type="email"] {
+  padding: 10px 14px;
+  border: 1px solid #b5e2fa;
+  border-radius: 7px;
+  width: 90%;
+  max-width: 320px;
+  font-size: 1em;
+  transition: border 0.2s;
+}
+
+.newsletter-form input:focus {
+  border-color: #0099cc;
+  outline: none;
+}
+
+.newsletter-form button {
+  background: #0099cc;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 18px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 90%;
+  max-width: 220px;
+}
+
+.newsletter-form button:hover {
+  background: #0077a6;
+}
+
+.newsletter-privacidad {
+  font-size: 0.97em;
+  color: #555;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.newsletter-privacidad a {
+  color: #0099cc;
+  text-decoration: underline;
 }

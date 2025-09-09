@@ -3,18 +3,25 @@
   "version": "1.0.0",
   "description": "Sitio estático con Netlify CMS optimizado",
   "scripts": {
-    "build:css": "postcss css/styles.css -o dist/styles.css",
-    "build:js": "node build.js",
-    "build": "npm run build:css && npm run build:js"
+  "prebuild": "node scripts/generar-json.js",
+  "build:css": "postcss css/style.css -o css/style.css",
+  "build:js": "node build.js",
+  "build": "npm run build:css && npm run build:js"
+}
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.1.3",
     "autoprefixer": "^10.4.15",
     "esbuild": "^0.19.11",
     "postcss": "^8.4.31",
+<<<<<<< HEAD
     "postcss-cli": "^10.1.0"
   },
   "dependencies": {
+=======
+    "postcss-cli": "^10.1.0",
+>>>>>>> a47feb8af80db0d3b0dd29b2fe7ff5c82fb1bc72
     "gray-matter": "^4.0.3"
   }
 }
+
