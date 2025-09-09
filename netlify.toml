@@ -1,12 +1,14 @@
 [build]
-  command = "npm run build"
-  publish = "./"
+command = "npm run build"
+publish = "dist"
 
 [dev]
-  port = 8888
-  publish = "./"
+port = 8888
+publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "18"
-  NPM_FLAGS = "--legacy-peer-deps"
+NODE_VERSION = "18"
+NPM_FLAGS = "--legacy-peer-deps"
+
+
 
