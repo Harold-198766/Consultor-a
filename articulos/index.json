@@ -19,11 +19,11 @@
   },
 {
   "archivo": "prueba-entrada-de-blog.md",
-  "url": "articulo.html?archivo=articulos/prueba-entrada-de-blog.md"
+  "url": "articulo.html?archivo=articulos/prueba-entrada-de-blog.md",
   "title": "Prueba de Entrada de Blog",
   "date": "2025-09-08",
   "description": "Este es un artículo de prueba.",
   "category": "General",
   "keywords": ["prueba", "articulo", "blog"]
 }
-]
+
