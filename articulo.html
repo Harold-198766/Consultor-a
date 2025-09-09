@@ -16,7 +16,6 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <style>
-    /* Tus estilos */
     :root {
       --primary-gold: #ffd700;
       --primary-blue: #39a9e0;
@@ -29,7 +28,6 @@
       --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    /* Resto de tu CSS */
   </style>
 </head>
 <body>
@@ -58,7 +56,6 @@
 
       <div class="article-content">
         <div id="contenido-articulo" class="loading">
-          <div></div>
           <p>Cargando contenido del artículo...</p>
         </div>
       </div>
@@ -76,9 +73,6 @@
   </div>
 
   <script>
-    // ===============================
-    // Funciones auxiliares
-    // ===============================
     function obtenerParametro(nombre) {
       const params = new URLSearchParams(window.location.search);
       return params.get(nombre);
@@ -99,9 +93,6 @@
       if (breadcrumb) breadcrumb.textContent = title.length > 30 ? title.substring(0,30)+'...' : title;
     }
 
-    // ===============================
-    // Compartir en redes sociales
-    // ===============================
     function compartirFacebook() {
       const url = encodeURIComponent(window.location.href);
       const title = encodeURIComponent(document.getElementById('article-title').textContent);
@@ -122,9 +113,6 @@
       window.open(`https://wa.me/?text=${title} ${url}`, '_blank');
     }
 
-    // ===============================
-    // Generar JSON-LD
-    // ===============================
     function generarJSONLD(info) {
       const jsonld = {
         "@context": "https://schema.org",
@@ -153,9 +141,6 @@
       document.head.appendChild(script);
     }
 
-    // ===============================
-    // Función principal para cargar artículo
-    // ===============================
     function cargarArticulo() {
       const archivo = obtenerParametro("archivo");
       const contenedor = document.getElementById("contenido-articulo");
@@ -170,8 +155,8 @@
         return;
       }
 
-      // Cargar índice de artículos
-      fetch('script/index.json')
+      // 🔹 CORREGIDO: ruta de index.json
+      fetch('index.json')
         .then(res => res.json())
         .then(indexData => {
           const info = indexData.find(a => a.archivo === archivo);
@@ -182,18 +167,16 @@
           document.getElementById('reading-time').textContent = estimarTiempoLectura(info.description);
           actualizarMetaTags(info.title, info.description);
 
-          // Cargar contenido Markdown
           fetch('articulos/' + info.archivo)
             .then(res => {
               if (!res.ok) throw new Error(`HTTP ${res.status}`);
               return res.text();
             })
             .then(md => {
-              const limpio = md.replace(/^---[\s\S]*?---/, "").trim();
+              const limpio = md.replace(/^---[\\s\\S]*?---/, "").trim();
               contenedor.innerHTML = marked.parse(limpio);
               contenedor.className = "";
 
-              // Scroll suave para enlaces internos
               document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e){
                   e.preventDefault();
@@ -216,18 +199,8 @@
         });
     }
 
-    // Ejecutar
     cargarArticulo();
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
