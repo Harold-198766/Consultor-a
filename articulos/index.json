@@ -1,7 +1,7 @@
 [
   {
     "archivo": "divorcio-en-guatemala.md",
-    "url": "articulo.html?archivo=articulos/divorcio-en-guatemala.md",
+    "url": "articulo.html?archivo=dist/articulos/divorcio-en-guatemala.md",
     "title": "¿Cómo se tramita un divorcio en Guatemala?",
     "date": "2025-06-20",
     "description": "Este artículo explica el proceso legal para divorciarse en Guatemala, las causales reconocidas y los pasos que debe seguir una persona.",
@@ -10,7 +10,7 @@
   },
  {
     "archivo": "control-social-e-inteligencia-artificial.md",
-    "url": "articulo.html?archivo=articulos/control-social-e-inteligencia-artificial.md",
+    "url": "articulo.html?archivo=dist/articulos/control-social-e-inteligencia-artificial.md",
     "title": "Control social e inteligencia artificial",
     "date": "2025-06-27",
     "description": "Exploramos cómo la inteligencia artificial puede ser usada como herramienta de control social y las implicaciones legales de estas tecnologías emergentes.",
@@ -19,7 +19,7 @@
   },
 {
   "archivo": "prueba-entrada-de-blog.md",
-  "url": "articulo.html?archivo=articulos/prueba-entrada-de-blog.md",
+  "url": "articulo.html?archivo=dist/articulos/prueba-entrada-de-blog.md"
   "title": "Prueba de Entrada de Blog",
   "date": "2025-09-08",
   "description": "Este es un artículo de prueba.",
