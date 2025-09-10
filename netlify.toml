@@ -7,9 +7,7 @@ port = 8888
 publish = "dist"
 
 [build.environment]
-NODE_VERSION = "18.20.0"
-NPM_FLAGS = "--legacy-peer-deps"
-
+NODE_VERSION = "18"
 
 
 
