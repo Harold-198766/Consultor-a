@@ -972,7 +972,8 @@
         .join(' ');
     };
 
-    fetch("articulos/index.json")
+    // Ruta corregida: index.json ahora está al mismo nivel que index.html en dist/
+    fetch("index.json")
       .then(res => res.json())
       .then(entradas => {
         entradas.forEach(({ archivo, url, title, date, description }) => {
@@ -1016,8 +1017,6 @@
       });
   </script>
 </section>
-
- 
     <section class="section" id="descargas">
       <h2>📄 Documentos Descargables</h2>
       <div class="descarga-grid">
