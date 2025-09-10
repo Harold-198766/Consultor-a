@@ -1,0 +1,18 @@
+{
+  "name": "consultoria-legal",
+  "version": "1.0.0",
+  "description": "Sitio web de Consultoría Legal Guatemala",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Build terminado'"
+  },
+  "keywords": [],
+  "author": "Barillas, Colindres & Asociados",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Harold-198766/Consultor-a.git"
+  }
+}
+
