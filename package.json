@@ -1,26 +1,32 @@
 {
   "name": "abogados-consultores",
   "version": "1.0.0",
+  "description": "Sitio estático con Netlify CMS optimizado",
   "scripts": {
     "prebuild": "node scripts/generar-json.js",
-    "build": "npm run build:css && npm run build:js && npm run build:html && npm run build:articulos && npm run build:static && npm run build:json",
+    "clean": "node scripts/clean.js",
     "build:css": "postcss css/style.css -o dist/style.css",
-    "build:js": "node build.js",
-    "build:html": "cpx index.html dist",
-    "build:articulos": "cpx \"articulos/**/*\" dist/articulos",
-    "build:static": "cpx \"{images,documentos}/**/*\" dist",
-    "build:json": "cpx index.json dist"
+    "build:js": "node scripts/build-js.js",
+    "build:html": "node scripts/copy-html.js",
+    "build:articulos": "node scripts/copy-articulos.js",
+    "build:static": "node scripts/copy-static.js",
+    "build": "npm run clean && npm run prebuild && npm run build:css && npm run build:js && npm run build:html && npm run build:articulos && npm run build:static"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^4.1.3",
-    "autoprefixer": "^10.4.15",
-    "cpx": "^1.5.0",
-    "esbuild": "^0.19.11",
     "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0",
+    "autoprefixer": "^10.4.15",
+    "@fullhuman/postcss-purgecss": "^4.1.3",
+    "esbuild": "^0.19.11"
+  },
+  "dependencies": {
     "gray-matter": "^4.0.3"
   }
 }
+
+
+
+
 
 
 
