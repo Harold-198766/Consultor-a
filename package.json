@@ -6,7 +6,7 @@
     "build": "npm run build:css && npm run build:js && npm run build:html && npm run build:articulos && npm run build:static && npm run build:json",
     "build:css": "postcss css/style.css -o dist/style.css",
     "build:js": "node build.js",
-    "build:html": "cpx index.html dist",
+    "build:html": "cpx '{index.html,articulo.html}' dist"
     "build:articulos": "cpx \"articulos/**/*\" dist/articulos",
     "build:static": "cpx \"{images,documentos}/**/*\" dist",
     "build:json": "cpx index.json dist"
@@ -21,6 +21,7 @@
     "gray-matter": "^4.0.3"
   }
 }
+
 
 
 
