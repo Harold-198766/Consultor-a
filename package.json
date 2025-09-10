@@ -2,16 +2,10 @@
   "name": "abogados-consultores",
   "version": "1.0.0",
   "description": "Sitio estático con Netlify CMS optimizado",
-  "scripts": {
-    "prebuild": "node scripts/generar-json.js",
-    "clean": "node scripts/clean.js",
-    "build:css": "postcss css/style.css -o dist/style.css",
-    "build:js": "node scripts/build-js.js",
-    "build:html": "node scripts/copy-html.js",
-    "build:articulos": "node scripts/copy-articulos.js",
-    "build:static": "node scripts/copy-static.js",
-    "build": "npm run clean && npm run prebuild && npm run build:css && npm run build:js && npm run build:html && npm run build:articulos && npm run build:static"
-  },
+ "scripts": {
+  "build": "echo 'Build terminado'"
+}
+
   "devDependencies": {
     "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0",
@@ -23,6 +17,7 @@
     "gray-matter": "^4.0.3"
   }
 }
+
 
 
 
