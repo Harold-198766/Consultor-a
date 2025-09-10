@@ -972,10 +972,17 @@
         .join(' ');
     };
 
-    // Ruta corregida: index.json ahora está al mismo nivel que index.html en dist/
-    fetch("index.json")
-      .then(res => res.json())
+    // CORRIGIENDO LA RUTA AQUÍ:
+    fetch("articulos/index.json")
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        }
+        return res.json();
+      })
       .then(entradas => {
+        console.log('Artículos cargados:', entradas);
+        
         entradas.forEach(({ archivo, url, title, date, description }) => {
           fetch(`articulos/${archivo}`)
             .then(res => res.ok ? res.text() : null)
@@ -998,11 +1005,20 @@
 
               const post = document.createElement("div");
               post.className = "blog-post markdown-content";
+              post.style.cssText = `
+                background: white;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                border-radius: 16px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                border-left: 4px solid var(--secondary-color);
+              `;
+              
               post.innerHTML = `
-                <h3>${formatearTitulo(title)}</h3>
-                <p class="date">📅 Publicado el ${date}</p>
-                <p>${resumen}</p>
-                <a href="${url}">Leer artículo completo</a>
+                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">${formatearTitulo(title)}</h3>
+                <p class="date" style="color: var(--text-light); margin-bottom: 1rem;">📅 Publicado el ${date}</p>
+                <p style="margin-bottom: 1rem;">${resumen}</p>
+                <a href="${url}" style="color: var(--secondary-color); font-weight: 600;">Leer artículo completo</a>
               `;
               contenedor.appendChild(post);
             })
@@ -1012,8 +1028,8 @@
         });
       })
       .catch(err => {
-        contenedor.innerHTML = "<p>No se pudo cargar el blog.</p>";
         console.error("Error cargando index.json:", err);
+        contenedor.innerHTML = `<p style="color: red; text-align: center;">Error al cargar el blog: ${err.message}</p>`;
       });
   </script>
 </section>
