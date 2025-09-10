@@ -1,23 +1,15 @@
 {
-  "name": "abogados-consultores",
+  "name": "consultoria-legal",
   "version": "1.0.0",
-  "description": "Sitio estático con Netlify CMS optimizado",
- "scripts": {
-  "build": "echo 'Build terminado'"
-}
-
-  "devDependencies": {
-    "postcss": "^8.4.31",
-    "postcss-cli": "^10.1.0",
-    "autoprefixer": "^10.4.15",
-    "@fullhuman/postcss-purgecss": "^4.1.3",
-    "esbuild": "^0.19.11"
+  "description": "Sitio web de Consultoría Legal Guatemala",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'Build terminado'"
   },
-  "dependencies": {
-    "gray-matter": "^4.0.3"
-  }
+  "keywords": [],
+  "author": "Barillas, Colindres & Asociados",
+  "license": "MIT"
 }
-
 
 
 
