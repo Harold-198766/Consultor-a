@@ -1,9 +1,9 @@
 backend:
   name: git-gateway
-  branch: master
+  branch: master  # Usa "main" si tu repo tiene main en lugar de master
 
-media_folder: "uploads"
-public_folder: "/uploads"
+media_folder: "images/uploads"   # Carpeta donde se guardan las imágenes en el repo
+public_folder: "/images/uploads" # Ruta pública para acceder a las imágenes
 
 collections:
   - name: "articulos"
@@ -16,10 +16,12 @@ collections:
     summary: "{{title}} — {{date}}"
     fields:
       - { label: "Título", name: "title", widget: "string", required: true }
-      - { label: "Fecha", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD" }
+      - { label: "Fecha", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm" }
       - { label: "Imagen destacada", name: "thumbnail", widget: "image", required: false }
       - { label: "Contenido", name: "body", widget: "markdown" }
       - { label: "Categorías", name: "categories", widget: "list", required: true }
       - { label: "Etiquetas", name: "tags", widget: "list", required: false }
+
+
 
 
