@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administración</title>
+    <!-- Widget de autenticación de Netlify Identity -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
-      /* Estilos muy específicos para el botón de retorno */
       #volver {
         position: fixed;
         top: 20px;
@@ -28,7 +28,9 @@
     </style>
   </head>
   <body>
-    <a id="volver" href="/">⚖️ Volver al sitio</a>
+    <h1>Panel de Administración</h1>
+    <p>Bienvenido al CMS de tu sitio.</p>
+    <a id="volver" href="/">⬅ Volver al sitio</a>
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   </body>
 </html>

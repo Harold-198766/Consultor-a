@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="dynamic-title">Artículo - Barillas, Colindres & Asociados</title>
+  <meta name="description" id="dynamic-description" content="Consulta nuestros artículos legales especializados en derecho guatemalteco.">
+
+  <!-- Fuentes modernas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Markdown parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      color: #2d3748;
+    }
+
+    .article-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .article-container img.logo {
+      width: 150px;
+      display: block;
+      margin: 0 auto 20px auto;
+    }
+
+    .article-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+
+    .article-meta {
+      font-size: 0.9rem;
+      color: #718096;
+      margin-bottom: 15px;
+    }
+
+    .article-content {
+      line-height: 1.8;
+    }
+
+    .article-content h2, .article-content h3 {
+      margin-top: 25px;
+    }
+
+    .article-navigation {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-back {
+      text-decoration: none;
+      color: #fff;
+      background-color: #39a9e0;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .btn-back:hover {
+      background-color: #0078b5;
+    }
+
+    .social-share a {
+      margin-left: 10px;
+      color: #39a9e0;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+
+    .social-share a:hover {
+      color: #003366;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="article-container">
+    <img src="images/logo.webp" alt="Logo" class="logo">
+
+    <header class="article-header">
+      <div class="article-meta" id="article-meta">
+        <span id="article-date">Cargando...</span> | 
+        <span id="reading-time">Cargando...</span>
+      </div>
+      <h1 class="article-title" id="article-title">Cargando artículo...</h1>
+    </header>
+
+    <div class="article-content">
+      <div id="contenido-articulo">
+        <p>Cargando contenido del artículo...</p>
+      </div>
+    </div>
+
+    <footer class="article-navigation">
+      <a href="index.html#blog" class="btn-back"><i class="fas fa-arrow-left"></i> Volver al blog</a>
+      <div class="social-share">
+        <a href="#" onclick="compartirFacebook()" title="Compartir en Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" onclick="compartirTwitter()" title="Compartir en Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" onclick="compartirLinkedIn()" title="Compartir en LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" onclick="compartirWhatsApp()" title="Compartir en WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ===============================
+    // Funciones auxiliares
+    // ===============================
+    function obtenerParametro(nombre) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(nombre);
+    }
+
+    function estimarTiempoLectura(texto) {
+      const palabrasPorMinuto = 200;
+      const palabras = texto.trim().split(/\s+/).length;
+      const minutos = Math.ceil(palabras / palabrasPorMinuto);
+      return `${minutos} min lectura`;
+    }
+
+    function actualizarMetaTags(title, description) {
+      document.title = `${title} - Barillas, Colindres & Asociados`;
+      const metaDesc = document.getElementById('dynamic-description');
+      if (metaDesc) metaDesc.content = description || `${title} - Artículo legal especializado`;
+    }
+
+    // ===============================
+    // Compartir en redes sociales
+    // ===============================
+    function compartirFacebook() {
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent(document.getElementById('article-title').textContent);
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title}`, '_blank', 'width=600,height=400');
+    }
+    function compartirTwitter() {
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent(document.getElementById('article-title').textContent);
+      window.open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`, '_blank', 'width=600,height=400');
+    }
+    function compartirLinkedIn() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=600,height=400');
+    }
+    function compartirWhatsApp() {
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent(document.getElementById('article-title').textContent);
+      window.open(`https://wa.me/?text=${title} ${url}`, '_blank');
+    }
+
+    // ===============================
+    // Cargar artículo desde index.json
+    // ===============================
+    function cargarArticulo() {
+      const archivo = obtenerParametro("archivo");
+      const contenedor = document.getElementById("contenido-articulo");
+
+      if (!archivo) {
+        contenedor.innerHTML = "<p>No se especificó ningún artículo.</p>";
+        return;
+      }
+
+      fetch('articulos/index.json')
+        .then(res => res.json())
+        .then(indexData => {
+          const info = indexData.find(a => a.archivo === archivo);
+          if (!info) throw new Error("Artículo no encontrado en index.json");
+
+          document.getElementById('article-title').textContent = info.title;
+
+          const fecha = new Date(info.date);
+          document.getElementById('article-date').textContent = fecha.toLocaleDateString('es-GT', {
+            year: 'numeric', month: 'long', day: 'numeric'
+          });
+
+          document.getElementById('reading-time').textContent = estimarTiempoLectura(info.description);
+          actualizarMetaTags(info.title, info.description);
+
+          fetch('articulos/' + info.archivo)
+            .then(res => res.text())
+            .then(md => {
+              const limpio = md.replace(/^---[\s\S]*?---/, "").trim();
+              contenedor.innerHTML = marked.parse(limpio);
+            });
+        })
+        .catch(error => {
+          contenedor.innerHTML = `<p>Error al cargar el artículo: ${error.message}</p>`;
+        });
+    }
+
+    cargarArticulo();
+  </script>
+</body>
+</html>
+

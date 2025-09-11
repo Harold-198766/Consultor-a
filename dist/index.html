@@ -972,10 +972,17 @@
         .join(' ');
     };
 
-    // Ruta corregida: index.json ahora está al mismo nivel que index.html en dist/
-    fetch("index.json")
-      .then(res => res.json())
+    // CORRIGIENDO LA RUTA AQUÍ:
+    fetch("articulos/index.json")
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        }
+        return res.json();
+      })
       .then(entradas => {
+        console.log('Artículos cargados:', entradas);
+        
         entradas.forEach(({ archivo, url, title, date, description }) => {
           fetch(`articulos/${archivo}`)
             .then(res => res.ok ? res.text() : null)
@@ -998,11 +1005,20 @@
 
               const post = document.createElement("div");
               post.className = "blog-post markdown-content";
+              post.style.cssText = `
+                background: white;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                border-radius: 16px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                border-left: 4px solid var(--secondary-color);
+              `;
+              
               post.innerHTML = `
-                <h3>${formatearTitulo(title)}</h3>
-                <p class="date">📅 Publicado el ${date}</p>
-                <p>${resumen}</p>
-                <a href="${url}">Leer artículo completo</a>
+                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">${formatearTitulo(title)}</h3>
+                <p class="date" style="color: var(--text-light); margin-bottom: 1rem;">📅 Publicado el ${date}</p>
+                <p style="margin-bottom: 1rem;">${resumen}</p>
+                <a href="${url}" style="color: var(--secondary-color); font-weight: 600;">Leer artículo completo</a>
               `;
               contenedor.appendChild(post);
             })
@@ -1012,8 +1028,8 @@
         });
       })
       .catch(err => {
-        contenedor.innerHTML = "<p>No se pudo cargar el blog.</p>";
         console.error("Error cargando index.json:", err);
+        contenedor.innerHTML = `<p style="color: red; text-align: center;">Error al cargar el blog: ${err.message}</p>`;
       });
   </script>
 </section>
@@ -1130,21 +1146,19 @@
         Al suscribirte aceptas nuestra <a href="/aviso-privacidad.html" target="_blank" style="color: var(--secondary-color);">Política de Privacidad</a>.
       </p>
     </section>
-
-    <footer>
-      <p style="line-height: 1.6; margin-bottom: 1rem;">
-        &copy; 2025 Barillas, Colindres & Asociados. Todos los derechos reservados.
-      </p>
-      <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">
+ <footer>
+      <p>
+        &copy; 2025 Salvador Barillas. Todos los derechos reservados.<br>
         12 calle, 1-25, zona 10. Edificio Géminis 10, oficina 1306 zona 10, Guatemala, Guatemala.<br>
-        Teléfonos: 34950705 | Email: lic.barillas46@gmail.com
-      </p>
-      <p style="margin-top: 2rem;">
-        <a href="/Admin/admin.html" style="color: var(--secondary-color); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem;">
-          🛠️ Acceder al Panel de Administración
-        </a>
+        Teléfonos: 34950705<br>
+        Email: lic.barillas46@gmail.com
       </p>
     </footer>
+    <p style="text-align: center; margin-top: 2rem;">
+      <a href="/admin.html" style="text-decoration: none; color:#FFFFFF; font-weight: bold;">
+        🛠️ Acceder al Panel de Administración
+      </a>
+    </p>
   </main>
 
   <script>
@@ -1288,3 +1302,9 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
