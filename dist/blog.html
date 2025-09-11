@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - Barillas, Colindres & Asociados</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Blog - Barillas, Colindres & Asociados</h1>
+  </header>
+
+  <main>
+    <section id="blog-entradas">
+      <p>Cargando artículos...</p>
+    </section>
+  </main>
+
+  <script>
+    const contenedor = document.getElementById("blog-entradas");
+
+    // Función para formatear título en mayúsculas iniciales
+    const formatearTitulo = t =>
+      t.replace(/^"|"$/g, '').trim()
+       .toLowerCase()
+       .split(' ')
+       .map(p => p.charAt(0).toUpperCase() + p.slice(1))
+       .join(' ');
+
+    // Carga del index.json que genera el CMS
+    fetch('articulos/index.json')
+      .then(res => res.ok ? res.json() : [])
+      .then(entradas => {
+        contenedor.innerHTML = '';
+        if(!entradas.length){
+          contenedor.innerHTML = '<p>No hay artículos publicados aún.</p>';
+          return;
+        }
+
+        entradas.forEach(({ archivo, title, date }) => {
+          const post = document.createElement('div');
+          post.className = 'blog-post';
+          post.innerHTML = `
+            <h2>${formatearTitulo(title)}</h2>
+            <p class="date">📅 Publicado el ${new Date(date).toLocaleDateString()}</p>
+            <a href="articulo.html?archivo=${archivo}">Leer artículo completo</a>
+            <hr/>
+          `;
+          contenedor.appendChild(post);
+        });
+      })
+      .catch(err => {
+        contenedor.innerHTML = '<p>No se pudieron cargar los artículos.</p>';
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
