@@ -5,6 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "generar-index": "node scripts/generar-json.js"
     "build": "echo 'Build terminado'"
   },
   "keywords": [],
@@ -15,6 +16,7 @@
     "url": "https://github.com/Harold-198766/Consultor-a.git"
   }
 }
+
 
 
 
