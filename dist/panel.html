@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel del Cliente</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #f4f4f4;
+    }
+
+    h2, h3 {
+      color: #333;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 250px;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 10px 18px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #descargas-privadas, #info-caso {
+      margin-top: 25px;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    #info-caso button {
+      background-color: #dc3545;
+      margin-top: 15px;
+    }
+
+    #info-caso button:hover {
+      background-color: #a71d2a;
+    }
+
+    a {
+      display: block;
+      margin: 8px 0;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #resultado {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔐 Acceso al Panel del Cliente</h2>
+  <input type="text" id="codigo" placeholder="Ingresa tu código" />
+  <button onclick="consultar()">Consultar</button>
+
+  <div id="resultado"></div>
+
+  <section id="descargas-privadas" style="display: none;">
+    <h3><i class="fas fa-file-download"></i> Documentos Disponibles</h3>
+    <a id="enlaceDemanda" href="#" download>📄 Descargar Demanda</a>
+    <a id="enlaceNotificacion" href="#" download>📄 Descargar Notificación</a>
+  </section>
+
+  <section id="info-caso" style="display: none;">
+    <h3><i class="fas fa-folder-open"></i> Información del Caso</h3>
+    <p><strong>Número de Carpeta:</strong> <span id="carpeta"></span></p>
+    <p><strong>Materia:</strong> <span id="materia"></span></p>
+    <p><strong>Estado:</strong> <span id="estado"></span></p>
+    <p><strong>Próxima Audiencia:</strong> <span id="audiencia"></span></p>
+    <button onclick="salirDelPanel()">Salir del Panel</button>
+  </section>
+
+  <script>
+    function consultar() {
+      const codigo = document.getElementById("codigo").value.trim().toUpperCase();
+      const resultado = document.getElementById("resultado");
+      const descargas = document.getElementById("descargas-privadas");
+      const infoCaso = document.getElementById("info-caso");
+
+      if (!codigo) {
+        alert("Por favor ingresa un código.");
+        return;
+      }
+
+      const datosClientes = {
+        "ABC123": {
+          carpeta: "2023-00123",
+          materia: "Civil",
+          estado: "En trámite",
+          audiencia: "15 de agosto de 2025"
+        },
+        "XYZ789": {
+          carpeta: "2022-00456",
+          materia: "Laboral",
+          estado: "Sentencia emitida",
+          audiencia: "No aplica"
+        },
+        "CLIENTE001": {
+          carpeta: "2025-00001",
+          materia: "Constitucional",
+          estado: "Revisión en Corte",
+          audiencia: "20 de septiembre de 2025"
+        }
+      };
+
+      const datos = datosClientes[codigo];
+
+      if (datos) {
+        resultado.innerHTML = `<p><strong>Código válido.</strong> Bienvenido al portal.</p>`;
+        mostrarDescargas();
+        mostrarInfoCaso(datos);
+      } else {
+        resultado.innerHTML = `<p style="color: red;"><strong>Código no válido.</strong></p>`;
+        descargas.style.display = "none";
+        infoCaso.style.display = "none";
+      }
+    }
+
+    function mostrarDescargas() {
+      document.getElementById("descargas-privadas").style.display = "block";
+      document.getElementById("enlaceDemanda").href =
+        "https://drive.google.com/uc?export=download&id=13C0GSBA2m53OYWdRmji8a43I1ylmUmgd";
+      document.getElementById("enlaceNotificacion").href =
+        "https://drive.google.com/uc?export=download&id=1kvTE47P-pCXgYbru9yo_53o0ZSQY1iqk";
+    }
+
+    function mostrarInfoCaso(datos) {
+      document.getElementById("carpeta").textContent = datos.carpeta;
+      document.getElementById("materia").textContent = datos.materia;
+      document.getElementById("estado").textContent = datos.estado;
+      document.getElementById("audiencia").textContent = datos.audiencia;
+      document.getElementById("info-caso").style.display = "block";
+    }
+
+    function salirDelPanel() {
+      document.getElementById("codigo").value = "";
+      document.getElementById("resultado").innerHTML = "";
+      document.getElementById("descargas-privadas").style.display = "none";
+      document.getElementById("info-caso").style.display = "none";
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
