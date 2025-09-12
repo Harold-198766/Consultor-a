@@ -1,26 +1,23 @@
 const fs = require('fs');
 const path = require('path');
 
-// Carpeta donde están los artículos
 const articulosDir = path.join(__dirname, '../articulos');
-
-// Lee todos los archivos .md de la carpeta
-const archivos = fs.readdirSync(articulosDir).filter(archivo => archivo.endsWith('.md'));
+const archivos = fs.readdirSync(articulosDir).filter(f => f.endsWith('.md'));
 
 const index = archivos.map(archivo => {
   const filePath = path.join(articulosDir, archivo);
   const contenido = fs.readFileSync(filePath, 'utf8');
 
-  // Extrae el frontmatter
   const frontmatterMatch = contenido.match(/^---\s*([\s\S]*?)\s*---/);
   let title = archivo.replace(/\.md$/, '');
-  let date = '';
+  let date = new Date().toISOString().split('T')[0];
+
   if (frontmatterMatch) {
     const lines = frontmatterMatch[1].split('\n');
     lines.forEach(line => {
       const [key, ...rest] = line.split(':');
       if (key && rest.length > 0) {
-        const value = rest.join(':').trim().replace(/^['"]|['"]$/g, "");
+        const value = rest.join(':').trim().replace(/^['"]|['"]$/g, '');
         if (key.trim() === 'title') title = value;
         if (key.trim() === 'date') date = value.split('T')[0];
       }
@@ -29,19 +26,13 @@ const index = archivos.map(archivo => {
 
   return {
     archivo,
-    url: `articulo.html?archivo=articulos/${archivo}`,
+    url: `articulo.html?archivo=${archivo}`,
     title,
     date
   };
 });
 
-// Ordena por fecha descendente
 index.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-// ...existing code...
-
-// Escribe el archivo index.json
 fs.writeFileSync(path.join(articulosDir, 'index.json'), JSON.stringify(index, null, 2), 'utf8');
 console.log('✅ index.json generado correctamente con', index.length, 'artículos.');
-
-// ...existing code...
