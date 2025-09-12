@@ -2,14 +2,14 @@ const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 
-const articulosDir = path.join(__dirname, '../dist/articulos');
+const articulosDir = path.join(__dirname, '../articulos');
 const outputFile = path.join(articulosDir, 'index.json');
 
 const archivos = fs.readdirSync(articulosDir).filter(f => f.endsWith('.md'));
 
-const entries = archivos.map(filename => {
+const index = archivos.map(filename => {
   const filepath = path.join(articulosDir, filename);
-  const content = fs.readFileSync(filepath, 'utf-8');
+  const content = fs.readFileSync(filepath, 'utf8');
   const { data } = matter(content);
 
   return {
@@ -23,7 +23,9 @@ const entries = archivos.map(filename => {
   };
 });
 
-fs.writeFileSync(outputFile, JSON.stringify(entries, null, 2), 'utf-8');
-console.log(`✅ Se generó ${outputFile} con ${entries.length} artículos.`);
+// Ordenar por fecha descendente
+index.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-
+// Guardar el archivo index.json
+fs.writeFileSync(outputFile, JSON.stringify(index, null, 2), 'utf8');
+console.log(`✅ index.json generado correctamente con ${index.length} artículos.`);
