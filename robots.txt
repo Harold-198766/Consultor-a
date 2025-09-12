@@ -1,3 +1,0 @@
-User-agent: * 
-Allow: /
-Sitemap: https://consultoria-legal-guatemala.netlify.app/sitemap.xml
