@@ -1056,7 +1056,6 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     const contenedor = document.getElementById("blog-entradas");
-
     const formatearTitulo = (t) => {
       t = t.replace(/^"|"$/g, '').trim();
       return t
@@ -1066,23 +1065,41 @@
         .join(' ');
     };
 
-    // CORRIGIENDO LA RUTA AQUÍ:
-    fetch("articulos/index.json")
+    console.log("🚀 Cargando artículos del blog...");
+    
+    // CAMBIADA LA RUTA: index.json en lugar de articulos/index.json
+    fetch("index.json")
       .then(res => {
+        console.log(`📡 Respuesta del servidor: ${res.status} ${res.statusText}`);
         if (!res.ok) {
           throw new Error(`HTTP ${res.status}: ${res.statusText}`);
         }
         return res.json();
       })
       .then(entradas => {
-        console.log('Artículos cargados:', entradas);
+        console.log(`✅ Artículos cargados: ${entradas.length} total`);
+        console.log('Datos completos:', entradas);
         
-        entradas.forEach(({ archivo, url, title, date, description }) => {
+        // Mostrar indicador de carga
+        contenedor.innerHTML = `<div style="text-align: center; padding: 20px; color: var(--text-light);">📚 Cargando ${entradas.length} artículos...</div>`;
+        
+        let articulosCargados = 0;
+        const totalArticulos = entradas.length;
+        
+        entradas.forEach(({ archivo, url, title, date, description, slug }, index) => {
+          console.log(`📄 Procesando artículo ${index + 1}/${totalArticulos}:`, title);
+          
           fetch(`articulos/${archivo}`)
-            .then(res => res.ok ? res.text() : null)
+            .then(res => {
+              console.log(`📖 Respuesta para ${archivo}: ${res.status}`);
+              return res.ok ? res.text() : null;
+            })
             .then(md => {
-              if (!md) return;
-
+              if (!md) {
+                console.warn(`⚠️ No se pudo cargar contenido para: ${archivo}`);
+                return;
+              }
+              
               // Buscar primera línea del markdown como resumen
               let resumen = md
                 .split("\n")
@@ -1091,12 +1108,12 @@
                   !linea.startsWith("#") &&
                   !linea.startsWith("---")
                 );
-
+              
               // Si no hay resumen, usar la description del JSON
               if (!resumen) {
                 resumen = description || 'Contenido próximamente disponible.';
               }
-
+              
               const post = document.createElement("div");
               post.className = "blog-post markdown-content";
               post.style.cssText = `
@@ -1106,24 +1123,119 @@
                 border-radius: 16px;
                 box-shadow: 0 2px 8px rgba(0,0,0,0.08);
                 border-left: 4px solid var(--secondary-color);
+                transition: transform 0.2s, box-shadow 0.2s;
               `;
               
+              // Generar URL correcta (priorizar slug)
+              let urlArticulo = url; // URL por defecto del JSON
+              if (slug) {
+                urlArticulo = `articulo.html?slug=${slug}`;
+              }
+              
               post.innerHTML = `
-                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">${formatearTitulo(title)}</h3>
-                <p class="date" style="color: var(--text-light); margin-bottom: 1rem;">📅 Publicado el ${date}</p>
-                <p style="margin-bottom: 1rem;">${resumen}</p>
-                <a href="${url}" style="color: var(--secondary-color); font-weight: 600;">Leer artículo completo</a>
+                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">
+                  ${formatearTitulo(title)}
+                </h3>
+                <p class="date" style="color: var(--text-light); margin-bottom: 1rem;">
+                  📅 Publicado el ${new Date(date).toLocaleDateString('es-GT', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}
+                </p>
+                <p style="margin-bottom: 1rem; line-height: 1.6;">
+                  ${resumen}
+                </p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <a href="${urlArticulo}" 
+                     style="color: var(--secondary-color); font-weight: 600; text-decoration: none;"
+                     onmouseover="this.parentElement.parentElement.style.transform='translateY(-2px)'; this.parentElement.parentElement.style.boxShadow='0 4px 16px rgba(0,0,0,0.12)'"
+                     onmouseout="this.parentElement.parentElement.style.transform='translateY(0)'; this.parentElement.parentElement.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
+                    Leer artículo completo →
+                  </a>
+                  <small style="color: var(--text-light); font-size: 0.8rem;">
+                    ${slug ? `🏷️ ${slug}` : '📁 ' + archivo.replace('.md', '')}
+                  </small>
+                </div>
               `;
-              contenedor.appendChild(post);
+              
+              // Insertar en el orden correcto
+              const posicionCorrecta = index;
+              const articulosExistentes = contenedor.children;
+              
+              if (posicionCorrecta >= articulosExistentes.length) {
+                contenedor.appendChild(post);
+              } else {
+                contenedor.insertBefore(post, articulosExistentes[posicionCorrecta]);
+              }
+              
+              articulosCargados++;
+              console.log(`✅ Artículo renderizado: ${title} (${articulosCargados}/${totalArticulos})`);
+              
+              // Actualizar indicador cuando todos estén cargados
+              if (articulosCargados === 1) {
+                // Remover indicador de carga al cargar el primer artículo
+                const indicadorCarga = contenedor.querySelector('div[style*="Cargando"]');
+                if (indicadorCarga) {
+                  indicadorCarga.remove();
+                }
+              }
+              
+              if (articulosCargados === totalArticulos) {
+                console.log("🎉 Todos los artículos cargados exitosamente");
+                
+                // Agregar información de debug (opcional, para desarrollo)
+                const debugInfo = document.createElement("div");
+                debugInfo.style.cssText = `
+                  margin-top: 2rem;
+                  padding: 1rem;
+                  background: #f0fff4;
+                  border: 1px solid #68d391;
+                  border-radius: 8px;
+                  font-size: 0.9rem;
+                  color: #2f855a;
+                `;
+                debugInfo.innerHTML = `
+                  <strong>📊 Estado del blog:</strong> 
+                  ${articulosCargados}/${totalArticulos} artículos cargados correctamente
+                `;
+                contenedor.appendChild(debugInfo);
+              }
             })
             .catch(err => {
-              console.error(`Error al cargar ${archivo}:`, err);
+              console.error(`❌ Error al cargar ${archivo}:`, err);
+              articulosCargados++;
+              
+              // Mostrar error para este artículo específico
+              const errorPost = document.createElement("div");
+              errorPost.style.cssText = `
+                background: #fed7d7;
+                border: 1px solid #e53e3e;
+                padding: 1rem;
+                margin-bottom: 1rem;
+                border-radius: 8px;
+              `;
+              errorPost.innerHTML = `
+                <h4 style="color: #c53030; margin: 0 0 0.5rem 0;">❌ Error al cargar artículo</h4>
+                <p style="margin: 0; color: #742a2a;"><strong>Archivo:</strong> ${archivo}</p>
+                <p style="margin: 0; color: #742a2a;"><strong>Error:</strong> ${err.message}</p>
+              `;
+              contenedor.appendChild(errorPost);
             });
         });
       })
       .catch(err => {
-        console.error("Error cargando index.json:", err);
-        contenedor.innerHTML = `<p style="color: red; text-align: center;">Error al cargar el blog: ${err.message}</p>`;
+        console.error("❌ Error cargando index.json:", err);
+        contenedor.innerHTML = `
+          <div style="color: red; text-align: center; padding: 2rem; background: #fed7d7; border-radius: 8px; border: 1px solid #e53e3e;">
+            <h3>❌ Error al cargar el blog</h3>
+            <p><strong>Error:</strong> ${err.message}</p>
+            <p><strong>Archivo buscado:</strong> index.json</p>
+            <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #39a9e0; color: white; border: none; border-radius: 4px; cursor: pointer;">
+              🔄 Recargar página
+            </button>
+          </div>
+        `;
       });
   </script>
 </section>
@@ -1396,6 +1508,7 @@
   </script>
 </body>
 </html>
+
 
 
 
