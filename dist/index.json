@@ -6,7 +6,8 @@
     "date": "2025-06-27T16:41:23.524Z",
     "description": "Exploramos cómo la inteligencia artificial puede ser usada como herramienta de control social y las implicaciones legales de estas tecnologías emergentes.",
     "category": "Derecho y tecnología",
-    "keywords": ["inteligencia artificial", "control social", "vigilancia", "derechos humanos"]
+    "keywords": ["inteligencia artificial", "control social", "vigilancia", "derechos humanos"],
+    "slug": "control-social-e-inteligencia-artificial"
   },
   {
     "archivo": "divorcio-en-guatemala.md",
@@ -15,7 +16,8 @@
     "date": "2025-06-20",
     "description": "Este artículo explica el proceso legal para divorciarse en Guatemala, las causales reconocidas y los pasos que debe seguir una persona.",
     "category": "Derecho familiar",
-    "keywords": ["divorcio en Guatemala", "proceso legal", "derecho familiar"]
+    "keywords": ["divorcio en Guatemala", "proceso legal", "derecho familiar"],
+    "slug": "divorcio-en-guatemala"
   },
   {
     "archivo": "prueba-entrada-de-blog.md",
@@ -24,7 +26,8 @@
     "date": "2025-09-08T17:15:50.506Z",
     "description": "Este es un artículo de prueba.",
     "category": "General",
-    "keywords": ["prueba", "articulo", "blog"]
+    "keywords": ["prueba", "articulo", "blog"],
+    "slug": "prueba-de-entrada-de-blog"
   },
   {
     "archivo": "proceso-sucesorio-intestado.md",
