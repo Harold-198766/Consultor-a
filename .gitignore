@@ -1,5 +1,12 @@
+# Dependencias de Node.js
 node_modules/
-package-lock.json
+
+# Archivos de respaldo
 *.backup.json
-# Local Netlify folder
-.netlify
+
+# Configuración local de Netlify
+.netlify/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
