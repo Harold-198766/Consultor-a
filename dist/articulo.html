@@ -207,10 +207,16 @@
             if (!res.ok) throw new Error("Archivo .md no encontrado en el servidor");
             return res.text();
           })
-          .then(md => {
-            const limpio = md.replace(/^---[\s\S]*?---/, "").trim();
-            contenedor.innerHTML = marked.parse(limpio);
-          })
+         .then(md => {
+  const limpio = md.replace(/^---[\s\S]*?---/, "").trim();
+  const html = marked.parse(limpio);
+  contenedor.innerHTML = html;
+
+  // Validación visual
+  if (!html || html.trim() === "") {
+    contenedor.innerHTML = "<p>El artículo está vacío o no se pudo procesar correctamente.</p>";
+  }
+})
           .catch(error => {
             contenedor.innerHTML = `<p>Error al cargar el contenido del artículo: ${error.message}</p>`;
           });
@@ -224,3 +230,4 @@
 </script>
 </body>
 </html>
+
