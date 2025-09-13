@@ -1,31 +1,42 @@
-const fs = require('fs');
-const path = require('path');
-const matter = require('gray-matter');
+const fs = require("fs");
+const path = require("path");
 
-const articulosDir = path.join(__dirname, '../articulos');
-const outputFile = path.join(articulosDir, 'index.json');
+// Carpeta donde guardas los artículos .md
+const articulosDir = path.join(__dirname, "../articulos");
 
-const archivos = fs.readdirSync(articulosDir).filter(f => f.endsWith('.md'));
+// Archivo de salida
+const output = path.join(__dirname, "../dist/index.json");
 
-const index = archivos.map(filename => {
-  const filepath = path.join(articulosDir, filename);
-  const content = fs.readFileSync(filepath, 'utf8');
-  const { data } = matter(content);
+// Función auxiliar para generar el slug
+function generarSlug(nombreArchivo) {
+  return nombreArchivo
+    .replace(/\.md$/, "")       // quitar extensión .md
+    .toLowerCase()              // pasar a minúsculas
+    .replace(/\s+/g, "-")       // espacios → guiones
+    .replace(/[^\w\-]+/g, "");  // quitar caracteres raros
+}
+
+// Leer todos los archivos de la carpeta de artículos
+const archivos = fs.readdirSync(articulosDir).filter(f => f.endsWith(".md"));
+
+// Construir el índice
+const index = archivos.map(file => {
+  const slug = generarSlug(file);
 
   return {
-    archivo: filename,
-    url: `articulo.html?archivo=${filename}`,
-    title: data.title || filename.replace(/-/g, ' ').replace('.md', ''),
-    date: data.date || new Date().toISOString(),
-    description: data.description || '',
-    category: data.category || 'General',
-    keywords: Array.isArray(data.keywords) ? data.keywords : []
+    archivo: file,
+    url: `articulo.html?slug=${slug}`,
+    title: path.basename(file, ".md").replace(/-/g, " "), // opcional: título básico
+    date: new Date().toISOString(),
+    description: "",
+    category: "General",
+    keywords: [],
+    slug: slug
   };
 });
 
-// Ordenar por fecha descendente
-index.sort((a, b) => new Date(b.date) - new Date(a.date));
+// Guardar el index.json en /dist
+fs.writeFileSync(output, JSON.stringify(index, null, 2), "utf8");
 
-// Guardar el archivo index.json
-fs.writeFileSync(outputFile, JSON.stringify(index, null, 2), 'utf8');
-console.log(`✅ index.json generado correctamente con ${index.length} artículos.`);
+console.log("✅ index.json generado con slugs incluidos");
+
