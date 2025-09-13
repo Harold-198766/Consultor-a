@@ -111,7 +111,7 @@
     </footer>
   </div>
 
- <script>
+<script>
   // ===============================
   // Funciones auxiliares
   // ===============================
@@ -133,6 +133,11 @@
     if (metaDesc) {
       metaDesc.content = description || `${title} - Artículo legal especializado`;
     }
+  }
+
+  function limpiarMarkdown(md) {
+    // Remover frontmatter (contenido entre --- al inicio del archivo)
+    return md.replace(/^---[\s\S]*?---/, "").trim();
   }
 
   // ===============================
@@ -162,72 +167,170 @@
   }
 
   // ===============================
-  // Cargar artículo desde index.json
+  // Cargar artículo - Método unificado
   // ===============================
   function cargarArticulo() {
     const archivo = obtenerParametro("archivo");
+    const slug = obtenerParametro("slug");
     const contenedor = document.getElementById("contenido-articulo");
 
-    if (!archivo) {
-      contenedor.innerHTML = "<p>No se especificó ningún artículo.</p>";
+    // Verificar que al menos uno de los parámetros esté presente
+    if (!archivo && !slug) {
+      contenedor.innerHTML = "<p>Error: no se especificó ningún artículo (falta parámetro 'archivo' o 'slug').</p>";
       return;
     }
 
-    fetch('articulos/index.json')
-      .then(res => res.json())
+    // Determinar qué archivo JSON usar y dónde buscar los archivos markdown
+    let indexPath = 'articulos/index.json';
+    let articulosPath = 'articulos/';
+    
+    // Si solo hay slug, usar el index.json en la raíz
+    if (slug && !archivo) {
+      indexPath = 'index.json';
+      articulosPath = 'articulos/';
+    }
+
+    fetch(indexPath)
+      .then(res => {
+        if (!res.ok) throw new Error(`No se pudo cargar ${indexPath}`);
+        return res.json();
+      })
       .then(indexData => {
-        console.log("Archivo solicitado:", archivo);
-        console.log("Archivos disponibles:", indexData.map(a => a.archivo));
+        let articulo = null;
 
-        const info = indexData.find(a =>
-          a.archivo.trim().toLowerCase() === archivo.trim().toLowerCase()
-        );
+        // Buscar por slug si está presente
+        if (slug) {
+          console.log("Buscando por slug:", slug);
+          articulo = indexData.find(a => a.slug === slug);
+        }
+        
+        // Si no se encontró por slug, buscar por archivo
+        if (!articulo && archivo) {
+          console.log("Buscando por archivo:", archivo);
+          articulo = indexData.find(a => 
+            a.archivo && a.archivo.trim().toLowerCase() === archivo.trim().toLowerCase()
+          );
+        }
 
-        if (!info) {
+        if (!articulo) {
           contenedor.innerHTML = `
             <h2>Artículo no encontrado</h2>
-            <p>Verifica que el nombre del archivo esté correcto o que el artículo haya sido publicado.</p>
-            <a href="blog.html" class="btn">← Volver al blog</a>
+            <p>No se pudo encontrar el artículo solicitado${slug ? ` con slug "${slug}"` : ''}${archivo ? ` con archivo "${archivo}"` : ''}.</p>
+            <p>Verifica que el enlace sea correcto o que el artículo haya sido publicado.</p>
+            <a href="index.html#blog" class="btn-back">← Volver al blog</a>
           `;
           return;
         }
 
-        document.getElementById('article-title').textContent = info.title;
+        // Actualizar información del artículo
+        document.getElementById('article-title').textContent = articulo.title || articulo.titulo || 'Título no disponible';
 
-        const fecha = new Date(info.date);
-        document.getElementById('article-date').textContent = fecha.toLocaleDateString('es-GT', {
-          year: 'numeric', month: 'long', day: 'numeric'
-        });
+        // Manejar la fecha
+        if (articulo.date || articulo.fecha) {
+          const fecha = new Date(articulo.date || articulo.fecha);
+          document.getElementById('article-date').textContent = fecha.toLocaleDateString('es-GT', {
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric'
+          });
+        }
 
-        document.getElementById('reading-time').textContent = estimarTiempoLectura(info.description);
-        actualizarMetaTags(info.title, info.description);
+        // Actualizar tiempo de lectura y meta tags
+        const descripcion = articulo.description || articulo.descripcion || '';
+        if (descripcion) {
+          document.getElementById('reading-time').textContent = estimarTiempoLectura(descripcion);
+        }
+        
+        actualizarMetaTags(
+          articulo.title || articulo.titulo, 
+          descripcion
+        );
 
-        fetch('articulos/' + info.archivo)
+        // Cargar el contenido del archivo markdown
+        const archivoMarkdown = articulo.archivo || articulo.file;
+        if (!archivoMarkdown) {
+          contenedor.innerHTML = "<p>Error: no se especificó archivo de contenido para este artículo.</p>";
+          return;
+        }
+
+        fetch(articulosPath + archivoMarkdown)
           .then(res => {
-            if (!res.ok) throw new Error("Archivo .md no encontrado en el servidor");
+            if (!res.ok) throw new Error(`Archivo "${archivoMarkdown}" no encontrado`);
             return res.text();
           })
-         .then(md => {
-  const limpio = md.replace(/^---[\s\S]*?---/, "").trim();
-  const html = marked.parse(limpio);
-  contenedor.innerHTML = html;
-
-  // Validación visual
-  if (!html || html.trim() === "") {
-    contenedor.innerHTML = "<p>El artículo está vacío o no se pudo procesar correctamente.</p>";
-  }
-})
+          .then(md => {
+            const contenidoLimpio = limpiarMarkdown(md);
+            const html = marked.parse(contenidoLimpio);
+            
+            // Validar que el contenido no esté vacío
+            if (!html || html.trim() === "" || html.trim() === "<p></p>") {
+              contenedor.innerHTML = "<p>El artículo está vacío o no se pudo procesar correctamente.</p>";
+            } else {
+              contenedor.innerHTML = html;
+              
+              // Actualizar tiempo de lectura basado en el contenido real si no había descripción
+              if (!descripcion) {
+                document.getElementById('reading-time').textContent = estimarTiempoLectura(contenidoLimpio);
+              }
+            }
+          })
           .catch(error => {
+            console.error('Error al cargar markdown:', error);
             contenedor.innerHTML = `<p>Error al cargar el contenido del artículo: ${error.message}</p>`;
           });
       })
       .catch(error => {
+        console.error('Error al cargar índice:', error);
         contenedor.innerHTML = `<p>Error al cargar el índice de artículos: ${error.message}</p>`;
       });
   }
 
-  cargarArticulo();
+  // ===============================
+  // Función de prueba (solo para desarrollo)
+  // ===============================
+  function probarConSlug() {
+    // Cambiar la URL sin recargar la página
+    const nuevaURL = window.location.origin + window.location.pathname + '?slug=ejemplo';
+    window.history.pushState({}, '', nuevaURL);
+    cargarArticulo();
+  }
+
+  function probarConArchivo() {
+    // Cambiar la URL sin recargar la página
+    const nuevaURL = window.location.origin + window.location.pathname + '?archivo=ejemplo.md';
+    window.history.pushState({}, '', nuevaURL);
+    cargarArticulo();
+  }
+
+  // ===============================
+  // Inicialización
+  // ===============================
+  document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM cargado, iniciando carga del artículo...");
+    cargarArticulo();
+    
+    // Si no hay parámetros, mostrar botones de prueba (solo en desarrollo)
+    const archivo = obtenerParametro("archivo");
+    const slug = obtenerParametro("slug");
+    
+    if (!archivo && !slug) {
+      // Agregar botones de prueba después del mensaje de error
+      setTimeout(() => {
+        const contenedor = document.getElementById("contenido-articulo");
+        contenedor.innerHTML += `
+          <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px;">
+            <h4>🔧 Herramientas de prueba:</h4>
+            <button onclick="probarConSlug()" style="margin-right: 10px; padding: 8px 15px; background: #39a9e0; color: white; border: none; border-radius: 4px; cursor: pointer;">
+              Probar con slug
+            </button>
+            <button onclick="probarConArchivo()" style="padding: 8px 15px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">
+              Probar con archivo
+            </button>
+          </div>
+        `;
+      }, 100);
+    }
+  });
 </script>
 </body>
 </html>
-
