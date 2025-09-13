@@ -255,16 +255,31 @@
 
         fetch(articulosPath + archivoMarkdown)
           .then(res => {
-            if (!res.ok) throw new Error(`Archivo "${archivoMarkdown}" no encontrado`);
+            console.log(`Respuesta de ${articulosPath + archivoMarkdown}:`, res.status, res.statusText);
+            if (!res.ok) throw new Error(`HTTP ${res.status}: Archivo "${archivoMarkdown}" no encontrado en "${articulosPath}"`);
             return res.text();
           })
           .then(md => {
+            console.log("Contenido markdown cargado, longitud:", md.length);
+            console.log("Primeros 100 caracteres:", md.substring(0, 100));
+            
             const contenidoLimpio = limpiarMarkdown(md);
+            console.log("Contenido limpio, longitud:", contenidoLimpio.length);
+            
             const html = marked.parse(contenidoLimpio);
+            console.log("HTML generado, longitud:", html.length);
             
             // Validar que el contenido no esté vacío
             if (!html || html.trim() === "" || html.trim() === "<p></p>") {
-              contenedor.innerHTML = "<p>El artículo está vacío o no se pudo procesar correctamente.</p>";
+              contenedor.innerHTML = `
+                <div style="padding: 15px; background: #fed7d7; border: 1px solid #e53e3e; border-radius: 8px;">
+                  <h3>📄 Contenido vacío</h3>
+                  <p>El archivo se cargó pero está vacío o no se pudo procesar.</p>
+                  <p><strong>Archivo:</strong> <code>${archivoMarkdown}</code></p>
+                  <p><strong>Contenido original (primeros 200 chars):</strong></p>
+                  <pre style="background: #f7fafc; padding: 10px; border-radius: 4px; overflow-x: auto;">${md.substring(0, 200)}...</pre>
+                </div>
+              `;
             } else {
               contenedor.innerHTML = html;
               
@@ -276,7 +291,14 @@
           })
           .catch(error => {
             console.error('Error al cargar markdown:', error);
-            contenedor.innerHTML = `<p>Error al cargar el contenido del artículo: ${error.message}</p>`;
+            contenedor.innerHTML = `
+              <div style="padding: 15px; background: #fed7d7; border: 1px solid #e53e3e; border-radius: 8px;">
+                <h3>❌ Error al cargar contenido</h3>
+                <p><strong>Error:</strong> ${error.message}</p>
+                <p><strong>Archivo buscado:</strong> <code>${articulosPath + archivoMarkdown}</code></p>
+                <p><strong>URL completa:</strong> <code>${window.location.origin}/${articulosPath + archivoMarkdown}</code></p>
+              </div>
+            `;
           });
       })
       .catch(error => {
