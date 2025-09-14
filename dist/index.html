@@ -1,1324 +1,1511 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barillas, Colindres & Asociados - Bufete de Abogados en Guatemala</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Header & Navigation */
-        .header {
-            background: linear-gradient(135deg, #1a365d 0%, #2d5a8a 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #ffd700, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #ffd700;
-            transition: width 0.3s ease;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(26, 54, 93, 0.95), rgba(45, 90, 138, 0.95)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f8ff" width="1200" height="600"/><path fill="%23e6f3ff" d="M0,300 Q300,200 600,300 T1200,300 V600 H0 V300z"/></svg>');
-            background-size: cover;
-            background-position: center;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255,215,0,0.1), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            z-index: 2;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .btn {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, #ffd700, #ffed4a);
-            color: #1a365d;
-            box-shadow: 0 8px 25px rgba(255,215,0,0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.8);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 12px 35px rgba(255,215,0,0.4);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Sections */
-        .section {
-            padding: 100px 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.8rem;
-            color: #1a365d;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #ffd700, #ffed4a);
-            border-radius: 2px;
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* About Section */
-        .about {
-            background: #f8fafc;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #4a5568;
-        }
-
-        .about-text h3 {
-            color: #1a365d;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1a365d;
-            display: block;
-        }
-
-        .stat-label {
-            color: #666;
-            font-weight: 500;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(45deg, #ffd700, #ffed4a);
-        }
-
-        .service-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            color: #1a365d;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: #1a365d;
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-link {
-            color: #1a365d;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .service-link:hover {
-            color: #ffd700;
-        }
-
-        /* Team Section */
-        .team {
-            background: #f8fafc;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .team-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .team-avatar {
-            width: 100%;
-            height: 280px;
-            background: linear-gradient(135deg, #1a365d, #2d5a8a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
-        }
-
-        .team-info {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .team-info h3 {
-            color: #1a365d;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .team-info .role {
-            color: #ffd700;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .team-info p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            background: linear-gradient(135deg, #1a365d, #2d5a8a);
-            color: white;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: rgba(255,255,255,0.1);
-            padding: 2.5rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .testimonial-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(255,215,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .author-info h4 {
-            color: #ffd700;
-            margin-bottom: 0.25rem;
-        }
-
-        .author-info span {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        /* Resources Section */
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .resource-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .resource-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .resource-icon {
-            font-size: 3rem;
-            color: #1a365d;
-            margin-bottom: 1rem;
-        }
-
-        .resource-card h3 {
-            color: #1a365d;
-            margin-bottom: 1rem;
-        }
-
-        .download-btn {
-            background: linear-gradient(45deg, #1a365d, #2d5a8a);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(26, 54, 93, 0.3);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: #f8fafc;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .contact-icon {
-            font-size: 2rem;
-            color: #1a365d;
-            min-width: 50px;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #1a365d;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #1a365d;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        /* Footer */
-        .footer {
-            background: #1a365d;
-            color: white;
-            padding: 3rem 0 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            color: #ffd700;
-            margin-bottom: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,215,0,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffd700;
-            font-size: 1.5rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: #ffd700;
-            color: #1a365d;
-            transform: translateY(-3px);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .services-grid,
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header h2 {
-                font-size: 2.2rem;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* WhatsApp floating button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-        }
-
-        .whatsapp-btn {
-            background: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            text-decoration: none;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-
-        .whatsapp-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3); }
-            50% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1); }
-            100% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Consultoría Legal Guatemala | Abogados expertos en Guatemala</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="zEyCLug-drFNTWQYJha6i4atXf6c5CkhlcQNe3dPGQ8" />
+
+  <!-- SEO Básico -->
+  <meta name="description" content="Asesoría y consultoría legal en Guatemala. Abogados expertos en Derecho Penal, Civil, Familia, Derecho Notarial. Atención personalizada.">
+  <meta name="author" content="Barillas, Colindres &amp; Asociados">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+  <meta property="og:title" content="Consultoría Legal Guatemala | Barillas, Colindres &amp; Asociados">
+  <meta property="og:description" content="Asistencia legal estratégica en Guatemala. Derecho penal, civil, laboral, notarial y más.">
+  <meta property="og:image" content="https://consultoria-legal-guatemala.netlify.app/logo-colindres-aqua.png">
+  <meta property="og:url" content="https://consultoria-legal-guatemala.netlify.app/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Consultoría Legal Guatemala | Abogados expertos en Guatemala">
+  <meta name="twitter:description" content="Asesoría y consultoría legal en Guatemala. Abogados expertos en varias ramas del derecho.">
+  <meta name="twitter:image" content="https://consultoria-legal-guatemala.netlify.app/logo-colindres-aqua.png">
+
+  <!-- JSON-LD: Organization + LegalService -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Barillas, Colindres & Asociados",
+        "url": "https://consultoria-legal-guatemala.netlify.app/",
+        "logo": "https://consultoria-legal-guatemala.netlify.app/logo-colindres-aqua.png",
+        "description": "Bufete de abogados en Guatemala especializado en derecho penal, civil, familiar y notarial.",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+502-34950705",
+          "contactType": "Customer Service",
+          "availableLanguage": ["es"]
+        },
+        "sameAs": [
+          "https://www.facebook.com/tu-pagina",
+          "https://www.linkedin.com/company/tu-empresa"
+        ]
+      },
+      {
+        "@type": "LegalService",
+        "name": "Consultoría Legal Guatemala | Barillas, Colindres & Asociados",
+        "url": "https://consultoria-legal-guatemala.netlify.app/",
+        "image": "https://consultoria-legal-guatemala.netlify.app/logo-colindres-aqua.png",
+        "logo": "https://consultoria-legal-guatemala.netlify.app/logo-colindres-aqua.png",
+        "description": "Consultoría y asesoría legal en Guatemala. Expertos en Derecho Penal, Civil, Familia y Notarial.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ciudad de Guatemala",
+          "addressCountry": "GT"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Guatemala"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+502-0000-0000",
+          "contactType": "Legal Advice",
+          "availableLanguage": ["es"]
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Blog Articles -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Artículo de ejemplo",
+        "alternativeHeadline": "Ejemplo de título SEO para el artículo",
+        "image": "https://consultoria-legal-guatemala.netlify.app/articulos/ejemplo-articulo/imagen.png",
+        "author": {"@type": "Person","name": "Barillas, Colindres & Asociados"},
+        "editor": "Barillas, Colindres & Asociados",
+        "genre": "Legal, Asesoría",
+        "keywords": "Derecho, Guatemala, Abogados, Consultoría Legal",
+        "wordcount": "850",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Barillas, Colindres & Asociados",
+          "logo": {"@type": "ImageObject","url": "https://consultoria-legal-guatemala.netlify.app/logo-colindres-aqua.png"}
+        },
+        "url": "https://consultoria-legal-guatemala.netlify.app/articulos/ejemplo-articulo",
+        "mainEntityOfPage": "https://consultoria-legal-guatemala.netlify.app/articulos/ejemplo-articulo",
+        "datePublished": "2025-09-01",
+        "dateModified": "2025-09-01",
+        "description": "Breve descripción del artículo sobre asesoría legal en Guatemala."
+      }
+      /* Puedes agregar más objetos BlogPosting aquí para cada artículo */
+    ]
+  }
+  </script>
+
+</head>
+
+  <!-- Fuentes modernas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+   :root {
+  /* Colores principales originales */
+  --primary-color: #1a365d;
+  --secondary-color: #d4af37;
+  --accent-color: #059669;
+  --text-dark: #2d3748;
+  --text-light: #718096;
+  --bg-light: #f7fafc;
+  --bg-card: #ffffff;
+  --border-color: #e2e8f0;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  /* Gradientes principales */
+  --gradient-primary: linear-gradient(135deg, #1a365d 0%, #2d5aa0 100%);
+  --gradient-secondary: linear-gradient(135deg, #d4af37 0%, #f6e05e 100%);
+  
+  /* Colores para cada área legal */
+  --civil-color: #0f4c75;        /* Azul océano profundo */
+  --civil-light: #e8f4f8;        /* Azul muy claro */
+  
+  --penal-color: #8b0000;        /* Rojo oscuro (justicia) */
+  --penal-light: #fff0f0;        /* Rosa muy claro */
+  
+  --familia-color: #2d5aa0;      /* Azul real (confianza) */
+  --familia-light: #f0f4ff;      /* Azul muy claro */
+  
+  --corporativo-color: #1f2937;  /* Gris carbón (negocios) */
+  --corporativo-light: #f9fafb;  /* Gris muy claro */
+  
+  --laboral-color: #059669;      /* Verde esmeralda (crecimiento) */
+  --laboral-light: #ecfdf5;      /* Verde muy claro */
+  
+  --jurisdiccion-color: #7c3aed; /* Púrpura (autoridad) */
+  --jurisdiccion-light: #f5f3ff; /* Púrpura muy claro */
+}
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      overflow-x: hidden;
+    }
+
+    /* Header moderno con efecto glassmorphism */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(26, 54, 93, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .modern-navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+   .logo-header {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* En móviles más pequeño */
+@media (max-width: 768px) {
+  .logo-header {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+    .logo-header:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .brand-title {
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background: transparent;
+      border: 2px solid var(--secondary-color);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dropbtn:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 120%;
+      right: 0;
+      background: white;
+      min-width: 250px;
+      box-shadow: var(--shadow-lg);
+      border-radius: 16px;
+      padding: 1rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu-link {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .menu-link:hover {
+      background: var(--bg-light);
+      color: var(--primary-color);
+      padding-left: 2rem;
+    }
+
+    .cta-banner-header {
+      background: var(--gradient-secondary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cta-banner-header:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Hero Section moderna */
+    .banner {
+      background: var(--gradient-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .titulo-juridico {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .decorative-line {
+      width: 100px;
+      height: 4px;
+      background: var(--secondary-color);
+      margin: 0 auto;
+      border-radius: 2px;
+      animation: slideIn 1s ease-out 0.5s both;
+    }
+
+    @keyframes slideIn {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100px;
+      }
+    }
+
+    /* Secciones modernas */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      scroll-margin-top: 80px;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+
+    /* Cards de servicios modernas */
+    .areas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .area {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.4s ease;
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .area::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .area:hover::before {
+      left: 100%;
+    }
+
+    .area:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--secondary-color);
+    }
+
+    .area img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .area:hover img {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .area p {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .area-info {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Equipo moderno */
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .equipo {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+
+    .equipo:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 3px solid var(--secondary-color);
+      transition: transform 0.3s ease;
+    }
+
+    .equipo:hover .avatar {
+      transform: scale(1.1);
+    }
+
+    /* Testimonios modernos */
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonio-item {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--secondary-color);
+    }
+
+    .testimonio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonio-quote {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .testimonio-quote i {
+      color: var(--secondary-color);
+      font-size: 1.2rem;
+    }
+
+    .testimonio-cliente {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonio-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--secondary-color);
+    }
+
+    .testimonio-area {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Formularios modernos */
+    .contact-form, .newsletter-form {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      margin-top: 2rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .newsletter-form input {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: var(--bg-light);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    .contact-form button,
+    .newsletter-form button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .contact-form button:hover,
+    .newsletter-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Documentos descargables */
+    .descarga-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .descarga-item {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+
+    .descarga-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      color: var(--primary-color);
+    }
+
+    .descarga-item i:first-child {
+      font-size: 2rem;
+      color: var(--secondary-color);
+    }
+
+    /* Botón WhatsApp flotante */
+    .whatsapp-btn {
+      background: #25d366;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Mapa responsive */
+    .mapa-responsive {
+      width: 100%;
+      height: 400px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .mapa-responsive iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Footer moderno */
+    footer {
+      background: var(--gradient-primary);
+      color: white;
+      text-align: center;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    /* Newsletter especial */
+    .newsletter-section {
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: 24px;
+      margin: 4rem auto;
+      text-align: center;
+    }
+
+    .newsletter-section h2 {
+      color: white;
+    }
+
+    .newsletter-section h2::after {
+      background: var(--secondary-color);
+    }
+
+    .newsletter-form {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .newsletter-form input {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .newsletter-form button {
+      background: var(--gradient-secondary);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .modern-navbar {
+        padding: 1rem;
+      }
+      
+      .section {
+        padding: 3rem 1rem;
+      }
+      
+      .areas {
+        grid-template-columns: 1fr;
+      }
+      
+      .titulo-juridico {
+        font-size: 2rem;
+      }
+    }
+
+    /* Efectos de scroll suaves */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Animaciones de entrada */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .section {
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    /* Estados hover mejorados */
+    .area:hover .area-info {
+      color: var(--text-dark);
+    }
+    /* ESTILOS PARA APLICAR LOS COLORES A CADA ÁREA */
+
+/* Derecho Civil */
+.area-civil {
+  border-left: 4px solid var(--civil-color);
+}
+.area-civil:hover {
+  background: var(--civil-light);
+  border-color: var(--civil-color);
+}
+.area-civil p {
+  color: var(--civil-color) !important;
+}
+
+/* Derecho Penal */
+.area-penal {
+  border-left: 4px solid var(--penal-color);
+}
+.area-penal:hover {
+  background: var(--penal-light);
+  border-color: var(--penal-color);
+}
+.area-penal p {
+  color: var(--penal-color) !important;
+}
+
+/* Derecho de Familia */
+.area-familia {
+  border-left: 4px solid var(--familia-color);
+}
+.area-familia:hover {
+  background: var(--familia-light);
+  border-color: var(--familia-color);
+}
+.area-familia p {
+  color: var(--familia-color) !important;
+}
+
+/* Derecho Corporativo */
+.area-corporativo {
+  border-left: 4px solid var(--corporativo-color);
+}
+.area-corporativo:hover {
+  background: var(--corporativo-light);
+  border-color: var(--corporativo-color);
+}
+.area-corporativo p {
+  color: var(--corporativo-color) !important;
+}
+
+/* Derecho Laboral */
+.area-laboral {
+  border-left: 4px solid var(--laboral-color);
+}
+.area-laboral:hover {
+  background: var(--laboral-light);
+  border-color: var(--laboral-color);
+}
+.area-laboral p {
+  color: var(--laboral-color) !important;
+}
+
+/* Jurisdicción Voluntaria */
+.area-jurisdiccion {
+  border-left: 4px solid var(--jurisdiccion-color);
+}
+.area-jurisdiccion:hover {
+  background: var(--jurisdiccion-light);
+  border-color: var(--jurisdiccion-color);
+}
+.area-jurisdiccion p {
+  color: var(--jurisdiccion-color) !important;
+}
+
+/* Efectos de sombra coloreada al hover */
+.area-civil:hover { 
+  box-shadow: 0 10px 25px rgba(15, 76, 117, 0.15); 
+}
+.area-penal:hover { 
+  box-shadow: 0 10px 25px rgba(139, 0, 0, 0.15); 
+}
+.area-familia:hover { 
+  box-shadow: 0 10px 25px rgba(45, 90, 160, 0.15); 
+}
+.area-corporativo:hover { 
+  box-shadow: 0 10px 25px rgba(31, 41, 55, 0.15); 
+}
+.area-laboral:hover { 
+  box-shadow: 0 10px 25px rgba(5, 150, 105, 0.15); 
+}
+.area-jurisdiccion:hover { 
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.15); 
+}
+
+/* Colores para el equipo también */
+.equipo.area-civil:hover { border-color: var(--civil-color); }
+.equipo.area-penal:hover { border-color: var(--penal-color); }
+.equipo.area-familia:hover { border-color: var(--familia-color); }
+.equipo.area-corporativo:hover { border-color: var(--corporativo-color); }
+.equipo.area-laboral:hover { border-color: var(--laboral-color); }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo">Barillas, Colindres & Asociados</div>
-            <ul class="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#equipo">Equipo</a></li>
-                <li><a href="#testimonios">Testimonios</a></li>
-                <li><a href="#recursos">Recursos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>Expertos en Derecho con Décadas de Experiencia</h1>
-            <p class="subtitle">Asesoría jurídica especializada con un enfoque humano y personalizado para proteger sus derechos y su propiedad</p>
-            <div class="hero-buttons">
-                <a href="#contacto" class="btn btn-primary">
-                    <i class="fas fa-calendar-check"></i>
-                    Consulta Gratuita
-                </a>
-                <a href="#servicios" class="btn btn-secondary">
-                    <i class="fas fa-gavel"></i>
-                    Nuestros Servicios
-                </a>
-            </div>
+  <main>
+  <header>
+      <nav class="modern-navbar">
+        <div class="logo-area">
+         <img src="images/logo.webp" alt="Logo Colindres" class="logo-header" width="200" height="200">
+          <span class="brand-title">Barillas, Colindres & Asociados</span>
         </div>
-    </section>
+       <ul class="nav-list">
+  <li class="nav-item dropdown">
+    <button class="dropbtn">
+      Menú
+      <span class="menu-icon">&#9776;</span>
+    </button>
+    <div class="dropdown-content">
+      <a href="#nosotros" class="menu-link">Nosotros</a>
+      <a href="#servicios" class="menu-link">Servicios</a>
+      <a href="#equipo" class="menu-link">Equipo</a>
+      <a href="#testimonios" class="menu-link">Testimonios</a>
+      <a href="#blog" class="menu-link">Blog</a>
+      <a href="#contacto" class="menu-link">Contacto</a>
+      <a href="#newsletter" class="menu-link">Newsletter</a>
 
-    <!-- About Section -->
-    <section id="nosotros" class="section about">
-        <div class="container">
-            <div class="section-header">
-                <h2>Quiénes Somos</h2>
-                <p>Un equipo de profesionales con sólida trayectoria y compromiso ético</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text fade-in">
-                    <h3>Nuestra Experiencia</h3>
-                    <p>Somos un equipo de Profesionales de las Ciencias Jurídicas y Sociales, Abogados y Notarios egresados de la prestigiosa Facultad de Derecho de la Universidad de San Carlos de Guatemala. Contamos con Licenciados de amplia trayectoria en diversas ramas del derecho, incluyendo ex-jueces de Paz y de Primera Instancia con sólida experiencia en derecho penal.</p>
-                    
-                    <p>Nuestros expertos tienen décadas de ejercicio profesional en áreas del derecho civil, laboral, corporativo, notarial y de familia, enfocados principalmente en asesorar a la persona y su propiedad. Esta diversidad y profundidad de conocimiento nos permite brindar no solo asesoría jurídica experta, sino también un acompañamiento humano, honesto y personalizado.</p>
+      <hr style="margin: 8px 0;">
 
-                    <h3>Nuestros Valores</h3>
-                    <p>Nuestra labor se fundamenta en valores sociales, éticos y profesionales, con plena conciencia de nuestra responsabilidad hacia nuestros clientes y la sociedad guatemalteca.</p>
-                </div>
-                <div class="about-stats fade-in">
-                    <div class="stat-card">
-                        <span class="stat-number">25+</span>
-                        <span class="stat-label">Años de Experiencia</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">1000+</span>
-                        <span class="stat-label">Casos Exitosos</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">6</span>
-                        <span class="stat-label">Áreas de Especialización</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Compromiso Ético</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="servicios" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nuestras Áreas de Práctica</h2>
-                <p>Servicios legales especializados para proteger sus derechos e intereses</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-home"></i></div>
-                    <h3>Derecho Civil</h3>
-                    <p>Contratos, propiedad, sucesiones, responsabilidad civil y todos los aspectos relacionados con los derechos patrimoniales y personales.</p>
-                    <a href="#contacto" class="service-link">
-                        Consultar <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3>Derecho Penal</h3>
-                    <p>Defensa penal, representación en procesos criminales y asesoría en materia penal con ex-jueces especializados.</p>
-                    <a href="#contacto" class="service-link">
-                        Consultar <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-heart"></i></div>
-                    <h3>Derecho de Familia</h3>
-                    <p>Divorcios, custodia, alimentos, adopciones y todos los asuntos relacionados con el derecho familiar.</p>
-                    <a href="#contacto" class="service-link">
-                        Consultar <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-building"></i></div>
-                    <h3>Derecho Corporativo</h3>
-                    <p>Constitución de empresas, contratos comerciales, fusiones, adquisiciones y asesoría empresarial integral.</p>
-                    <a href="#contacto" class="service-link">
-                        Consultar <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-briefcase"></i></div>
-                    <h3>Derecho Laboral</h3>
-                    <p>Relaciones laborales, despidos, indemnizaciones, contratos de trabajo y defensa de derechos laborales.</p>
-                    <a href="#contacto" class="service-link">
-                        Consultar <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-stamp"></i></div>
-                    <h3>Jurisdicción Voluntaria</h3>
-                    <p>Trámites notariales, autorizaciones, procesos voluntarios y servicios notariales especializados.</p>
-                    <a href="#contacto" class="service-link">
-                        Consultar <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="equipo" class="section team">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nuestro Equipo</h2>
-                <p>Profesionales comprometidos con la excelencia jurídica</p>
-            </div>
-            <div class="team-grid">
-                <div class="team-card fade-in">
-                    <div class="team-avatar">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <div class="team-info">
-                        <h3>Lic. Barillas</h3>
-                        <div class="role">Socio Fundador</div>
-                        <p>Especialista en Derecho Civil y Corporativo con más de 20 años de experiencia. Egresado de la USAC con estudios de especialización.</p>
-                    </div>
-                </div>
-                <div class="team-card fade-in">
-                    <div class="team-avatar">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <div class="team-info">
-                        <h3>Lic. Colindres</h3>
-                        <div class="role">Socio Fundador</div>
-                        <p>Ex-Juez de Primera Instancia, especialista en Derecho Penal y de Familia. Amplia experiencia en el sistema judicial guatemalteco.</p>
-                    </div>
-                </div>
-                <div class="team-card fade-in">
-                    <div class="team-avatar">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <div class="team-info">
-                        <h3>Equipo Asociado</h3>
-                        <div class="role">Abogados Especialistas</div>
-                        <p>Equipo de abogados especializados en diferentes ramas del derecho, todos egresados de la Universidad de San Carlos de Guatemala.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonios" class="section testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>Lo Que Dicen Nuestros Clientes</h2>
-                <p>Testimonios reales de clientes satisfechos</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"Excelente atención y profesionalismo. Resolvieron mi caso de manera rápida y efectiva. Recomiendo ampliamente sus servicios."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>María González</h4>
-                            <span>Caso de Derecho Civil</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"Muy agradecido con el bufete por la asesoría en un proceso familiar. La empatía y claridad fueron clave para sentirme seguro."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Carlos Mendoza</h4>
-                            <span>Caso de Derecho de Familia</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"El acompañamiento en mi caso laboral fue excelente. Siempre estuvieron disponibles y me ayudaron a defender mis derechos."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Ana Rodríguez</h4>
-                            <span>Caso de Derecho Laboral</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section id="recursos" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Recursos y Documentos</h2>
-                <p>Documentos útiles para descargar y consultar</p>
-            </div>
-            <div class="resources-grid">
-                <div class="resource-card fade-in">
-                    <div class="resource-icon"><i class="fas fa-file-pdf"></i></div>
-                    <h3>Guía del Notario 2025</h3>
-                    <p>Documento completo con información actualizada sobre servicios notariales.</p>
-                    <a href="#" class="download-btn">
-                        <i class="fas fa-download"></i>
-                        Descargar PDF
-                    </a>
-                </div>
-                <div class="resource-card fade-in">
-                    <div class="resource-icon"><i class="fas fa-file-word"></i></div>
-                    <h3>Guía: Cómo Contratar un Abogado</h3>
-                    <p>Información esencial para elegir el abogado adecuado para su caso.</p>
-                    <a href="#" class="download-btn">
-                        <i class="fas fa-download"></i>
-                        Descargar DOC
-                    </a>
-                </div>
-                <div class="resource-card fade-in">
-                    <div class="resource-icon"><i class="fas fa-balance-scale"></i></div>
-                    <h3>Ley de Avisos Electrónicos</h3>
-                    <p>Marco legal actualizado sobre notificaciones y avisos electrónicos.</p>
-                    <a href="#" class="download-btn">
-                        <i class="fas fa-download"></i>
-                        Descargar PDF
-                    </a>
-                </div>
-                <div class="resource-card fade-in">
-                    <div class="resource-icon"><i class="fas fa-file-contract"></i></div>
-                    <h3>Formulario de Demanda</h3>
-                    <p>Plantilla básica para la presentación de demandas civiles.</p>
-                    <a href="#" class="download-btn">
-                        <i class="fas fa-download"></i>
-                        Descargar DOC
-                    </a>
-                </div>
-                <div class="resource-card fade-in">
-                    <div class="resource-icon"><i class="fas fa-calculator"></i></div>
-                    <h3>Tabla de Cálculos</h3>
-                    <p>Herramienta para calcular honorarios y costos de registro.</p>
-                    <a href="#" class="download-btn">
-                        <i class="fas fa-download"></i>
-                        Descargar XLS
-                    </a>
-                </div>
-                <div class="resource-card fade-in">
-                    <div class="resource-icon"><i class="fas fa-question-circle"></i></div>
-                    <h3>Preguntas Frecuentes</h3>
-                    <p>Respuestas a las consultas más comunes de nuestros clientes.</p>
-                    <a href="#faq" class="download-btn">
-                        <i class="fas fa-eye"></i>
-                        Ver FAQ
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="section" style="background: #f8fafc;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Preguntas Frecuentes</h2>
-                <p>Respuestas a las consultas más comunes</p>
-            </div>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div class="faq-item" style="background: white; margin-bottom: 1rem; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                    <div class="faq-question" style="padding: 1.5rem; background: #1a365d; color: white; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
-                        <h3 style="margin: 0;">¿Cuánto cuesta una consulta legal?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer" style="padding: 1.5rem; color: #666; line-height: 1.6;">
-                        <p>Ofrecemos consultas accesibles y personalizadas. El costo varía según la complejidad del caso. La primera consulta puede ser gratuita para evaluar su situación. Contáctanos para obtener una cotización específica para tu caso.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item" style="background: white; margin-bottom: 1rem; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                    <div class="faq-question" style="padding: 1.5rem; background: #1a365d; color: white; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
-                        <h3 style="margin: 0;">¿En qué áreas del derecho se especializan?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer" style="padding: 1.5rem; color: #666; line-height: 1.6;">
-                        <p>Nos especializamos en Derecho Penal, Civil, Laboral, Corporativo, de Familia, Notarial, impugnaciones y jurisdicción voluntaria. Contamos con ex-jueces y abogados especializados en cada área.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item" style="background: white; margin-bottom: 1rem; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                    <div class="faq-question" style="padding: 1.5rem; background: #1a365d; color: white; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
-                        <h3 style="margin: 0;">¿Cuánto tiempo toma resolver un caso?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer" style="padding: 1.5rem; color: #666; line-height: 1.6;">
-                        <p>El tiempo varía significativamente según el tipo de caso y su complejidad. Casos simples pueden resolverse en semanas, mientras que litigios complejos pueden tomar meses o años. Siempre te mantendremos informado sobre el progreso.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item" style="background: white; margin-bottom: 1rem; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                    <div class="faq-question" style="padding: 1.5rem; background: #1a365d; color: white; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
-                        <h3 style="margin: 0;">¿Ofrecen planes de pago?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer" style="padding: 1.5rem; color: #666; line-height: 1.6;">
-                        <p>Sí, entendemos que los gastos legales pueden ser significativos. Ofrecemos planes de pago flexibles adaptados a las necesidades económicas de nuestros clientes. Discutamos las opciones disponibles durante la consulta inicial.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contacto" class="section contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Contáctanos</h2>
-                <p>Estamos aquí para ayudarte con tus necesidades legales</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                        <div>
-                            <h3>Teléfono</h3>
-                            <p>3495-0705</p>
-                        </div>
-                    </div>
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>lic.barillas46@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div>
-                            <h3>Dirección</h3>
-                            <p>12 calle, 1-25, zona 10<br>Edificio Géminis 10, oficina 1306<br>Guatemala, Guatemala</p>
-                        </div>
-                    </div>
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
-                        <div>
-                            <h3>Horario de Atención</h3>
-                            <p>Lunes a Viernes: 8:00 AM - 6:00 PM<br>Sábados: 8:00 AM - 12:00 PM</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form fade-in">
-                    <h3 style="color: #1a365d; margin-bottom: 1.5rem; text-align: center;">Solicita tu Consulta</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="nombre">Nombre Completo *</label>
-                            <input type="text" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefono">Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono">
-                        </div>
-                        <div class="form-group">
-                            <label for="area">Área Legal de Interés</label>
-                            <select id="area" name="area" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem;">
-                                <option value="">Seleccione un área</option>
-                                <option value="civil">Derecho Civil</option>
-                                <option value="penal">Derecho Penal</option>
-                                <option value="familia">Derecho de Familia</option>
-                                <option value="corporativo">Derecho Corporativo</option>
-                                <option value="laboral">Derecho Laboral</option>
-                                <option value="notarial">Servicios Notariales</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="mensaje">Describe tu Caso *</label>
-                            <textarea id="mensaje" name="mensaje" placeholder="Por favor, describe brevemente tu situación legal..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                            <i class="fas fa-paper-plane"></i>
-                            Enviar Consulta
-                        </button>
-                    </form>
-                    <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem;">
-                        Al enviar este formulario, usted acepta que la información será utilizada únicamente para brindarle una respuesta y no se compartirá con terceros.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Barillas, Colindres & Asociados</h3>
-                    <p>Bufete de abogados especializado en diversas ramas del derecho, comprometido con la excelencia y el servicio personalizado.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Servicios</h3>
-                    <p>Derecho Civil • Derecho Penal • Derecho de Familia • Derecho Corporativo • Derecho Laboral • Servicios Notariales</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contacto Rápido</h3>
-                    <p>📞 3495-0705<br>✉️ lic.barillas46@gmail.com<br>📍 Zona 10, Guatemala</p>
-                </div>
-            </div>
-            
-            <div class="social-links">
-                <a href="https://wa.me/50234950705" class="social-link" title="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="mailto:lic.barillas46@gmail.com" class="social-link" title="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://maps.google.com/?q=12+calle,+1-25,+zona+10,+Edificio+Géminis+10,+oficina+1306,+Guatemala,+Guatemala" class="social-link" title="Ubicación">
-                    <i class="fas fa-map-marker-alt"></i>
-                </a>
-            </div>
-            
-            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; margin-top: 2rem;">
-                <p>&copy; 2025 Barillas, Colindres & Asociados. Todos los derechos reservados.</p>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">
-                    <a href="/aviso-privacidad" style="color: #ffd700; text-decoration: none;">Política de Privacidad</a> | 
-                    <a href="/terminos" style="color: #ffd700; text-decoration: none; margin-left: 1rem;">Términos de Servicio</a>
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- WhatsApp Floating Button -->
-    <div class="whatsapp-float">
-        <a href="https://wa.me/50234950705?text=Hola%2C%20me%20interesa%20una%20consulta%20legal" class="whatsapp-btn" title="Escribir por WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
+      <div class="documentos-menu">
+  <strong>Documentos</strong>
+  <a href="documentos/ley-de-avisos-electronicos.pdf" download class="menu-link">📄 Ley de avisos electrónicos</a>
+  <a href="documentos/formulario-demanda.docx" download class="menu-link">📝 Formulario de Demanda</a>
+  <a href="documentos/honorarios-registro.xlsx" download class="menu-link">📊 Calculadora de inscripción RGP</a>
+</div>
     </div>
+  </li>
+</ul>
+<a href="#contacto" class="cta-banner-header">
+  <i class="fas fa-comments"></i> Solicita tu consulta
+</a>
+<a href="panel.html" 
+   class="cta-banner-header" 
+   style="margin-left: 12px;">
+  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20" fill="white">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M10 17l5-5-5-5v10z"/>
+  </svg>
+  Portal del Cliente
+</a>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+      </nav>
+    </header>
+    <section class="banner" id="inicio">
+      <h1 class="titulo-juridico">Bufete de Abogados en Guatemala</h1>
+      <div class="decorative-line"></div>
+    </section>
+    
+    <section class="section" id="nosotros">
+      <h2>Nosotros</h2>
+      <p style="font-size: 1.1rem; line-height: 1.8; text-align: center; max-width: 900px; margin: 0 auto;">
+       Somos un equipo de Profesionales de las Ciencias Jurídicas y Sociales Abogados y Notarios, egresados de la Facultad de Derecho de la Tricentenaria Universidad de San Carlos de Guatemala, Licenciados de amplia trayectoria en diversas ramas del derecho, incluyendo exjueces de Paz y de Primera Instancia con sólida experiencia y en derecho penal, así como expertos con décadas de ejercicio profesional en áreas del derecho civil, laboral, corporativo, notarial y de familia enfocados principalmente en asesorar a la persona y su propiedad. Esta diversidad y profundidad de conocimiento nos permite brindar no solo asesoría jurídica experta, sino también un acompañamiento humano, honesto y personalizado con plena conciencia de lo que hacemos, nuestra labor se fundamenta en valores sociales, éticos y profesionales.
+      </p>
+    </section>
+    
+    <section class="section" id="servicios">
+      <h2>Áreas de Práctica</h2>
+      <div class="areas">
+        <div class="area area-civil" data-side="left">
+          <img src="images/imagen-derecho-civil.svg" alt="Derecho Civil" width="120" height="120" />
+          <p>Derecho Civil</p>
+          <div class="area-info">
+            Solución de conflictos entre particulares, propiedad, contratos, herencias, legados, donaciones, obligaciones y más.
+          </div>
+        </div>
+        <div class="area area-penal" data-side="right">
+          <img src="images/imagen-derecho-penal.svg" alt="Derecho Penal" width="120" height="120" />
+          <p>Derecho Penal</p>
+          <div class="area-info">
+            Defensa en procesos penales, asesoría y representación ante juzgados y Ministerio Público.
+          </div>
+        </div>
+        <div class="area area-familia" data-side="left">
+          <img src="images/imagen-derecho-de-familia.svg" alt="Derecho de Familia" width="120" height="120" />
+          <p>Derecho de Familia</p>
+          <div class="area-info">
+            Divorcios: ordinarios y voluntarios, alimentos, guarda y custodia, patria potestad, filiación, etc.
+          </div>
+        </div>
+        <div class="area area-corporativo" data-side="right">
+          <img src="images/imagen-derecho-corporativo.svg" alt="Derecho Corporativo" width="120" height="120" />
+          <p>Derecho Corporativo</p>
+          <div class="area-info">
+            Constitución de Sociedades, empresas mercantiles, contratos mercantiles, típicos y atípicos, etc.
+          </div>
+        </div>
+        <div class="area area-laboral" data-side="left">
+          <img src="images/imagen-derecho-laboral.svg" alt="Derecho Laboral" width="120" height="120" />
+          <p>Derecho Laboral</p>
+          <div class="area-info">
+            Juicio Ordinario por despido injustificado, indirecto, incidentes post mortem y previsión social.
+          </div>
+        </div>
+        <div class="area area-jurisdiccion" data-side="right">
+          <img src="images/imagen-jurisdicción-voluntaria.svg" alt="Jurisdicción Voluntaria" width="120" height="120" />
+          <p>Jurisdicción Voluntaria</p>
+          <div class="area-info">
+            Rectificación y reposición de partidas del RENAP, cambio de nombre, identificación de persona y de tercero, procesos sucesorios testamentarios e intestados, etc.
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section" id="equipo">
+      <h2>Nuestro Equipo</h2>
+      <div class="team">
+        <div class="equipo area-penal">
+          <img class="avatar" src="images/abogado.svg" alt="Avatar de Amílcar Colindres" width="100" height="100" />
+          <strong>Doctor. Amílcar Colindres</strong><br>
+          <span style="color: var(--text-light);">Especialización: Derecho Penal, ex juez de paz y de primera instancia penal, con más de 20 años de ejercicio profesional</span>
+        </div>
+        <div class="equipo area-familia">
+          <img class="avatar" src="images/abogado.svg" alt="Avatar de Erick Barillas" width="100" height="100" />
+          <strong>Lic. Salvador Barillas</strong><br>
+          <span style="color: var(--text-light);">Especialización: Derecho de Familia, con 13 años de ejercicio profesional en diversas áreas del derecho, especialmente familia e impugnaciones</span>
+        </div>
+        <div class="equipo area-civil">
+          <img class="avatar" src="images/abogado.svg" alt="Avatar de Alfredo Lemus" width="100" height="100" />
+          <strong>Lic. Alfredo Lemus</strong><br>
+          <span style="color: var(--text-light);">Especialización: Derecho Notarial y Jurisdicción Voluntaria, con más de 15 años de experiencia de ejercicio profesional</span>
+        </div>
+        <div class="equipo area-laboral">
+          <img class="avatar" src="images/abogado.svg" alt="Avatar de Arnulfo Dieguez" width="100" height="100" />
+          <strong>Lic. Arnulfo Dieguez</strong><br>
+          <span style="color: var(--text-light);">Especialización: Derecho Civil y Procesal Civil y Mercantil, con más de 15 años de ejercicio profesional</span>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section" id="testimonios">
+  <h2>
+    <i class="fas fa-comments" style="color:var(--secondary-color); margin-right:8px;"></i>
+    Testimonios de Nuestros Clientes
+  </h2>
+  <div class="testimonios-grid">
+    <div class="testimonio-item">
+      <div class="testimonio-quote">
+        <i class="fas fa-quote-left"></i>
+        <p>
+          Excelente atención y profesionalismo. Resolvieron mi caso de manera rápida y efectiva. Recomiendo ampliamente sus servicios.
+        </p>
+        <i class="fas fa-quote-right"></i>
+      </div>
+      <div class="testimonio-cliente">
+        <img src="images/avatar-mujer-2.webp" alt="Foto de cliente" class="testimonio-avatar" width="64" height="64">
+        <span><strong>María González</strong><br><span class="testimonio-area">Derecho Civil</span></span>
+      </div>
+    </div>
+    <div class="testimonio-item">
+      <div class="testimonio-quote">
+        <i class="fas fa-quote-left"></i>
+        <p>
+          Muy agradecido con el bufete por la asesoría en un proceso familiar. La empatía y claridad fueron clave para sentirme seguro.
+        </p>
+        <i class="fas fa-quote-right"></i>
+      </div>
+      <div class="testimonio-cliente">
+        <img src="images/avatar-hombre.webp" alt="Foto de cliente" class="testimonio-avatar" width="64" height="64">
+        <span><strong>Carlos Méndez</strong><br><span class="testimonio-area">Derecho de Familia</span></span>
+      </div>
+    </div>
+    <div class="testimonio-item">
+      <div class="testimonio-quote">
+        <i class="fas fa-quote-left"></i>
+        <p>
+          El acompañamiento en mi caso laboral fue excelente. Siempre estuvieron disponibles y me ayudaron a defender mis derechos.
+        </p>
+        <i class="fas fa-quote-right"></i>
+      </div>
+      <div class="testimonio-cliente">
+        <img src="images/avatar-mujer.webp" alt="Foto de cliente" class="testimonio-avatar" width="64" height="64">
+        <span><strong>Ana Ramírez</strong><br><span class="testimonio-area">Derecho Laboral</span></span>
+      </div>
+    </div>
+  </div>
+  <p class="testimonios-nota" style="margin-top: 1rem; color: var(--text-light); text-align: center;">
+    Los testimonios son reales y reflejan nuestro compromiso con cada cliente.
+  </p>
+</section>
+    
+    <section class="section" id="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <h3 style="color: var(--primary-color); margin-bottom: 1rem;">¿Cuánto cuesta una consulta legal?</h3>
+          <p style="color: var(--text-light); line-height: 1.6;">Ofrecemos consultas accesibles. Contáctanos para cotizar según tu caso específico.</p>
+        </div>
+        <div class="faq-item">
+          <h3 style="color: var(--primary-color); margin-bottom: 1rem;">¿En qué áreas del derecho se especializan?</h3>
+          <p style="color: var(--text-light); line-height: 1.6;">Derecho penal, civil, laboral, corporativo y de familia, notarial, impugnaciones entre otros.</p>
+        </div>
+      </div>
+    </section>
+<section class="section" id="blog">
+  <h2>Blog</h2>
+  <div id="blog-entradas"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const contenedor = document.getElementById("blog-entradas");
+    const formatearTitulo = (t) => {
+      t = t.replace(/^"|"$/g, '').trim();
+      return t
+        .toLowerCase()
+        .split(' ')
+        .map(p => p.charAt(0).toUpperCase() + p.slice(1))
+        .join(' ');
+    };
 
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Mobile menu toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navMenu = document.querySelector('.nav-menu');
-
-        mobileMenu.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-
-        // FAQ Toggle functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                const answer = faqItem.querySelector('.faq-answer');
-                const icon = question.querySelector('i');
-                
-                // Toggle active state
-                faqItem.classList.toggle('active');
-                
-                // Toggle answer visibility
-                if (faqItem.classList.contains('active')) {
-                    answer.style.display = 'block';
-                    icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
-                } else {
-                    answer.style.display = 'none';
-                    icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
-                }
-            });
-        });
-
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Simple validation
-            if (!data.nombre || !data.email || !data.mensaje) {
-                alert('Por favor, completa todos los campos requeridos.');
+    console.log("🚀 Cargando artículos del blog...");
+    
+    // CAMBIADA LA RUTA: index.json en lugar de articulos/index.json
+    fetch("index.json")
+      .then(res => {
+        console.log(`📡 Respuesta del servidor: ${res.status} ${res.statusText}`);
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        }
+        return res.json();
+      })
+      .then(entradas => {
+        console.log(`✅ Artículos cargados: ${entradas.length} total`);
+        console.log('Datos completos:', entradas);
+        
+        // Mostrar indicador de carga
+        contenedor.innerHTML = `<div style="text-align: center; padding: 20px; color: var(--text-light);">📚 Cargando ${entradas.length} artículos...</div>`;
+        
+        let articulosCargados = 0;
+        const totalArticulos = entradas.length;
+        
+        entradas.forEach(({ archivo, url, title, date, description, slug }, index) => {
+          console.log(`📄 Procesando artículo ${index + 1}/${totalArticulos}:`, title);
+          
+          fetch(`articulos/${archivo}`)
+            .then(res => {
+              console.log(`📖 Respuesta para ${archivo}: ${res.status}`);
+              return res.ok ? res.text() : null;
+            })
+            .then(md => {
+              if (!md) {
+                console.warn(`⚠️ No se pudo cargar contenido para: ${archivo}`);
                 return;
+              }
+              
+              // Buscar primera línea del markdown como resumen
+              let resumen = md
+                .split("\n")
+                .find(linea =>
+                  linea.trim() &&
+                  !linea.startsWith("#") &&
+                  !linea.startsWith("---")
+                );
+              
+              // Si no hay resumen, usar la description del JSON
+              if (!resumen) {
+                resumen = description || 'Contenido próximamente disponible.';
+              }
+              
+              const post = document.createElement("div");
+              post.className = "blog-post markdown-content";
+              post.style.cssText = `
+                background: white;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                border-radius: 16px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                border-left: 4px solid var(--secondary-color);
+                transition: transform 0.2s, box-shadow 0.2s;
+              `;
+              
+              // Generar URL correcta (priorizar slug)
+              let urlArticulo = url; // URL por defecto del JSON
+              if (slug) {
+                urlArticulo = `articulo.html?slug=${slug}`;
+              }
+              
+              post.innerHTML = `
+                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">
+                  ${formatearTitulo(title)}
+                </h3>
+                <p class="date" style="color: var(--text-light); margin-bottom: 1rem;">
+                  📅 Publicado el ${new Date(date).toLocaleDateString('es-GT', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}
+                </p>
+                <p style="margin-bottom: 1rem; line-height: 1.6;">
+                  ${resumen}
+                </p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <a href="${urlArticulo}" 
+                     style="color: var(--secondary-color); font-weight: 600; text-decoration: none;"
+                     onmouseover="this.parentElement.parentElement.style.transform='translateY(-2px)'; this.parentElement.parentElement.style.boxShadow='0 4px 16px rgba(0,0,0,0.12)'"
+                     onmouseout="this.parentElement.parentElement.style.transform='translateY(0)'; this.parentElement.parentElement.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
+                    Leer artículo completo →
+                  </a>
+                  <small style="color: var(--text-light); font-size: 0.8rem;">
+                    ${slug ? `🏷️ ${slug}` : '📁 ' + archivo.replace('.md', '')}
+                  </small>
+                </div>
+              `;
+              
+              // Insertar en el orden correcto
+              const posicionCorrecta = index;
+              const articulosExistentes = contenedor.children;
+              
+              if (posicionCorrecta >= articulosExistentes.length) {
+                contenedor.appendChild(post);
+              } else {
+                contenedor.insertBefore(post, articulosExistentes[posicionCorrecta]);
+              }
+              
+              articulosCargados++;
+              console.log(`✅ Artículo renderizado: ${title} (${articulosCargados}/${totalArticulos})`);
+              
+              // Actualizar indicador cuando todos estén cargados
+              if (articulosCargados === 1) {
+                // Remover indicador de carga al cargar el primer artículo
+                const indicadorCarga = contenedor.querySelector('div[style*="Cargando"]');
+                if (indicadorCarga) {
+                  indicadorCarga.remove();
+                }
+              }
+              
+              if (articulosCargados === totalArticulos) {
+                console.log("🎉 Todos los artículos cargados exitosamente");
+                
+                // Agregar información de debug (opcional, para desarrollo)
+                const debugInfo = document.createElement("div");
+                debugInfo.style.cssText = `
+                  margin-top: 2rem;
+                  padding: 1rem;
+                  background: #f0fff4;
+                  border: 1px solid #68d391;
+                  border-radius: 8px;
+                  font-size: 0.9rem;
+                  color: #2f855a;
+                `;
+                debugInfo.innerHTML = `
+                  <strong>📊 Estado del blog:</strong> 
+                  ${articulosCargados}/${totalArticulos} artículos cargados correctamente
+                `;
+                contenedor.appendChild(debugInfo);
+              }
+            })
+            .catch(err => {
+              console.error(`❌ Error al cargar ${archivo}:`, err);
+              articulosCargados++;
+              
+              // Mostrar error para este artículo específico
+              const errorPost = document.createElement("div");
+              errorPost.style.cssText = `
+                background: #fed7d7;
+                border: 1px solid #e53e3e;
+                padding: 1rem;
+                margin-bottom: 1rem;
+                border-radius: 8px;
+              `;
+              errorPost.innerHTML = `
+                <h4 style="color: #c53030; margin: 0 0 0.5rem 0;">❌ Error al cargar artículo</h4>
+                <p style="margin: 0; color: #742a2a;"><strong>Archivo:</strong> ${archivo}</p>
+                <p style="margin: 0; color: #742a2a;"><strong>Error:</strong> ${err.message}</p>
+              `;
+              contenedor.appendChild(errorPost);
+            });
+        });
+      })
+      .catch(err => {
+        console.error("❌ Error cargando index.json:", err);
+        contenedor.innerHTML = `
+          <div style="color: red; text-align: center; padding: 2rem; background: #fed7d7; border-radius: 8px; border: 1px solid #e53e3e;">
+            <h3>❌ Error al cargar el blog</h3>
+            <p><strong>Error:</strong> ${err.message}</p>
+            <p><strong>Archivo buscado:</strong> index.json</p>
+            <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #39a9e0; color: white; border: none; border-radius: 4px; cursor: pointer;">
+              🔄 Recargar página
+            </button>
+          </div>
+        `;
+      });
+  </script>
+</section>
+    <section class="section" id="descargas">
+      <h2>📄 Documentos Descargables</h2>
+      <div class="descarga-grid">
+        <a class="descarga-item" href="documentos/guia-del-notario-2025.pdf" download>
+          <i class="fas fa-file-pdf"></i>
+          <span>Guía del Notario 2025 (PDF)</span>
+          <i class="fas fa-download descarga-icono"></i>
+        </a>
+        <a class="descarga-item" href="documentos/guia-contratar-abogado.docx" download>
+          <i class="fas fa-file-word"></i>
+          <span>Guía: Cómo contratar un abogado (Word)</span>
+          <i class="fas fa-download descarga-icono"></i>
+        </a>
+        <a class="descarga-item" href="documentos/ley-de-avisos-electronicos.pdf" download>
+          <i class="fas fa-file-pdf"></i>
+          <span>Ley de avisos electrónicos (PDF)</span>
+          <i class="fas fa-download descarga-icono"></i>
+        </a>
+        <a class="descarga-item" href="docs/formulario-demanda.docx" download>
+          <i class="fas fa-file-word"></i>
+          <span>Formulario de Demanda (Word)</span>
+          <i class="fas fa-download descarga-icono"></i>
+        </a>
+        <a class="descarga-item" href="documentos/honorarios-registro.xlsx" download>
+          <i class="fas fa-file-excel"></i>
+          <span>Tabla de Cálculos (Excel)</span>
+          <i class="fas fa-download descarga-icono"></i>
+        </a>
+      </div>
+      <p class="descarga-nota" style="text-align: center; color: var(--text-light); margin-top: 2rem;">
+        Haz clic en el documento que desees para descargarlo directamente.
+      </p>
+    </section>
+
+    <section class="section" id="contacto">
+      <h2>Contacto</h2>
+      <div class="contact-info" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+        <div style="text-align: center;">
+          <div style="background: var(--bg-card); padding: 2rem; border-radius: 16px; box-shadow: var(--shadow-sm);">
+            <i class="fas fa-phone" style="font-size: 2rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Teléfono</h3>
+            <p style="color: var(--text-light); font-size: 1.1rem;">3495-0705</p>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div style="background: var(--bg-card); padding: 2rem; border-radius: 16px; box-shadow: var(--shadow-sm);">
+            <i class="fas fa-envelope" style="font-size: 2rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Email</h3>
+            <p><a href="mailto:lic.barillas46@gmail.com" style="color: var(--text-light); text-decoration: none; font-size: 1.1rem;">lic.barillas46@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+      
+      <form class="contact-form" action="https://formspree.io/f/mgvyvgpk" method="POST">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+          <input type="text" name="nombre" placeholder="Nombre" required>
+          <input type="email" name="email" placeholder="Correo electrónico" required>
+        </div>
+        <textarea name="mensaje" placeholder="Escriba su mensaje..." required rows="6"></textarea>
+        <input type="text" name="_gotcha" style="display:none">
+        <button type="submit">
+          <i class="fas fa-paper-plane"></i> Enviar Mensaje
+        </button>
+      </form>
+      
+      <p style="font-size:0.9rem; color: var(--text-light); margin-top: 1.5rem; text-align: center; line-height: 1.6;">
+        Al enviar este formulario, usted acepta que la información proporcionada será utilizada únicamente para brindarle una respuesta y no se compartirá con terceros.<br>
+        Este formulario está protegido contra spam mediante mecanismos automáticos.<br>
+        Para más información, consulte nuestra <a href="/aviso-privacidad.html" target="_blank" rel="noopener noreferrer" style="color: var(--secondary-color);">Política de Privacidad</a>.
+      </p>
+   
+      <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+        <a href="https://maps.google.com/?q=12+calle,+1-25,+zona+10,+Edificio+Géminis+10,+oficina+1306,+Guatemala,+Guatemala" target="_blank" style="background: var(--primary-color); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease;">
+          <i class="fas fa-map-marker-alt"></i> Cómo llegar
+        </a>
+        <a href="https://wa.me/50234950705" class="whatsapp-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+        </a>
+      </div>
+
+      <div class="mapa-responsive">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.132701154913!2d-90.5112939!3d14.6046064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a1b7a2f6b6b7%3A0x5c7b5f4a2e2b5a8e!2sEdificio%20G%C3%A9minis%2010%2C%20Guatemala!5e0!3m2!1ses!2sgt!4v1752358946357!5m2!1ses!2sgt"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa de ubicación de Barillas, Colindres & Asociados">
+        </iframe>
+      </div>
+    </section>
+       
+    <section class="section newsletter-section" id="newsletter">
+      <h2>
+        <i class="fas fa-envelope-open-text" style="color: white; margin-right:8px;"></i>
+        Suscríbete a nuestro Newsletter
+      </h2>
+      <p class="newsletter-desc" style="color: rgba(255,255,255,0.9); margin-bottom: 2rem; line-height: 1.6;">
+        Recibe novedades legales, artículos, consejos y noticias relevantes para tu tranquilidad y protección.<br>
+        Es gratis y puedes darte de baja cuando quieras.
+      </p>
+      <form class="newsletter-form" action="https://formspree.io/f/mgvyvgpk" method="POST" autocomplete="off">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+          <input type="text" name="nombre" placeholder="Tu nombre" required>
+          <input type="email" name="email" placeholder="Tu correo electrónico" required>
+        </div>
+        <button type="submit">
+          <i class="fas fa-paper-plane"></i> Suscribirme
+        </button>
+      </form>
+      <p class="newsletter-privacidad" style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 1rem; text-align: center;">
+        Al suscribirte aceptas nuestra <a href="/aviso-privacidad.html" target="_blank" style="color: var(--secondary-color);">Política de Privacidad</a>.
+      </p>
+    </section>
+ <footer>
+      <p>
+        &copy; 2025 Consultoría Legal. Todos los derechos reservados.<br>
+        12 calle, 1-25, zona 10. Edificio Géminis 10, oficina 1306 zona 10, Guatemala, Guatemala.<br>
+        Teléfonos: 34950705<br>
+        Email: lic.barillas46@gmail.com
+      </p>
+    </footer>
+    <p style="text-align: center; margin-top: 2rem;">
+      <a href="/admin.html" style="text-decoration: none; color:#FFFFFF; font-weight: bold;">
+        🛠️ Acceder al Panel de Administración
+      </a>
+    </p>
+  </main>
+
+  <script>
+    // Efecto parallax sutil en el hero
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const banner = document.querySelector('.banner');
+      if (banner) {
+        banner.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    });
+
+    // Navbar con fondo dinámico
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(26, 54, 93, 0.98)';
+        header.style.boxShadow = 'var(--shadow-lg)';
+      } else {
+        header.style.background = 'rgba(26, 54, 93, 0.95)';
+        header.style.boxShadow = 'var(--shadow-sm)';
+      }
+    });
+
+    // Animación de aparición al scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section, .area, .equipo, .testimonio-item').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Mejora del menú dropdown
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownContent = document.querySelector('.dropdown-content');
+    
+    dropdown.addEventListener('mouseenter', () => {
+      dropdownContent.style.opacity = '1';
+      dropdownContent.style.visibility = 'visible';
+      dropdownContent.style.transform = 'translateY(0)';
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+      dropdownContent.style.opacity = '0';
+      dropdownContent.style.visibility = 'hidden';
+      dropdownContent.style.transform = 'translateY(-10px)';
+    });
+
+    // Smooth scroll mejorado
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Tooltip para áreas de práctica
+    document.querySelectorAll('.area').forEach(area => {
+      area.addEventListener('mouseenter', function () {
+        const info = area.querySelector('.area-info');
+        if (!info) return;
+
+        const side = area.getAttribute('data-side') || 'right';
+        const tooltip = document.createElement('div');
+        tooltip.className = 'area-tooltip';
+        tooltip.style.cssText = `
+          position: fixed;
+          background: var(--primary-color);
+          color: white;
+          padding: 1rem 1.5rem;
+          border-radius: 12px;
+          font-size: 0.9rem;
+          max-width: 300px;
+          z-index: 1000;
+          box-shadow: var(--shadow-lg);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+          line-height: 1.4;
+        `;
+        tooltip.textContent = info.textContent.trim();
+        document.body.appendChild(tooltip);
+
+        const rect = area.getBoundingClientRect();
+        const spacing = 16;
+
+        requestAnimationFrame(() => {
+          const tipRect = tooltip.getBoundingClientRect();
+          let top = rect.top + rect.height / 2 - tipRect.height / 2;
+          let left;
+
+          if (side === 'left') {
+            left = rect.left - tipRect.width - spacing;
+            if (left < 0) {
+              left = rect.right + spacing;
             }
-            
-            // Simulate form submission
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                alert('¡Gracias por tu consulta! Te contactaremos pronto.');
-                this.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
+          } else {
+            left = rect.right + spacing;
+            if (left + tipRect.width > window.innerWidth) {
+              left = rect.left - tipRect.width - spacing;
+            }
+          }
+
+          if (top < 0) top = 4;
+          if (top + tipRect.height > window.innerHeight) {
+            top = window.innerHeight - tipRect.height - 4;
+          }
+
+          tooltip.style.top = `${top}px`;
+          tooltip.style.left = `${left}px`;
+          tooltip.style.opacity = '1';
         });
 
-        // Header background change on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(26, 54, 93, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, #1a365d 0%, #2d5a8a 100%)';
-                header.style.backdropFilter = 'none';
-            }
-        });
+        area._tooltip = tooltip;
+      });
 
-        // Add loading animation to page
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-    </script>
+      area.addEventListener('mouseleave', function () {
+        if (area._tooltip) {
+          area._tooltip.remove();
+          area._tooltip = null;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+
