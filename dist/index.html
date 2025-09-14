@@ -1037,38 +1037,59 @@
   </p>
 </section>
     
+<!-- Pega este bloque donde quieras que aparezca tu FAQ -->
 <section class="section" id="faq">
-  <h2 style="color: var(--primary-color); margin-bottom: 2rem; text-align: center;">📌 Preguntas Frecuentes</h2>
-  <div class="faq-container" style="display: flex; flex-direction: column; gap: 2rem;">
-
-    <div class="faq-item" style="transition: all 0.3s ease;">
-      <h3 style="color: var(--primary-color); margin-bottom: 1rem;">💼 ¿Cuánto cuesta una consulta legal?</h3>
-      <p style="color: var(--text-light); line-height: 1.6;">
-        Ofrecemos consultas accesibles y personalizadas. El costo varía según la complejidad del caso. Contáctanos para recibir una cotización ajustada a tus necesidades.
-      </p>
+  <h2 class="faq-title">📌 Preguntas Frecuentes</h2>
+  <div class="faq-container">
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h3>💼 ¿Cuánto cuesta una consulta legal?</h3>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>
+          Ofrecemos consultas accesibles y personalizadas. El costo varía según la complejidad del caso. Contáctanos para recibir una cotización ajustada a tus necesidades específicas y sin compromisos.
+        </p>
+      </div>
     </div>
-
-    <div class="faq-item" style="transition: all 0.3s ease;">
-      <h3 style="color: var(--primary-color); margin-bottom: 1rem;">⚖️ ¿En qué áreas del derecho se especializan?</h3>
-      <p style="color: var(--text-light); line-height: 1.6;">
-        Contamos con experiencia en derecho penal, civil, laboral, corporativo, de familia, notarial, constitucional y en procesos de impugnación.
-      </p>
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h3>⚖️ ¿En qué áreas del derecho se especializan?</h3>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>
+          Contamos con experiencia en derecho penal, civil, laboral, corporativo, de familia, notarial, constitucional y en procesos de impugnación. Nuestro equipo multidisciplinario garantiza atención especializada.
+        </p>
+      </div>
     </div>
-
-    <div class="faq-item" style="transition: all 0.3s ease;">
-      <h3 style="color: var(--primary-color); margin-bottom: 1rem;">⏳ ¿Cuánto tiempo toma la tramitación de un caso?</h3>
-      <p style="color: var(--text-light); line-height: 1.6;">
-        El tiempo depende del tipo de proceso y su complejidad. Algunos casos pueden resolverse en semanas, mientras que otros requieren meses. Evaluamos cada situación para ofrecerte una estimación realista.
-      </p>
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h3>⏳ ¿Cuánto tiempo toma la tramitación de un caso?</h3>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>
+          El tiempo depende del tipo de proceso y su complejidad. Algunos casos pueden resolverse en semanas, mientras que otros requieren meses. Evaluamos cada situación para ofrecerte una estimación realista y seguimiento constante.
+        </p>
+      </div>
     </div>
-
-    <div class="faq-item" style="transition: all 0.3s ease;">
-      <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🕒 ¿Atienden las 24 horas del día y los 365 días del año?</h3>
-      <p style="color: var(--text-light); line-height: 1.6;">
-        Nuestro equipo está disponible para emergencias legales en cualquier momento. Para consultas generales, atendemos en horario laboral, pero puedes escribirnos en cualquier momento y te responderemos lo antes posible.
-      </p>
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h3>🕒 ¿Atienden las 24 horas del día y los 365 días del año?</h3>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>
+          Nuestro equipo está disponible para emergencias legales en cualquier momento. Para consultas generales, atendemos en horario laboral, pero puedes escribirnos en cualquier momento y te responderemos lo antes posible.
+        </p>
+      </div>
     </div>
-
+    
   </div>
 </section>
 <section class="section" id="blog">
@@ -1527,8 +1548,35 @@
       });
     });
   </script>
+/**
+ * Función para abrir/cerrar preguntas del FAQ
+ */
+function toggleFaq(element) {
+    const faqItem = element.parentElement;
+    const answer = faqItem.querySelector('.faq-answer');
+    const question = faqItem.querySelector('.faq-question');
+    
+    // Cerrar otras FAQ abiertas (comentar si quieres múltiples abiertas)
+    document.querySelectorAll('.faq-item').forEach(item => {
+        if (item !== faqItem) {
+            item.querySelector('.faq-answer').classList.remove('active');
+            item.querySelector('.faq-question').classList.remove('active');
+        }
+    });
+    
+    // Toggle de la FAQ actual
+    answer.classList.toggle('active');
+    question.classList.toggle('active');
+}
+
+// Opcional: Abrir la primera pregunta por defecto al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    // Descomenta la siguiente línea si quieres la primera pregunta abierta por defecto
+    // document.querySelector('.faq-question').click();
+});
 </body>
 </html>
+
 
 
 
