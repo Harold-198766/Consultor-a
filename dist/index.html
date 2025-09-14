@@ -1037,7 +1037,157 @@
   </p>
 </section>
     
-<!-- Pega este bloque donde quieras que aparezca tu FAQ -->
+<!-- REEMPLAZA tu FAQ actual por este bloque completo -->
+
+<style>
+/* === FAQ STYLES === */
+.faq-title {
+    color: var(--primary-color, #2c5aa0);
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.faq-title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(45deg, #2c5aa0, #3d6bb5);
+    border-radius: 2px;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(5px);
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 90, 160, 0.15);
+    border-color: #2c5aa0;
+    background: rgba(255, 255, 255, 0.98);
+}
+
+.faq-question {
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8f9fa;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    font-family: 'Georgia', serif;
+}
+
+.faq-question:hover {
+    background: rgba(44, 90, 160, 0.05);
+}
+
+.faq-question.active {
+    background: rgba(44, 90, 160, 0.1);
+}
+
+.faq-question h3 {
+    color: #2c5aa0;
+    margin: 0;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-family: 'Georgia', serif;
+}
+
+.faq-icon {
+    color: #2c5aa0;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+.faq-question.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.98);
+}
+
+.faq-answer.active {
+    max-height: 250px;
+    padding: 1.5rem;
+}
+
+.faq-answer p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Georgia', serif;
+}
+
+.section#faq {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem auto;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 900px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .faq-question {
+        padding: 1.2rem;
+    }
+    
+    .faq-question h3 {
+        font-size: 1.1rem;
+    }
+    
+    .faq-answer.active {
+        padding: 1.2rem;
+        max-height: 300px;
+    }
+    
+    .faq-title {
+        font-size: 1.8rem;
+    }
+    
+    .section#faq {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+}
+</style>
+
 <section class="section" id="faq">
   <h2 class="faq-title">📌 Preguntas Frecuentes</h2>
   <div class="faq-container">
@@ -1092,6 +1242,26 @@
     
   </div>
 </section>
+
+<script>
+function toggleFaq(element) {
+    const faqItem = element.parentElement;
+    const answer = faqItem.querySelector('.faq-answer');
+    const question = faqItem.querySelector('.faq-question');
+    
+    // Cerrar otras FAQ abiertas
+    document.querySelectorAll('.faq-item').forEach(item => {
+        if (item !== faqItem) {
+            item.querySelector('.faq-answer').classList.remove('active');
+            item.querySelector('.faq-question').classList.remove('active');
+        }
+    });
+    
+    // Toggle de la FAQ actual
+    answer.classList.toggle('active');
+    question.classList.toggle('active');
+}
+</script>
 <section class="section" id="blog">
   <h2>Blog</h2>
   <div id="blog-entradas"></div>
@@ -1567,6 +1737,7 @@ function toggleFaq(element) {
 </script>
 </body>
 </html>
+
 
 
 
