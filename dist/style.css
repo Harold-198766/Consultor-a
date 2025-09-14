@@ -921,6 +921,7 @@ a.descarga:hover i {
     text-align: center;
     position: relative;
     padding-bottom: 1rem;
+    font-family: 'Georgia', serif; /* Mantiene tu tipografía */
 }
 
 .faq-title::after {
@@ -931,7 +932,7 @@ a.descarga:hover i {
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: linear-gradient(45deg, var(--primary-color), #3d6bb5);
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
     border-radius: 2px;
 }
 
@@ -944,16 +945,17 @@ a.descarga:hover i {
 
 /* Cada item del FAQ */
 .faq-item {
-    background: white;
-    border: 1px solid #e9ecef;
+    background: rgba(255, 255, 255, 0.95); /* Fondo semi-transparente para tu imagen de fondo */
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-light);
     margin-bottom: 1rem;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.6s ease-out forwards;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    backdrop-filter: blur(5px); /* Efecto glassmorphism para tu fondo */
 }
 
 .faq-item:nth-child(1) { animation-delay: 0.1s; }
@@ -963,8 +965,9 @@ a.descarga:hover i {
 
 .faq-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(44, 90, 160, 0.12);
+    box-shadow: 0 8px 25px rgba(44, 90, 160, 0.15);
     border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.98); /* Más opaco al hover */
 }
 
 /* Pregunta (header clickeable) */
@@ -974,9 +977,10 @@ a.descarga:hover i {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #f8f9fa;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--bg-light);
+    transition: var(--transition);
     user-select: none;
+    font-family: 'Georgia', serif; /* Mantiene tu tipografía */
 }
 
 .faq-question:hover {
@@ -994,6 +998,7 @@ a.descarga:hover i {
     display: flex;
     align-items: center;
     font-size: 1.2rem;
+    font-family: 'Georgia', serif; /* Mantiene tu tipografía */
 }
 
 /* Icono de flecha */
@@ -1002,6 +1007,7 @@ a.descarga:hover i {
     font-size: 1.2rem;
     transition: transform 0.3s ease;
     margin-left: 1rem;
+    font-weight: bold;
 }
 
 .faq-question.active .faq-icon {
@@ -1014,11 +1020,11 @@ a.descarga:hover i {
     max-height: 0;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    background: white;
+    background: rgba(255, 255, 255, 0.98);
 }
 
 .faq-answer.active {
-    max-height: 200px;
+    max-height: 250px; /* Aumenté un poco por si tus textos son más largos */
     padding: 1.5rem;
 }
 
@@ -1026,6 +1032,7 @@ a.descarga:hover i {
     color: var(--text-light);
     line-height: 1.6;
     margin: 0;
+    font-family: 'Georgia', serif; /* Mantiene tu tipografía */
 }
 
 /* Animación de entrada */
@@ -1056,9 +1063,20 @@ a.descarga:hover i {
 
     .faq-answer.active {
         padding: 1.2rem;
+        max-height: 300px; /* Más espacio en móvil */
     }
     
     .faq-title {
         font-size: 2rem;
     }
+}
+
+/* Ajustes especiales para tu fondo de imagen */
+.section#faq {
+    background: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente para que se lea bien */
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    backdrop-filter: blur(10px); /* Efecto glassmorphism */
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
