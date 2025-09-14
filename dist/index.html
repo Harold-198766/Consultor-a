@@ -1548,15 +1548,12 @@
       });
     });
   </script>
-/**
- * Función para abrir/cerrar preguntas del FAQ
- */
+<script>
 function toggleFaq(element) {
     const faqItem = element.parentElement;
     const answer = faqItem.querySelector('.faq-answer');
     const question = faqItem.querySelector('.faq-question');
     
-    // Cerrar otras FAQ abiertas (comentar si quieres múltiples abiertas)
     document.querySelectorAll('.faq-item').forEach(item => {
         if (item !== faqItem) {
             item.querySelector('.faq-answer').classList.remove('active');
@@ -1564,18 +1561,13 @@ function toggleFaq(element) {
         }
     });
     
-    // Toggle de la FAQ actual
     answer.classList.toggle('active');
     question.classList.toggle('active');
 }
-
-// Opcional: Abrir la primera pregunta por defecto al cargar la página
-document.addEventListener('DOMContentLoaded', function() {
-    // Descomenta la siguiente línea si quieres la primera pregunta abierta por defecto
-    // document.querySelector('.faq-question').click();
-});
+</script>
 </body>
 </html>
+
 
 
 
