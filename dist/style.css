@@ -1,3 +1,15 @@
+/* === VARIABLES DE COLORES === */
+:root {
+    --primary-color: #2c5aa0;     /* Azul principal - puedes cambiar este color */
+    --primary-light: #3d6bb5;     /* Azul más claro */
+    --primary-dark: #1e3f70;      /* Azul más oscuro */
+    --text-light: #666;           /* Gris para textos secundarios */
+    --text-dark: #333;            /* Gris oscuro para textos principales */
+    --bg-light: #f8f9fa;          /* Fondo claro */
+    --border-color: #e9ecef;      /* Color de bordes */
+    --shadow-light: 0 2px 10px rgba(0,0,0,0.1);  /* Sombra suave */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);  /* Transición suave */
+}
 /* === RESET Y TIPOGRAFÍA === */
 * {
   margin: 0;
@@ -899,4 +911,154 @@ a.descarga:hover i {
 .newsletter-privacidad a {
   color: #0099cc;
   text-decoration: underline;
+}
+/* === FAQ STYLES === */
+
+/* Título principal del FAQ */
+.faq-title {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.faq-title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(45deg, var(--primary-color), #3d6bb5);
+    border-radius: 2px;
+}
+
+/* Container de las preguntas */
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Cada item del FAQ */
+.faq-item {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item:nth-child(1) { animation-delay: 0.1s; }
+.faq-item:nth-child(2) { animation-delay: 0.2s; }
+.faq-item:nth-child(3) { animation-delay: 0.3s; }
+.faq-item:nth-child(4) { animation-delay: 0.4s; }
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 90, 160, 0.12);
+    border-color: var(--primary-color);
+}
+
+/* Pregunta (header clickeable) */
+.faq-question {
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8f9fa;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+}
+
+.faq-question:hover {
+    background: rgba(44, 90, 160, 0.05);
+}
+
+.faq-question.active {
+    background: rgba(44, 90, 160, 0.1);
+}
+
+.faq-question h3 {
+    color: var(--primary-color);
+    margin: 0;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+/* Icono de flecha */
+.faq-icon {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    margin-left: 1rem;
+}
+
+.faq-question.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+/* Respuesta (contenido expandible) */
+.faq-answer {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+}
+
+.faq-answer.active {
+    max-height: 200px;
+    padding: 1.5rem;
+}
+
+.faq-answer p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .faq-question {
+        padding: 1.2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .faq-question h3 {
+        font-size: 1.1rem;
+    }
+
+    .faq-icon {
+        align-self: flex-end;
+        margin: 0;
+    }
+
+    .faq-answer.active {
+        padding: 1.2rem;
+    }
+    
+    .faq-title {
+        font-size: 2rem;
+    }
 }
