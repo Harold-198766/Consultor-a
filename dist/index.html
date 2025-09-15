@@ -289,94 +289,150 @@
       padding-left: 2rem;
     }
 
-    .cta-banner-header {
-      background: var(--gradient-secondary);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: var(--shadow-sm);
-    }
+   /* REEMPLAZA este bloque en tu HTML o muévelo a tu style.css */
 
-    .cta-banner-header:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-    }
+.cta-banner-header {
+  background: var(--gradient-secondary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-sm);
+}
 
-    /* Hero Section moderna */
-    .banner {
-      background: var(--gradient-primary);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
+.cta-banner-header:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
 
-    .banner::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-      animation: float 20s ease-in-out infinite;
-    }
+/* Hero Section corregida - SIN animación problemática */
+.banner {
+  background: var(--gradient-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  /* Asegura que no interfiera con el contenido siguiente */
+  z-index: 1;
+}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
+/* CORREGIDO: ::before sin animación flotante problemática */
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  /* ELIMINADA la animación float problemática */
+  /* animation: float 20s ease-in-out infinite; */
+  /* En su lugar, usamos una animación más sutil que no interfiera */
+  animation: subtleGlow 8s ease-in-out infinite;
+  z-index: -1; /* Asegura que esté detrás del contenido */
+}
 
-    .titulo-juridico {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 700;
-      margin-bottom: 2rem;
-      position: relative;
-      z-index: 2;
-      animation: fadeInUp 1s ease-out;
-    }
+/* Nueva animación más sutil que no causa problemas */
+@keyframes subtleGlow {
+  0%, 100% { 
+    opacity: 0.1;
+  }
+  50% { 
+    opacity: 0.15;
+  }
+}
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+/* ELIMINADA la animación float problemática */
+/*
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+*/
 
-    .decorative-line {
-      width: 100px;
-      height: 4px;
-      background: var(--secondary-color);
-      margin: 0 auto;
-      border-radius: 2px;
-      animation: slideIn 1s ease-out 0.5s both;
-    }
+.titulo-juridico {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease-out;
+}
 
-    @keyframes slideIn {
-      from {
-        width: 0;
-      }
-      to {
-        width: 100px;
-      }
-    }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.decorative-line {
+  width: 100px;
+  height: 4px;
+  background: var(--secondary-color);
+  margin: 0 auto;
+  border-radius: 2px;
+  animation: slideIn 1s ease-out 0.5s both;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
+}
+
+/* AGREGA ESTAS CLASES NUEVAS para proteger el contenido siguiente */
+
+/* Protección para la sección nosotros y contenido siguiente */
+.content-section {
+  position: relative;
+  z-index: 10;
+  background: white; /* Asegura fondo sólido */
+}
+
+/* Clase específica para la sección nosotros */
+.nosotros,
+#nosotros {
+  position: relative;
+  z-index: 10;
+  background: #f8f9fa;
+  padding: 80px 20px;
+  /* Fuerza la visibilidad */
+  opacity: 1 !important;
+  visibility: visible !important;
+  /* Asegura que esté completamente separado del banner */
+  margin-top: 0;
+  clear: both;
+}
+
+/* Si tienes otras secciones, aplícales esta clase */
+.section-protected {
+  position: relative;
+  z-index: 10;
+  background: white;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
     /* Secciones modernas */
     .section {
       padding: 5rem 2rem;
@@ -1737,6 +1793,7 @@ function toggleFaq(element) {
 </script>
 </body>
 </html>
+
 
 
 
