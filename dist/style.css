@@ -1,3 +1,11 @@
+:root {
+  --bg-card: #fff;
+  --secondary-color: #2c7a7b;
+  --primary-color: #1a202c;
+  --text-light: #4a5568;
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
 /* === RESET Y TIPOGRAFÍA === */
 * {
   margin: 0;
@@ -991,3 +999,46 @@ a.descarga:hover i {
         text-align: center;
     }
 }
+/* Contact Section Styles */
+
+/* Grid layout */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Card styling */
+.contact-card {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+/* Icon styling */
+.contact-card i {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+/* Headings */
+.contact-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Links */
+.contact-card a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
