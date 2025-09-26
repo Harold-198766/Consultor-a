@@ -310,20 +310,18 @@
 
 /* Hero Section corregida - SIN animación problemática */
 .banner {
-  background: var(--gradient-primary);
+  background: white; /* O usa transparent si prefieres */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
+  color: var(--primary-color); /* Azul oscuro elegante */
   position: relative;
   overflow: hidden;
-  /* Asegura que no interfiera con el contenido siguiente */
   z-index: 1;
 }
-
 /* CORREGIDO: ::before sin animación flotante problemática */
 .banner::before {
   content: '';
@@ -1823,6 +1821,7 @@ function toggleFaq(element) {
 </script>
 </body>
 </html>
+
 
 
 
