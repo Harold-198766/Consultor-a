@@ -525,40 +525,68 @@
       line-height: 1.6;
     }
 
-    /* Equipo moderno */
-    .team {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
+   /* styles.css */
+.team-section {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-    .equipo {
-      background: var(--bg-card);
-      padding: 2rem;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s ease;
-      border: 1px solid var(--border-color);
-    }
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
 
-    .equipo:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
 
-    .avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      border: 3px solid var(--secondary-color);
-      transition: transform 0.3s ease;
-    }
+.team-member {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .equipo:hover .avatar {
-      transform: scale(1.1);
-    }
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.member-name {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  color: #222;
+}
+
+.member-specialty {
+  font-size: 1rem;
+  color: var(--text-light, #666);
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
 
     /* Testimonios modernos */
     .testimonios-grid {
@@ -1013,31 +1041,39 @@
       </div>
     </section>
     
-    <section class="section" id="equipo">
-      <h2>Nuestro Equipo</h2>
-      <div class="team">
-        <div class="equipo area-penal">
-          <img class="avatar" src="images/abogado.svg" alt="Avatar de Amílcar Colindres" width="100" height="100" />
-          <strong>Doctor. Amílcar Colindres</strong><br>
-          <span style="color: var(--text-light);">Especialización: Derecho Penal, ex juez de paz y de primera instancia penal, con más de 20 años de ejercicio profesional</span>
-        </div>
-        <div class="equipo area-familia">
-          <img class="avatar" src="images/abogado.svg" alt="Avatar de Erick Barillas" width="100" height="100" />
-          <strong>Lic. Salvador Barillas</strong><br>
-          <span style="color: var(--text-light);">Especialización: Derecho de Familia, con 13 años de ejercicio profesional en diversas áreas del derecho, especialmente familia e impugnaciones</span>
-        </div>
-        <div class="equipo area-civil">
-          <img class="avatar" src="images/abogado.svg" alt="Avatar de Alfredo Lemus" width="100" height="100" />
-          <strong>Lic. Alfredo Lemus</strong><br>
-          <span style="color: var(--text-light);">Especialización: Derecho Notarial y Jurisdicción Voluntaria, con más de 15 años de experiencia de ejercicio profesional</span>
-        </div>
-        <div class="equipo area-laboral">
-          <img class="avatar" src="images/abogado.svg" alt="Avatar de Arnulfo Dieguez" width="100" height="100" />
-          <strong>Lic. Arnulfo Dieguez</strong><br>
-          <span style="color: var(--text-light);">Especialización: Derecho Civil y Procesal Civil y Mercantil, con más de 15 años de ejercicio profesional</span>
-        </div>
-      </div>
-    </section>
+   <section class="section team-section" id="equipo">
+  <h2 class="section-title">Nuestro Equipo</h2>
+  <div class="team-grid">
+    <figure class="team-member">
+      <img class="avatar" src="images/abogado.svg" alt="Avatar de Amílcar Colindres, especialista en Derecho Penal" width="100" height="100" aria-label="Amílcar Colindres" />
+      <figcaption>
+        <h3 class="member-name">Dr. Amílcar Colindres</h3>
+        <p class="member-specialty">Especialización: Derecho Penal, ex juez de paz y de primera instancia penal, con más de 20 años de ejercicio profesional</p>
+      </figcaption>
+    </figure>
+    <figure class="team-member">
+      <img class="avatar" src="images/abogado.svg" alt="Avatar de Salvador Barillas, especialista en Derecho de Familia" width="100" height="100" aria-label="Salvador Barillas" />
+      <figcaption>
+        <h3 class="member-name">Lic. Salvador Barillas</h3>
+        <p class="member-specialty">Especialización: Derecho de Familia, con 13 años de ejercicio profesional en diversas áreas del derecho, especialmente familia e impugnaciones</p>
+      </figcaption>
+    </figure>
+    <figure class="team-member">
+      <img class="avatar" src="images/abogado.svg" alt="Avatar de Alfredo Lemus, especialista en Derecho Notarial" width="100" height="100" aria-label="Alfredo Lemus" />
+      <figcaption>
+        <h3 class="member-name">Lic. Alfredo Lemus</h3>
+        <p class="member-specialty">Especialización: Derecho Notarial y Jurisdicción Voluntaria, con más de 15 años de experiencia de ejercicio profesional</p>
+      </figcaption>
+    </figure>
+    <figure class="team-member">
+      <img class="avatar" src="images/abogado.svg" alt="Avatar de Arnulfo Dieguez, especialista en Derecho Civil" width="100" height="100" aria-label="Arnulfo Dieguez" />
+      <figcaption>
+        <h3 class="member-name">Lic. Arnulfo Dieguez</h3>
+        <p class="member-specialty">Especialización: Derecho Civil y Procesal Civil y Mercantil, con más de 15 años de ejercicio profesional</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
     
     <section class="section" id="testimonios">
   <h2>
@@ -1823,6 +1859,7 @@ function toggleFaq(element) {
 </script>
 </body>
 </html>
+
 
 
 
