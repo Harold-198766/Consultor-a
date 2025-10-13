@@ -588,53 +588,123 @@
 }
 
     /* Testimonios modernos */
-    .testimonios-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
+   /* styles.css */
+.testimonials-section {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-    .testimonio-item {
-      background: var(--bg-card);
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s ease;
-      border-left: 4px solid var(--secondary-color);
-    }
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
 
-    .testimonio-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
+.section-title i {
+  color: var(--secondary-color, #007bff);
+}
 
-    .testimonio-quote {
-      margin-bottom: 1.5rem;
-      position: relative;
-    }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
 
-    .testimonio-quote i {
-      color: var(--secondary-color);
-      font-size: 1.2rem;
-    }
+.testimonial-item {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .testimonio-cliente {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
+.testimonial-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
 
-    .testimonio-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 2px solid var(--secondary-color);
-    }
+.testimonial-quote {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
 
-    .testimonio-area {
-      color: var(--text-light);
-      font-size: 0.9rem;
-    }
+.testimonial-quote p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  margin: 1rem 0;
+}
+
+.testimonial-quote i {
+  color: var(--secondary-color, #007bff);
+  font-size: 1.5rem;
+  position: absolute;
+}
+
+.testimonial-quote .fa-quote-left {
+  top: 0;
+  left: 0;
+}
+
+.testimonial-quote .fa-quote-right {
+  bottom: 0;
+  right: 0;
+}
+
+.testimonial-client {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial-avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.client-info {
+  text-align: left;
+}
+
+.client-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.client-area {
+  font-size: 1rem;
+  color: var(--text-light, #666);
+}
+
+.testimonials-note {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: var(--text-light, #666);
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .testimonial-quote p {
+    font-size: 1rem;
+  }
+}
 
     /* Formularios modernos */
     .contact-form, .newsletter-form {
@@ -1074,55 +1144,56 @@
   </div>
 </section>
     
-    <section class="section" id="testimonios">
-  <h2>
-    <i class="fas fa-comments" style="color:var(--secondary-color); margin-right:8px;"></i>
+  <section class="section testimonials-section" id="testimonios">
+  <h2 class="section-title">
+    <i class="fas fa-comments" aria-hidden="true"></i>
     Testimonios de Nuestros Clientes
   </h2>
-  <div class="testimonios-grid">
-    <div class="testimonio-item">
-      <div class="testimonio-quote">
-        <i class="fas fa-quote-left"></i>
-        <p>
-          Excelente atención y profesionalismo. Resolvieron mi caso de manera rápida y efectiva. Recomiendo ampliamente sus servicios.
-        </p>
-        <i class="fas fa-quote-right"></i>
+  <div class="testimonials-grid">
+    <blockquote class="testimonial-item">
+      <div class="testimonial-quote">
+        <i class="fas fa-quote-left" aria-hidden="true"></i>
+        <p>Excelente atención y profesionalismo. Resolvieron mi caso de manera rápida y efectiva. Recomiendo ampliamente sus servicios.</p>
+        <i class="fas fa-quote-right" aria-hidden="true"></i>
       </div>
-      <div class="testimonio-cliente">
-        <img src="images/avatar-mujer-2.webp" alt="Foto de cliente" class="testimonio-avatar" width="64" height="64">
-        <span><strong>María González</strong><br><span class="testimonio-area">Derecho Civil</span></span>
+      <div class="testimonial-client">
+        <img src="images/avatar-mujer-2.webp" alt="Foto de María González, cliente de Derecho Civil" class="testimonial-avatar" width="64" height="64" aria-label="María González">
+        <cite class="client-info">
+          <span class="client-name">María González</span>
+          <span class="client-area">Derecho Civil</span>
+        </cite>
       </div>
-    </div>
-    <div class="testimonio-item">
-      <div class="testimonio-quote">
-        <i class="fas fa-quote-left"></i>
-        <p>
-          Muy agradecido con el bufete por la asesoría en un proceso familiar. La empatía y claridad fueron clave para sentirme seguro.
-        </p>
-        <i class="fas fa-quote-right"></i>
+    </blockquote>
+    <blockquote class="testimonial-item">
+      <div class="testimonial-quote">
+        <i class="fas fa-quote-left" aria-hidden="true"></i>
+        <p>Muy agradecido con el bufete por la asesoría en un proceso familiar. La empatía y claridad fueron clave para sentirme seguro.</p>
+        <i class="fas fa-quote-right" aria-hidden="true"></i>
       </div>
-      <div class="testimonio-cliente">
-        <img src="images/avatar-hombre.webp" alt="Foto de cliente" class="testimonio-avatar" width="64" height="64">
-        <span><strong>Carlos Méndez</strong><br><span class="testimonio-area">Derecho de Familia</span></span>
+      <div class="testimonial-client">
+        <img src="images/avatar-hombre.webp" alt="Foto de Carlos Méndez, cliente de Derecho de Familia" class="testimonial-avatar" width="64" height="64" aria-label="Carlos Méndez">
+        <cite class="client-info">
+          <span class="client-name">Carlos Méndez</span>
+          <span class="client-area">Derecho de Familia</span>
+        </cite>
       </div>
-    </div>
-    <div class="testimonio-item">
-      <div class="testimonio-quote">
-        <i class="fas fa-quote-left"></i>
-        <p>
-          El acompañamiento en mi caso laboral fue excelente. Siempre estuvieron disponibles y me ayudaron a defender mis derechos.
-        </p>
-        <i class="fas fa-quote-right"></i>
+    </blockquote>
+    <blockquote class="testimonial-item">
+      <div class="testimonial-quote">
+        <i class="fas fa-quote-left" aria-hidden="true"></i>
+        <p>El acompañamiento en mi caso laboral fue excelente. Siempre estuvieron disponibles y me ayudaron a defender mis derechos.</p>
+        <i class="fas fa-quote-right" aria-hidden="true"></i>
       </div>
-      <div class="testimonio-cliente">
-        <img src="images/avatar-mujer.webp" alt="Foto de cliente" class="testimonio-avatar" width="64" height="64">
-        <span><strong>Ana Ramírez</strong><br><span class="testimonio-area">Derecho Laboral</span></span>
+      <div class="testimonial-client">
+        <img src="images/avatar-mujer.webp" alt="Foto de Ana Ramírez, cliente de Derecho Laboral" class="testimonial-avatar" width="64" height="64" aria-label="Ana Ramírez">
+        <cite class="client-info">
+          <span class="client-name">Ana Ramírez</span>
+          <span class="client-area">Derecho Laboral</span>
+        </cite>
       </div>
-    </div>
+    </blockquote>
   </div>
-  <p class="testimonios-nota" style="margin-top: 1rem; color: var(--text-light); text-align: center;">
-    Los testimonios son reales y reflejan nuestro compromiso con cada cliente.
-  </p>
+  <p class="testimonials-note">Los testimonios son reales y reflejan nuestro compromiso con cada cliente.</p>
 </section>
     
 <!-- REEMPLAZA tu FAQ actual por este bloque completo -->
@@ -1858,6 +1929,7 @@ function toggleFaq(element) {
 </script>
 </body>
 </html>
+
 
 
 
