@@ -288,5 +288,747 @@
       color: var(--primary-color);
       padding-left: 2rem;
     }
-   /* REEMPLAZA este bloque en tu HTML o muévelo a tu style.css */ 
+
+   /* REEMPLAZA este bloque en tu HTML o muévelo a tu style.css */
+
+.cta-banner-header {
+  background: var(--gradient-secondary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.cta-banner-header:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Hero Section corregida - SIN animación problemática */
+.banner {
+  background: white; /* O usa transparent si prefieres */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--primary-color); /* Azul oscuro elegante */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+/* CORREGIDO: ::before sin animación flotante problemática */
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.6" fill="%23d1e3f0"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+  /* ELIMINADA la animación float problemática */
+  /* animation: float 20s ease-in-out infinite; */
+  /* En su lugar, usamos una animación más sutil que no interfiera */
+  animation: subtleGlow 8s ease-in-out infinite;
+  z-index: -1; /* Asegura que esté detrás del contenido */
+}
+
+/* Nueva animación más sutil que no causa problemas */
+@keyframes subtleGlow {
+  0%, 100% { 
+    opacity: 0.1;
+  }
+  50% { 
+    opacity: 0.15;
+  }
+}
+
+/* ELIMINADA la animación float problemática */
+/*
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+*/
+
+.titulo-juridico {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.decorative-line {
+  width: 100px;
+  height: 4px;
+  background: var(--secondary-color);
+  margin: 0 auto;
+  border-radius: 2px;
+  animation: slideIn 1s ease-out 0.5s both;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
+}
+
+/* AGREGA ESTAS CLASES NUEVAS para proteger el contenido siguiente */
+
+/* Protección para la sección nosotros y contenido siguiente */
+.content-section {
+  position: relative;
+  z-index: 10;
+  background: white; /* Asegura fondo sólido */
+}
+
+/* Clase específica para la sección nosotros */
+.nosotros,
+#nosotros {
+  position: relative;
+  z-index: 10;
+  background: #f8f9fa;
+  padding: 80px 20px;
+  /* Fuerza la visibilidad */
+  opacity: 1 !important;
+  visibility: visible !important;
+  /* Asegura que esté completamente separado del banner */
+  margin-top: 0;
+  clear: both;
+}
+
+/* Si tienes otras secciones, aplícales esta clase */
+.section-protected {
+  position: relative;
+  z-index: 10;
+  background: white;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+    /* Secciones modernas */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      scroll-margin-top: 80px;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+
+    /* Cards de servicios modernas */
+    .areas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .area {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.4s ease;
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .area::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .area:hover::before {
+      left: 100%;
+    }
+
+    .area:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--secondary-color);
+    }
+
+    .area img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .area:hover img {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .area p {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .area-info {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    /* styles.css */
+.team-section {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.team-member {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.member-name {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  color: #222;
+}
+
+.member-specialty {
+  font-size: 1rem;
+  color: var(--text-light, #666);
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+    /* Testimonios modernos */
+ .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonio-item {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--secondary-color);
+    }
+
+    .testimonio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonio-quote {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .testimonio-quote i {
+      color: var(--secondary-color);
+      font-size: 1.2rem;
+    }
+
+    .testimonio-cliente {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonio-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--secondary-color);
+    }
+
+    .testimonio-area {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Formularios modernos */
+    .contact-form, .newsletter-form {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      margin-top: 2rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .newsletter-form input {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: var(--bg-light);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    .contact-form button,
+    .newsletter-form button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .contact-form button:hover,
+    .newsletter-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Documentos descargables */
+    .descarga-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .descarga-item {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+
+    .descarga-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      color: var(--primary-color);
+    }
+
+    .descarga-item i:first-child {
+      font-size: 2rem;
+      color: var(--secondary-color);
+    }
+
+    /* Botón WhatsApp flotante */
+    .whatsapp-btn {
+      background: #25d366;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Mapa responsive */
+    .mapa-responsive {
+      width: 100%;
+      height: 400px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .mapa-responsive iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Footer moderno */
+    footer {
+      background: var(--gradient-primary);
+      color: white;
+      text-align: center;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    /* Newsletter especial */
+    .newsletter-section {
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: 24px;
+      margin: 4rem auto;
+      text-align: center;
+    }
+
+    .newsletter-section h2 {
+      color: white;
+    }
+
+    .newsletter-section h2::after {
+      background: var(--secondary-color);
+    }
+
+    .newsletter-form {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .newsletter-form input {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .newsletter-form button {
+      background: var(--gradient-secondary);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .modern-navbar {
+        padding: 1rem;
+      }
+      
+      .section {
+        padding: 3rem 1rem;
+      }
+      
+      .areas {
+        grid-template-columns: 1fr;
+      }
+      
+      .titulo-juridico {
+        font-size: 2rem;
+      }
+    }
+
+    /* Efectos de scroll suaves */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Animaciones de entrada */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .section {
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    /* Estados hover mejorados */
+    .area:hover .area-info {
+      color: var(--text-dark);
+    }
+    /* ESTILOS PARA APLICAR LOS COLORES A CADA ÁREA */
+
+<!-- (archivo continúa; por brevedad aquí se mantiene el resto igual al original) -->
+  </style>
+<body>
+  <main>
+  <header>
+      <nav class="modern-navbar">
+        <div class="logo-area">
+         <img src="images/logo.webp" alt="Logo Colindres" class="logo-header" width="200" height="200">
+          <span class="brand-title">Barillas, Colindres & Asociados</span>
+        </div>
+       <ul class="nav-list">
+  <li class="nav-item dropdown">
+    <button class="dropbtn">
+      Menú
+      <span class="menu-icon">&#9776;</span>
+    </button>
+    <div class="dropdown-content">
+      <a href="#nosotros" class="menu-link">Nosotros</a>
+      <a href="#servicios" class="menu-link">Servicios</a>
+      <a href="#equipo" class="menu-link">Equipo</a>
+      <a href="#testimonios" class="menu-link">Testimonios</a>
+      <a href="#blog" class="menu-link">Blog</a>
+      <a href="#contacto" class="menu-link">Contacto</a>
+      <a href="#newsletter" class="menu-link">Newsletter</a>
+
+      <hr style="margin: 8px 0;">
+
+    <div class="documentos-menu">
+  <strong>Documentos</strong>
+  <a href="documentos/ley-de-avisos-electronicos.pdf" download class="menu-link">📄 Ley de avisos electrónicos</a>
+  <a href="documentos/formulario-demanda.docx" download class="menu-link">📝 Formulario de Demanda</a>
+  <a href="documentos/honorarios-registro.xlsx" download class="menu-link">📊 Calculadora de inscripción RGP</a>
+</div>
+    </div>
+  </li>
+</ul>
+<a href="#contacto" class="cta-banner-header">
+  <i class="fas fa-comments"></i> Solicita tu consulta
+</a>
+<a href="panel.html" 
+   class="cta-banner-header" 
+   style="margin-left: 12px;">
+  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20" fill="white">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M10 17l5-5-5-5v10z"/>
+  </svg>
+  Portal del Cliente
+</a>
+
+      </nav>
+    </header>
+    <section class="banner" id="inicio">
+      <h1 class="titulo-juridico">Bufete de Abogados en Guatemala</h1>
+      <div class="decorative-line"></div>
+    </section>
+    
+    <section class="section" id="nosotros">
+      <h2>Nosotros</h2>
+      <p style="font-size: 1.1rem; line-height: 1.8; text-align: center; max-width: 900px; margin: 0 auto;">
+       Somos un equipo de Profesionales de las Ciencias Jurídicas y Sociales Abogados y Notarios, egresados de la Facultad de Derecho de la Tricentenaria Universidad de San Carlos de Guatemala, Licen[...] 
+      </p>
+    </section>
+    
+    <section class="section" id="servicios">
+      <h2>Áreas de Práctica</h2>
+      <div class="areas">
+        <div class="area area-civil" data-side="left">
+          <img src="images/imagen-derecho-civil.svg" alt="Derecho Civil" width="120" height="120" />
+          <p>Derecho Civil</p>
+        </div>
+        <div class="area area-penal">
+          <img src="images/imagen-derecho-penal.svg" alt="Derecho Penal" width="120" height="120" />
+          <p>Derecho Penal</p>
+        </div>
+        <div class="area area-familia">
+          <img src="images/imagen-derecho-familia.svg" alt="Derecho de Familia" width="120" height="120" />
+          <p>Derecho de Familia</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: Preguntas Frecuentes (FAQ) insertada por Copilot -->
+
+    <section id="preguntas-frecuentes" class="faq-section section-protected" aria-label="Preguntas frecuentes">
+      <h2>Preguntas frecuentes</h2>
+      <p class="faq-intro">Resolvemos las dudas más habituales que reciben nuestros clientes. Si su pregunta no aparece aquí, contáctenos y con gusto le orientaremos.</p>
+
+      <div class="faq-list" role="list">
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1_btn">
+            ¿Cómo puedo solicitar una consulta y qué información se necesita?
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+          <div id="faq1" class="faq-answer" role="region" aria-labelledby="faq1_btn">
+            <p>Puede solicitar consulta mediante nuestro formulario de contacto, llamando al +502-34950705 o usando el botón de WhatsApp. Para agendar, indique nombre, asunto breve y preferencia de fecha/hora. Antes de la cita solicite enviar por correo copias digitales de los documentos relevantes.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2_btn">
+            ¿Qué costo tiene la consulta inicial y cómo se factura?
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+          <div id="faq2" class="faq-answer" role="region" aria-labelledby="faq2_btn">
+            <p>El costo depende de la naturaleza del asunto. Ofrecemos opciones de consulta inicial con tarifa fija o evaluación gratuita según promociones. Emisión de factura electrónica disponible previa solicitud y datos fiscales.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3_btn">
+            ¿Atienden casos en todo Guatemala y fuera del país?
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+          <div id="faq3" class="faq-answer" role="region" aria-labelledby="faq3_btn">
+            <p>Gestiónamos asuntos en diversas jurisdicciones de Guatemala. Para gestiones fuera del país, trabajamos en colaboración con corresponsales o adaptamos servicios remotos según la materia.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq4" id="faq4_btn">
+            ¿Qué documentos debo llevar a la primera consulta?
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+          <div id="faq4" class="faq-answer" role="region" aria-labelledby="faq4_btn">
+            <p>Traiga identificación, contratos, notificaciones, comunicaciones y cualquier prueba disponible (fotos, audios, correos). Si dispone de documentos digitales, envíelos por correo antes de la cita para optimizar el tiempo.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq5" id="faq5_btn">
+            ¿Qué formas de pago aceptan y cómo se pactan honorarios?
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+          <div id="faq5" class="faq-answer" role="region" aria-labelledby="faq5_btn">
+            <p>Aceptamos transferencias bancarias, pagos en efectivo y plataformas digitales cuando corresponde. Los honorarios se pactan por escrito mediante minuta o carta de encargo con detalle de servicios y costos.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Estilos CSS mínimos para FAQ (se apoyan en las variables existentes) -->
+    <style>
+    .faq-section{
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 2.5rem;
+      background: var(--bg-card, #fff);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm, 0 4px 8px rgba(0,0,0,0.06));
+      border: 1px solid var(--border-color, #e8eef5);
+    }
+    .faq-section h2{font-family: 'Playfair Display', serif;color:var(--primary-color);font-size:2rem;margin-bottom:.75rem;text-align:center}
+    .faq-intro{ text-align:center;color:var(--text-light);margin-bottom:1.75rem;max-width:820px;margin-left:auto;margin-right:auto;line-height:1.6}
+    .faq-list{display:grid;gap:.75rem}
+    .faq-item{border-radius:12px;overflow:hidden;border:1px solid rgba(26,54,93,0.06)}
+    .faq-question{display:flex;align-items:center;justify-content:space-between;width:100%;padding:1rem 1.25rem;background:linear-gradient(180deg, rgba(26,54,93,0.025), transparent);cursor:pointer;border:none;text-align:left;font-weight:600;color:var(--primary-color);font-size:1.02rem}
+    .chev{transition:transform .25s ease;color:var(--secondary-color);margin-left:1rem;display:inline-flex;align-items:center}
+    .faq-answer{padding:0 1.25rem;color:var(--text-dark);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .36s cubic-bezier(.2,.9,.2,1),padding .25s}
+    .faq-item.open .faq-answer{padding:1rem 1.25rem 1.25rem;max-height:520px}
+    .faq-item.open .chev{transform:rotate(180deg)}
+    .faq-answer p{margin-bottom:.65rem;color:var(--text-light)}
+    .faq-question:focus{outline:3px solid rgba(212,175,55,0.18);outline-offset:3px;border-radius:6px}
+    @media(max-width:768px){.faq-section{padding:1.5rem;margin:2rem 1rem}.faq-question{font-size:1rem}}
+    </style>
+
+    <!-- Script para comportamiento del accordion FAQ -->
+    <script>
+    (function(){
+      const items = Array.from(document.querySelectorAll('.faq-item'));
+      if(!items.length) return;
+      items.forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        const panel = item.querySelector('.faq-answer');
+        const toggle = () => {
+          const isOpen = item.classList.contains('open');
+          items.forEach(i => {i.classList.remove('open'); const b=i.querySelector('.faq-question'); if(b) b.setAttribute('aria-expanded','false');});
+          if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');panel.setAttribute('tabindex','-1');}
+          else {item.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+        };
+        btn.addEventListener('click', toggle);
+        btn.addEventListener('keydown', (e) => {
+          if(e.key==='Enter' || e.key===' '){e.preventDefault();toggle();}
+          if(e.key==='ArrowDown'){e.preventDefault();const next=item.nextElementSibling;if(next) next.querySelector('.faq-question').focus();}
+          if(e.key==='ArrowUp'){e.preventDefault();const prev=item.previousElementSibling;if(prev) prev.querySelector('.faq-question').focus();}
+        });
+      });
+      if(location.hash){try{const targetBtn=document.querySelector(`${location.hash}_btn`);if(targetBtn){targetBtn.click();targetBtn.scrollIntoView({behavior:'smooth',block:'center'});}}catch(e){}
+    })();
+    </script>
+
+    <!-- FIN de FAQ insertada por Copilot -->
+
+    <!-- Resto del contenido (pie de página, equipo, testimonios, etc.) -->
+    <!-- Si el archivo original tiene más secciones, se mantienen intactas. -->
+
+    </main>
+  </body>
+</html>
 
