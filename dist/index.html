@@ -1199,139 +1199,236 @@
     background: rgba(44, 90, 160, 0.1);
 }
 
-.faq-question h3 {
-    color: #2c5aa0;
-    margin: 0;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-    font-family: 'Georgia', serif;
+faq-question{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(180deg, rgba(26,54,93,0.025), transparent);
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  font-weight: 600;
+  color: var(--primary-color, #1a365d);
+  font-size: 1.02rem;
+}
+.faq-question .chev{
+  transition: transform .25s ease;
+  color: var(--secondary-color, #d4af37);
+  margin-left: 1rem;
+  display: inline-flex;
+  align-items: center;
+}
+.faq-answer{
+  padding: 0 1.25rem;
+  background: transparent;
+  color: var(--text-dark, #2d3748);
+  line-height: 1.7;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .36s cubic-bezier(.2,.9,.2,1), padding .25s;
+}
+.faq-item.open .faq-answer{
+  padding: 1rem 1.25rem 1.25rem;
+  max-height: 520px; /* sufficiently large to fit content smoothly */
+}
+.faq-item.open .chev{
+  transform: rotate(180deg);
 }
 
-.faq-icon {
-    color: #2c5aa0;
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
-    margin-left: 1rem;
-    font-weight: bold;
+/* Small helper for answer content */
+.faq-answer p{
+  margin-bottom: 0.65rem;
+  color: var(--text-light, #536171);
 }
 
-.faq-question.active .faq-icon {
-    transform: rotate(180deg);
-}
-
-.faq-answer {
-    padding: 0 1.5rem;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    background: rgba(255, 255, 255, 0.98);
-}
-
-.faq-answer.active {
-    max-height: 250px;
-    padding: 1.5rem;
-}
-
-.faq-answer p {
-    color: #666;
-    line-height: 1.6;
-    margin: 0;
-    font-family: 'Georgia', serif;
-}
-
-.section#faq {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    padding: 2rem;
-    margin: 2rem auto;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    max-width: 900px;
+/* Accessibility focus */
+.faq-question:focus{
+  outline: 3px solid rgba(212,175,55,0.18);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    .faq-question {
-        padding: 1.2rem;
-    }
-    
-    .faq-question h3 {
-        font-size: 1.1rem;
-    }
-    
-    .faq-answer.active {
-        padding: 1.2rem;
-        max-height: 300px;
-    }
-    
-    .faq-title {
-        font-size: 1.8rem;
-    }
-    
-    .section#faq {
-        padding: 1.5rem;
-        margin: 1rem;
-    }
+@media (max-width: 768px){
+  .faq-section{ padding: 1.5rem; margin: 2rem 1rem; }
+  .faq-question{ font-size: 1rem; }
 }
 </style>
 
-<section class="section" id="faq">
-  <h2 class="faq-title">📌 Preguntas Frecuentes</h2>
-  <div class="faq-container">
-    
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        <h3>💼 ¿Cuánto cuesta una consulta legal?</h3>
-        <span class="faq-icon">▼</span>
-      </div>
-      <div class="faq-answer">
-        <p>
-          Ofrecemos consultas accesibles y personalizadas. El costo varía según la complejidad del caso. Contáctanos para recibir una cotización ajustada a tus necesidades específicas y sin compromisos.
-        </p>
+<!-- JSON-LD (FAQPage) — ayuda al SEO. Actualiza las preguntas/respuestas si lo deseas -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo solicito una consulta con el bufete?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Puede solicitar su consulta a través del formulario de contacto en esta página, llamando al +502-34950705 o usando el botón de WhatsApp. Ofrecemos consulta inicial remota y presencial según su preferencia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es el costo de una consulta inicial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El costo depende de la complejidad del asunto. Para casos comunes ofrecemos tarifa fija para la consulta inicial; contáctenos para recibir un presupuesto claro antes de agendar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Atienden casos en todo el territorio de Guatemala?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Nuestros abogados pueden gestionar asuntos en diferentes jurisdicciones de Guatemala y coordinamos diligencias locales cuando es necesario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué documentos debo llevar para una primera consulta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lleve toda la documentación relevante: identificación, contratos, oficios, notificaciones o pruebas disponibles. Si no está seguro, envíenos copias digitales antes de la cita."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo puedo pagar los honorarios?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aceptamos transferencias bancarias, pagos en efectivo y, en algunos casos, pagos por plataformas digitales. Detallamos las opciones al momento de formalizar el encargo."
+      }
+    }
+  ]
+}
+</script>
+
+<section id="preguntas-frecuentes" class="faq-section section-protected" aria-label="Preguntas frecuentes">
+  <h2>Preguntas frecuentes</h2>
+  <p class="faq-intro">Resolvemos las dudas más habituales que reciben nuestros clientes. Si su pregunta no aparece aquí, contáctenos y con gusto le orientaremos.</p>
+
+  <div class="faq-list" role="list">
+    <div class="faq-item" role="listitem">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1_btn">
+        ¿Cómo solicito una consulta con el bufete?
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div id="faq1" class="faq-answer" role="region" aria-labelledby="faq1_btn">
+        <p>Puede solicitar su consulta a través del formulario de contacto en esta página, llamando al +502-34950705 o usando el botón de WhatsApp. Ofrecemos consulta inicial remota y presencial según su preferencia.</p>
       </div>
     </div>
-    
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        <h3>⚖️ ¿En qué áreas del derecho se especializan?</h3>
-        <span class="faq-icon">▼</span>
-      </div>
-      <div class="faq-answer">
-        <p>
-          Contamos con experiencia en derecho penal, civil, laboral, corporativo, de familia, notarial, constitucional y en procesos de impugnación. Nuestro equipo multidisciplinario garantiza atención especializada.
-        </p>
+
+    <div class="faq-item" role="listitem">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2_btn">
+        ¿Cuál es el costo de una consulta inicial?
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div id="faq2" class="faq-answer" role="region" aria-labelledby="faq2_btn">
+        <p>El costo depende de la complejidad del asunto. Para casos comunes ofrecemos tarifa fija para la consulta inicial; contáctenos para recibir un presupuesto claro antes de agendar.</p>
       </div>
     </div>
-    
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        <h3>⏳ ¿Cuánto tiempo toma la tramitación de un caso?</h3>
-        <span class="faq-icon">▼</span>
-      </div>
-      <div class="faq-answer">
-        <p>
-          El tiempo depende del tipo de proceso y su complejidad. Algunos casos pueden resolverse en semanas, mientras que otros requieren meses. Evaluamos cada situación para ofrecerte una estimación realista y seguimiento constante.
-        </p>
+
+    <div class="faq-item" role="listitem">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3_btn">
+        ¿Atienden casos en todo el territorio de Guatemala?
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div id="faq3" class="faq-answer" role="region" aria-labelledby="faq3_btn">
+        <p>Sí. Nuestros abogados pueden gestionar asuntos en diferentes jurisdicciones de Guatemala y coordinamos diligencias locales cuando es necesario.</p>
       </div>
     </div>
-    
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        <h3>🕒 ¿Atienden las 24 horas del día y los 365 días del año?</h3>
-        <span class="faq-icon">▼</span>
-      </div>
-      <div class="faq-answer">
-        <p>
-          Nuestro equipo está disponible para emergencias legales en cualquier momento. Para consultas generales, atendemos en horario laboral, pero puedes escribirnos en cualquier momento y te responderemos lo antes posible.
-        </p>
+
+    <div class="faq-item" role="listitem">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq4" id="faq4_btn">
+        ¿Qué documentos debo llevar para una primera consulta?
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div id="faq4" class="faq-answer" role="region" aria-labelledby="faq4_btn">
+        <p>Lleve toda la documentación relevante: identificación, contratos, oficios, notificaciones o pruebas disponibles. Si no está seguro, envíenos copias digitales antes de la cita.</p>
       </div>
     </div>
-    
+
+    <div class="faq-item" role="listitem">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq5" id="faq5_btn">
+        ¿Cómo puedo pagar los honorarios?
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div id="faq5" class="faq-answer" role="region" aria-labelledby="faq5_btn">
+        <p>Aceptamos transferencias bancarias, pagos en efectivo y, en algunos casos, pagos por plataformas digitales. Detallamos las opciones al momento de formalizar el encargo.</p>
+      </div>
+    </div>
   </div>
 </section>
 
+<script>
+/* Script accesible para accordion FAQ */
+(function(){
+  const items = Array.from(document.querySelectorAll('.faq-item'));
+  if(!items.length) return;
+
+  items.forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    const panel = item.querySelector('.faq-answer');
+
+    // Toggle function
+    const toggle = () => {
+      const isOpen = item.classList.contains('open');
+      // Cerrar todos si se desea comportamiento 'solo uno abierto' — comentar siguiente block si se permite multi-open
+      items.forEach(i => {
+        i.classList.remove('open');
+        const b = i.querySelector('.faq-question');
+        const p = i.querySelector('.faq-answer');
+        if(b) b.setAttribute('aria-expanded', 'false');
+      });
+
+      if(!isOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        // set max-height is handled by CSS; ensure focusable region
+        panel.focus && panel.setAttribute('tabindex', '-1');
+      } else {
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    };
+
+    btn.addEventListener('click', toggle);
+
+    // Keyboard support: Enter / Space
+    btn.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggle();
+      }
+      // Flecha abajo para abrir siguiente
+      if(e.key === 'ArrowDown'){
+        e.preventDefault();
+        const next = item.nextElementSibling;
+        if(next) next.querySelector('.faq-question').focus();
+      }
+      if(e.key === 'ArrowUp'){
+        e.preventDefault();
+        const prev = item.previousElementSibling;
+        if(prev) prev.querySelector('.faq-question').focus();
+      }
+    });
+  });
+
+  // Opcional: abrir la primera pregunta si el usuario llega con hash (#faq2)
+  if(location.hash){
+    try{
+      const targetBtn = document.querySelector(`${location.hash}_btn`);
+      if(targetBtn){
+        targetBtn.click();
+        targetBtn.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    }catch(e){}
+  }
+})();
 <script>
 function toggleFaq(element) {
     const faqItem = element.parentElement;
