@@ -986,5 +986,36 @@ a.descarga:hover i {
     margin-right: 8px;
     font-size: 18px;
 }
+Pegado recientemente
+.subtitulo-hero {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  color: var(--text-dark);
+  max-width: 800px;
+  margin: 1.5rem auto 2.5rem;
+  line-height: 1.7;
+  font-weight: 400;
+  animation: fadeInUp 1.2s ease-out both;
+}
 
+.cta-principal {
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  animation: fadeInUp 1.4s ease-out both;
+}
 
+.cta-principal:hover {
+  background: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  color: var(--primary-color);
+}
