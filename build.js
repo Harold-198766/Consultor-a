@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+
 require('esbuild').build({
   entryPoints: ['scripts/main.js'],
   bundle: true,
@@ -7,15 +8,22 @@ require('esbuild').build({
   treeShaking: true,
   outfile: 'dist/main.min.js',
   target: ['es2020'],
-}).catch(() => process.exit(1));
+})
+.then(() => {
+  const distDir = path.join(__dirname, 'dist');
 
-// ✅ NUEVA TAREA: Copiar index.html de la raíz a dist/
-const sourceFile = path.join(__dirname, 'index.html');
-const destFile = path.join(__dirname, 'dist/index.html');
+  if (!fs.existsSync(distDir)) {
+    fs.mkdirSync(distDir, { recursive: true });
+  }
 
-if (fs.existsSync(sourceFile)) {
-  fs.copyFileSync(sourceFile, destFile);
-  console.log('✅ index.html copiado a dist/');
-} else {
-  console.warn('⚠️  No se encontró index.html en la raíz del proyecto');
-}
+  const sourceFile = path.join(__dirname, 'index.html');
+  const destFile = path.join(__dirname, 'dist/index.html');
+
+  if (fs.existsSync(sourceFile)) {
+    fs.copyFileSync(sourceFile, destFile);
+    console.log('✅ index.html copiado a dist/');
+  } else {
+    console.warn('⚠️ No se encontró index.html en la raíz del proyecto');
+  }
+})
+.catch(() => process.exit(1));
