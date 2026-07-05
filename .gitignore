@@ -1,0 +1,12 @@
+# Dependencias de Node.js
+node_modules/
+
+# Archivos de respaldo
+*.backup.json
+
+# Configuración local de Netlify
+.netlify/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

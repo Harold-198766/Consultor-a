@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="dynamic-title">Artículo - Barillas, Colindres & Asociados</title>
+  <meta name="description" id="dynamic-description" content="Consulta nuestros artículos legales especializados en derecho guatemalteco.">
+
+  <!-- Fuentes y estilos básicos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Markdown parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      color: #2d3748;
+    }
+    .article-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .article-container img.logo {
+      width: 150px;
+      display: block;
+      margin: 0 auto 20px auto;
+    }
+    .article-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+    .article-meta {
+      font-size: 0.9rem;
+      color: #718096;
+      margin-bottom: 15px;
+    }
+    .article-content {
+      line-height: 1.8;
+    }
+    .article-content h2, .article-content h3 {
+      margin-top: 25px;
+    }
+    .article-navigation {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-back {
+      text-decoration: none;
+      color: #fff;
+      background-color: #39a9e0;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background-color: #0078b5;
+    }
+    .social-share a {
+      margin-left: 10px;
+      color: #39a9e0;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+    .social-share a:hover {
+      color: #003366;
+    }
+  </style>
+</head>
+<body>
+  <div class="article-container">
+    <img src="images/logo.webp" alt="Logo" class="logo">
+
+    <header class="article-header">
+      <div class="article-meta" id="article-meta">
+        <span id="article-date">Cargando...</span> | 
+        <span id="reading-time">Cargando...</span>
+      </div>
+      <h1 class="article-title" id="article-title">Cargando artículo...</h1>
+    </header>
+
+    <div class="article-content" id="contenido-articulo">
+      <p>Cargando contenido del artículo...</p>
+    </div>
+
+    <footer class="article-navigation">
+      <a href="index.html#blog" class="btn-back"><i class="fas fa-arrow-left"></i> Volver al blog</a>
+      <div class="social-share">
+        <a href="#" onclick="compartirFacebook()" title="Compartir en Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" onclick="compartirTwitter()" title="Compartir en Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" onclick="compartirLinkedIn()" title="Compartir en LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" onclick="compartirWhatsApp()" title="Compartir en WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </footer>
+  </div>
+
+<script>
+  // ===============================
+  // Funciones auxiliares
+  // ===============================
+  function obtenerParametro(nombre) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(nombre);
+  }
+
+  function estimarTiempoLectura(texto) {
+    const palabrasPorMinuto = 200;
+    const palabras = texto.trim().split(/\s+/).length;
+    const minutos = Math.ceil(palabras / palabrasPorMinuto);
+    return `${minutos} min lectura`;
+  }
+
+  function actualizarMetaTags(title, description) {
+    document.title = `${title} - Barillas, Colindres & Asociados`;
+    const metaDesc = document.getElementById('dynamic-description');
+    if (metaDesc) {
+      metaDesc.content = description || `${title} - Artículo legal especializado`;
+    }
+  }
+
+  function limpiarMarkdown(md) {
+    // Remover frontmatter (contenido entre --- al inicio del archivo)
+    return md.replace(/^---[\s\S]*?---/, "").trim();
+  }
+
+  // ===============================
+  // Compartir en redes sociales
+  // ===============================
+  function compartirFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(document.getElementById('article-title').textContent);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title}`, '_blank', 'width=600,height=400');
+  }
+
+  function compartirTwitter() {
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(document.getElementById('article-title').textContent);
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`, '_blank', 'width=600,height=400');
+  }
+
+  function compartirLinkedIn() {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=600,height=400');
+  }
+
+  function compartirWhatsApp() {
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(document.getElementById('article-title').textContent);
+    window.open(`https://wa.me/?text=${title} ${url}`, '_blank');
+  }
+
+  // ===============================
+  // Cargar artículo - Método unificado
+  // ===============================
+  function cargarArticulo() {
+    const archivo = obtenerParametro("archivo");
+    const slug = obtenerParametro("slug");
+    const contenedor = document.getElementById("contenido-articulo");
+
+    // Verificar que al menos uno de los parámetros esté presente
+    if (!archivo && !slug) {
+      contenedor.innerHTML = "<p>Error: no se especificó ningún artículo (falta parámetro 'archivo' o 'slug').</p>";
+      return;
+    }
+
+    // Determinar qué archivo JSON usar y dónde buscar los archivos markdown
+    let indexPath = 'articulos/index.json';
+    let articulosPath = 'articulos/';
+    
+    // Si solo hay slug, usar el index.json en la raíz
+    if (slug && !archivo) {
+      indexPath = 'index.json';
+      articulosPath = 'articulos/';
+    }
+
+    fetch(indexPath)
+      .then(res => {
+        if (!res.ok) throw new Error(`No se pudo cargar ${indexPath}`);
+        return res.json();
+      })
+      .then(indexData => {
+        let articulo = null;
+
+        // Buscar por slug si está presente
+        if (slug) {
+          console.log("Buscando por slug:", slug);
+          articulo = indexData.find(a => a.slug === slug);
+        }
+        
+        // Si no se encontró por slug, buscar por archivo
+        if (!articulo && archivo) {
+          console.log("Buscando por archivo:", archivo);
+          articulo = indexData.find(a => 
+            a.archivo && a.archivo.trim().toLowerCase() === archivo.trim().toLowerCase()
+          );
+        }
+
+        if (!articulo) {
+          contenedor.innerHTML = `
+            <h2>Artículo no encontrado</h2>
+            <p>No se pudo encontrar el artículo solicitado${slug ? ` con slug "${slug}"` : ''}${archivo ? ` con archivo "${archivo}"` : ''}.</p>
+            <p>Verifica que el enlace sea correcto o que el artículo haya sido publicado.</p>
+            <a href="index.html#blog" class="btn-back">← Volver al blog</a>
+          `;
+          return;
+        }
+
+        // Actualizar información del artículo
+        document.getElementById('article-title').textContent = articulo.title || articulo.titulo || 'Título no disponible';
+
+        // Manejar la fecha
+        if (articulo.date || articulo.fecha) {
+          const fecha = new Date(articulo.date || articulo.fecha);
+          document.getElementById('article-date').textContent = fecha.toLocaleDateString('es-GT', {
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric'
+          });
+        }
+
+        // Actualizar tiempo de lectura y meta tags
+        const descripcion = articulo.description || articulo.descripcion || '';
+        if (descripcion) {
+          document.getElementById('reading-time').textContent = estimarTiempoLectura(descripcion);
+        }
+        
+        actualizarMetaTags(
+          articulo.title || articulo.titulo, 
+          descripcion
+        );
+
+        // Cargar el contenido del archivo markdown
+        const archivoMarkdown = articulo.archivo || articulo.file;
+        if (!archivoMarkdown) {
+          contenedor.innerHTML = "<p>Error: no se especificó archivo de contenido para este artículo.</p>";
+          return;
+        }
+
+        fetch(articulosPath + archivoMarkdown)
+          .then(res => {
+            console.log(`Respuesta de ${articulosPath + archivoMarkdown}:`, res.status, res.statusText);
+            if (!res.ok) throw new Error(`HTTP ${res.status}: Archivo "${archivoMarkdown}" no encontrado en "${articulosPath}"`);
+            return res.text();
+          })
+          .then(md => {
+            console.log("Contenido markdown cargado, longitud:", md.length);
+            console.log("Primeros 100 caracteres:", md.substring(0, 100));
+            
+            const contenidoLimpio = limpiarMarkdown(md);
+            console.log("Contenido limpio, longitud:", contenidoLimpio.length);
+            
+            const html = marked.parse(contenidoLimpio);
+            console.log("HTML generado, longitud:", html.length);
+            
+            // Validar que el contenido no esté vacío
+            if (!html || html.trim() === "" || html.trim() === "<p></p>") {
+              contenedor.innerHTML = `
+                <div style="padding: 15px; background: #fed7d7; border: 1px solid #e53e3e; border-radius: 8px;">
+                  <h3>📄 Contenido vacío</h3>
+                  <p>El archivo se cargó pero está vacío o no se pudo procesar.</p>
+                  <p><strong>Archivo:</strong> <code>${archivoMarkdown}</code></p>
+                  <p><strong>Contenido original (primeros 200 chars):</strong></p>
+                  <pre style="background: #f7fafc; padding: 10px; border-radius: 4px; overflow-x: auto;">${md.substring(0, 200)}...</pre>
+                </div>
+              `;
+            } else {
+              contenedor.innerHTML = html;
+              
+              // Actualizar tiempo de lectura basado en el contenido real si no había descripción
+              if (!descripcion) {
+                document.getElementById('reading-time').textContent = estimarTiempoLectura(contenidoLimpio);
+              }
+            }
+          })
+          .catch(error => {
+            console.error('Error al cargar markdown:', error);
+            contenedor.innerHTML = `
+              <div style="padding: 15px; background: #fed7d7; border: 1px solid #e53e3e; border-radius: 8px;">
+                <h3>❌ Error al cargar contenido</h3>
+                <p><strong>Error:</strong> ${error.message}</p>
+                <p><strong>Archivo buscado:</strong> <code>${articulosPath + archivoMarkdown}</code></p>
+                <p><strong>URL completa:</strong> <code>${window.location.origin}/${articulosPath + archivoMarkdown}</code></p>
+              </div>
+            `;
+          });
+      })
+      .catch(error => {
+        console.error('Error al cargar índice:', error);
+        contenedor.innerHTML = `<p>Error al cargar el índice de artículos: ${error.message}</p>`;
+      });
+  }
+
+  // ===============================
+  // Función de prueba (solo para desarrollo)
+  // ===============================
+  function probarConSlug() {
+    // Cambiar la URL sin recargar la página
+    const nuevaURL = window.location.origin + window.location.pathname + '?slug=ejemplo';
+    window.history.pushState({}, '', nuevaURL);
+    cargarArticulo();
+  }
+
+  function probarConArchivo() {
+    // Cambiar la URL sin recargar la página
+    const nuevaURL = window.location.origin + window.location.pathname + '?archivo=ejemplo.md';
+    window.history.pushState({}, '', nuevaURL);
+    cargarArticulo();
+  }
+
+  // ===============================
+  // Inicialización
+  // ===============================
+  document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM cargado, iniciando carga del artículo...");
+    cargarArticulo();
+    
+    // Si no hay parámetros, mostrar botones de prueba (solo en desarrollo)
+    const archivo = obtenerParametro("archivo");
+    const slug = obtenerParametro("slug");
+    
+    if (!archivo && !slug) {
+      // Agregar botones de prueba después del mensaje de error
+      setTimeout(() => {
+        const contenedor = document.getElementById("contenido-articulo");
+        contenedor.innerHTML += `
+          <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px;">
+            <h4>🔧 Herramientas de prueba:</h4>
+            <button onclick="probarConSlug()" style="margin-right: 10px; padding: 8px 15px; background: #39a9e0; color: white; border: none; border-radius: 4px; cursor: pointer;">
+              Probar con slug
+            </button>
+            <button onclick="probarConArchivo()" style="padding: 8px 15px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">
+              Probar con archivo
+            </button>
+          </div>
+        `;
+      }, 100);
+    }
+  });
+</script>
+</body>
+</html>
