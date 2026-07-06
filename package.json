@@ -15,7 +15,7 @@
     "type": "git",
     "url": "https://github.com/Harold-198766/Consultor-a.git"
   },
-  "devDependencies": {
+  "dependencies": {
     "esbuild": "^0.28.1"
   }
 }
