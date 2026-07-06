@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "echo 'Build terminado'"
+    "build": "node build.js"
   },
   "keywords": [],
   "author": "Barillas, Colindres & Asociados",
