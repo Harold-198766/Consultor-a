@@ -211,6 +211,8 @@ function run() {
 
   copyFile('index.html');
   copyFile('gracias.html');
+  copyFile('sitemap.xml');
+  copyFile('robots.txt');
   copyDir('images');
   copyDir('biblioteca');
   generateArticles(entries);
