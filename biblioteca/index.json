@@ -1,0 +1,30 @@
+[
+  {
+    "type": "articulo",
+    "title": "El proceso sucesorio intestado",
+    "date": "2025-09-11",
+    "category": "Derecho sucesorio",
+    "description": "Orientación general sobre el inicio y la documentación básica del proceso sucesorio intestado extrajudicial en Guatemala.",
+    "source": "el-proceso-sucesorio-intestado.md",
+    "url": "articulos/el-proceso-sucesorio-intestado.html"
+  },
+  {
+    "type": "articulo",
+    "title": "Control social e inteligencia artificial",
+    "date": "2025-06-27",
+    "author": "Amílcar E. Colindres",
+    "category": "Derecho y tecnología",
+    "description": "Reflexión jurídica sobre el control social, el ejercicio del poder y el empleo de tecnologías de inteligencia artificial.",
+    "source": "control-social-e-inteligencia-artificial.md",
+    "url": "articulos/control-social-e-inteligencia-artificial.html"
+  },
+  {
+    "type": "articulo",
+    "title": "¿Cómo se tramita un divorcio en Guatemala?",
+    "date": "2025-06-20",
+    "category": "Derecho de familia",
+    "description": "Explicación general de los tipos de divorcio, los documentos usuales y las etapas básicas del procedimiento en Guatemala.",
+    "source": "divorcio-en-guatemala.md",
+    "url": "articulos/divorcio-en-guatemala.html"
+  }
+]

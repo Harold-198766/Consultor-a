@@ -1,0 +1,17 @@
+VERSIÓN INSTITUCIONAL V4
+
+1. Esta carpeta no contiene .git, archivos del portal del cliente ni documentos heredados potencialmente confidenciales.
+2. La Biblioteca Jurídica lee biblioteca/index.json.
+3. Los artículos se escriben en articulos/*.md y se generan como HTML durante npm run build.
+4. Los PDF públicos deben colocarse únicamente en biblioteca/documentos/.
+5. Las fichas de obras pueden enlazarse desde biblioteca/index.json y sus páginas deben guardarse en una carpeta pública aprobada.
+6. No coloque demandas, notificaciones ni documentos de clientes dentro de biblioteca/.
+
+PRUEBA LOCAL
+npm install
+npm run build
+npm run preview
+Abra: http://localhost:8000
+
+DESPLIEGUE
+Después de aprobar la prueba local, sustituya en el repositorio los archivos correspondientes, confirme con git status, haga commit y push.

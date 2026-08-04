@@ -1,0 +1,30 @@
+[
+  {
+    "type": "articulo",
+    "title": "Título del artículo",
+    "date": "2026-08-04",
+    "author": "Nombre del autor",
+    "category": "Categoría jurídica",
+    "description": "Resumen breve para la tarjeta de la Biblioteca Jurídica.",
+    "source": "nombre-del-articulo.md",
+    "url": "articulos/nombre-del-articulo.html"
+  },
+  {
+    "type": "documento",
+    "title": "Título del documento",
+    "date": "2026-08-04",
+    "author": "Nombre del autor o institución",
+    "category": "Material de consulta",
+    "description": "Descripción del documento público.",
+    "file": "biblioteca/documentos/nombre-del-documento.pdf"
+  },
+  {
+    "type": "obra",
+    "title": "Título de la obra",
+    "date": "2026-08-04",
+    "author": "Nombre del autor",
+    "category": "Obra editorial",
+    "description": "Presentación de la obra y de su contenido.",
+    "url": "obras/nombre-de-la-obra.html"
+  }
+]

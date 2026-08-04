@@ -2,32 +2,26 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Gracias por contactarnos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <title>Mensaje recibido | Barillas, Colindres &amp; Asociados</title>
   <style>
-    body {
-      font-family: Georgia, serif;
-      background-color: #fdf6e3;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      color: #003366;
-    }
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #900;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-    }
+    :root { --ink:#13263d; --gold:#b08d49; --ivory:#f4f0e8; --text:#27313a; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; padding:1.5rem; background:linear-gradient(135deg,var(--ink),#1d3857); color:var(--text); font-family:Georgia,serif; }
+    main { max-width:720px; background:#fffdf9; border-top:4px solid var(--gold); padding:clamp(2rem,5vw,4rem); box-shadow:0 24px 60px rgba(0,0,0,.25); text-align:center; }
+    h1 { color:var(--ink); font-size:clamp(2rem,5vw,3rem); margin:0 0 1rem; }
+    p { line-height:1.75; }
+    a { display:inline-block; margin-top:1rem; padding:.85rem 1.1rem; background:var(--ink); color:white; text-decoration:none; border-radius:4px; }
+    a:focus-visible { outline:3px solid var(--gold); outline-offset:3px; }
   </style>
 </head>
 <body>
-  <h1>¡Gracias por contactarnos!</h1>
-  <p>Hemos recibido su mensaje. Nos pondremos en contacto con usted a la brevedad posible.</p>
-  <a href="index.html">Volver al sitio</a>
+  <main>
+    <h1>Su mensaje ha sido recibido.</h1>
+    <p>Gracias por comunicarse con Barillas, Colindres &amp; Asociados. Revisaremos la información remitida y responderemos por el medio indicado.</p>
+    <p>El envío del formulario no implica todavía la aceptación del asunto ni establece por sí mismo una relación profesional.</p>
+    <a href="index.html">Regresar al sitio</a>
+  </main>
 </body>
 </html>
